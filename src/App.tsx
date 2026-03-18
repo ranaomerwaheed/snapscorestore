@@ -439,7 +439,7 @@ const testimonials = [
       en: "Best service in the Middle East. My Snap score reached 1M in just 2 days. Highly recommended for anyone looking for reliability.", 
       ar: "أفضل خدمة في الشرق الأوسط. وصل سكور حسابي إلى مليون في يومين فقط. أنصح به بشدة لكل من يبحث عن المصداقية." 
     },
-    avatar: "https://picsum.photos/seed/user1/100/100"
+    avatar: "https://i.pinimg.com/736x/d4/d1/09/d4d10914504759b9c917d0b338e13744.jpg"
   },
   {
     name: { en: "Sara Mohammed", ar: "سارة محمد" },
@@ -448,7 +448,7 @@ const testimonials = [
       en: "I was worried about my account, but they reassured me and the service was extremely professional. Highly recommended.", 
       ar: "كنت خايفة على حسابي بس طمنوني والخدمة كانت احترافية للغاية. أنصح فيهم وبقوة." 
     },
-    avatar: "https://picsum.photos/seed/user2/100/100"
+    avatar: "https://i.pinimg.com/1200x/3d/b5/31/3db5313f860c6c6f67480f238e2e4f27.jpg"
   },
   {
     name: { en: "Sultan Al-Kuwari", ar: "سلطان الكواري" },
@@ -457,7 +457,7 @@ const testimonials = [
       en: "Best service I've dealt with in the Gulf. Credibility and speed in execution.", 
       ar: "أفضل خدمة تعاملت معها في الخليج. مصداقية وسرعة في التنفيذ." 
     },
-    avatar: "https://picsum.photos/seed/user3/100/100"
+    avatar: "https://i.pinimg.com/1200x/7b/76/90/7b7690d1d9769561cb5fb6fdb2045943.jpg"
   }
 ];
 
