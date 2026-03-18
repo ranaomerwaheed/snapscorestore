@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Cairo:wght@300;400;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-cairo: "Cairo", sans-serif;
+  --color-snap-yellow: #FFFC00;
+  --color-matte-black: #111111;
+  --color-gold-accent: #D4AF37;
+}
+
+@layer base {
+  body {
+    @apply bg-matte-black text-white font-sans;
+    direction: ltr;
+  }
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 20px rgba(255, 252, 0, 0.3);
+}
+
+.text-glow-yellow {
+  text-shadow: 0 0 10px rgba(255, 252, 0, 0.5);
+}
+
+@keyframes pulse-whatsapp {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.animate-whatsapp {
+  animation: pulse-whatsapp 2s infinite;
+}
