@@ -1020,8 +1020,10 @@ export default function App() {
               <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-12" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" className="h-10" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-8" referrerPolicy="no-referrer" />
-              <div className="text-2xl font-black text-white tracking-tighter">Payoneer</div>
-              <div className="text-2xl font-black text-white tracking-tighter">PAYEER</div>
+              <img src="https://i.postimg.cc/nzKMsm1h/PAYO_BIG.png" alt="Payoneer" className="h-8" referrerPolicy="no-referrer" />
+              <img src="https://i.postimg.cc/mZMywpmP/payeer-seeklogo.png" alt="Payeer" className="h-8" referrerPolicy="no-referrer" />
+              <img src="https://i.postimg.cc/QMdrgTsM/new-Jazzcash-logo_(1).png" alt="JazzCash" className="h-8" referrerPolicy="no-referrer" />
+              
             </div>
           </div>
         </section>
