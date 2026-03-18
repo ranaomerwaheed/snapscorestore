@@ -193,12 +193,12 @@ const translations = {
       readMore: "Read More",
       posts: [
         {
-          title: "How to Increase Your Snap Score Fast",
-          date: "March 15, 2024",
+          title: "Snapchat Account Safety Guide: Safe Login Practices & Ban Prevention",
+          date: "March 18, 2026",
           excerpt: "Discover the most effective and safe methods to boost your score in 2024."
         },
         {
-          title: "Why Aged Accounts are Better",
+          title: "Snapchat Score Top-Up: Important Information During Top-Up Process",
           date: "March 10, 2024",
           excerpt: "The benefits of using accounts with history for your personal brand."
         },
@@ -214,7 +214,7 @@ const translations = {
       subtitle: "We accept all major payment methods",
       methods: [
         { name: "Apple Pay", icon: "" },
-        { name: "STC Pay", icon: "stc" },
+        { name: "Google Pay", icon: "stc" },
         { name: "Mada", icon: "mada" },
         { name: "Credit Card", icon: "💳" }
       ]
