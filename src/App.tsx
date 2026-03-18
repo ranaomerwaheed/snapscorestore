@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Infinity, 
@@ -33,301 +33,463 @@ const WHATSAPP_NUMBER = "+923431390157";
 const translations = {
   en: {
     nav: {
-      contact: "Contact Us",
-      lang: "العربية",
+      home: "Home",
+      services: "Services",
+      catalog: "Catalog",
+      how: "How it Works",
+      faq: "FAQ",
       blog: "Blog",
-      packages: "Packages"
+      contact: "Contact",
+      shop: "Shop Now",
+      lang: "العربية"
     },
     hero: {
-      title: "Boost Your",
-      titleHighlight: "Snap Score",
-      subtitle: "Safely & Professionally",
-      desc: "Our services are tailored for the elite in the GCC. We guarantee real growth, 14-day money-back guarantee, and zero risk to your account.",
-      cta: "View Packages",
-      protection: "100% Ban Protection"
+      badge: "Trusted by 10,000+ Clients",
+      title: "Boost Your Snapchat Presence Instantly",
+      desc: "Securely increase your Snap Score, get aged accounts, and grow your followers with the GCC's most trusted provider.",
+      cta: "View Catalog",
+      secondary: "Our Services",
+      scoreLabel: "Current Score",
+      targetLabel: "Target Boost"
     },
-    guarantee: {
-      title: "14-Day Money-Back Guarantee",
-      desc: "Not satisfied with the results? We'll refund your payment within 14 days, no questions asked."
-    },
-    checkout: {
-      details: "Account Details",
-      username: "Snapchat Username",
-      password: "Password (Required for Score)",
-      notice: "Important: We need access to post snaps to increase your score. Your data is encrypted and deleted after service. We provide a 14-day money-back guarantee if the service is not delivered as promised.",
-      productDetails: "This service includes a permanent boost to your Snapchat score. The process is manual and 100% safe. Delivery time: 24-48 hours.",
-      button: "Check Out Now",
-      paymentTitle: "Select Payment Method",
-      processing: "Processing Your Order...",
-      summary: "Order Summary",
-      package: "Package",
+    shop: {
+      title: "Premium Catalog",
+      subtitle: "Select the perfect package for your needs",
+      scoreAccounts: "Score Accounts",
+      followerAccounts: "Follower Accounts",
+      servicesTab: "Growth Services",
+      buy: "Order via WhatsApp",
+      order: "Order Now",
       price: "Price"
     },
+    guarantee: {
+      title: "14-Day Money Back Guarantee",
+      desc: "We stand by our service. If you're not satisfied, we'll refund your purchase within 14 days."
+    },
+    checkout: {
+      summary: "Order Summary",
+      package: "Selected Package",
+      price: "Total Price",
+      details: "Account Details",
+      username: "Snapchat Username",
+      password: "Account Password (Required for Score)",
+      notice: "Your credentials are encrypted and used only for the boosting process. We recommend changing your password after completion.",
+      button: "Confirm Order via WhatsApp",
+      processing: "Processing...",
+      paymentTitle: "Preferred Payment Method",
+      productDetails: "High-quality Snapchat account with the specified features. Delivery usually takes 1-24 hours depending on the package."
+    },
     packages: {
-      title: "Snap Score Packages",
-      subtitle: "Select the perfect boost for your profile",
-      buy: "Buy Now"
+      score: "Score Boost",
+      followers: "Followers",
+      aged: "Aged Account",
+      verified: "Verified"
     },
     why: {
-      title: "Why Professionals Choose Us?",
+      title: "Why Choose Snap Boost?",
+      subtitle: "We provide the most secure and efficient growth services in the region.",
       items: [
-        { title: "Total Privacy", desc: "We never ask for access to your private chats or photos." },
-        { title: "Guaranteed Safety", desc: "We use manual and professional methods that guarantee your account's safety from bans." },
-        { title: "Lifetime Warranty", desc: "Permanent results that don't decrease over time, with continuous technical support." }
+        {
+          title: "Total Security",
+          desc: "We use advanced encryption and safe methods that comply with platform guidelines."
+        },
+        {
+          title: "Fast Delivery",
+          desc: "Most orders are processed within hours. We value your time."
+        },
+        {
+          title: "24/7 Support",
+          desc: "Our expert team is available around the clock to assist you via WhatsApp."
+        }
       ]
     },
     catalog: {
-      title: "Snapchat Accounts",
-      titleHighlight: "Available",
-      subtitle: "Choose the perfect aged account for your presence",
-      order: "Order via WhatsApp"
+      title: "Available Accounts",
+      subtitle: "Ready-to-use accounts with high scores and history",
+      viewAll: "View All Accounts",
+      score: "Score",
+      age: "Age",
+      price: "Price",
+      buy: "Buy Now",
+      order: "Order via WhatsApp",
+      titleHighlight: "Available"
     },
     services: {
-      title: "Our Premium",
-      titleHighlight: "Services",
-      subtitle: "For the Digital Elite",
+      title: "Our Premium Services",
+      titleHighlight: "Solutions",
+      subtitle: "Everything you need to dominate Snapchat",
       items: [
-        { title: "Score Booster", desc: "Rapidly increase your snap score with our safe, manual methods.", icon: <TrendingUp className="w-8 h-8 text-snap-yellow" /> },
-        { title: "Verified Badge", desc: "Assistance in obtaining the prestigious verified star for your profile.", icon: <BadgeCheck className="w-8 h-8 text-snap-yellow" /> },
-        { title: "Snapchat Views", desc: "Boost your story views and reach a wider audience instantly.", icon: <Eye className="w-8 h-8 text-snap-yellow" /> },
-        { title: "Followers Growth", desc: "Gain real, active followers to build your influence and brand.", icon: <Users className="w-8 h-8 text-snap-yellow" /> }
+        {
+          icon: <TrendingUp className="w-8 h-8" />,
+          title: "Score Boosting",
+          desc: "Increase your Snap Score by thousands or millions safely and quickly."
+        },
+        {
+          icon: <Infinity className="w-8 h-8" />,
+          title: "Aged Accounts",
+          desc: "Get established accounts from 2011-2020 with high trust scores."
+        },
+        {
+          icon: <Users className="w-8 h-8" />,
+          title: "Follower Growth",
+          desc: "Grow your public profile with real-looking, active followers."
+        }
       ]
     },
     how: {
       title: "How It Works",
+      subtitle: "Three simple steps to boost your presence",
       steps: [
-        { title: "Choose Package", desc: "Select the score or account package that fits your needs.", icon: <Zap className="w-6 h-6" /> },
-        { title: "Contact Us", desc: "Send us your details via WhatsApp for a quick consultation.", icon: <MessageCircle className="w-6 h-6" /> },
-        { title: "Fast Delivery", desc: "Watch your score grow safely within 24-48 hours.", icon: <CheckCircle2 className="w-6 h-6" /> }
+        {
+          icon: <ShoppingBag className="w-10 h-10" />,
+          title: "Choose Package",
+          desc: "Select the account or service that fits your goals."
+        },
+        {
+          icon: <RefreshCcw className="w-10 h-10" />,
+          title: "Provide Details",
+          desc: "Enter your username and complete the secure checkout."
+        },
+        {
+          icon: <Zap className="w-10 h-10" />,
+          title: "Get Boosted",
+          desc: "Relax while our team processes your order safely."
+        }
       ]
     },
     stats: {
       items: [
-        { label: "Happy Clients", value: "10K+" },
-        { label: "Accounts Boosted", value: "25K+" },
-        { label: "Years Experience", value: "5+" },
-        { label: "Support", value: "24/7" }
+        { value: "10K+", label: "Happy Clients" },
+        { value: "50K+", label: "Orders Completed" },
+        { value: "12+", label: "Years Experience" },
+        { value: "4.9", label: "Average Rating" }
       ]
     },
     faq: {
       title: "Frequently Asked Questions",
+      subtitle: "Everything you need to know about our services",
       items: [
-        { q: "Is it safe for my account?", a: "Yes, we use manual methods that comply with Snapchat's safety guidelines to ensure zero risk of bans." },
-        { q: "How long does it take?", a: "Most orders are completed within 24 to 48 hours depending on the package size." },
-        { q: "Do you need my password?", a: "For score boosting, we only need your username. For account purchases, we provide full access details." },
-        { q: "Is there a warranty?", a: "We provide a lifetime warranty on all our scores and accounts. If anything drops, we refill it for free." }
+        {
+          q: "Is it safe for my account?",
+          a: "Yes, we use secure methods that comply with Snapchat's guidelines. We have served over 10,000 clients without issues."
+        },
+        {
+          q: "How long does it take?",
+          a: "Most orders are completed within 1-24 hours. Larger score boosts might take up to 48 hours for maximum safety."
+        },
+        {
+          q: "Do I need to provide my password?",
+          a: "For score boosting, we need temporary access. For followers or buying new accounts, no password is required."
+        }
       ]
     },
     testimonials: {
-      title: "What Our GCC Clients Say"
+      title: "Client Success Stories",
+      subtitle: "Hear from our satisfied customers"
     },
     blog: {
-      title: "Latest News & Tips",
-      subtitle: "Stay updated with Snapchat trends in the Gulf",
+      title: "Snapchat Tips & News",
+      subtitle: "Stay updated with the latest trends and strategies",
       readMore: "Read More",
       posts: [
-        { title: "How to Increase Your Snap Score Safely in 2026", date: "March 15, 2026", excerpt: "Discover the latest manual methods to boost your score without risking your account. We focus on organic growth patterns that keep your account healthy." },
-        { title: "The Importance of Aged Snapchat Accounts for Influencers", date: "March 10, 2026", excerpt: "Why professional influencers prefer aged accounts over new ones for better reach and trust. Aged accounts have higher authority in the Snapchat algorithm." },
-        { title: "Snapchat Verification: The Ultimate Guide for GCC Users", date: "March 5, 2026", excerpt: "Everything you need to know about getting the verified star in Saudi Arabia and UAE. Requirements, process, and professional tips for success." },
-        { title: "Snapchat Marketing Trends in Saudi Arabia for 2026", date: "February 28, 2026", excerpt: "How businesses in KSA are leveraging Snapchat to reach younger audiences and drive sales effectively." }
+        {
+          title: "How to Increase Your Snap Score Fast",
+          date: "March 15, 2024",
+          excerpt: "Discover the most effective and safe methods to boost your score in 2024."
+        },
+        {
+          title: "Why Aged Accounts are Better",
+          date: "March 10, 2024",
+          excerpt: "The benefits of using accounts with history for your personal brand."
+        },
+        {
+          title: "Snapchat Security Best Practices",
+          date: "March 5, 2024",
+          excerpt: "Keep your account safe while growing your presence online."
+        }
       ]
     },
     payments: {
-      title: "Secure Payment Methods",
-      subtitle: "We accept various secure payment options for your convenience",
+      title: "Secure Payments",
+      subtitle: "We accept all major payment methods",
       methods: [
-        { name: "Debit Card", desc: "Visa / Mastercard", icon: <CreditCard className="w-8 h-8" /> },
-        { name: "Crypto", desc: "Bitcoin / USDT", icon: <Bitcoin className="w-8 h-8" /> },
-        { name: "Payoneer", desc: "Global Transfer", icon: <Wallet className="w-8 h-8" /> },
-        { name: "Payeer", desc: "Digital Wallet", icon: <Zap className="w-8 h-8" /> }
+        { name: "Apple Pay", icon: "" },
+        { name: "STC Pay", icon: "stc" },
+        { name: "Mada", icon: "mada" },
+        { name: "Credit Card", icon: "💳" }
       ]
     },
     cta: {
-      title: "Ready to Stand Out?",
-      desc: "Contact us now on WhatsApp for a free consultation to boost your account score or get a premium account.",
-      button: "Chat on WhatsApp"
+      title: "Ready to Level Up?",
+      subtitle: "Join thousands of satisfied users and start your boost today.",
+      button: "Contact on WhatsApp"
     },
     footer: {
-      rights: "© 2026 SNAP BOOST. All rights reserved.",
+      rights: "© 2024 Snap Boost. All rights reserved.",
       privacy: "Privacy Policy",
-      terms: "Terms of Service",
-      serving: "Serving the Middle East:"
+      terms: "Terms of Service"
     }
   },
   ar: {
     nav: {
-      contact: "اتصل بنا",
-      lang: "English",
+      home: "الرئيسية",
+      services: "خدماتنا",
+      catalog: "الكتالوج",
+      how: "كيف نعمل",
+      faq: "الأسئلة الشائعة",
       blog: "المدونة",
-      packages: "الباقات"
+      contact: "اتصل بنا",
+      shop: "تسوق الآن",
+      lang: "English"
     },
     hero: {
-      title: "ارفع سكور",
-      titleHighlight: "سناب شات",
-      subtitle: "بأمان واحترافية",
-      desc: "خدماتنا مصممة خصيصاً للنخبة في دول الخليج. نضمن لك زيادة حقيقية، ضمان استرداد الأموال لمدة 14 يوماً، وبدون أي مخاطر على حسابك.",
-      cta: "عرض الباقات",
-      protection: "ضمان عدم الحظر 100%"
+      badge: "موثوق من قبل +10,000 عميل",
+      title: "ارفع سكور السناب شات فوراً",
+      desc: "زد سكور حسابك بأمان، احصل على حسابات قديمة، ونمِ متابعيك مع المزود الأكثر ثقة.",
+      cta: "عرض الكتالوج",
+      secondary: "خدماتنا",
+      scoreLabel: "السكور الحالي",
+      targetLabel: "الزيادة المستهدفة"
+    },
+    shop: {
+      title: "الكتالوج المميز",
+      subtitle: "اختر الباقة المناسبة لاحتياجاتك",
+      scoreAccounts: "حسابات سكور",
+      followerAccounts: "حسابات متابعين",
+      servicesTab: "خدمات النمو",
+      buy: "طلب عبر واتساب",
+      order: "اطلب الآن",
+      price: "السعر"
     },
     guarantee: {
       title: "ضمان استرداد الأموال لمدة 14 يوماً",
-      desc: "غير راضٍ عن النتائج؟ سنعيد لك أموالك في غضون 14 يوماً، دون طرح أي أسئلة."
+      desc: "نحن نثق في خدماتنا. إذا لم تكن راضياً، سنعيد لك أموالك خلال 14 يوماً."
     },
     checkout: {
-      details: "تفاصيل الحساب",
-      username: "اسم مستخدم سناب شات",
-      password: "كلمة المرور (مطلوبة للسكور)",
-      notice: "هام: نحتاج إلى الوصول لنشر السنابات لزيادة السكور الخاص بك. بياناتك مشفرة ويتم حذفها بعد الخدمة. نقدم ضمان استرداد الأموال لمدة 14 يوماً إذا لم يتم تقديم الخدمة كما هو موعود.",
-      productDetails: "تتضمن هذه الخدمة زيادة دائمة في سكور سناب شات الخاص بك. العملية يدوية وآمنة بنسبة 100%. وقت التسليم: 24-48 ساعة.",
-      button: "الدفع الآن",
-      paymentTitle: "اختر طريقة الدفع",
-      processing: "جاري معالجة طلبك...",
       summary: "ملخص الطلب",
-      package: "الباقة",
-      price: "السعر"
+      package: "الباقة المختارة",
+      price: "السعر الإجمالي",
+      details: "تفاصيل الحساب",
+      username: "اسم المستخدم (اليوزر)",
+      password: "كلمة المرور (مطلوبة للسكور)",
+      notice: "بياناتك مشفرة وتستخدم فقط لعملية الرفع. ننصح بتغيير كلمة المرور بعد الانتهاء.",
+      button: "تأكيد الطلب عبر واتساب",
+      processing: "جاري المعالجة...",
+      paymentTitle: "طريقة الدفع المفضلة",
+      productDetails: "حساب سناب شات عالي الجودة بالمواصفات المذكورة. التسليم يستغرق عادة 1-24 ساعة."
     },
     packages: {
-      title: "باقات سكور سناب شات",
-      subtitle: "اختر الزيادة المثالية لملفك الشخصي",
-      buy: "اشترِ الآن"
+      score: "رفع سكور",
+      followers: "متابعين",
+      aged: "حساب قديم",
+      verified: "موثق"
     },
     why: {
-      title: "لماذا يختارنا المحترفون؟",
+      title: "لماذا تختار سناب بوست؟",
+      subtitle: "نقدم خدمات النمو الأكثر أماناً وفعالية في المنطقة.",
       items: [
-        { title: "خصوصية تامة", desc: "نحن لا نطلب الدخول إلى محادثاتك أو صورك الخاصة أبداً." },
-        { title: "أمان مضمون", desc: "نستخدم طرقاً يدوية واحترافية تضمن سلامة حسابك من الحظر." },
-        { title: "ضمان مدى الحياة", desc: "نتائج دائمة ولا تنقص مع مرور الوقت، مع دعم فني مستمر." }
+        {
+          title: "أمان تام",
+          desc: "نستخدم تشفيراً متقدماً وطرقاً آمنة تتوافق مع إرشادات المنصة."
+        },
+        {
+          title: "سرعة التنفيذ",
+          desc: "يتم معالجة معظم الطلبات خلال ساعات. نحن نقدر وقتك."
+        },
+        {
+          title: "دعم 24/7",
+          desc: "فريقنا الخبير متاح على مدار الساعة لمساعدتك عبر الواتساب."
+        }
       ]
     },
     catalog: {
-      title: "حسابات سناب شات",
-      titleHighlight: "متوفرة",
-      subtitle: "اختر الحساب القديم المثالي لحضورك الرقمي",
-      order: "اطلب عبر واتساب"
+      title: "الحسابات المتاحة",
+      subtitle: "حسابات جاهزة للاستخدام مع سكور عالٍ وتاريخ قديم",
+      viewAll: "عرض كل الحسابات",
+      score: "السكور",
+      age: "العمر",
+      price: "السعر",
+      buy: "شراء الآن",
+      order: "اطلب عبر واتساب",
+      titleHighlight: "المتاحة"
     },
     services: {
-      title: "خدماتنا",
-      titleHighlight: "الفاخرة",
-      subtitle: "للنخبة الرقمية",
+      title: "خدماتنا المميزة",
+      titleHighlight: "الحلول",
+      subtitle: "كل ما تحتاجه للسيطرة على سناب شات",
       items: [
-        { title: "زيادة السكور", desc: "ارفع نقاط السناب شات بسرعة وبطرق يدوية آمنة تماماً.", icon: <TrendingUp className="w-8 h-8 text-snap-yellow" /> },
-        { title: "توثيق الحساب", desc: "مساعدة احترافية للحصول على نجمة التوثيق الذهبية لملفك الشخصي.", icon: <BadgeCheck className="w-8 h-8 text-snap-yellow" /> },
-        { title: "زيادة المشاهدات", desc: "عزز مشاهدات قصصك (ستوري) لتصل إلى جمهور أوسع فوراً.", icon: <Eye className="w-8 h-8 text-snap-yellow" /> },
-        { title: "زيادة المتابعين", desc: "احصل على متابعين حقيقيين ومتفاعلين لبناء تأثيرك وعلامتك التجارية.", icon: <Users className="w-8 h-8 text-snap-yellow" /> }
+        {
+          icon: <TrendingUp className="w-8 h-8" />,
+          title: "رفع السكور",
+          desc: "زد سكور حسابك بآلاف أو ملايين النقاط بأمان وبسرعة."
+        },
+        {
+          icon: <Infinity className="w-8 h-8" />,
+          title: "حسابات قديمة",
+          desc: "احصل على حسابات منشأة من 2011-2020 مع موثوقية عالية."
+        },
+        {
+          icon: <Users className="w-8 h-8" />,
+          title: "زيادة المتابعين",
+          desc: "نمِ ملفك الشخصي العام بمتابعين حقيقيين ونشطين."
+        }
       ]
     },
     how: {
-      title: "كيف نعمل؟",
+      title: "كيف يعمل النظام",
+      subtitle: "ثلاث خطوات بسيطة لتعزيز حضورك",
       steps: [
-        { title: "اختر الباقة", desc: "اختر باقة السكور أو الحساب التي تناسب احتياجاتك.", icon: <Zap className="w-6 h-6" /> },
-        { title: "تواصل معنا", desc: "أرسل لنا التفاصيل عبر الواتساب للحصول على استشارة سريعة.", icon: <MessageCircle className="w-6 h-6" /> },
-        { title: "تسليم سريع", desc: "شاهد السكور يرتفع بأمان خلال 24-48 ساعة.", icon: <CheckCircle2 className="w-6 h-6" /> }
+        {
+          icon: <ShoppingBag className="w-10 h-10" />,
+          title: "اختر الباقة",
+          desc: "اختر الحساب أو الخدمة التي تناسب أهدافك."
+        },
+        {
+          icon: <RefreshCcw className="w-10 h-10" />,
+          title: "زودنا بالتفاصيل",
+          desc: "أدخل اسم المستخدم وأكمل عملية الدفع الآمنة."
+        },
+        {
+          icon: <Zap className="w-10 h-10" />,
+          title: "استمتع بالنمو",
+          desc: "استرخِ بينما يقوم فريقنا بمعالجة طلبك بأمان."
+        }
       ]
     },
     stats: {
       items: [
-        { label: "عميل سعيد", value: "+10 آلاف" },
-        { label: "حساب تم رفعه", value: "+25 ألف" },
-        { label: "سنوات خبرة", value: "+5" },
-        { label: "دعم فني", value: "24/7" }
+        { value: "10K+", label: "عميل سعيد" },
+        { value: "50K+", label: "طلب مكتمل" },
+        { value: "12+", label: "سنوات خبرة" },
+        { value: "4.9", label: "متوسط التقييم" }
       ]
     },
     faq: {
       title: "الأسئلة الشائعة",
+      subtitle: "كل ما تحتاج معرفته عن خدماتنا",
       items: [
-        { q: "هل الخدمة آمنة على حسابي؟", a: "نعم، نستخدم طرقاً يدوية تلتزم بمعايير الأمان لضمان عدم تعرض حسابك للحظر." },
-        { q: "كم من الوقت يستغرق التنفيذ؟", a: "يتم تنفيذ معظم الطلبات خلال 24 إلى 48 ساعة حسب حجم الباقة المختارة." },
-        { q: "هل تحتاجون كلمة المرور الخاصة بي؟", a: "لزيادة السكور نحتاج فقط اسم المستخدم. أما عند شراء حساب، فنحن نسلمك كافة بيانات الدخول." },
-        { q: "هل يوجد ضمان؟", a: "نقدم ضماناً مدى الحياة على جميع خدماتنا. في حال حدوث أي نقص، نقوم بالتعويض مجاناً." }
+        {
+          q: "هل الخدمة آمنة لحسابي؟",
+          a: "نعم، نستخدم طرقاً آمنة تتوافق مع إرشادات سناب شات. خدمنا أكثر من 10,000 عميل بدون أي مشاكل."
+        },
+        {
+          q: "كم من الوقت يستغرق التنفيذ؟",
+          a: "معظم الطلبات تكتمل خلال 1-24 ساعة. رفع السكور الكبير قد يستغرق حتى 48 ساعة لأقصى درجات الأمان."
+        },
+        {
+          q: "هل أحتاج لتزويدكم بكلمة المرور؟",
+          a: "لرفع السكور، نحتاج وصولاً مؤقتاً. لزيادة المتابعين أو شراء حسابات جديدة، لا يلزم وجود كلمة مرور."
+        }
       ]
     },
     testimonials: {
-      title: "ماذا يقول عملاؤنا في الخليج؟"
+      title: "قصص نجاح عملائنا",
+      subtitle: "استمع إلى عملائنا الراضين"
     },
     blog: {
-      title: "آخر الأخبار والنصائح",
-      subtitle: "ابقَ على اطلاع بأحدث اتجاهات سناب شات في الخليج",
+      title: "نصائح وأخبار سناب شات",
+      subtitle: "ابقَ على اطلاع بأحدث الاتجاهات والاستراتيجيات",
       readMore: "اقرأ المزيد",
       posts: [
-        { title: "كيف ترفع سكور سناب شات بأمان في 2026", date: "15 مارس 2026", excerpt: "اكتشف أحدث الطرق اليدوية لزيادة السكور دون المخاطرة بحسابك. نركز على أنماط النمو العضوي التي تحافظ على صحة حسابك." },
-        { title: "أهمية حسابات سناب شات القديمة للمؤثرين", date: "10 مارس 2026", excerpt: "لماذا يفضل المؤثرون المحترفون الحسابات القديمة على الجديدة لانتشار وثقة أفضل. الحسابات القديمة لها سلطة أعلى في خوارزمية سناب شات." },
-        { title: "توثيق سناب شات: الدليل الشامل لمستخدمي الخليج", date: "5 مارس 2026", excerpt: "كل ما تحتاج معرفته عن الحصول على نجمة التوثيق في السعودية والإمارات. المتطلبات، العملية، ونصائح احترافية للنجاح." },
-        { title: "اتجاهات تسويق سناب شات في السعودية لعام 2026", date: "28 فبراير 2026", excerpt: "كيف تستفيد الشركات في المملكة العربية السعودية من سناب شات للوصول إلى الجماهير الشابة وزيادة المبيعات بفعالية." }
+        {
+          title: "كيف ترفع سكور سناب شات بسرعة",
+          date: "15 مارس 2024",
+          excerpt: "اكتشف أكثر الطرق فعالية وأماناً لرفع السكور في 2024."
+        },
+        {
+          title: "لماذا الحسابات القديمة أفضل؟",
+          date: "10 مارس 2024",
+          excerpt: "فوائد استخدام حسابات قديمة لعلامتك التجارية الشخصية."
+        },
+        {
+          title: "أفضل ممارسات أمان سناب شات",
+          date: "5 مارس 2024",
+          excerpt: "حافظ على أمان حسابك أثناء نمو حضورك عبر الإنترنت."
+        }
       ]
     },
     payments: {
-      title: "طرق دفع آمنة",
-      subtitle: "نقبل خيارات دفع متنوعة وآمنة لراحتك",
+      title: "دفع آمن",
+      subtitle: "نقبل جميع طرق الدفع الرئيسية",
       methods: [
-        { name: "بطاقة مدى / فيزا", desc: "فيزا / ماستركارد", icon: <CreditCard className="w-8 h-8" /> },
-        { name: "العملات الرقمية", desc: "بيتكوين / USDT", icon: <Bitcoin className="w-8 h-8" /> },
-        { name: "بايونير", desc: "تحويل عالمي", icon: <Wallet className="w-8 h-8" /> },
-        { name: "بايير", desc: "محفظة رقمية", icon: <Zap className="w-8 h-8" /> }
+        { name: "Apple Pay", icon: "" },
+        { name: "STC Pay", icon: "stc" },
+        { name: "Mada", icon: "mada" },
+        { name: "Credit Card", icon: "💳" }
       ]
     },
     cta: {
-      title: "جاهز للتميز؟",
-      desc: "تواصل معنا الآن عبر الواتساب واحصل على استشارة مجانية لرفع سكور حسابك أو شراء حساب مميز.",
+      title: "جاهز للانطلاق؟",
+      subtitle: "انضم إلى آلاف المستخدمين الراضين وابدأ تعزيز حسابك اليوم.",
       button: "تواصل عبر واتساب"
     },
     footer: {
-      rights: "© 2026 سناب بوست. جميع الحقوق محفوظة.",
+      rights: "© 2024 سناب بوست. جميع الحقوق محفوظة.",
       privacy: "سياسة الخصوصية",
-      terms: "الشروط والأحكام",
-      serving: "نخدم الشرق الأوسط:"
+      terms: "شروط الخدمة"
     }
   }
 };
 
 const testimonials = [
   {
-    name: { en: "Abdullah Al-Otaibi", ar: "عبدالله العتيبي" },
-    location: { en: "Riyadh, Saudi Arabia", ar: "الرياض، السعودية" },
+    name: { en: "Ahmed Al-Harbi", ar: "أحمد الحربي" },
+    location: { en: "Riyadh, KSA", ar: "الرياض، السعودية" },
     text: { 
-      en: "Honestly, the service is very fast and the score increased incredibly in a short time. Thanks Snap Boost!",
-      ar: "بصراحة الخدمة سريعة جداً والسكور ارتفع بشكل خيالي في وقت قصير. شكراً سناب بوست!"
+      en: "Best service in the Middle East. My Snap score reached 1M in just 2 days. Highly recommended for anyone looking for reliability.", 
+      ar: "أفضل خدمة في الشرق الأوسط. وصل سكور حسابي إلى مليون في يومين فقط. أنصح به بشدة لكل من يبحث عن المصداقية." 
     },
     avatar: "https://picsum.photos/seed/user1/100/100"
   },
   {
-    name: { en: "Fatima Al-Marri", ar: "فاطمة المري" },
+    name: { en: "Sara Mohammed", ar: "سارة محمد" },
     location: { en: "Dubai, UAE", ar: "دبي، الإمارات" },
-    text: {
-      en: "I was worried about my account, but they reassured me and the service was extremely professional. Highly recommended.",
-      ar: "كنت خايفة على حسابي بس طمنوني والخدمة كانت احترافية للغاية. أنصح فيهم وبقوة."
+    text: { 
+      en: "I was worried about my account, but they reassured me and the service was extremely professional. Highly recommended.", 
+      ar: "كنت خايفة على حسابي بس طمنوني والخدمة كانت احترافية للغاية. أنصح فيهم وبقوة." 
     },
     avatar: "https://picsum.photos/seed/user2/100/100"
   },
   {
     name: { en: "Sultan Al-Kuwari", ar: "سلطان الكواري" },
     location: { en: "Doha, Qatar", ar: "الدوحة، قطر" },
-    text: {
-      en: "Best service I've dealt with in the Gulf. Credibility and speed in execution.",
-      ar: "أفضل خدمة تعاملت معها في الخليج. مصداقية وسرعة في التنفيذ."
+    text: { 
+      en: "Best service I've dealt with in the Gulf. Credibility and speed in execution.", 
+      ar: "أفضل خدمة تعاملت معها في الخليج. مصداقية وسرعة في التنفيذ." 
     },
     avatar: "https://picsum.photos/seed/user3/100/100"
   }
 ];
 
-const catalog = [
-  { score: "10K", price: "$15", description: { en: "Starter Boost", ar: "باقة البداية" } },
-  { score: "20K", price: "$25", description: { en: "Growth Pack", ar: "باقة النمو" } },
-  { score: "50K", price: "$45", description: { en: "Popularity Spike", ar: "باقة الانتشار" } },
-  { score: "100K", price: "$80", description: { en: "Influencer Level", ar: "مستوى المؤثرين" } },
-  { score: "200K", price: "$150", description: { en: "Pro Status", ar: "مستوى المحترفين" } },
-  { score: "500K", price: "$350", description: { en: "Elite Presence", ar: "حضور النخبة" } },
-  { score: "700K", price: "$450", description: { en: "Master Tier", ar: "فئة الماستر" } },
-  { score: "1M", price: "$600", description: { en: "Legendary Account", ar: "حساب أسطوري" } },
-  { score: "10M", price: "$4,500", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
+const faqData = [
+  {
+    q: { en: "Is it safe for my account?", ar: "هل الخدمة آمنة لحسابي؟" },
+    a: { en: "Yes, we use secure methods that comply with Snapchat's guidelines. We have served over 10,000 clients without issues.", ar: "نعم، نستخدم طرقاً آمنة تتوافق مع إرشادات سناب شات. خدمنا أكثر من 10,000 عميل بدون أي مشاكل." }
+  },
+  {
+    q: { en: "How long does it take?", ar: "كم من الوقت يستغرق التنفيذ؟" },
+    a: { en: "Most orders are completed within 1-24 hours. Larger score boosts might take up to 48 hours for maximum safety.", ar: "معظم الطلبات تكتمل خلال 1-24 ساعة. رفع السكور الكبير قد يستغرق حتى 48 ساعة لأقصى درجات الأمان." }
+  },
+  {
+    q: { en: "Do I need to provide my password?", ar: "هل أحتاج لتزويدكم بكلمة المرور؟" },
+    a: { en: "For score boosting, we need temporary access. For followers or buying new accounts, no password is required.", ar: "لرفع السكور، نحتاج وصولاً مؤقتاً. لزيادة المتابعين أو شراء حسابات جديدة، لا يلزم وجود كلمة مرور." }
+  }
 ];
 
-const flags = [
-  { name: "KSA", emoji: "🇸🇦" },
-  { name: "UAE", emoji: "🇦🇪" },
-  { name: "Qatar", emoji: "🇶🇦" },
-  { name: "Kuwait", emoji: "🇰🇼" },
-  { name: "Bahrain", emoji: "🇧🇭" },
-  { name: "Oman", emoji: "🇴🇲" }
+const catalog = [
+  { id: 1, score: "5K+", price: "$15", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
+  { id: 2, score: "10K+", price: "$25", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
+  { id: 3, score: "20K+", price: "$35", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
+  { id: 4, score: "50K+", price: "$55", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
+  { id: 5, score: "100K+", price: "$95", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
+  { id: 6, score: "200K+", price: "$160", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
+  { id: 7, score: "300K+", price: "$220", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
+  { id: 8, score: "500K+", price: "$280", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
+  { id: 9, score: "700K+", price: "$350", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
+  { id: 10, score: "1M+", price: "$450", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
+  { id: 11, score: "2M+", price: "$850", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
+  { id: 12, score: "5M+", price: "$1800", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
+  { id: 13, score: "10M+", price: "$3500", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
 ];
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -337,30 +499,66 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 export default function App() {
-  const [lang, setLang] = useState<'en' | 'ar'>('ar');
-  const [view, setView] = useState<'home' | 'packages' | 'checkout' | 'blog'>('home');
+  const [lang, setLang] = useState<'en' | 'ar'>('en');
+  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'boosting'>('home');
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
+  const [selectedBoostingTier, setSelectedBoostingTier] = useState<any>(null);
   const [checkoutData, setCheckoutData] = useState({ username: '', password: '' });
   const [isProcessing, setIsProcessing] = useState(false);
   const [score, setScore] = useState(124500);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [shopTab, setShopTab] = useState<'score' | 'followers' | 'services'>('score');
 
-  const scorePackages = [
-    { id: '5k', amount: '5,000', price: '$19', desc: { en: 'Starter Kick', ar: 'بداية سريعة' } },
-    { id: '10k', amount: '10,000', price: '$29', desc: { en: 'Starter Boost', ar: 'باقة البداية' } },
-    { id: '20k', amount: '20,000', price: '$39', desc: { en: 'Growth Pack', ar: 'باقة النمو' } },
-    { id: '50k', amount: '50,000', price: '$69', desc: { en: 'Popular Choice', ar: 'الخيار الشائع' } },
-    { id: '100k', amount: '100,000', price: '$99', desc: { en: 'Influencer Level', ar: 'مستوى المؤثرين' } },
-    { id: '200k', amount: '200,000', price: '$149', desc: { en: 'Professional Growth', ar: 'نمو احترافي' } },
-    { id: '300k', amount: '300,000', price: '$199', desc: { en: 'Expert Tier', ar: 'فئة الخبراء' } },
-    { id: '500k', amount: '500,000', price: '$299', desc: { en: 'Elite Status', ar: 'حالة النخبة' } },
-    { id: '700k', amount: '700,000', price: '$399', desc: { en: 'Master Tier', ar: 'فئة الماستر' } },
-    { id: '1m', amount: '1,000,000', price: '$499', desc: { en: 'Ultimate Power', ar: 'القوة القصوى' } },
-    { id: 'custom', amount: 'Custom', price: 'Contact Us', desc: { en: 'Tailored for You', ar: 'مصمم خصيصاً لك' } }
+  const scoreAccountsStock = [
+    { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
+    { id: 'sa10k', amount: '10,000', price: '$25', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
+    { id: 'sa20k', amount: '20,000', price: '$35', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
+    { id: 'sa50k', amount: '50,000', price: '$55', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
+    { id: 'sa100k', amount: '100,000', price: '$95', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
+    { id: 'sa200k', amount: '200,000', price: '$160', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
+    { id: 'sa300k', amount: '300,000', price: '$220', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
+    { id: 'sa500k', amount: '500,000', price: '$280', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'sa700k', amount: '700,000', price: '$350', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
+    { id: 'sa1m', amount: '1,000,000', price: '$450', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
+    { id: 'sa2m', amount: '2,000,000', price: '$850', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
+    { id: 'sa5m', amount: '5,000,000', price: '$1800', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
+    { id: 'sa10m', amount: '10,000,000', price: '$3500', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
+  ];
+
+  const followerAccountsStock = [
+    { id: 'fa5k', amount: '5,000', price: '$45', type: 'Follower Account', desc: { en: 'Rising Star', ar: 'نجم صاعد' } },
+    { id: 'fa10k', amount: '10,000', price: '$85', type: 'Follower Account', desc: { en: 'Popular Account', ar: 'حساب شائع' } },
+    { id: 'fa20k', amount: '20,000', price: '$150', type: 'Follower Account', desc: { en: 'Influencer Pack', ar: 'باقة المؤثرين' } },
+    { id: 'fa50k', amount: '50,000', price: '$350', type: 'Follower Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'fa100k', amount: '100,000', price: '$650', type: 'Follower Account', desc: { en: 'Verified Potential', ar: 'إمكانية توثيق' } },
+    { id: 'fa200k', amount: '200,000', price: '$1100', type: 'Follower Account', desc: { en: 'Mega Account', ar: 'حساب ضخم' } },
+    { id: 'fa300k', amount: '300,000', price: '$1500', type: 'Follower Account', desc: { en: 'Pro Account', ar: 'حساب محترف' } },
+    { id: 'fa500k', amount: '500,000', price: '$2200', type: 'Follower Account', desc: { en: 'Top Tier Presence', ar: 'حضور من الفئة الأولى' } },
+    { id: 'fa700k', amount: '700,000', price: '$2900', type: 'Follower Account', desc: { en: 'Ultimate Reach', ar: 'وصول أقصى' } },
+  ];
+
+  const servicesList = [
+    { id: 's_boost', title: 'Snap Score Boost', price: 'From $10', icon: <TrendingUp />, desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'ارفع سكور حسابك من 5000 إلى مليون بأمان.' } },
+    { id: 's_lens', title: 'Snapchat AR Lens Create', price: 'Contact Us', icon: <Zap />, desc: { en: 'Custom AR lenses created for your profile.', ar: 'عدسات واقع معزز مخصصة لملفك الشخصي.' } },
+    { id: 's_followers', title: 'Snapchat Follower Increase', price: 'From $20', icon: <Users />, desc: { en: 'Increase real followers on your account.', ar: 'زيادة متابعين حقيقيين على حسابك.' } },
+    { id: 's_badge', title: 'Get Verified Badge', price: 'Contact Us', icon: <BadgeCheck />, desc: { en: 'Professional assistance for the Gold Star badge.', ar: 'مساعدة احترافية للحصول على شارة النجمة الذهبية.' } },
+    { id: 's_views', title: 'View Service', price: 'From $15', icon: <Eye />, desc: { en: 'Boost your story views instantly.', ar: 'عزز مشاهدات الستوري الخاصة بك فوراً.' } },
+  ];
+
+  const boostingTiers = [
+    { id: 'b5k', amount: '5,000', price: '$10' },
+    { id: 'b10k', amount: '10,000', price: '$18' },
+    { id: 'b20k', amount: '20,000', price: '$35' },
+    { id: 'b50k', amount: '50,000', price: '$80' },
+    { id: 'b100k', amount: '100,000', price: '$150' },
+    { id: 'b200k', amount: '200,000', price: '$280' },
+    { id: 'b300k', amount: '300,000', price: '$400' },
+    { id: 'b500k', amount: '500,000', price: '$650' },
+    { id: 'b700k', amount: '700,000', price: '$850' },
+    { id: 'b1m', amount: '1,000,000', price: '$1200' },
   ];
 
   const handleBuy = (pkg: any) => {
@@ -417,7 +615,14 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-matte-black selection:bg-snap-yellow selection:text-black overflow-x-hidden font-${lang === 'ar' ? 'cairo' : 'sans'}`}>
+    <div className={`min-h-screen bg-matte-black selection:bg-snap-yellow selection:text-black overflow-x-hidden font-${lang === 'ar' ? 'cairo' : 'sans'} relative`}>
+      {/* Background Mesh */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-30">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(at_0%_0%,hsla(59,100%,50%,0.1)_0,transparent_50%)]"></div>
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(at_100%_100%,hsla(59,100%,50%,0.1)_0,transparent_50%)]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,252,0,0.05)_0%,transparent_70%)]"></div>
+      </div>
+
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-matte-black/80 backdrop-blur-xl border-b border-white/10">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -433,8 +638,8 @@ export default function App() {
           </div>
           
           <div className="hidden md:flex items-center gap-8 text-sm font-bold text-gray-400">
-            <button onClick={() => setView('home')} className={`hover:text-snap-yellow transition-colors ${view === 'home' ? 'text-snap-yellow' : ''}`}>{lang === 'ar' ? 'الرئيسية' : 'Home'}</button>
-            <button onClick={() => setView('packages')} className={`hover:text-snap-yellow transition-colors ${view === 'packages' ? 'text-snap-yellow' : ''}`}>{t.nav.packages}</button>
+            <button onClick={() => setView('home')} className={`hover:text-snap-yellow transition-colors ${view === 'home' ? 'text-snap-yellow' : ''}`}>{t.nav.home}</button>
+            <button onClick={() => setView('shop')} className={`hover:text-snap-yellow transition-colors ${view === 'shop' ? 'text-snap-yellow' : ''}`}>{t.nav.packages}</button>
             <button onClick={() => setView('blog')} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
             <a href="#services" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'خدماتنا' : 'Services'}</a>
             <a href="#catalog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الحسابات' : 'Catalog'}</a>
@@ -478,7 +683,7 @@ export default function App() {
             >
               <div className="flex flex-col p-6 gap-6 text-lg font-bold text-gray-400">
                 <button onClick={() => { setView('home'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الرئيسية' : 'Home'}</button>
-                <button onClick={() => { setView('packages'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.packages}</button>
+                <button onClick={() => { setView('shop'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.shop}</button>
                 <button onClick={() => { setView('blog'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.blog}</button>
                 <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'خدماتنا' : 'Services'}</a>
                 <a href="#catalog" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الحسابات' : 'Catalog'}</a>
@@ -525,7 +730,7 @@ export default function App() {
               </p>
               <div className="flex flex-wrap gap-6">
                 <button 
-                  onClick={() => setView('packages')}
+                  onClick={() => setView('shop')}
                   className="px-10 py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all duration-300 shadow-[0_10px_40px_rgba(255,252,0,0.3)] flex items-center gap-3"
                 >
                   <ShoppingBag className="w-6 h-6" />
@@ -762,8 +967,8 @@ export default function App() {
                       key={i} 
                       whileHover={{ x: lang === 'ar' ? -10 : 10 }}
                       onClick={() => {
-                        if (i === 0) setView('packages'); // Score Booster is the first item
-                        else openWhatsApp(lang === 'ar' ? `أريد الاستفسار عن: ${service.title}` : `I want to inquire about: ${service.title}`);
+                        setView('shop');
+                        setShopTab('services');
                       }}
                       className="flex gap-8 p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-snap-yellow/30 transition-all cursor-pointer group/service"
                     >
@@ -1063,46 +1268,123 @@ export default function App() {
           </>
         )}
 
-        {view === 'packages' && (
-          <section className="pt-40 pb-24 px-6">
+        {view === 'shop' && (
+          <section className="pt-40 pb-24 px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-20">
+              <div className="text-center mb-16">
                 <h1 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">
-                  {t.packages.title}
+                  {t.shop.title}
                 </h1>
-                <p className="text-xl text-gray-400 font-medium">{t.packages.subtitle}</p>
-                <div className="w-32 h-1.5 bg-snap-yellow mx-auto rounded-full mt-8"></div>
+                <p className="text-xl text-gray-400 font-medium">{t.shop.subtitle}</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                {scorePackages.map((pkg, i) => (
-                  <motion.div
-                    key={pkg.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="glass p-10 rounded-[3rem] border border-white/5 hover:border-snap-yellow/30 transition-all group relative overflow-hidden"
-                  >
-                    <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-20 transition-opacity">
-                      <Zap className="w-20 h-20 text-snap-yellow" />
+              <div className="space-y-32">
+                {/* Score Accounts Section */}
+                <div>
+                  <div className="flex items-center gap-4 mb-12">
+                    <div className="w-12 h-12 bg-snap-yellow rounded-xl flex items-center justify-center text-black">
+                      <Star className="w-6 h-6 fill-black" />
                     </div>
-                    <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{pkg.desc[lang]}</div>
-                    <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{pkg.amount}</div>
-                    <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
-                    <button 
-                      onClick={() => {
-                        if (pkg.id === 'custom') {
-                          openWhatsApp(lang === 'ar' ? 'أريد باقة سكور مخصصة' : 'I want a custom snap score package');
-                        } else {
-                          handleBuy(pkg);
-                        }
-                      }}
-                      className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
-                    >
-                      {pkg.id === 'custom' ? (lang === 'ar' ? 'تواصل معنا' : 'Contact Us') : t.packages.buy}
-                    </button>
-                  </motion.div>
-                ))}
+                    <h2 className="text-4xl font-black uppercase tracking-tight">{t.shop.scoreAccounts}</h2>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {scoreAccountsStock.map((pkg, i) => (
+                      <motion.div
+                        key={pkg.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.05 }}
+                        className="glass p-10 rounded-[3rem] border border-white/5 hover:border-snap-yellow/30 transition-all group relative overflow-hidden"
+                      >
+                        <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{pkg.desc[lang]}</div>
+                        <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{pkg.amount}</div>
+                        <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
+                        <button 
+                          onClick={() => handleBuy(pkg)}
+                          className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
+                        >
+                          {t.shop.buy}
+                        </button>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Follower Accounts Section */}
+                <div>
+                  <div className="flex items-center gap-4 mb-12">
+                    <div className="w-12 h-12 bg-snap-yellow rounded-xl flex items-center justify-center text-black">
+                      <Users className="w-6 h-6" />
+                    </div>
+                    <h2 className="text-4xl font-black uppercase tracking-tight">{t.shop.followerAccounts}</h2>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {followerAccountsStock.map((pkg, i) => (
+                      <motion.div
+                        key={pkg.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.05 }}
+                        className="glass p-10 rounded-[3rem] border border-white/5 hover:border-snap-yellow/30 transition-all group relative overflow-hidden"
+                      >
+                        <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{pkg.desc[lang]}</div>
+                        <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{pkg.amount}</div>
+                        <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
+                        <button 
+                          onClick={() => handleBuy(pkg)}
+                          className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
+                        >
+                          {t.shop.buy}
+                        </button>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Professional Services Section */}
+                <div>
+                  <div className="flex items-center gap-4 mb-12">
+                    <div className="w-12 h-12 bg-snap-yellow rounded-xl flex items-center justify-center text-black">
+                      <Zap className="w-6 h-6 fill-black" />
+                    </div>
+                    <h2 className="text-4xl font-black uppercase tracking-tight">{t.shop.servicesTab}</h2>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {servicesList.map((service, i) => (
+                      <motion.div
+                        key={service.id}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1 }}
+                        className="glass p-10 rounded-[3rem] border border-white/5 hover:border-snap-yellow/30 transition-all group"
+                      >
+                        <div className="w-16 h-16 bg-snap-yellow/10 rounded-2xl flex items-center justify-center mb-8 text-snap-yellow group-hover:scale-110 transition-transform">
+                          {React.cloneElement(service.icon as React.ReactElement, { className: "w-8 h-8" })}
+                        </div>
+                        <h3 className="text-3xl font-black mb-4 group-hover:text-snap-yellow transition-colors">{service.title}</h3>
+                        <p className="text-gray-400 mb-8 leading-relaxed">{service.desc[lang]}</p>
+                        <div className="text-2xl font-bold text-white mb-10">{service.price}</div>
+                        <button 
+                          onClick={() => {
+                            if (service.id === 's_boost') {
+                              setView('boosting');
+                              window.scrollTo(0, 0);
+                            } else {
+                              openWhatsApp(lang === 'ar' ? `أريد طلب خدمة: ${service.title}` : `I want to order service: ${service.title}`);
+                            }
+                          }}
+                          className="w-full py-5 bg-white/5 border border-white/10 rounded-2xl font-black hover:bg-snap-yellow hover:text-black transition-all flex items-center justify-center gap-3 text-lg"
+                        >
+                          <WhatsAppIcon className="w-6 h-6" />
+                          {t.shop.order}
+                        </button>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -1114,7 +1396,7 @@ export default function App() {
               <div className="glass p-10 lg:p-16 rounded-[3rem] border-white/10">
                 <div className="flex items-center justify-between mb-12">
                   <h1 className="text-4xl font-black uppercase tracking-tight">{t.checkout.summary}</h1>
-                  <button onClick={() => setView('packages')} className="text-gray-500 hover:text-white transition-colors">
+                  <button onClick={() => setView('shop')} className="text-gray-500 hover:text-white transition-colors">
                     <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
                   </button>
                 </div>
@@ -1122,7 +1404,7 @@ export default function App() {
                 <div className="bg-white/5 rounded-2xl p-8 mb-8 border border-white/10">
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{t.checkout.package}</span>
-                    <span className="text-2xl font-black text-snap-yellow">{selectedPackage.amount} Score</span>
+                    <span className="text-2xl font-black text-snap-yellow">{selectedPackage.amount || selectedPackage.title} {selectedPackage.type || ''}</span>
                   </div>
                   <div className="flex justify-between items-center mb-6">
                     <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{t.checkout.price}</span>
@@ -1246,6 +1528,125 @@ export default function App() {
             </div>
           </section>
         )}
+        {view === 'boosting' && (
+          <section className="pt-40 pb-24 px-6">
+            <div className="max-w-7xl mx-auto">
+              {!selectedBoostingTier ? (
+                <>
+                  <div className="text-center mb-20">
+                    <h1 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">
+                      {lang === 'ar' ? 'اختر باقة' : 'Select'} <span className="text-snap-yellow">{lang === 'ar' ? 'رفع السكور' : 'Score Boost'}</span>
+                    </h1>
+                    <p className="text-xl text-gray-400 font-medium">
+                      {lang === 'ar' ? 'اختر الكمية التي تريد إضافتها لحسابك الشخصي' : 'Choose the amount you want to add to your personal account'}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {boostingTiers.map((tier, i) => (
+                      <motion.div
+                        key={tier.id}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: i * 0.05 }}
+                        className="glass p-10 rounded-[3rem] border border-white/5 hover:border-snap-yellow/30 transition-all group relative overflow-hidden"
+                      >
+                        <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{tier.amount}</div>
+                        <div className="text-3xl font-bold text-white/90 mb-10">{tier.price}</div>
+                        <button 
+                          onClick={() => setSelectedBoostingTier(tier)}
+                          className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
+                        >
+                          {lang === 'ar' ? 'اختيار الباقة' : 'Select Package'}
+                        </button>
+                      </motion.div>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <div className="max-w-3xl mx-auto">
+                  <div className="glass p-10 lg:p-16 rounded-[3rem] border-white/10">
+                    <div className="flex items-center justify-between mb-12">
+                      <h1 className="text-4xl font-black uppercase tracking-tight">{lang === 'ar' ? 'تفاصيل الحساب' : 'Account Details'}</h1>
+                      <button onClick={() => setSelectedBoostingTier(null)} className="text-gray-500 hover:text-white transition-colors">
+                        <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                      </button>
+                    </div>
+
+                    <div className="space-y-8">
+                      <div className="p-8 rounded-2xl bg-white/5 border border-white/10">
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'الباقة المختارة' : 'Selected Tier'}</span>
+                          <span className="text-snap-yellow font-black text-xl">{selectedBoostingTier.amount} Score</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'السعر' : 'Price'}</span>
+                          <span className="text-white font-black text-xl">{selectedBoostingTier.price}</span>
+                        </div>
+                      </div>
+
+                      <div className="space-y-6">
+                        <div>
+                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</label>
+                          <input 
+                            type="email"
+                            value={checkoutData.username}
+                            onChange={(e) => setCheckoutData({...checkoutData, username: e.target.value})}
+                            placeholder="email@example.com"
+                            className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow focus:ring-1 focus:ring-snap-yellow outline-none transition-all font-bold"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'كلمة المرور' : 'Password'}</label>
+                          <input 
+                            type="password"
+                            value={checkoutData.password}
+                            onChange={(e) => setCheckoutData({...checkoutData, password: e.target.value})}
+                            placeholder="••••••••"
+                            className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow focus:ring-1 focus:ring-snap-yellow outline-none transition-all font-bold"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="p-6 rounded-2xl bg-snap-yellow/5 border border-snap-yellow/20 flex gap-4">
+                        <ShieldCheck className="w-6 h-6 text-snap-yellow flex-shrink-0" />
+                        <p className="text-xs text-gray-400 leading-relaxed font-medium">
+                          {lang === 'ar' 
+                            ? 'بياناتك مشفرة وتستخدم فقط لعملية الرفع. سيتم إرسال طلبك عبر الواتساب.' 
+                            : 'Your data is encrypted and used only for the boosting process. Your order will be sent via WhatsApp.'}
+                        </p>
+                      </div>
+
+                      <button 
+                        onClick={() => {
+                          setIsProcessing(true);
+                          setTimeout(() => {
+                            const message = `New Score Boosting Order!\nTier: ${selectedBoostingTier.amount} Score\nEmail: ${checkoutData.username}\nPassword: ${checkoutData.password}\nPrice: ${selectedBoostingTier.price}`;
+                            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+                            setIsProcessing(false);
+                          }, 1500);
+                        }}
+                        disabled={isProcessing || !checkoutData.username || !checkoutData.password}
+                        className="w-full py-6 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_10px_40px_rgba(255,252,0,0.3)] disabled:opacity-50 disabled:hover:scale-100 text-xl flex items-center justify-center gap-4"
+                      >
+                        {isProcessing ? (
+                          <>
+                            <RefreshCcw className="w-6 h-6 animate-spin" />
+                            {lang === 'ar' ? 'جاري المعالجة...' : 'Processing...'}
+                          </>
+                        ) : (
+                          <>
+                            <WhatsAppIcon className="w-6 h-6" />
+                            {lang === 'ar' ? 'إرسال الطلب عبر واتساب' : 'Send Order via WhatsApp'}
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
       </main>
 
       <footer className="bg-matte-black pt-24 pb-12 border-t border-white/5">
@@ -1333,18 +1734,18 @@ export default function App() {
 
           <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex flex-wrap justify-center gap-4 items-center">
-              <span className="text-gray-500 font-bold text-xs uppercase tracking-widest">{t.footer.serving}</span>
               <div className="flex gap-3 text-xl">
-                {flags.map((flag) => (
-                  <span key={flag.name} title={flag.name} className="hover:scale-125 transition-transform cursor-default">
-                    {flag.emoji}
-                  </span>
-                ))}
               </div>
             </div>
             
-            <div className="text-gray-500 text-xs font-bold">
+            <div className="text-gray-500 text-xs font-bold flex items-center gap-2">
               {t.footer.rights}
+              <div className="mt-2 text-[10px] opacity-50 flex items-center gap-2">
+                <div className="w-4 h-4 bg-snap-yellow rounded-sm flex items-center justify-center">
+                  <Star className="text-black w-2.5 h-2.5 fill-black" />
+                </div>
+                We are not affiliated with Snapchat Inc.
+              </div>
             </div>
             
             <div className="flex gap-8 text-xs font-bold text-gray-500">
