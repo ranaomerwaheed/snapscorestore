@@ -86,7 +86,7 @@ const translations = {
       verified: "Verified"
     },
     why: {
-      title: "Why Choose Snap Boost?",
+      title: "Why Choose Us?",
       subtitle: "We provide the most secure and efficient growth services in the region.",
       items: [
         {
