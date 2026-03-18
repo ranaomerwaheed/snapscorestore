@@ -350,11 +350,17 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scorePackages = [
+    { id: '5k', amount: '5,000', price: '$19', desc: { en: 'Starter Kick', ar: 'بداية سريعة' } },
     { id: '10k', amount: '10,000', price: '$29', desc: { en: 'Starter Boost', ar: 'باقة البداية' } },
+    { id: '20k', amount: '20,000', price: '$39', desc: { en: 'Growth Pack', ar: 'باقة النمو' } },
     { id: '50k', amount: '50,000', price: '$69', desc: { en: 'Popular Choice', ar: 'الخيار الشائع' } },
+    { id: '100k', amount: '100,000', price: '$99', desc: { en: 'Influencer Level', ar: 'مستوى المؤثرين' } },
     { id: '200k', amount: '200,000', price: '$149', desc: { en: 'Professional Growth', ar: 'نمو احترافي' } },
-    { id: '400k', amount: '400,000', price: '$249', desc: { en: 'Elite Status', ar: 'حالة النخبة' } },
-    { id: '1m', amount: '1,000,000', price: '$499', desc: { en: 'Ultimate Power', ar: 'القوة القصوى' } }
+    { id: '300k', amount: '300,000', price: '$199', desc: { en: 'Expert Tier', ar: 'فئة الخبراء' } },
+    { id: '500k', amount: '500,000', price: '$299', desc: { en: 'Elite Status', ar: 'حالة النخبة' } },
+    { id: '700k', amount: '700,000', price: '$399', desc: { en: 'Master Tier', ar: 'فئة الماستر' } },
+    { id: '1m', amount: '1,000,000', price: '$499', desc: { en: 'Ultimate Power', ar: 'القوة القصوى' } },
+    { id: 'custom', amount: 'Custom', price: 'Contact Us', desc: { en: 'Tailored for You', ar: 'مصمم خصيصاً لك' } }
   ];
 
   const handleBuy = (pkg: any) => {
@@ -755,11 +761,15 @@ export default function App() {
                     <motion.div 
                       key={i} 
                       whileHover={{ x: lang === 'ar' ? -10 : 10 }}
-                      className="flex gap-8 p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-snap-yellow/30 transition-all cursor-default"
+                      onClick={() => {
+                        if (i === 0) setView('packages'); // Score Booster is the first item
+                        else openWhatsApp(lang === 'ar' ? `أريد الاستفسار عن: ${service.title}` : `I want to inquire about: ${service.title}`);
+                      }}
+                      className="flex gap-8 p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-snap-yellow/30 transition-all cursor-pointer group/service"
                     >
-                      <div className="flex-shrink-0 p-4 bg-snap-yellow/10 rounded-2xl h-fit">{service.icon}</div>
+                      <div className="flex-shrink-0 p-4 bg-snap-yellow/10 rounded-2xl h-fit group-hover/service:bg-snap-yellow group-hover/service:text-black transition-colors">{service.icon}</div>
                       <div>
-                        <h4 className="text-2xl font-black mb-3">{service.title}</h4>
+                        <h4 className="text-2xl font-black mb-3 group-hover/service:text-snap-yellow transition-colors">{service.title}</h4>
                         <p className="text-gray-400 text-lg leading-relaxed">{service.desc}</p>
                       </div>
                     </motion.div>
@@ -1016,14 +1026,12 @@ export default function App() {
 
             {/* Payment Logos Row */}
             <div className="mt-16 flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-              <img src="https://i.postimg.cc/Y0WCqgnD/Visa.png" alt="Visa" className="h-8" referrerPolicy="no-referrer" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-8" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-12" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" className="h-10" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-8" referrerPolicy="no-referrer" />
-              <img src="https://i.postimg.cc/nzKMsm1h/PAYO_BIG.png" alt="Payoneer" className="h-8" referrerPolicy="no-referrer" />
-              <img src="https://i.postimg.cc/mZMywpmP/payeer-seeklogo.png" alt="Payeer" className="h-8" referrerPolicy="no-referrer" />
-              <img src="https://i.postimg.cc/QMdrgTsM/new-Jazzcash-logo_(1).png" alt="JazzCash" className="h-8" referrerPolicy="no-referrer" />
-              
+              <div className="text-2xl font-black text-white tracking-tighter">Payoneer</div>
+              <div className="text-2xl font-black text-white tracking-tighter">PAYEER</div>
             </div>
           </div>
         </section>
@@ -1082,10 +1090,16 @@ export default function App() {
                     <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{pkg.amount}</div>
                     <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
                     <button 
-                      onClick={() => handleBuy(pkg)}
+                      onClick={() => {
+                        if (pkg.id === 'custom') {
+                          openWhatsApp(lang === 'ar' ? 'أريد باقة سكور مخصصة' : 'I want a custom snap score package');
+                        } else {
+                          handleBuy(pkg);
+                        }
+                      }}
                       className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
                     >
-                      {t.packages.buy}
+                      {pkg.id === 'custom' ? (lang === 'ar' ? 'تواصل معنا' : 'Contact Us') : t.packages.buy}
                     </button>
                   </motion.div>
                 ))}
