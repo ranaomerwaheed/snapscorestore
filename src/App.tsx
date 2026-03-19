@@ -477,19 +477,19 @@ const faqData = [
 ];
 
 const catalog = [
-  { id: 1, score: "5K+", price: "$15", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
-  { id: 2, score: "10K+", price: "$25", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
-  { id: 3, score: "20K+", price: "$35", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
-  { id: 4, score: "50K+", price: "$55", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
-  { id: 5, score: "100K+", price: "$95", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
-  { id: 6, score: "200K+", price: "$160", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
-  { id: 7, score: "300K+", price: "$220", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
-  { id: 8, score: "500K+", price: "$280", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
-  { id: 9, score: "700K+", price: "$350", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
-  { id: 10, score: "1M+", price: "$450", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
-  { id: 11, score: "2M+", price: "$850", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
-  { id: 12, score: "5M+", price: "$1800", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
-  { id: 13, score: "10M+", price: "$3500", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
+  { id: 1, score: "5K+", price: "$3", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
+  { id: 2, score: "10K+", price: "$5", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
+  { id: 3, score: "20K+", price: "$7", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
+  { id: 4, score: "50K+", price: "$12", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
+  { id: 5, score: "100K+", price: "$18", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
+  { id: 6, score: "200K+", price: "$22", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
+  { id: 7, score: "300K+", price: "$25", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
+  { id: 8, score: "500K+", price: "$32", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
+  { id: 9, score: "700K+", price: "$40", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
+  { id: 10, score: "1M+", price: "$50", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
+  { id: 11, score: "2M+", price: "$80", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
+  { id: 12, score: "5M+", price: "$120", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
+  { id: 13, score: "10M+", price: "$250", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
 ];
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
