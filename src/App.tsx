@@ -160,8 +160,8 @@ const translations = {
     stats: {
       items: [
         { value: "10K+", label: "Happy Clients" },
-        { value: "50K+", label: "Orders Completed" },
-        { value: "12+", label: "Years Experience" },
+        { value: "30K+", label: "Orders Completed" },
+        { value: "5+", label: "Years Experience" },
         { value: "4.9", label: "Average Rating" }
       ]
     },
@@ -199,12 +199,12 @@ const translations = {
         },
         {
           title: "Snapchat Score Top-Up: Important Information During Top-Up Process",
-          date: "March 10, 2024",
+          date: "March 18, 2026",
           excerpt: "The benefits of using accounts with history for your personal brand."
         },
         {
           title: "Snapchat Security Best Practices",
-          date: "March 5, 2024",
+          date: "March 18, 2026",
           excerpt: "Keep your account safe while growing your presence online."
         }
       ]
@@ -225,7 +225,7 @@ const translations = {
       button: "Contact on WhatsApp"
     },
     footer: {
-      rights: "© 2024 Snap Boost. All rights reserved.",
+      rights: "© 2026 Snap Boost. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
     }
@@ -513,19 +513,19 @@ export default function App() {
   const [shopTab, setShopTab] = useState<'score' | 'followers' | 'services'>('score');
 
   const scoreAccountsStock = [
-    { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
-    { id: 'sa10k', amount: '10,000', price: '$25', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
-    { id: 'sa20k', amount: '20,000', price: '$35', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
-    { id: 'sa50k', amount: '50,000', price: '$55', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
-    { id: 'sa100k', amount: '100,000', price: '$95', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
-    { id: 'sa200k', amount: '200,000', price: '$160', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
-    { id: 'sa300k', amount: '300,000', price: '$220', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
-    { id: 'sa500k', amount: '500,000', price: '$280', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
-    { id: 'sa700k', amount: '700,000', price: '$350', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
-    { id: 'sa1m', amount: '1,000,000', price: '$450', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
-    { id: 'sa2m', amount: '2,000,000', price: '$850', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
-    { id: 'sa5m', amount: '5,000,000', price: '$1800', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
-    { id: 'sa10m', amount: '10,000,000', price: '$3500', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
+    { id: 'sa5k', amount: '5,000', price: '$3', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
+    { id: 'sa10k', amount: '10,000', price: '$5', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
+    { id: 'sa20k', amount: '20,000', price: '$7', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
+    { id: 'sa50k', amount: '50,000', price: '$20', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
+    { id: 'sa100k', amount: '100,000', price: '$14', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
+    { id: 'sa200k', amount: '200,000', price: '$16', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
+    { id: 'sa300k', amount: '300,000', price: '$20', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
+    { id: 'sa500k', amount: '500,000', price: '$30', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'sa700k', amount: '700,000', price: '$40', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
+    { id: 'sa1m', amount: '1,000,000', price: '$50', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
+    { id: 'sa2m', amount: '2,000,000', price: '$80', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
+    { id: 'sa5m', amount: '5,000,000', price: '$150', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
+    { id: 'sa10m', amount: '10,000,000', price: '$500', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
   ];
 
   const followerAccountsStock = [
@@ -541,24 +541,24 @@ export default function App() {
   ];
 
   const servicesList = [
-    { id: 's_boost', title: 'Snap Score Boost', price: 'From $10', icon: <TrendingUp />, desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'ارفع سكور حسابك من 5000 إلى مليون بأمان.' } },
+    { id: 's_boost', title: 'Snap Score Boost', price: 'From $3', icon: <TrendingUp />, desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'ارفع سكور حسابك من 5000 إلى مليون بأمان.' } },
     { id: 's_lens', title: 'Snapchat AR Lens Create', price: 'Contact Us', icon: <Zap />, desc: { en: 'Custom AR lenses created for your profile.', ar: 'عدسات واقع معزز مخصصة لملفك الشخصي.' } },
     { id: 's_followers', title: 'Snapchat Follower Increase', price: 'From $20', icon: <Users />, desc: { en: 'Increase real followers on your account.', ar: 'زيادة متابعين حقيقيين على حسابك.' } },
     { id: 's_badge', title: 'Get Verified Badge', price: 'Contact Us', icon: <BadgeCheck />, desc: { en: 'Professional assistance for the Gold Star badge.', ar: 'مساعدة احترافية للحصول على شارة النجمة الذهبية.' } },
-    { id: 's_views', title: 'View Service', price: 'From $15', icon: <Eye />, desc: { en: 'Boost your story views instantly.', ar: 'عزز مشاهدات الستوري الخاصة بك فوراً.' } },
+    { id: 's_views', title: 'View Service', price: 'From $3', icon: <Eye />, desc: { en: 'Boost your story views instantly.', ar: 'عزز مشاهدات الستوري الخاصة بك فوراً.' } },
   ];
 
   const boostingTiers = [
-    { id: 'b5k', amount: '5,000', price: '$10' },
-    { id: 'b10k', amount: '10,000', price: '$18' },
-    { id: 'b20k', amount: '20,000', price: '$35' },
-    { id: 'b50k', amount: '50,000', price: '$80' },
-    { id: 'b100k', amount: '100,000', price: '$150' },
-    { id: 'b200k', amount: '200,000', price: '$280' },
-    { id: 'b300k', amount: '300,000', price: '$400' },
-    { id: 'b500k', amount: '500,000', price: '$650' },
-    { id: 'b700k', amount: '700,000', price: '$850' },
-    { id: 'b1m', amount: '1,000,000', price: '$1200' },
+    { id: 'b5k', amount: '5,000', price: '$5' },
+    { id: 'b10k', amount: '10,000', price: '$9' },
+    { id: 'b20k', amount: '20,000', price: '$13' },
+    { id: 'b50k', amount: '50,000', price: '$17' },
+    { id: 'b100k', amount: '100,000', price: '$20' },
+    { id: 'b200k', amount: '200,000', price: '$25' },
+    { id: 'b300k', amount: '300,000', price: '$30' },
+    { id: 'b500k', amount: '500,000', price: '$37' },
+    { id: 'b700k', amount: '700,000', price: '$45' },
+    { id: 'b1m', amount: '1,000,000', price: '$60' },
   ];
 
   const handleBuy = (pkg: any) => {
