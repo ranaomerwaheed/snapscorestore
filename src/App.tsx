@@ -1,4 +1,4 @@
- import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Infinity, 
@@ -86,7 +86,7 @@ const translations = {
       verified: "Verified"
     },
     why: {
-      title: "Why Choose Us?",
+      title: "Why Choose Snap Boost?",
       subtitle: "We provide the most secure and efficient growth services in the region.",
       items: [
         {
@@ -160,8 +160,8 @@ const translations = {
     stats: {
       items: [
         { value: "10K+", label: "Happy Clients" },
-        { value: "30K+", label: "Orders Completed" },
-        { value: "5+", label: "Years Experience" },
+        { value: "50K+", label: "Orders Completed" },
+        { value: "12+", label: "Years Experience" },
         { value: "4.9", label: "Average Rating" }
       ]
     },
@@ -193,18 +193,18 @@ const translations = {
       readMore: "Read More",
       posts: [
         {
-          title: "Snapchat Account Safety Guide: Safe Login Practices & Ban Prevention",
-          date: "March 18, 2026",
+          title: "How to Increase Your Snap Score Fast",
+          date: "March 25, 2026",
           excerpt: "Discover the most effective and safe methods to boost your score in 2024."
         },
         {
-          title: "Snapchat Score Top-Up: Important Information During Top-Up Process",
-          date: "March 18, 2026",
+          title: "Why Aged Accounts are Better",
+          date: "March 22, 2026",
           excerpt: "The benefits of using accounts with history for your personal brand."
         },
         {
           title: "Snapchat Security Best Practices",
-          date: "March 18, 2026",
+          date: "March 5, 2026",
           excerpt: "Keep your account safe while growing your presence online."
         }
       ]
@@ -214,7 +214,7 @@ const translations = {
       subtitle: "We accept all major payment methods",
       methods: [
         { name: "Apple Pay", icon: "" },
-        { name: "Google Pay", icon: "stc" },
+        { name: "STC Pay", icon: "stc" },
         { name: "Mada", icon: "mada" },
         { name: "Credit Card", icon: "💳" }
       ]
@@ -225,7 +225,7 @@ const translations = {
       button: "Contact on WhatsApp"
     },
     footer: {
-      rights: "© 2026 Snap Boost. All rights reserved.",
+      rights: "© 2024 Snap Boost. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
     }
@@ -439,7 +439,7 @@ const testimonials = [
       en: "Best service in the Middle East. My Snap score reached 1M in just 2 days. Highly recommended for anyone looking for reliability.", 
       ar: "أفضل خدمة في الشرق الأوسط. وصل سكور حسابي إلى مليون في يومين فقط. أنصح به بشدة لكل من يبحث عن المصداقية." 
     },
-    avatar: "https://i.pinimg.com/736x/d4/d1/09/d4d10914504759b9c917d0b338e13744.jpg"
+    avatar: "https://picsum.photos/seed/user1/100/100"
   },
   {
     name: { en: "Sara Mohammed", ar: "سارة محمد" },
@@ -448,7 +448,7 @@ const testimonials = [
       en: "I was worried about my account, but they reassured me and the service was extremely professional. Highly recommended.", 
       ar: "كنت خايفة على حسابي بس طمنوني والخدمة كانت احترافية للغاية. أنصح فيهم وبقوة." 
     },
-    avatar: "https://i.pinimg.com/1200x/3d/b5/31/3db5313f860c6c6f67480f238e2e4f27.jpg"
+    avatar: "https://picsum.photos/seed/user2/100/100"
   },
   {
     name: { en: "Sultan Al-Kuwari", ar: "سلطان الكواري" },
@@ -457,54 +457,8 @@ const testimonials = [
       en: "Best service I've dealt with in the Gulf. Credibility and speed in execution.", 
       ar: "أفضل خدمة تعاملت معها في الخليج. مصداقية وسرعة في التنفيذ." 
     },
-    avatar: "https://i.pinimg.com/1200x/7b/76/90/7b7690d1d9769561cb5fb6fdb2045943.jpg"
+    avatar: "https://picsum.photos/seed/user3/100/100"
   }
-];
-
-const ReviewSection = () => {
-  return (
-    <section className="py-20 bg-black/50 backdrop-blur-lg">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4">Trusted by Users Globally</h2>
-          <div className="flex items-center justify-center gap-2 text-yellow-500">
-            {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" className="w-6 h-6" />)}
-            <span className="text-white ml-2 font-semibold">4.9/5 based on 10k+ orders</span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((review) => (
-            <div key={review.id} className="p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-blue-500 transition-all duration-300">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-white font-bold text-lg">{review.name}</h3>
-                  <p className="text-gray-500 text-sm">{review.country} • {review.date}</p>
-                </div>
-                {review.verified && (
-                  <span className="flex items-center gap-1 text-green-500 text-xs font-bold bg-green-500/10 px-2 py-1 rounded-full border border-green-500/20">
-                    <BadgeCheck className="w-4 h-4" /> VERIFIED
-                  </span>
-                )}
-              </div>
-              <div className="flex gap-1 mb-4 text-yellow-500">
-                {[...Array(review.rating)].map((_, i) => <Star key={i} fill="currentColor" className="w-4 h-4" />)}
-              </div>
-              <p className="text-gray-300 italic leading-relaxed">"{review.text}"</p>
-            </div>
-          ))}
-        </div>
-        
-        {/* Trust Badges */}
-        <div className="mt-16 flex flex-wrap justify-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" className="h-8" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-8" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-8" />
-        </div>
-      </div>
-    </section>
-  );
-};
 ];
 
 const faqData = [
@@ -523,19 +477,19 @@ const faqData = [
 ];
 
 const catalog = [
-  { id: 1, score: "5K+", price: "$3", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
-  { id: 2, score: "10K+", price: "$5", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
-  { id: 3, score: "20K+", price: "$7", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
-  { id: 4, score: "50K+", price: "$12", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
-  { id: 5, score: "100K+", price: "$18", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
-  { id: 6, score: "200K+", price: "$22", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
-  { id: 7, score: "300K+", price: "$25", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
-  { id: 8, score: "500K+", price: "$32", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
-  { id: 9, score: "700K+", price: "$40", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
-  { id: 10, score: "1M+", price: "$50", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
-  { id: 11, score: "2M+", price: "$80", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
-  { id: 12, score: "5M+", price: "$120", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
-  { id: 13, score: "10M+", price: "$250", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
+  { id: 1, score: "5K+", price: "$15", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
+  { id: 2, score: "10K+", price: "$25", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
+  { id: 3, score: "20K+", price: "$35", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
+  { id: 4, score: "50K+", price: "$55", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
+  { id: 5, score: "100K+", price: "$95", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
+  { id: 6, score: "200K+", price: "$160", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
+  { id: 7, score: "300K+", price: "$220", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
+  { id: 8, score: "500K+", price: "$280", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
+  { id: 9, score: "700K+", price: "$350", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
+  { id: 10, score: "1M+", price: "$450", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
+  { id: 11, score: "2M+", price: "$850", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
+  { id: 12, score: "5M+", price: "$1800", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
+  { id: 13, score: "10M+", price: "$3500", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
 ];
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -559,19 +513,19 @@ export default function App() {
   const [shopTab, setShopTab] = useState<'score' | 'followers' | 'services'>('score');
 
   const scoreAccountsStock = [
-    { id: 'sa5k', amount: '5,000', price: '$3', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
-    { id: 'sa10k', amount: '10,000', price: '$5', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
-    { id: 'sa20k', amount: '20,000', price: '$7', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
-    { id: 'sa50k', amount: '50,000', price: '$20', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
-    { id: 'sa100k', amount: '100,000', price: '$14', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
-    { id: 'sa200k', amount: '200,000', price: '$16', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
-    { id: 'sa300k', amount: '300,000', price: '$20', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
-    { id: 'sa500k', amount: '500,000', price: '$30', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
-    { id: 'sa700k', amount: '700,000', price: '$40', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
-    { id: 'sa1m', amount: '1,000,000', price: '$50', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
-    { id: 'sa2m', amount: '2,000,000', price: '$80', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
-    { id: 'sa5m', amount: '5,000,000', price: '$150', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
-    { id: 'sa10m', amount: '10,000,000', price: '$500', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
+    { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
+    { id: 'sa10k', amount: '10,000', price: '$25', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
+    { id: 'sa20k', amount: '20,000', price: '$35', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
+    { id: 'sa50k', amount: '50,000', price: '$55', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
+    { id: 'sa100k', amount: '100,000', price: '$95', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
+    { id: 'sa200k', amount: '200,000', price: '$160', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
+    { id: 'sa300k', amount: '300,000', price: '$220', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
+    { id: 'sa500k', amount: '500,000', price: '$280', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'sa700k', amount: '700,000', price: '$350', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
+    { id: 'sa1m', amount: '1,000,000', price: '$450', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
+    { id: 'sa2m', amount: '2,000,000', price: '$850', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
+    { id: 'sa5m', amount: '5,000,000', price: '$1800', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
+    { id: 'sa10m', amount: '10,000,000', price: '$3500', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
   ];
 
   const followerAccountsStock = [
@@ -587,24 +541,24 @@ export default function App() {
   ];
 
   const servicesList = [
-    { id: 's_boost', title: 'Snap Score Boost', price: 'From $3', icon: <TrendingUp />, desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'ارفع سكور حسابك من 5000 إلى مليون بأمان.' } },
+    { id: 's_boost', title: 'Snap Score Boost', price: 'From $10', icon: <TrendingUp />, desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'ارفع سكور حسابك من 5000 إلى مليون بأمان.' } },
     { id: 's_lens', title: 'Snapchat AR Lens Create', price: 'Contact Us', icon: <Zap />, desc: { en: 'Custom AR lenses created for your profile.', ar: 'عدسات واقع معزز مخصصة لملفك الشخصي.' } },
     { id: 's_followers', title: 'Snapchat Follower Increase', price: 'From $20', icon: <Users />, desc: { en: 'Increase real followers on your account.', ar: 'زيادة متابعين حقيقيين على حسابك.' } },
     { id: 's_badge', title: 'Get Verified Badge', price: 'Contact Us', icon: <BadgeCheck />, desc: { en: 'Professional assistance for the Gold Star badge.', ar: 'مساعدة احترافية للحصول على شارة النجمة الذهبية.' } },
-    { id: 's_views', title: 'View Service', price: 'From $3', icon: <Eye />, desc: { en: 'Boost your story views instantly.', ar: 'عزز مشاهدات الستوري الخاصة بك فوراً.' } },
+    { id: 's_views', title: 'View Service', price: 'From $15', icon: <Eye />, desc: { en: 'Boost your story views instantly.', ar: 'عزز مشاهدات الستوري الخاصة بك فوراً.' } },
   ];
 
   const boostingTiers = [
-    { id: 'b5k', amount: '5,000', price: '$5' },
-    { id: 'b10k', amount: '10,000', price: '$9' },
-    { id: 'b20k', amount: '20,000', price: '$13' },
-    { id: 'b50k', amount: '50,000', price: '$17' },
-    { id: 'b100k', amount: '100,000', price: '$20' },
-    { id: 'b200k', amount: '200,000', price: '$25' },
-    { id: 'b300k', amount: '300,000', price: '$30' },
-    { id: 'b500k', amount: '500,000', price: '$37' },
-    { id: 'b700k', amount: '700,000', price: '$45' },
-    { id: 'b1m', amount: '1,000,000', price: '$60' },
+    { id: 'b5k', amount: '5,000', price: '$10' },
+    { id: 'b10k', amount: '10,000', price: '$18' },
+    { id: 'b20k', amount: '20,000', price: '$35' },
+    { id: 'b50k', amount: '50,000', price: '$80' },
+    { id: 'b100k', amount: '100,000', price: '$150' },
+    { id: 'b200k', amount: '200,000', price: '$280' },
+    { id: 'b300k', amount: '300,000', price: '$400' },
+    { id: 'b500k', amount: '500,000', price: '$650' },
+    { id: 'b700k', amount: '700,000', price: '$850' },
+    { id: 'b1m', amount: '1,000,000', price: '$1200' },
   ];
 
   const handleBuy = (pkg: any) => {
@@ -1277,7 +1231,7 @@ export default function App() {
 
             {/* Payment Logos Row */}
             <div className="mt-16 flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-              <img src="https://i.postimg.cc/Y0WCqgnD/Visa.png" alt="Visa" className="h-8" referrerPolicy="no-referrer" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-8" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-12" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" className="h-10" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-8" referrerPolicy="no-referrer" />
