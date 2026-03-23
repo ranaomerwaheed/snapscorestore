@@ -13,6 +13,10 @@
   body {
     @apply bg-matte-black text-white font-sans;
     direction: ltr;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(255, 252, 0, 0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(255, 252, 0, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
   }
 }
 
@@ -24,6 +28,30 @@
 
 .glow-yellow {
   box-shadow: 0 0 20px rgba(255, 252, 0, 0.3);
+}
+
+.bg-mesh-1 {
+  background: radial-gradient(at 0% 0%, hsla(59, 100%, 50%, 0.15) 0, transparent 50%),
+              radial-gradient(at 100% 100%, hsla(59, 100%, 50%, 0.1) 0, transparent 50%);
+}
+
+.bg-mesh-2 {
+  background: radial-gradient(at 100% 0%, hsla(59, 100%, 50%, 0.1) 0, transparent 50%),
+              radial-gradient(at 0% 100%, hsla(59, 100%, 50%, 0.15) 0, transparent 50%);
+}
+
+.section-divider {
+  position: relative;
+}
+
+.section-divider::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 252, 0, 0.2), transparent);
 }
 
 .text-glow-yellow {
