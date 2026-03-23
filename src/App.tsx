@@ -38,7 +38,8 @@ import {
   Loader2,
   Search,
   Calculator,
-  User
+  User,
+  History
 } from 'lucide-react';
 
 const WHATSAPP_NUMBER = "+923431390157";
@@ -62,7 +63,8 @@ const translations = {
         { id: 'tracker', title: "Snapchat Score Milestone Tracker", ar: "مخطط أهداف السكور" },
         { id: 'bitmoji', title: "Bitmoji Avatar Creator", ar: "منشئ صور بيتموجي" },
         { id: 'lens', title: "AI Lens Simulator", ar: "محاكي عدسات الذكاء الاصطناعي" },
-        { id: 'map', title: "Snap Map Location Finder", ar: "مكتشف مواقع خريطة سناب" }
+        { id: 'map', title: "Snap Map Location Finder", ar: "مكتشف مواقع خريطة سناب" },
+        { id: 'snapify', title: "Snapify Pro", ar: "سناب فاي برو", isPro: true }
       ],
       serviceItems: [
         { id: 'boosting', title: "Score Boosting", ar: "زيادة السكور" },
@@ -350,7 +352,8 @@ const translations = {
         { id: 'tracker', title: "مخطط أهداف السكور", en: "Snapchat Score Milestone Tracker" },
         { id: 'bitmoji', title: "منشئ صور بيتموجي", en: "Bitmoji Avatar Creator" },
         { id: 'lens', title: "محاكي عدسات الذكاء الاصطناعي", en: "AI Lens Simulator" },
-        { id: 'map', title: "مكتشف مواقع خريطة سناب", en: "Snap Map Location Finder" }
+        { id: 'map', title: "مكتشف مواقع خريطة سناب", en: "Snap Map Location Finder" },
+        { id: 'snapify', title: "سناب فاي برو", en: "Snapify Pro", isPro: true }
       ],
       serviceItems: [
         { id: 'boosting', title: "زيادة السكور", en: "Score Boosting" },
@@ -728,9 +731,29 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const accountCategories = [
+  { id: 'snapscore', title: { en: 'SnapScore Account', ar: 'حسابات سكور عالي' }, icon: <Star />, color: 'blue', desc: { en: 'High score accounts ready for use.', ar: 'حسابات بسكور عالي جاهزة للاستخدام.' } },
+  { id: 'follower', title: { en: 'Follower Account', ar: 'حسابات متابعين' }, icon: <Users />, color: 'purple', desc: { en: 'Accounts with real followers and reach.', ar: 'حسابات مع متابعين حقيقيين وتفاعل.' } },
+  { id: 'aged', title: { en: 'Aged Account', ar: 'حسابات قديمة' }, icon: <History />, color: 'orange', desc: { en: 'Old accounts from 2015-2020.', ar: 'حسابات قديمة من 2015-2020.' } },
+  { id: 'verified', title: { en: 'Verified Account', ar: 'حسابات موثقة' }, icon: <BadgeCheck />, color: 'green', desc: { en: 'Accounts with verification badges.', ar: 'حسابات موثقة بشارات التوثيق.' } },
+];
+
+const agedAccountsStock = [
+  { id: 'a2015', amount: '2015 Created', price: '$45', desc: { en: 'Rare 2015 account', ar: 'حساب نادر من 2015' } },
+  { id: 'a2016', amount: '2016 Created', price: '$35', desc: { en: 'Vintage 2016 account', ar: 'حساب قديم من 2016' } },
+  { id: 'a2017', amount: '2017 Created', price: '$25', desc: { en: 'Stable 2017 account', ar: 'حساب مستقر من 2017' } },
+  { id: 'a2018', amount: '2018 Created', price: '$20', desc: { en: 'Trusted 2018 account', ar: 'حساب موثوق من 2018' } },
+];
+
+const verifiedAccountsStock = [
+  { id: 'vgold', amount: 'Gold Badge', price: '$1500', desc: { en: 'Official Gold Star verification', ar: 'توثيق النجمة الذهبية الرسمي' } },
+  { id: 'vpublic', amount: 'Public Profile', price: '$50', desc: { en: 'Verified public profile status', ar: 'حالة ملف تعريف عام موثقة' } },
+];
+
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
-  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms'>('home');
+  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify'>('home');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
   const [selectedBoostingTier, setSelectedBoostingTier] = useState<any>(null);
   const [checkoutData, setCheckoutData] = useState({ username: '', password: '' });
@@ -741,6 +764,25 @@ export default function App() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [shopTab, setShopTab] = useState<'score' | 'followers' | 'services'>('score');
+
+  const handleToolClick = (toolId: string, isPro?: boolean) => {
+    if (isPro) {
+      const code = prompt(lang === 'ar' ? 'أدخل كود الوصول لـ Snapify Pro:' : 'Enter access code for Snapify Pro:');
+      if (code === 'A1B2C3$1') {
+        setView('snapify');
+        window.scrollTo(0, 0);
+        setIsMenuOpen(false);
+        setToolResult(null);
+      } else if (code !== null) {
+        alert(lang === 'ar' ? 'كود غير صحيح!' : 'Incorrect code!');
+      }
+    } else {
+      setView(toolId as any);
+      window.scrollTo(0, 0);
+      setIsMenuOpen(false);
+      setToolResult(null);
+    }
+  };
 
   // Tool States
   const [calcInput, setCalcInput] = useState({ current: '', target: '' });
@@ -1106,7 +1148,7 @@ export default function App() {
               <div className="absolute inset-0 bg-snap-yellow blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-500"></div>
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-2xl font-black tracking-tighter text-white uppercase group-hover:text-snap-yellow transition-all duration-300 text-glow-yellow">SnapScore Store</span>
+              <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-snap-yellow via-white to-snap-yellow bg-clip-text text-transparent uppercase animate-gradient-x drop-shadow-[0_0_10px_rgba(255,252,0,0.3)]">SnapScore Store</span>
               <span className="text-[10px] font-bold text-snap-yellow tracking-[0.3em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">{lang === 'ar' ? 'سناب سكور ستور' : 'Premium Services'}</span>
             </div>
           </div>
@@ -1301,15 +1343,12 @@ export default function App() {
                     {t.nav.toolItems.map((item: any) => (
                       <button
                         key={item.id}
-                        onClick={() => {
-                          setView(item.id as any);
-                          setIsMenuOpen(false);
-                          setToolResult(null);
-                        }}
-                        className="text-right hover:text-snap-yellow transition-colors"
+                        onClick={() => handleToolClick(item.id, item.isPro)}
+                        className="text-right hover:text-snap-yellow transition-colors flex items-center justify-end gap-2"
                         style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
                       >
                         {item.title}
+                        {item.isPro && <span className="text-[8px] bg-snap-yellow text-black px-1.5 py-0.5 rounded-md font-black">PRO</span>}
                       </button>
                     ))}
                   </div>
@@ -1521,40 +1560,56 @@ export default function App() {
           </div>
         </section>
 
-        {/* Catalog Section */}
+        {/* Catalog Section (Categories) */}
         <section id="catalog" className="py-32 px-6 bg-matte-black relative overflow-hidden bg-mesh-1 section-divider">
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-20">
               <h2 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">
-                {t.catalog.title} <span className="text-snap-yellow">{t.catalog.titleHighlight}</span>
+                {lang === 'ar' ? 'تصنيفات' : 'Account'} <span className="text-snap-yellow">{lang === 'ar' ? 'الحسابات' : 'Categories'}</span>
               </h2>
-              <p className="text-gray-400 text-xl font-medium">{t.catalog.subtitle}</p>
+              <p className="text-gray-400 text-xl font-medium">{lang === 'ar' ? 'اختر نوع الحساب الذي تبحث عنه' : 'Choose the type of account you are looking for'}</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {catalog.map((item, i) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {accountCategories.map((cat, i) => (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.05 }}
-                  className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${getPackageColor(item.score)}`}
+                  key={cat.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  onClick={() => {
+                    setSelectedCategory(cat.id);
+                    setView('category_detail');
+                    window.scrollTo(0, 0);
+                  }}
+                  className={`p-10 rounded-[3rem] border transition-all group cursor-pointer relative overflow-hidden ${
+                    cat.color === 'blue' ? 'bg-blue-600/10 border-blue-500/20 hover:border-blue-500/50' : 
+                    cat.color === 'purple' ? 'bg-purple-600/10 border-purple-500/20 hover:border-purple-500/50' : 
+                    cat.color === 'orange' ? 'bg-orange-600/10 border-orange-500/20 hover:border-orange-500/50' :
+                    'bg-green-600/10 border-green-500/20 hover:border-green-500/50'
+                  }`}
                 >
-                  <div className="absolute inset-0 backdrop-blur-xl pointer-events-none"></div>
+                  <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
+                    cat.color === 'blue' ? 'bg-blue-500/10' : 
+                    cat.color === 'purple' ? 'bg-purple-500/10' : 
+                    cat.color === 'orange' ? 'bg-orange-500/10' :
+                    'bg-green-500/10'
+                  }`}></div>
                   <div className="relative z-10">
-                    <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-20 transition-opacity">
-                      <Star className="w-20 h-20 text-snap-yellow" />
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${
+                      cat.color === 'blue' ? 'bg-blue-500/10 text-blue-400' : 
+                      cat.color === 'purple' ? 'bg-purple-500/10 text-purple-400' : 
+                      cat.color === 'orange' ? 'bg-orange-500/10 text-orange-400' :
+                      'bg-green-500/10 text-green-400'
+                    }`}>
+                      {React.cloneElement(cat.icon as React.ReactElement, { className: "w-8 h-8" })}
                     </div>
-                    <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{item.description[lang]}</div>
-                    <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{item.score}</div>
-                    <div className="text-3xl font-bold text-white/90 mb-10">{item.price}</div>
-                    <button 
-                      onClick={() => openWhatsApp(lang === 'ar' ? `أريد شراء حساب سناب شات بسكور ${item.score} وسعر ${item.price}` : `I want to buy a Snapchat account with score ${item.score} for ${item.price}`)}
-                      className="w-full py-4 bg-white/5 border border-white/10 rounded-2xl font-black hover:bg-snap-yellow hover:text-black transition-all flex items-center justify-center gap-3 text-lg"
-                    >
-                      <WhatsAppIcon className="w-6 h-6" />
-                      {t.catalog.order}
-                    </button>
+                    <h3 className="text-2xl font-black mb-4 group-hover:text-snap-yellow transition-colors">{cat.title[lang]}</h3>
+                    <p className="text-gray-400 text-sm mb-8 leading-relaxed">{cat.desc[lang]}</p>
+                    <div className="flex items-center gap-2 text-snap-yellow font-bold uppercase tracking-widest text-xs group-hover:translate-x-2 transition-transform">
+                      {lang === 'ar' ? 'عرض الكل' : 'View All'}
+                      <ChevronRight className={`w-4 h-4 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -1676,10 +1731,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  onClick={() => {
-                    setView(tool.id as any);
-                    window.scrollTo(0, 0);
-                  }}
+                  onClick={() => handleToolClick(tool.id, tool.isPro)}
                   className={`p-10 rounded-[3rem] border transition-all group cursor-pointer relative overflow-hidden ${
                     i % 4 === 0 ? 'bg-blue-600/10 border-blue-500/20 hover:border-blue-500/50' : 
                     i % 4 === 1 ? 'bg-purple-600/10 border-purple-500/20 hover:border-purple-500/50' : 
@@ -1687,6 +1739,11 @@ export default function App() {
                     'bg-green-600/10 border-green-500/20 hover:border-green-500/50'
                   }`}
                 >
+                  {tool.isPro && (
+                    <div className="absolute top-6 right-6 px-3 py-1 bg-snap-yellow text-black text-[10px] font-black rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(255,252,0,0.5)] z-20">
+                      PRO
+                    </div>
+                  )}
                   <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
                     i % 4 === 0 ? 'bg-blue-500/10' : 
                     i % 4 === 1 ? 'bg-purple-500/10' : 
@@ -1699,16 +1756,20 @@ export default function App() {
                     i % 4 === 2 ? 'bg-orange-500/10 text-orange-400' :
                     'bg-green-500/10 text-green-400'
                   }`}>
-                    {i === 0 ? <Calculator className="w-8 h-8" /> : 
-                     i === 1 ? <ShieldCheck className="w-8 h-8" /> : 
-                     i === 2 ? <TrendingUp className="w-8 h-8" /> : 
-                     i === 3 ? <User className="w-8 h-8" /> : 
-                     i === 4 ? <Zap className="w-8 h-8" /> : 
-                     <MapPin className="w-8 h-8" />}
+                    {tool.id === 'calc' ? <Calculator className="w-8 h-8" /> : 
+                     tool.id === 'checker' ? <ShieldCheck className="w-8 h-8" /> : 
+                     tool.id === 'tracker' ? <TrendingUp className="w-8 h-8" /> : 
+                     tool.id === 'bitmoji' ? <User className="w-8 h-8" /> : 
+                     tool.id === 'lens' ? <Zap className="w-8 h-8" /> : 
+                     tool.id === 'map' ? <MapPin className="w-8 h-8" /> :
+                     <Infinity className="w-8 h-8" />}
                   </div>
                   <h3 className="text-2xl font-black mb-4 group-hover:text-snap-yellow transition-colors">{lang === 'ar' ? tool.ar : tool.title}</h3>
                   <p className="text-gray-400 leading-relaxed mb-8">
-                    {lang === 'ar' ? 'استخدم أداتنا المجانية لتحسين تجربتك على سناب شات.' : 'Use our free tool to enhance your Snapchat experience.'}
+                    {tool.isPro ? 
+                      (lang === 'ar' ? 'أدوات احترافية حصرية لمشتركي سناب فاي برو.' : 'Exclusive professional tools for Snapify Pro subscribers.') :
+                      (lang === 'ar' ? 'استخدم أداتنا المجانية لتحسين تجربتك على سناب شات.' : 'Use our free tool to enhance your Snapchat experience.')
+                    }
                   </p>
                   <div className="flex items-center gap-2 text-snap-yellow font-bold uppercase tracking-widest text-xs">
                     {lang === 'ar' ? 'جرب الآن' : 'Try Now'}
@@ -1936,11 +1997,11 @@ export default function App() {
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'الاسم' : 'Name'}</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors" placeholder={lang === 'ar' ? 'أدخل اسمك' : 'Your name'} />
+                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors text-white placeholder:text-gray-600" placeholder={lang === 'ar' ? 'أدخل اسمك' : 'Your name'} />
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'الخدمة المطلوبة' : 'Service Needed'}</label>
-                    <select className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors appearance-none">
+                    <select className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors appearance-none text-white">
                       <option className="bg-matte-black">{lang === 'ar' ? 'زيادة السكور' : 'Score Boosting'}</option>
                       <option className="bg-matte-black">{lang === 'ar' ? 'شراء حساب' : 'Buy Account'}</option>
                       <option className="bg-matte-black">{lang === 'ar' ? 'توثيق الحساب' : 'Verification'}</option>
@@ -1948,7 +2009,7 @@ export default function App() {
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'الرسالة' : 'Message'}</label>
-                    <textarea className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors h-32" placeholder={lang === 'ar' ? 'كيف يمكننا مساعدتك؟' : 'How can we help?'}></textarea>
+                    <textarea className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors h-32 text-white placeholder:text-gray-600" placeholder={lang === 'ar' ? 'كيف يمكننا مساعدتك؟' : 'How can we help?'}></textarea>
                   </div>
                   <button 
                     onClick={() => openWhatsApp(lang === 'ar' ? 'أريد استشارة بخصوص خدمات سناب شات' : 'I want a consultation regarding Snapchat services')}
@@ -1965,6 +2026,69 @@ export default function App() {
 
 
           </>
+        )}
+
+        {view === 'category_detail' && selectedCategory && (
+          <section className="pt-40 pb-24 px-6 relative z-10">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex items-center gap-4 mb-12">
+                <button 
+                  onClick={() => setView('home')}
+                  className="w-12 h-12 glass rounded-xl flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all"
+                >
+                  <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                </button>
+                <div>
+                  <h1 className="text-4xl lg:text-6xl font-black uppercase tracking-tighter">
+                    {accountCategories.find(c => c.id === selectedCategory)?.title[lang]}
+                  </h1>
+                  <p className="text-gray-400 font-medium">
+                    {accountCategories.find(c => c.id === selectedCategory)?.desc[lang]}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {(selectedCategory === 'snapscore' ? scoreAccountsStock : 
+                  selectedCategory === 'follower' ? followerAccountsStock : 
+                  selectedCategory === 'aged' ? agedAccountsStock : 
+                  verifiedAccountsStock).map((pkg, i) => (
+                  <motion.div
+                    key={pkg.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${
+                      selectedCategory === 'snapscore' ? 'bg-blue-600/10 border-blue-500/20 hover:border-blue-500/50' : 
+                      selectedCategory === 'follower' ? 'bg-purple-600/10 border-purple-500/20 hover:border-purple-500/50' : 
+                      selectedCategory === 'aged' ? 'bg-orange-600/10 border-orange-500/20 hover:border-orange-500/50' :
+                      'bg-green-600/10 border-green-500/20 hover:border-green-500/50'
+                    }`}
+                  >
+                    <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
+                      selectedCategory === 'snapscore' ? 'bg-blue-500/10' : 
+                      selectedCategory === 'follower' ? 'bg-purple-500/10' : 
+                      selectedCategory === 'aged' ? 'bg-orange-500/10' :
+                      'bg-green-500/10'
+                    }`}></div>
+                    <div className="relative z-10">
+                      <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{pkg.desc[lang]}</div>
+                      <div className="text-5xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">
+                        {pkg.amount} {selectedCategory === 'snapscore' ? 'Score' : selectedCategory === 'follower' ? 'Followers' : ''}
+                      </div>
+                      <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
+                      <button 
+                        onClick={() => handleBuy(pkg)}
+                        className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
+                      >
+                        {t.shop.buy}
+                      </button>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
         )}
 
         {view === 'shop' && (
@@ -2464,7 +2588,7 @@ export default function App() {
                         value={calcInput.current}
                         onChange={(e) => setCalcInput({...calcInput, current: e.target.value})}
                         placeholder="e.g. 10000"
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold"
+                        className="w-full bg-blue-500/10 border border-blue-400/30 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold text-white placeholder:text-blue-400/50"
                       />
                     </div>
                     <div>
@@ -2474,7 +2598,7 @@ export default function App() {
                         value={calcInput.target}
                         onChange={(e) => setCalcInput({...calcInput, target: e.target.value})}
                         placeholder="e.g. 100000"
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold"
+                        className="w-full bg-blue-500/10 border border-blue-400/30 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold text-white placeholder:text-blue-400/50"
                       />
                     </div>
                   </div>
@@ -2550,7 +2674,7 @@ export default function App() {
                       value={checkerInput}
                       onChange={(e) => setCheckerInput(e.target.value)}
                       placeholder="@username"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold"
+                      className="w-full bg-purple-500/10 border border-purple-400/30 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold text-white placeholder:text-purple-400/50"
                     />
                   </div>
 
@@ -2624,7 +2748,7 @@ export default function App() {
                           type="number"
                           value={trackerInput.current}
                           onChange={(e) => setTrackerInput({...trackerInput, current: e.target.value})}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:border-snap-yellow outline-none font-bold"
+                          className="w-full bg-orange-500/10 border border-orange-400/30 rounded-xl p-4 focus:border-snap-yellow outline-none font-bold text-white"
                         />
                       </div>
                       <div>
@@ -2633,7 +2757,7 @@ export default function App() {
                           type="number"
                           value={trackerInput.target}
                           onChange={(e) => setTrackerInput({...trackerInput, target: e.target.value})}
-                          className="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:border-snap-yellow outline-none font-bold"
+                          className="w-full bg-orange-500/10 border border-orange-400/30 rounded-xl p-4 focus:border-snap-yellow outline-none font-bold text-white"
                         />
                       </div>
                       <button 
@@ -2747,7 +2871,7 @@ export default function App() {
                       value={bitmojiInput}
                       onChange={(e) => setBitmojiInput(e.target.value)}
                       placeholder={t.tools_ui.bitmoji.placeholder}
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold min-h-[120px] resize-none"
+                      className="w-full bg-orange-500/10 border border-orange-400/30 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold min-h-[120px] resize-none text-white placeholder:text-orange-400/50"
                     />
                   </div>
 
@@ -2810,14 +2934,14 @@ export default function App() {
                 <div className="space-y-8 relative z-10">
                   <div 
                     onClick={() => fileInputRef.current?.click()}
-                    className="aspect-video rounded-2xl border-2 border-dashed border-white/10 flex flex-col items-center justify-center cursor-pointer hover:border-snap-yellow/50 transition-colors overflow-hidden relative group"
+                    className="aspect-video rounded-2xl border-2 border-dashed border-blue-400/30 bg-blue-500/5 flex flex-col items-center justify-center cursor-pointer hover:border-snap-yellow/50 transition-colors overflow-hidden relative group"
                   >
                     {lensInput ? (
                       <img src={lensInput} alt="Preview" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                     ) : (
                       <>
-                        <Upload className="w-12 h-12 text-gray-600 mb-4 group-hover:text-snap-yellow transition-colors" />
-                        <span className="text-gray-500 font-bold">{t.tools_ui.lens.upload}</span>
+                        <Upload className="w-12 h-12 text-blue-400/50 mb-4 group-hover:text-snap-yellow transition-colors" />
+                        <span className="text-blue-400/70 font-bold">{t.tools_ui.lens.upload}</span>
                       </>
                     )}
                     <input 
@@ -2895,7 +3019,7 @@ export default function App() {
                       value={mapInput}
                       onChange={(e) => setMapInput(e.target.value)}
                       placeholder={t.tools_ui.map.placeholder}
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl pl-16 pr-6 py-6 focus:border-snap-yellow outline-none transition-all font-bold text-lg"
+                      className="w-full bg-green-500/10 border border-green-400/30 rounded-2xl pl-16 pr-6 py-6 focus:border-snap-yellow outline-none transition-all font-bold text-lg text-white placeholder:text-green-400/50"
                     />
                   </div>
 
@@ -2954,6 +3078,97 @@ export default function App() {
             </div>
           </section>
         )}
+
+        {view === 'snapify' && (
+          <section className="pt-40 pb-24 px-6 min-h-[80vh] bg-mesh-1">
+            <div className="max-w-6xl mx-auto">
+              <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-snap-yellow/10 border border-snap-yellow/20 text-snap-yellow text-xs font-black mb-4 uppercase tracking-widest">
+                    <Star className="w-4 h-4 fill-snap-yellow" />
+                    Snapify Pro Active
+                  </div>
+                  <h1 className="text-5xl lg:text-7xl font-black uppercase tracking-tighter">
+                    {lang === 'ar' ? 'سناب فاي برو' : 'Snapify Pro'} <span className="text-snap-yellow italic">Dashboard</span>
+                  </h1>
+                </div>
+                <div className="flex items-center gap-4 p-6 glass rounded-3xl border-white/10">
+                  <div className="w-12 h-12 rounded-2xl bg-snap-yellow/20 flex items-center justify-center">
+                    <User className="w-6 h-6 text-snap-yellow" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">Welcome Back</div>
+                    <div className="text-lg font-black text-white">Pro Member</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                {[
+                  { label: 'Account Health', value: '98%', icon: <ShieldCheck className="w-6 h-6" />, color: 'green' },
+                  { label: 'Growth Rate', value: '+12.5%', icon: <TrendingUp className="w-6 h-6" />, color: 'blue' },
+                  { label: 'Safety Status', value: 'Protected', icon: <Lock className="w-6 h-6" />, color: 'purple' }
+                ].map((stat, i) => (
+                  <div key={i} className="p-8 rounded-[2.5rem] glass border-white/10 relative overflow-hidden group">
+                    <div className={`absolute -top-10 -right-10 w-32 h-32 bg-${stat.color}-500/10 rounded-full blur-3xl group-hover:bg-${stat.color}-500/20 transition-colors`}></div>
+                    <div className={`w-12 h-12 rounded-xl bg-${stat.color}-500/10 text-${stat.color}-400 flex items-center justify-center mb-6`}>
+                      {stat.icon}
+                    </div>
+                    <div className="text-sm text-gray-400 font-bold uppercase tracking-widest mb-2">{stat.label}</div>
+                    <div className="text-4xl font-black text-white tracking-tighter">{stat.value}</div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-8">
+                <div className="p-10 rounded-[3rem] glass border-white/10 relative overflow-hidden">
+                  <h3 className="text-2xl font-black mb-8 flex items-center gap-3">
+                    <Zap className="w-6 h-6 text-snap-yellow" />
+                    {lang === 'ar' ? 'مميزات برو الحصرية' : 'Exclusive Pro Features'}
+                  </h3>
+                  <div className="space-y-4">
+                    {[
+                      { title: 'Advanced Ghost Mode', desc: 'Browse stories without being seen.' },
+                      { title: 'Score Multiplier', desc: 'Boost your score 2x faster than normal.' },
+                      { title: 'Private Story Downloader', desc: 'Save any story directly to your device.' },
+                      { title: 'Custom Bitmoji Outfits', desc: 'Unlock exclusive designer clothing.' }
+                    ].map((feature, i) => (
+                      <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-snap-yellow/50 transition-all group cursor-pointer">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <div className="font-black text-white mb-1 group-hover:text-snap-yellow transition-colors">{feature.title}</div>
+                            <div className="text-xs text-gray-400 font-medium">{feature.desc}</div>
+                          </div>
+                          <div className="w-8 h-8 rounded-full bg-snap-yellow/10 flex items-center justify-center text-snap-yellow opacity-0 group-hover:opacity-100 transition-all">
+                            <ArrowRight className="w-4 h-4" />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-10 rounded-[3rem] glass border-white/10 relative overflow-hidden flex flex-col justify-center items-center text-center">
+                  <div className="w-24 h-24 rounded-full bg-snap-yellow/20 flex items-center justify-center mb-8 animate-pulse">
+                    <Infinity className="w-12 h-12 text-snap-yellow" />
+                  </div>
+                  <h3 className="text-3xl font-black mb-4 uppercase tracking-tighter">
+                    {lang === 'ar' ? 'المزيد قريباً' : 'More Coming Soon'}
+                  </h3>
+                  <p className="text-gray-400 max-w-sm mx-auto font-medium">
+                    {lang === 'ar' ? 'نحن نعمل باستمرار على إضافة أدوات ومميزات جديدة لمشتركي برو.' : 'We are constantly working on adding new tools and features for our Pro members.'}
+                  </p>
+                  <button 
+                    onClick={() => setView('home')}
+                    className="mt-10 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl transition-all"
+                  >
+                    {lang === 'ar' ? 'العودة للرئيسية' : 'Back to Home'}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
       </main>
 
       <footer className="footer-gradient pt-32 pb-12 px-6 relative overflow-hidden">
@@ -2973,7 +3188,7 @@ export default function App() {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <span className="text-2xl font-black tracking-tighter text-glow-yellow group-hover:text-snap-yellow transition-colors">
+                <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-snap-yellow via-white to-snap-yellow bg-clip-text text-transparent uppercase animate-gradient-x drop-shadow-[0_0_10px_rgba(255,252,0,0.3)]">
                   {lang === 'ar' ? 'سناب سكور ستور' : 'SnapScore Store'}
                 </span>
               </div>
