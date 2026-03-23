@@ -756,36 +756,7 @@ export default function App() {
           
           <div className="hidden md:flex items-center gap-8 text-sm font-bold text-gray-400">
             <button onClick={() => setView('home')} className={`hover:text-snap-yellow transition-colors ${view === 'home' ? 'text-snap-yellow' : ''}`}>{t.nav.home}</button>
-            <button onClick={() => setView('shop')} className={`hover:text-snap-yellow transition-colors ${view === 'shop' ? 'text-snap-yellow' : ''}`}>{t.nav.packages}</button>
-            {/* Services Dropdown */}
-            <div className="relative group">
-              <button className="hover:text-snap-yellow transition-colors flex items-center gap-1 py-4">
-                {t.nav.services}
-                <ChevronRight className="w-4 h-4 rotate-90" />
-              </button>
-              <div className="absolute top-full left-0 w-64 bg-matte-black border border-white/10 rounded-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
-                {t.nav.serviceItems.map((item: any) => (
-                  <button
-                    key={item.id}
-                    onClick={() => {
-                      if (item.id === 'boosting') {
-                        setView('boosting');
-                      } else if (item.id === 'followers') {
-                        setView('shop');
-                        setShopTab('followers');
-                      } else {
-                        setView('shop');
-                        setShopTab('services');
-                      }
-                    }}
-                    className="w-full text-left px-4 py-3 rounded-xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider"
-                  >
-                    {item.title}
-                  </button>
-                ))}
-              </div>
-            </div>
-
+            
             {/* Catalog Dropdown */}
             <div className="relative group">
               <button className="hover:text-snap-yellow transition-colors flex items-center gap-1 py-4">
@@ -816,8 +787,35 @@ export default function App() {
               </div>
             </div>
 
-            <button onClick={() => setView('blog')} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
-            
+            {/* Services Dropdown */}
+            <div className="relative group">
+              <button className="hover:text-snap-yellow transition-colors flex items-center gap-1 py-4">
+                {t.nav.services}
+                <ChevronRight className="w-4 h-4 rotate-90" />
+              </button>
+              <div className="absolute top-full left-0 w-64 bg-matte-black border border-white/10 rounded-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                {t.nav.serviceItems.map((item: any) => (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      if (item.id === 'boosting') {
+                        setView('boosting');
+                      } else if (item.id === 'followers') {
+                        setView('shop');
+                        setShopTab('followers');
+                      } else {
+                        setView('shop');
+                        setShopTab('services');
+                      }
+                    }}
+                    className="w-full text-left px-4 py-3 rounded-xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider"
+                  >
+                    {item.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Tools Dropdown */}
             <div className="relative group">
               <button className="hover:text-snap-yellow transition-colors flex items-center gap-1 py-4">
@@ -840,8 +838,7 @@ export default function App() {
               </div>
             </div>
 
-            <a href="#services" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'خدماتنا' : 'Services'}</a>
-            <a href="#catalog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الحسابات' : 'Catalog'}</a>
+            <button onClick={() => setView('blog')} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
           </div>
 
           <div className="flex items-center gap-4">
@@ -882,17 +879,16 @@ export default function App() {
             >
               <div className="flex flex-col p-6 gap-6 text-lg font-bold text-gray-400">
                 <button onClick={() => { setView('home'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الرئيسية' : 'Home'}</button>
-                <button onClick={() => { setView('shop'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.shop}</button>
-                <button onClick={() => { setView('blog'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.blog}</button>
                 
                 <div className="space-y-4">
-                  <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.services}</div>
-                  {t.nav.serviceItems.map((item: any) => (
+                  <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.catalog}</div>
+                  {t.nav.catalogItems.map((item: any) => (
                     <button
                       key={item.id}
                       onClick={() => {
-                        if (item.id === 'boosting') {
-                          setView('boosting');
+                        if (item.id === 'score' || item.id === 'age') {
+                          setView('shop');
+                          setShopTab('score');
                         } else if (item.id === 'followers') {
                           setView('shop');
                           setShopTab('followers');
@@ -910,14 +906,13 @@ export default function App() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.catalog}</div>
-                  {t.nav.catalogItems.map((item: any) => (
+                  <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.services}</div>
+                  {t.nav.serviceItems.map((item: any) => (
                     <button
                       key={item.id}
                       onClick={() => {
-                        if (item.id === 'score' || item.id === 'age') {
-                          setView('shop');
-                          setShopTab('score');
+                        if (item.id === 'boosting') {
+                          setView('boosting');
                         } else if (item.id === 'followers') {
                           setView('shop');
                           setShopTab('followers');
@@ -951,6 +946,8 @@ export default function App() {
                   ))}
                 </div>
 
+                <button onClick={() => { setView('blog'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.blog}</button>
+                
                 <a href="#how" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{t.nav.how}</a>
                 <a href="#faq" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{t.nav.faq}</a>
                 <button 
