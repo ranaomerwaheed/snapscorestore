@@ -2122,27 +2122,30 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="bg-white/5 rounded-2xl p-8 mb-8 border border-white/10">
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{t.checkout.package}</span>
-                    <span className="text-2xl font-black text-snap-yellow">{selectedPackage.amount || selectedPackage.title} {selectedPackage.type || ''}</span>
-                  </div>
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{t.checkout.price}</span>
-                    <span className="text-2xl font-black text-white">{selectedPackage.price}</span>
-                  </div>
-                  <div className="pt-6 border-t border-white/5">
-                    <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">{lang === 'ar' ? 'تفاصيل المنتج' : 'Product Details'}</h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">
-                      {t.checkout.productDetails}
-                    </p>
+                <div className="p-8 rounded-[2.5rem] bg-snap-yellow/10 border border-snap-yellow/30 mb-8 relative overflow-hidden group">
+                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-snap-yellow/10 rounded-full blur-3xl group-hover:bg-snap-yellow/20 transition-colors"></div>
+                  <div className="relative z-10">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{t.checkout.package}</span>
+                      <span className="text-2xl font-black text-snap-yellow">{selectedPackage.amount || selectedPackage.title} {selectedPackage.type || ''}</span>
+                    </div>
+                    <div className="flex justify-between items-center mb-6">
+                      <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{t.checkout.price}</span>
+                      <span className="text-2xl font-black text-white">{selectedPackage.price}</span>
+                    </div>
+                    <div className="pt-6 border-t border-white/5">
+                      <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">{lang === 'ar' ? 'تفاصيل المنتج' : 'Product Details'}</h3>
+                      <p className="text-sm text-gray-400 leading-relaxed">
+                        {t.checkout.productDetails}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 <div className="space-y-8">
                   <h2 className="text-2xl font-black uppercase tracking-tight">{t.checkout.details}</h2>
-                  <div>
-                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-3">{t.checkout.username}</label>
+                  <div className="p-8 rounded-2xl bg-blue-600/5 border border-blue-500/20">
+                    <label className="block text-sm font-bold text-blue-400 uppercase tracking-widest mb-3">{t.checkout.username}</label>
                     <input 
                       type="text" 
                       value={checkoutData.username}
@@ -2151,8 +2154,8 @@ export default function App() {
                       placeholder="@username" 
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-3">{t.checkout.password}</label>
+                  <div className="p-8 rounded-2xl bg-purple-600/5 border border-purple-500/20">
+                    <label className="block text-sm font-bold text-purple-400 uppercase tracking-widest mb-3">{t.checkout.password}</label>
                     <input 
                       type="password" 
                       value={checkoutData.password}
@@ -2211,8 +2214,19 @@ export default function App() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="glass rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-snap-yellow/30 transition-all group"
+                    className={`rounded-[2.5rem] overflow-hidden border transition-all group relative ${
+                      i % 4 === 0 ? 'bg-blue-600/5 border-blue-500/10 hover:border-blue-500/30' : 
+                      i % 4 === 1 ? 'bg-purple-600/5 border-purple-500/10 hover:border-purple-500/30' : 
+                      i % 4 === 2 ? 'bg-orange-600/5 border-orange-500/10 hover:border-orange-500/30' :
+                      'bg-green-600/5 border-green-500/10 hover:border-green-500/30'
+                    }`}
                   >
+                    <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
+                      i % 4 === 0 ? 'bg-blue-500/10' : 
+                      i % 4 === 1 ? 'bg-purple-500/10' : 
+                      i % 4 === 2 ? 'bg-orange-500/10' :
+                      'bg-green-500/10'
+                    }`}></div>
                     <div className="aspect-video overflow-hidden">
                       <img 
                         src={`https://picsum.photos/seed/blog-page-${i}/600/400`} 
@@ -2302,20 +2316,23 @@ export default function App() {
                     </div>
 
                     <div className="space-y-8">
-                      <div className="p-8 rounded-2xl bg-white/5 border border-white/10">
-                        <div className="flex justify-between items-center mb-4">
-                          <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'الباقة المختارة' : 'Selected Tier'}</span>
-                          <span className="text-snap-yellow font-black text-xl">{selectedBoostingTier.amount} Score</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'السعر' : 'Price'}</span>
-                          <span className="text-white font-black text-xl">{selectedBoostingTier.price}</span>
+                      <div className="p-8 rounded-2xl bg-snap-yellow/10 border border-snap-yellow/30 relative overflow-hidden group">
+                        <div className="absolute -top-10 -right-10 w-32 h-32 bg-snap-yellow/10 rounded-full blur-3xl group-hover:bg-snap-yellow/20 transition-colors"></div>
+                        <div className="relative z-10">
+                          <div className="flex justify-between items-center mb-4">
+                            <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'الباقة المختارة' : 'Selected Tier'}</span>
+                            <span className="text-snap-yellow font-black text-xl">{selectedBoostingTier.amount} Score</span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'السعر' : 'Price'}</span>
+                            <span className="text-white font-black text-xl">{selectedBoostingTier.price}</span>
+                          </div>
                         </div>
                       </div>
 
                       <div className="space-y-6">
-                        <div>
-                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</label>
+                        <div className="p-8 rounded-2xl bg-blue-600/5 border border-blue-500/20">
+                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-blue-400 mb-3 ml-2">{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</label>
                           <input 
                             type="email"
                             value={checkoutData.username}
@@ -2324,8 +2341,8 @@ export default function App() {
                             className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow focus:ring-1 focus:ring-snap-yellow outline-none transition-all font-bold"
                           />
                         </div>
-                        <div>
-                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'كلمة المرور' : 'Password'}</label>
+                        <div className="p-8 rounded-2xl bg-purple-600/5 border border-purple-500/20">
+                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-purple-400 mb-3 ml-2">{lang === 'ar' ? 'كلمة المرور' : 'Password'}</label>
                           <input 
                             type="password"
                             value={checkoutData.password}
@@ -2436,11 +2453,12 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="glass p-10 rounded-[3rem] border-white/10">
-                <div className="space-y-8">
+              <div className="p-10 rounded-[3rem] bg-blue-600/5 border border-blue-500/20 relative overflow-hidden group">
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors"></div>
+                <div className="space-y-8 relative z-10">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                      <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'السكور الحالي' : 'Current Score'}</label>
+                      <label className="block text-xs font-black uppercase tracking-widest text-blue-400 mb-3 ml-2">{lang === 'ar' ? 'السكور الحالي' : 'Current Score'}</label>
                       <input 
                         type="number"
                         value={calcInput.current}
@@ -2450,7 +2468,7 @@ export default function App() {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'السكور المستهدف' : 'Target Score'}</label>
+                      <label className="block text-xs font-black uppercase tracking-widest text-blue-400 mb-3 ml-2">{lang === 'ar' ? 'السكور المستهدف' : 'Target Score'}</label>
                       <input 
                         type="number"
                         value={calcInput.target}
@@ -2481,23 +2499,26 @@ export default function App() {
                     <motion.div 
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-8 rounded-2xl bg-white/5 border border-white/10 space-y-4"
+                      className="p-8 rounded-[2.5rem] bg-blue-600/10 border border-blue-500/30 space-y-4 relative overflow-hidden group"
                     >
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'السنابات المطلوبة تقريباً' : 'Estimated Snaps Needed'}</span>
-                        <span className="text-snap-yellow font-black text-2xl">{toolResult.snaps.toLocaleString()}</span>
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'الأيام المتوقعة (بشكل آمن)' : 'Estimated Days (Safe Speed)'}</span>
-                        <span className="text-white font-black text-xl">{toolResult.days} {lang === 'ar' ? 'أيام' : 'Days'}</span>
-                      </div>
-                      <div className="pt-4 border-t border-white/5">
-                        <button 
-                          onClick={() => setView('boosting')}
-                          className="w-full py-3 border border-snap-yellow/30 text-snap-yellow rounded-xl font-bold hover:bg-snap-yellow hover:text-black transition-all text-sm"
-                        >
-                          {lang === 'ar' ? 'احصل عليها فوراً عبر خدمتنا' : 'Get it instantly with our service'}
-                        </button>
+                      <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors"></div>
+                      <div className="relative z-10">
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'السنابات المطلوبة تقريباً' : 'Estimated Snaps Needed'}</span>
+                          <span className="text-snap-yellow font-black text-2xl">{toolResult.snaps.toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'الأيام المتوقعة (بشكل آمن)' : 'Estimated Days (Safe Speed)'}</span>
+                          <span className="text-white font-black text-xl">{toolResult.days} {lang === 'ar' ? 'أيام' : 'Days'}</span>
+                        </div>
+                        <div className="pt-4 border-t border-white/5">
+                          <button 
+                            onClick={() => setView('boosting')}
+                            className="w-full py-3 bg-snap-yellow text-black rounded-xl font-bold hover:scale-105 transition-all text-sm"
+                          >
+                            {lang === 'ar' ? 'احصل عليها فوراً عبر خدمتنا' : 'Get it instantly with our service'}
+                          </button>
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -2519,10 +2540,11 @@ export default function App() {
                 </p>
               </div>
 
-              <div className="glass p-10 rounded-[3rem] border-white/10">
-                <div className="space-y-8">
+              <div className="p-10 rounded-[3rem] bg-purple-600/5 border border-purple-500/20 relative overflow-hidden group">
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors"></div>
+                <div className="space-y-8 relative z-10">
                   <div>
-                    <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'اسم المستخدم' : 'Snapchat Username'}</label>
+                    <label className="block text-xs font-black uppercase tracking-widest text-purple-400 mb-3 ml-2">{lang === 'ar' ? 'اسم المستخدم' : 'Snapchat Username'}</label>
                     <input 
                       type="text"
                       value={checkerInput}
@@ -2554,9 +2576,10 @@ export default function App() {
                     <motion.div 
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-8 rounded-2xl bg-white/5 border border-white/10 space-y-6"
+                      className="p-8 rounded-[2.5rem] bg-purple-600/10 border border-purple-500/30 space-y-6 relative overflow-hidden group"
                     >
-                      <div className="grid grid-cols-2 gap-6">
+                      <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors"></div>
+                      <div className="grid grid-cols-2 gap-6 relative z-10">
                         <div className="text-center p-4 rounded-xl bg-white/5">
                           <div className="text-xs font-bold text-gray-500 uppercase mb-2">{lang === 'ar' ? 'العمر التقريبي' : 'Estimated Age'}</div>
                           <div className="text-2xl font-black text-snap-yellow">{toolResult.age} {lang === 'ar' ? 'سنوات' : 'Years'}</div>
@@ -2566,7 +2589,7 @@ export default function App() {
                           <div className="text-2xl font-black text-snap-yellow">{toolResult.trust}%</div>
                         </div>
                       </div>
-                      <div className="p-4 rounded-xl bg-snap-yellow/10 border border-snap-yellow/20 text-center">
+                      <div className="p-4 rounded-xl bg-snap-yellow/10 border border-snap-yellow/20 text-center relative z-10">
                         <div className="text-xs font-bold text-gray-400 uppercase mb-1">{lang === 'ar' ? 'حالة الحساب' : 'Account Status'}</div>
                         <div className="text-xl font-black text-white">{toolResult.status}</div>
                       </div>
@@ -2592,10 +2615,11 @@ export default function App() {
 
               <div className="grid lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-1 space-y-6">
-                  <div className="glass p-8 rounded-[2.5rem] border-white/10">
-                    <div className="space-y-6">
+                  <div className="p-8 rounded-[2.5rem] bg-orange-600/5 border border-orange-500/20 relative overflow-hidden group">
+                    <div className="absolute -top-10 -right-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors"></div>
+                    <div className="space-y-6 relative z-10">
                       <div>
-                        <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">{lang === 'ar' ? 'السكور الحالي' : 'Current'}</label>
+                        <label className="block text-xs font-black uppercase tracking-widest text-orange-400 mb-2">{lang === 'ar' ? 'السكور الحالي' : 'Current'}</label>
                         <input 
                           type="number"
                           value={trackerInput.current}
@@ -2604,7 +2628,7 @@ export default function App() {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">{lang === 'ar' ? 'الهدف النهائي' : 'Goal'}</label>
+                        <label className="block text-xs font-black uppercase tracking-widest text-orange-400 mb-2">{lang === 'ar' ? 'الهدف النهائي' : 'Goal'}</label>
                         <input 
                           type="number"
                           value={trackerInput.target}
@@ -2652,10 +2676,29 @@ export default function App() {
 
                         <div className="grid grid-cols-1 gap-4">
                           {toolResult.milestones.map((m: any, i: number) => (
-                            <div key={i} className={`p-6 rounded-2xl border transition-all ${toolResult.cur >= m.score ? 'bg-snap-yellow/10 border-snap-yellow/30' : 'bg-white/5 border-white/10 opacity-50'}`}>
-                              <div className="flex justify-between items-center">
+                            <div key={i} className={`p-6 rounded-2xl border transition-all relative overflow-hidden group ${
+                              toolResult.cur >= m.score 
+                                ? (i % 4 === 0 ? 'bg-blue-600/20 border-blue-500/50' : 
+                                   i % 4 === 1 ? 'bg-purple-600/20 border-purple-500/50' : 
+                                   i % 4 === 2 ? 'bg-orange-600/20 border-orange-500/50' :
+                                   'bg-green-600/20 border-green-500/50')
+                                : 'bg-white/5 border-white/10 opacity-50'
+                            }`}>
+                              <div className={`absolute -top-5 -right-5 w-20 h-20 rounded-full blur-2xl transition-colors ${
+                                toolResult.cur >= m.score 
+                                   ? (i % 4 === 0 ? 'bg-blue-500/10' : 
+                                      i % 4 === 1 ? 'bg-purple-500/10' : 
+                                      i % 4 === 2 ? 'bg-orange-500/10' :
+                                      'bg-green-500/10')
+                                   : 'bg-transparent'
+                              }`}></div>
+                              <div className="flex justify-between items-center relative z-10">
                                 <div className="flex items-center gap-4">
-                                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${toolResult.cur >= m.score ? 'bg-snap-yellow text-black' : 'bg-white/10 text-gray-500'}`}>
+                                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                                    toolResult.cur >= m.score 
+                                       ? 'bg-snap-yellow text-black' 
+                                       : 'bg-white/10 text-gray-500'
+                                  }`}>
                                     {toolResult.cur >= m.score ? <CheckCircle2 className="w-6 h-6" /> : <Star className="w-5 h-5" />}
                                   </div>
                                   <div>
@@ -2695,10 +2738,11 @@ export default function App() {
                 <p className="text-gray-400 font-medium">{t.tools_ui.bitmoji.subtitle}</p>
               </div>
 
-              <div className="glass p-10 rounded-[3rem] border-white/10">
-                <div className="space-y-8">
+              <div className="p-10 rounded-[3rem] bg-orange-600/5 border border-orange-500/20 relative overflow-hidden group">
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors"></div>
+                <div className="space-y-8 relative z-10">
                   <div>
-                    <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'وصف الشخصية' : 'Character Description'}</label>
+                    <label className="block text-xs font-black uppercase tracking-widest text-orange-400 mb-3 ml-2">{lang === 'ar' ? 'وصف الشخصية' : 'Character Description'}</label>
                     <textarea 
                       value={bitmojiInput}
                       onChange={(e) => setBitmojiInput(e.target.value)}
@@ -2724,21 +2768,24 @@ export default function App() {
                     <motion.div 
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      className="space-y-6"
+                      className="p-8 rounded-[2.5rem] bg-orange-600/10 border border-orange-500/30 space-y-6 relative overflow-hidden group"
                     >
-                      <div className="text-center text-xs font-black uppercase tracking-widest text-gray-500">{t.tools_ui.bitmoji.result}</div>
-                      <div className="aspect-square rounded-[2rem] overflow-hidden border-4 border-snap-yellow/20 shadow-2xl max-w-sm mx-auto">
-                        <img src={toolResult.image} alt="Bitmoji" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                      </div>
-                      <div className="flex justify-center">
-                        <a 
-                          href={toolResult.image} 
-                          download="bitmoji-avatar.png"
-                          className="flex items-center gap-2 text-snap-yellow font-black uppercase tracking-widest text-sm hover:underline"
-                        >
-                          <Download className="w-4 h-4" />
-                          {lang === 'ar' ? 'تحميل الصورة' : 'Download Image'}
-                        </a>
+                      <div className="absolute -top-10 -right-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors"></div>
+                      <div className="relative z-10">
+                        <div className="text-center text-xs font-black uppercase tracking-widest text-snap-yellow mb-4">{t.tools_ui.bitmoji.result}</div>
+                        <div className="aspect-square rounded-[2rem] overflow-hidden border-4 border-white/10 shadow-2xl max-w-sm mx-auto">
+                          <img src={toolResult.image} alt="Bitmoji" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                        </div>
+                        <div className="flex justify-center mt-6">
+                          <a 
+                            href={toolResult.image} 
+                            download="bitmoji-avatar.png"
+                            className="flex items-center gap-2 text-snap-yellow font-black uppercase tracking-widest text-sm hover:underline"
+                          >
+                            <Download className="w-4 h-4" />
+                            {lang === 'ar' ? 'تحميل الصورة' : 'Download Image'}
+                          </a>
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -2758,8 +2805,9 @@ export default function App() {
                 <p className="text-gray-400 font-medium">{t.tools_ui.lens.subtitle}</p>
               </div>
 
-              <div className="glass p-10 rounded-[3rem] border-white/10">
-                <div className="space-y-8">
+              <div className="p-10 rounded-[3rem] bg-blue-600/5 border border-blue-500/20 relative overflow-hidden group">
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors"></div>
+                <div className="space-y-8 relative z-10">
                   <div 
                     onClick={() => fileInputRef.current?.click()}
                     className="aspect-video rounded-2xl border-2 border-dashed border-white/10 flex flex-col items-center justify-center cursor-pointer hover:border-snap-yellow/50 transition-colors overflow-hidden relative group"
@@ -2810,11 +2858,14 @@ export default function App() {
                     <motion.div 
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="space-y-6"
+                      className="p-8 rounded-[2.5rem] bg-blue-600/10 border border-blue-500/30 space-y-6 relative overflow-hidden group"
                     >
-                      <div className="text-center text-xs font-black uppercase tracking-widest text-gray-500">{t.tools_ui.lens.result}</div>
-                      <div className="aspect-square rounded-[2rem] overflow-hidden border-4 border-snap-yellow/20 shadow-2xl max-w-sm mx-auto">
-                        <img src={toolResult.image} alt="Lens Result" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                      <div className="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors"></div>
+                      <div className="relative z-10">
+                        <div className="text-center text-xs font-black uppercase tracking-widest text-snap-yellow mb-4">{t.tools_ui.lens.result}</div>
+                        <div className="aspect-square rounded-[2rem] overflow-hidden border-4 border-white/10 shadow-2xl max-w-sm mx-auto">
+                          <img src={toolResult.image} alt="Lens Result" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -2834,10 +2885,11 @@ export default function App() {
                 <p className="text-gray-400 font-medium">{t.tools_ui.map.subtitle}</p>
               </div>
 
-              <div className="glass p-10 rounded-[3rem] border-white/10">
-                <div className="space-y-8">
+              <div className="p-10 rounded-[3rem] bg-green-600/5 border border-green-500/20 relative overflow-hidden group">
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-green-500/10 rounded-full blur-3xl group-hover:bg-green-500/20 transition-colors"></div>
+                <div className="space-y-8 relative z-10">
                   <div className="relative">
-                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-500 w-6 h-6" />
+                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-green-400 w-6 h-6" />
                     <input 
                       type="text"
                       value={mapInput}
@@ -2864,34 +2916,37 @@ export default function App() {
                     <motion.div 
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="space-y-8"
+                      className="p-8 rounded-[2.5rem] bg-green-600/10 border border-green-500/30 space-y-8 relative overflow-hidden group"
                     >
-                      <div className="text-xs font-black uppercase tracking-widest text-gray-500 text-center">{t.tools_ui.map.result}</div>
-                      
-                      <div className="prose prose-invert max-w-none">
-                        <div className="text-gray-300 leading-relaxed whitespace-pre-wrap">
-                          {toolResult.text}
+                      <div className="absolute -top-10 -right-10 w-32 h-32 bg-green-500/10 rounded-full blur-3xl group-hover:bg-green-500/20 transition-colors"></div>
+                      <div className="relative z-10">
+                        <div className="text-xs font-black uppercase tracking-widest text-snap-yellow text-center mb-6">{t.tools_ui.map.result}</div>
+                        
+                        <div className="prose prose-invert max-w-none">
+                          <div className="text-gray-300 leading-relaxed whitespace-pre-wrap bg-white/5 p-6 rounded-2xl border border-white/10">
+                            {toolResult.text}
+                          </div>
                         </div>
-                      </div>
 
-                      {toolResult.maps && toolResult.maps.length > 0 && (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          {toolResult.maps.map((m: any, i: number) => (
-                            <a 
-                              key={i} 
-                              href={m.uri} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-snap-yellow/30 transition-all group"
-                            >
-                              <div className="flex items-center justify-between">
-                                <span className="font-black group-hover:text-snap-yellow transition-colors">{m.title}</span>
-                                <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-snap-yellow transition-all group-hover:translate-x-1" />
-                              </div>
-                            </a>
-                          ))}
-                        </div>
-                      )}
+                        {toolResult.maps && toolResult.maps.length > 0 && (
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+                            {toolResult.maps.map((m: any, i: number) => (
+                              <a 
+                                key={i} 
+                                href={m.uri} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-snap-yellow/30 transition-all group"
+                              >
+                                <div className="flex items-center justify-between">
+                                  <span className="font-black group-hover:text-snap-yellow transition-colors">{m.title}</span>
+                                  <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-snap-yellow transition-all group-hover:translate-x-1" />
+                                </div>
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                      </div>
                     </motion.div>
                   )}
                 </div>
