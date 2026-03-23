@@ -50,6 +50,19 @@ const translations = {
         { id: 'calc', title: "Snapchat Score Calculator", ar: "سناب شات سكور حاسبة" },
         { id: 'checker', title: "Account Age & Trust Checker", ar: "فاحص عمر الحساب" },
         { id: 'tracker', title: "Snapchat Score Milestone Tracker", ar: "مخطط أهداف السكور" }
+      ],
+      serviceItems: [
+        { id: 'boosting', title: "Score Boosting", ar: "زيادة السكور" },
+        { id: 'followers', title: "Follower Increase", ar: "زيادة المتابعين" },
+        { id: 'views', title: "Stories Spotlight View", ar: "مشاهدات الستوري" },
+        { id: 'lens', title: "Create Lens", ar: "إنشاء عدسات" },
+        { id: 'badge', title: "Verified Badge", ar: "توثيق الحساب" }
+      ],
+      catalogItems: [
+        { id: 'score', title: "Score Account", ar: "حسابات سكور" },
+        { id: 'followers', title: "Follower Account", ar: "حسابات متابعين" },
+        { id: 'age', title: "Age Account", ar: "حسابات قديمة" },
+        { id: 'verified', title: "Verified Account", ar: "حسابات موثقة" }
       ]
     },
     hero: {
@@ -255,6 +268,19 @@ const translations = {
         { id: 'calc', title: "سناب شات سكور حاسبة", en: "Snapchat Score Calculator" },
         { id: 'checker', title: "فاحص عمر الحساب", en: "Account Age & Trust Checker" },
         { id: 'tracker', title: "مخطط أهداف السكور", en: "Snapchat Score Milestone Tracker" }
+      ],
+      serviceItems: [
+        { id: 'boosting', title: "زيادة السكور", en: "Score Boosting" },
+        { id: 'followers', title: "زيادة المتابعين", en: "Follower Increase" },
+        { id: 'views', title: "مشاهدات الستوري", en: "Stories Spotlight View" },
+        { id: 'lens', title: "إنشاء عدسات", en: "Create Lens" },
+        { id: 'badge', title: "توثيق الحساب", en: "Verified Badge" }
+      ],
+      catalogItems: [
+        { id: 'score', title: "حسابات سكور", en: "Score Account" },
+        { id: 'followers', title: "حسابات متابعين", en: "Follower Account" },
+        { id: 'age', title: "حسابات قديمة", en: "Age Account" },
+        { id: 'verified', title: "حسابات موثقة", en: "Verified Account" }
       ]
     },
     hero: {
@@ -731,6 +757,65 @@ export default function App() {
           <div className="hidden md:flex items-center gap-8 text-sm font-bold text-gray-400">
             <button onClick={() => setView('home')} className={`hover:text-snap-yellow transition-colors ${view === 'home' ? 'text-snap-yellow' : ''}`}>{t.nav.home}</button>
             <button onClick={() => setView('shop')} className={`hover:text-snap-yellow transition-colors ${view === 'shop' ? 'text-snap-yellow' : ''}`}>{t.nav.packages}</button>
+            {/* Services Dropdown */}
+            <div className="relative group">
+              <button className="hover:text-snap-yellow transition-colors flex items-center gap-1 py-4">
+                {t.nav.services}
+                <ChevronRight className="w-4 h-4 rotate-90" />
+              </button>
+              <div className="absolute top-full left-0 w-64 bg-matte-black border border-white/10 rounded-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                {t.nav.serviceItems.map((item: any) => (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      if (item.id === 'boosting') {
+                        setView('boosting');
+                      } else if (item.id === 'followers') {
+                        setView('shop');
+                        setShopTab('followers');
+                      } else {
+                        setView('shop');
+                        setShopTab('services');
+                      }
+                    }}
+                    className="w-full text-left px-4 py-3 rounded-xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider"
+                  >
+                    {item.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Catalog Dropdown */}
+            <div className="relative group">
+              <button className="hover:text-snap-yellow transition-colors flex items-center gap-1 py-4">
+                {t.nav.catalog}
+                <ChevronRight className="w-4 h-4 rotate-90" />
+              </button>
+              <div className="absolute top-full left-0 w-64 bg-matte-black border border-white/10 rounded-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                {t.nav.catalogItems.map((item: any) => (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      if (item.id === 'score' || item.id === 'age') {
+                        setView('shop');
+                        setShopTab('score');
+                      } else if (item.id === 'followers') {
+                        setView('shop');
+                        setShopTab('followers');
+                      } else {
+                        setView('shop');
+                        setShopTab('services');
+                      }
+                    }}
+                    className="w-full text-left px-4 py-3 rounded-xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider"
+                  >
+                    {item.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <button onClick={() => setView('blog')} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
             
             {/* Tools Dropdown */}
@@ -801,6 +886,55 @@ export default function App() {
                 <button onClick={() => { setView('blog'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.blog}</button>
                 
                 <div className="space-y-4">
+                  <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.services}</div>
+                  {t.nav.serviceItems.map((item: any) => (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        if (item.id === 'boosting') {
+                          setView('boosting');
+                        } else if (item.id === 'followers') {
+                          setView('shop');
+                          setShopTab('followers');
+                        } else {
+                          setView('shop');
+                          setShopTab('services');
+                        }
+                        setIsMenuOpen(false);
+                      }}
+                      className="w-full text-right hover:text-snap-yellow transition-colors pr-4 border-r border-white/10"
+                    >
+                      {item.title}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="space-y-4">
+                  <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.catalog}</div>
+                  {t.nav.catalogItems.map((item: any) => (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        if (item.id === 'score' || item.id === 'age') {
+                          setView('shop');
+                          setShopTab('score');
+                        } else if (item.id === 'followers') {
+                          setView('shop');
+                          setShopTab('followers');
+                        } else {
+                          setView('shop');
+                          setShopTab('services');
+                        }
+                        setIsMenuOpen(false);
+                      }}
+                      className="w-full text-right hover:text-snap-yellow transition-colors pr-4 border-r border-white/10"
+                    >
+                      {item.title}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="space-y-4">
                   <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.tools}</div>
                   {t.nav.toolItems.map((item: any) => (
                     <button
@@ -817,8 +951,8 @@ export default function App() {
                   ))}
                 </div>
 
-                <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'خدماتنا' : 'Services'}</a>
-                <a href="#catalog" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الحسابات' : 'Catalog'}</a>
+                <a href="#how" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{t.nav.how}</a>
+                <a href="#faq" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{t.nav.faq}</a>
                 <button 
                   onClick={() => {
                     setIsMenuOpen(false);
