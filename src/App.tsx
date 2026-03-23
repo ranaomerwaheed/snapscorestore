@@ -95,10 +95,6 @@ const translations = {
       order: "Order Now",
       price: "Price"
     },
-    guarantee: {
-      title: "14-Day Money Back Guarantee",
-      desc: "We stand by our service. If you're not satisfied, we'll refund your purchase within 14 days."
-    },
     checkout: {
       summary: "Order Summary",
       package: "Selected Package",
@@ -213,6 +209,10 @@ const translations = {
         {
           q: "Do I need to provide my password?",
           a: "For score boosting, we need temporary access. For followers or buying new accounts, no password is required."
+        },
+        {
+          q: "What is the 14-Day Money Back Guarantee?",
+          a: "We stand by our service. If you're not satisfied with the results, we'll refund your purchase within 14 days."
         }
       ]
     },
@@ -249,16 +249,6 @@ const translations = {
           excerpt: "Discover the most effective and safe methods to boost your score in 2024.",
           link: "https://freesnapscores.com/blog/how-to-increase-snapchat-score"
         }
-      ]
-    },
-    payments: {
-      title: "Secure Payments",
-      subtitle: "We accept all major payment methods",
-      methods: [
-        { name: "Apple Pay", icon: "" },
-        { name: "STC Pay", icon: "stc" },
-        { name: "Mada", icon: "mada" },
-        { name: "Credit Card", icon: "💳" }
       ]
     },
     cta: {
@@ -348,10 +338,6 @@ const translations = {
       buy: "طلب عبر واتساب",
       order: "اطلب الآن",
       price: "السعر"
-    },
-    guarantee: {
-      title: "ضمان استرداد الأموال لمدة 14 يوماً",
-      desc: "نحن نثق في خدماتنا. إذا لم تكن راضياً، سنعيد لك أموالك خلال 14 يوماً."
     },
     checkout: {
       summary: "ملخص الطلب",
@@ -467,6 +453,10 @@ const translations = {
         {
           q: "هل أحتاج لتزويدكم بكلمة المرور؟",
           a: "لرفع السكور، نحتاج وصولاً مؤقتاً. لزيادة المتابعين أو شراء حسابات جديدة، لا يلزم وجود كلمة مرور."
+        },
+        {
+          q: "ما هو ضمان استرداد الأموال لمدة 14 يوماً؟",
+          a: "نحن نثق في خدماتنا. إذا لم تكن راضياً عن النتائج، سنعيد لك أموالك خلال 14 يوماً."
         }
       ]
     },
@@ -503,16 +493,6 @@ const translations = {
           excerpt: "اكتشف أكثر الطرق فعالية وأماناً لرفع السكور في 2024.",
           link: "https://freesnapscores.com/blog/how-to-increase-snapchat-score"
         }
-      ]
-    },
-    payments: {
-      title: "دفع آمن",
-      subtitle: "نقبل جميع طرق الدفع الرئيسية",
-      methods: [
-        { name: "Apple Pay", icon: "" },
-        { name: "STC Pay", icon: "stc" },
-        { name: "Mada", icon: "mada" },
-        { name: "Credit Card", icon: "💳" }
       ]
     },
     cta: {
@@ -984,7 +964,8 @@ export default function App() {
                 {t.nav.catalog}
                 <ChevronRight className="w-4 h-4 rotate-90" />
               </button>
-              <div className="absolute top-full left-0 w-64 bg-matte-black border border-white/10 rounded-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+              <div className="absolute top-full left-0 w-64 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-snap-yellow/5 to-transparent rounded-3xl pointer-events-none"></div>
                 {t.nav.catalogItems.map((item: any) => (
                   <button
                     key={item.id}
@@ -1000,7 +981,7 @@ export default function App() {
                         setShopTab('services');
                       }
                     }}
-                    className="w-full text-left px-4 py-3 rounded-xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider"
+                    className="w-full text-left px-4 py-3 rounded-2xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider relative z-10"
                   >
                     {item.title}
                   </button>
@@ -1014,7 +995,8 @@ export default function App() {
                 {t.nav.services}
                 <ChevronRight className="w-4 h-4 rotate-90" />
               </button>
-              <div className="absolute top-full left-0 w-64 bg-matte-black border border-white/10 rounded-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+              <div className="absolute top-full left-0 w-64 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-snap-yellow/5 to-transparent rounded-3xl pointer-events-none"></div>
                 {t.nav.serviceItems.map((item: any) => (
                   <button
                     key={item.id}
@@ -1029,7 +1011,7 @@ export default function App() {
                         setShopTab('services');
                       }
                     }}
-                    className="w-full text-left px-4 py-3 rounded-xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider"
+                    className="w-full text-left px-4 py-3 rounded-2xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider relative z-10"
                   >
                     {item.title}
                   </button>
@@ -1043,7 +1025,8 @@ export default function App() {
                 {t.nav.tools}
                 <ChevronRight className="w-4 h-4 rotate-90" />
               </button>
-              <div className="absolute top-full left-0 w-64 bg-matte-black border border-white/10 rounded-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+              <div className="absolute top-full left-0 w-64 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-snap-yellow/5 to-transparent rounded-3xl pointer-events-none"></div>
                 {t.nav.toolItems.map((item: any) => (
                   <button
                     key={item.id}
@@ -1051,7 +1034,7 @@ export default function App() {
                       setView(item.id as any);
                       setToolResult(null);
                     }}
-                    className="w-full text-left px-4 py-3 rounded-xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider"
+                    className="w-full text-left px-4 py-3 rounded-2xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider relative z-10"
                   >
                     {item.title}
                   </button>
@@ -1292,33 +1275,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* Guarantee Section */}
-        <section className="py-12 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="glass p-8 rounded-3xl border-snap-yellow/30 flex flex-col md:flex-row items-center gap-8 text-center md:text-right">
-              <div className="w-20 h-20 bg-snap-yellow/10 rounded-full flex items-center justify-center text-snap-yellow flex-shrink-0">
-                <RefreshCcw className="w-10 h-10" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-black mb-2 text-snap-yellow">{t.guarantee.title}</h2>
-                <p className="text-gray-400 font-medium">{t.guarantee.desc}</p>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* Trust Section */}
-        <section className="py-12 bg-white/5 border-y border-white/5 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-              <div className="text-2xl font-black tracking-tighter">FORBES</div>
-              <div className="text-2xl font-black tracking-tighter italic">VOGUE</div>
-              <div className="text-2xl font-black tracking-tighter">GQ</div>
-              <div className="text-2xl font-black tracking-tighter">WIRED</div>
-              <div className="text-2xl font-black tracking-tighter italic">Esquire</div>
-            </div>
-          </div>
-        </section>
 
         {/* Stats Section */}
         <section className="py-20 px-6 bg-matte-black border-y border-white/5 bg-mesh-2 section-divider">
@@ -1355,13 +1312,25 @@ export default function App() {
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.2 }}
-                  className="glass p-10 rounded-[2.5rem] group hover:border-snap-yellow/50 transition-all duration-500 relative overflow-hidden"
+                  className={`p-10 rounded-[2.5rem] group border border-white/10 hover:border-white/50 transition-all duration-500 relative overflow-hidden ${
+                    i === 0 ? 'bg-blue-500/5' : 
+                    i === 1 ? 'bg-purple-500/5' : 
+                    'bg-orange-500/5'
+                  }`}
                 >
-                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-snap-yellow/5 rounded-full blur-3xl group-hover:bg-snap-yellow/10 transition-colors"></div>
-                  <div className="w-20 h-20 bg-snap-yellow/10 rounded-3xl flex items-center justify-center mb-8 text-snap-yellow group-hover:scale-110 transition-transform duration-500 shadow-[inset_0_0_20px_rgba(255,252,0,0.1)]">
+                  <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
+                    i === 0 ? 'bg-blue-500/10' : 
+                    i === 1 ? 'bg-purple-500/10' : 
+                    'bg-orange-500/10'
+                  }`}></div>
+                  <div className={`w-20 h-20 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-[inset_0_0_20px_rgba(255,255,255,0.05)] ${
+                    i === 0 ? 'bg-blue-500/10 text-blue-400' : 
+                    i === 1 ? 'bg-purple-500/10 text-purple-400' : 
+                    'bg-orange-500/10 text-orange-400'
+                  }`}>
                     {i === 0 ? <Lock className="w-10 h-10" /> : i === 1 ? <ShieldCheck className="w-10 h-10" /> : <Infinity className="w-10 h-10" />}
                   </div>
-                  <h3 className="text-3xl font-black mb-4">{item.title}</h3>
+                  <h3 className="text-3xl font-black mb-4 text-white">{item.title}</h3>
                   <p className="text-gray-400 leading-relaxed text-lg">{item.desc}</p>
                 </motion.div>
               ))}
@@ -1545,29 +1514,37 @@ export default function App() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="glass rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-snap-yellow/30 transition-all group"
+                  className={`rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-white/50 transition-all group relative ${
+                    i === 0 ? 'bg-gradient-to-br from-blue-600/20 to-cyan-500/20' : 
+                    i === 1 ? 'bg-gradient-to-br from-purple-600/20 to-pink-500/20' : 
+                    i === 2 ? 'bg-gradient-to-br from-orange-500/20 to-yellow-400/20' :
+                    'bg-gradient-to-br from-green-600/20 to-emerald-500/20'
+                  }`}
                 >
-                  <div className="aspect-video overflow-hidden">
-                    <img 
-                      src={`https://picsum.photos/seed/blog-${i}/600/400`} 
-                      alt={post.title} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                  <div className="p-8">
-                    <div className="text-xs font-bold text-snap-yellow uppercase tracking-widest mb-4">{post.date}</div>
-                    <h3 className="text-2xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors">{post.title}</h3>
-                    <p className="text-gray-400 mb-8 leading-relaxed">{post.excerpt}</p>
-                    <a 
-                      href={post.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn"
-                    >
-                      {t.blog.readMore}
-                      <ChevronRight className={`w-4 h-4 transition-transform group-hover/btn:translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover/btn:-translate-x-1' : ''}`} />
-                    </a>
+                  <div className="absolute inset-0 backdrop-blur-xl pointer-events-none"></div>
+                  <div className="relative z-10">
+                    <div className="aspect-video overflow-hidden">
+                      <img 
+                        src={`https://picsum.photos/seed/blog-${i}/600/400`} 
+                        alt={post.title} 
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div className="p-8">
+                      <div className="text-xs font-bold text-snap-yellow uppercase tracking-widest mb-4">{post.date}</div>
+                      <h3 className="text-2xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors">{post.title}</h3>
+                      <p className="text-gray-400 mb-8 leading-relaxed">{post.excerpt}</p>
+                      <a 
+                        href={post.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn"
+                      >
+                        {t.blog.readMore}
+                        <ChevronRight className={`w-4 h-4 transition-transform group-hover/btn:translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover/btn:-translate-x-1' : ''}`} />
+                      </a>
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -1649,11 +1626,24 @@ export default function App() {
                   </div>
                   <div className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10">
                     <div className="w-14 h-14 rounded-full bg-snap-yellow/10 flex items-center justify-center text-snap-yellow">
-                      <Globe className="w-8 h-8" />
+                      <Send className="w-8 h-8" />
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">Service Area</div>
-                      <div className="text-2xl font-black text-white">GCC & Middle East</div>
+                      <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">Email Support</div>
+                      <div className="text-2xl font-black text-white">support@snapscore.store</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10">
+                    <div className="w-14 h-14 rounded-full bg-snap-yellow/10 flex items-center justify-center text-snap-yellow">
+                      <Share2 className="w-8 h-8" />
+                    </div>
+                    <div>
+                      <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">Social Media</div>
+                      <div className="flex gap-4 mt-2">
+                        <Facebook className="w-6 h-6 hover:text-snap-yellow cursor-pointer transition-colors" />
+                        <Twitter className="w-6 h-6 hover:text-snap-yellow cursor-pointer transition-colors" />
+                        <Instagram className="w-6 h-6 hover:text-snap-yellow cursor-pointer transition-colors" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1689,68 +1679,8 @@ export default function App() {
           </div>
         </section>
 
-        {/* Payment Methods Section */}
-        <section className="py-24 px-6 bg-matte-black border-t border-white/5">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl lg:text-5xl font-black mb-4 uppercase tracking-tight">{t.payments.title}</h2>
-              <p className="text-gray-400 font-bold">{t.payments.subtitle}</p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {t.payments.methods.map((method, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="glass p-8 rounded-3xl text-center border border-white/5 hover:border-snap-yellow/30 transition-all group"
-                >
-                  <div className="w-16 h-16 bg-snap-yellow/10 rounded-2xl flex items-center justify-center mx-auto mb-6 text-snap-yellow group-hover:scale-110 transition-transform">
-                    {method.icon}
-                  </div>
-                  <h4 className="text-xl font-black mb-2">{method.name}</h4>
-                  <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">{method.desc}</p>
-                </motion.div>
-              ))}
-            </div>
 
-            {/* Payment Logos Row */}
-            <div className="mt-16 flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-8" referrerPolicy="no-referrer" />
-              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-12" referrerPolicy="no-referrer" />
-              <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" className="h-10" referrerPolicy="no-referrer" />
-              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-8" referrerPolicy="no-referrer" />
-              <div className="text-2xl font-black text-white tracking-tighter">Payoneer</div>
-              <div className="text-2xl font-black text-white tracking-tighter">PAYEER</div>
-            </div>
-          </div>
-        </section>
 
-        {/* Footer CTA */}
-        <section className="px-6 pb-20">
-          <div className="max-w-7xl mx-auto">
-            <div className="bg-snap-yellow rounded-[3rem] p-12 lg:p-20 text-center relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-                <div className="absolute top-0 left-0 w-64 h-64 bg-black rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-                <div className="absolute bottom-0 right-0 w-64 h-64 bg-black rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
-              </div>
-              
-              <h2 className="text-4xl lg:text-6xl font-black text-black mb-8">{t.cta.title}</h2>
-              <p className="text-black/70 text-xl mb-12 max-w-2xl mx-auto font-bold">
-                {t.cta.desc}
-              </p>
-              
-              <button 
-                onClick={() => openWhatsApp(lang === 'ar' ? 'أريد البدء في استخدام خدماتكم المميزة' : 'I want to start using your premium services')}
-                className="bg-black text-white px-10 py-5 rounded-2xl font-black text-xl flex items-center gap-4 mx-auto hover:scale-105 transition-transform animate-whatsapp"
-              >
-                <WhatsAppIcon className="w-8 h-8" />
-                {t.cta.button}
-              </button>
-            </div>
-          </div>
-        </section>
           </>
         )}
 
@@ -1934,17 +1864,7 @@ export default function App() {
                     </p>
                   </div>
 
-                  <div className="space-y-4">
-                    <h3 className="text-sm font-bold text-gray-500 uppercase tracking-widest">{t.checkout.paymentTitle}</h3>
-                    <div className="grid grid-cols-2 gap-4">
-                      {t.payments.methods.map((method, i) => (
-                        <button key={i} className="p-4 rounded-xl border border-white/10 bg-white/5 hover:border-snap-yellow transition-all flex items-center gap-3">
-                          <div className="text-snap-yellow">{method.icon}</div>
-                          <span className="text-xs font-bold">{method.name}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+
 
                   <button 
                     onClick={handleCheckout}
@@ -2689,9 +2609,28 @@ export default function App() {
               </div>
             </div>
             
-            <div className="flex gap-8 text-xs font-bold text-gray-500">
-              <a href="#" className="hover:text-snap-yellow transition-colors">{t.footer.privacy}</a>
-              <a href="#" className="hover:text-snap-yellow transition-colors">{t.footer.terms}</a>
+            <div className="flex flex-col gap-6">
+              <div className="flex gap-4">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                  <Twitter className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                  <Youtube className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              </div>
+              <div className="flex gap-8 text-xs font-bold text-gray-500">
+                <a href="#" className="hover:text-snap-yellow transition-colors">{t.footer.privacy}</a>
+                <a href="#" className="hover:text-snap-yellow transition-colors">{t.footer.terms}</a>
+              </div>
             </div>
           </div>
         </div>
