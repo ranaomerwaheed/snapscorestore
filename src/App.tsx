@@ -215,19 +215,28 @@ const translations = {
       readMore: "Read More",
       posts: [
         {
-          title: "How to Increase Your Snap Score Fast",
+          title: "Snapchat Account Safety Guide: Safe Login Practices & Ban Prevention",
+          date: "March 20, 2024",
+          excerpt: "Learn how to keep your account safe and prevent bans with our comprehensive safety guide.",
+          link: "https://freesnapscores.com/blog/snapchat-account-safety-guide"
+        },
+        {
+          title: "Snapchat Score Top-Up: Important Information During Top-Up Process",
+          date: "March 18, 2024",
+          excerpt: "Everything you need to know about the score top-up process and what to expect.",
+          link: "https://freesnapscores.com/blog/snapchat-score-topup"
+        },
+        {
+          title: "Buy Premade Snapchat Accounts with High SnapScore (10k to 1M+)",
           date: "March 15, 2024",
-          excerpt: "Discover the most effective and safe methods to boost your score in 2024."
+          excerpt: "Discover the benefits of buying premade accounts with high scores and how to choose the right one.",
+          link: "https://freesnapscores.com/blog/buy-premade-snapchat-accounts-with-high-snapscore"
         },
         {
-          title: "Why Aged Accounts are Better",
-          date: "March 10, 2024",
-          excerpt: "The benefits of using accounts with history for your personal brand."
-        },
-        {
-          title: "Snapchat Security Best Practices",
-          date: "March 5, 2024",
-          excerpt: "Keep your account safe while growing your presence online."
+          title: "How to Increase Your Snap Score Fast & Safely in 2024",
+          date: "March 12, 2024",
+          excerpt: "Discover the most effective and safe methods to boost your score in 2024.",
+          link: "https://freesnapscores.com/blog/how-to-increase-snapchat-score"
         }
       ]
     },
@@ -433,19 +442,28 @@ const translations = {
       readMore: "اقرأ المزيد",
       posts: [
         {
-          title: "كيف ترفع سكور سناب شات بسرعة",
+          title: "دليل أمان حساب سناب شات: ممارسات تسجيل الدخول الآمن ومنع الحظر",
+          date: "20 مارس 2024",
+          excerpt: "تعرف على كيفية الحفاظ على أمان حسابك ومنع الحظر من خلال دليل الأمان الشامل الخاص بنا.",
+          link: "https://freesnapscores.com/blog/snapchat-account-safety-guide"
+        },
+        {
+          title: "شحن سكور سناب شات: معلومات مهمة أثناء عملية الشحن",
+          date: "18 مارس 2024",
+          excerpt: "كل ما تحتاج معرفته عن عملية شحن السكور وماذا تتوقع.",
+          link: "https://freesnapscores.com/blog/snapchat-score-topup"
+        },
+        {
+          title: "شراء حسابات سناب شات جاهزة بسكور عالٍ (10 آلاف إلى مليون+)",
           date: "15 مارس 2024",
-          excerpt: "اكتشف أكثر الطرق فعالية وأماناً لرفع السكور في 2024."
+          excerpt: "اكتشف فوائد شراء حسابات جاهزة بسكور عالٍ وكيفية اختيار الحساب المناسب.",
+          link: "https://freesnapscores.com/blog/buy-premade-snapchat-accounts-with-high-snapscore"
         },
         {
-          title: "لماذا الحسابات القديمة أفضل؟",
-          date: "10 مارس 2024",
-          excerpt: "فوائد استخدام حسابات قديمة لعلامتك التجارية الشخصية."
-        },
-        {
-          title: "أفضل ممارسات أمان سناب شات",
-          date: "5 مارس 2024",
-          excerpt: "حافظ على أمان حسابك أثناء نمو حضورك عبر الإنترنت."
+          title: "كيف ترفع سكور سناب شات بسرعة وأمان في 2024",
+          date: "12 مارس 2024",
+          excerpt: "اكتشف أكثر الطرق فعالية وأماناً لرفع السكور في 2024.",
+          link: "https://freesnapscores.com/blog/how-to-increase-snapchat-score"
         }
       ]
     },
@@ -741,7 +759,7 @@ export default function App() {
       </div>
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-matte-black/95 backdrop-blur-3xl border-b border-white/10 shadow-[0_10px_50px_rgba(0,0,0,0.8)]">
+      <header className="fixed top-0 left-0 right-0 z-50 header-gradient backdrop-blur-3xl shadow-[0_10px_50px_rgba(0,0,0,0.8)]">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
           {/* Header Glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-snap-yellow/50 to-transparent"></div>
@@ -1317,7 +1335,7 @@ export default function App() {
         </section>
 
         {/* Blog Section */}
-        <section id="blog" className="py-32 px-6 bg-matte-black">
+        <section id="blog" className="py-32 px-6 bg-matte-black bg-mesh-2 section-divider">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tight">{t.blog.title}</h2>
@@ -1346,13 +1364,15 @@ export default function App() {
                     <div className="text-xs font-bold text-snap-yellow uppercase tracking-widest mb-4">{post.date}</div>
                     <h3 className="text-2xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors">{post.title}</h3>
                     <p className="text-gray-400 mb-8 leading-relaxed">{post.excerpt}</p>
-                    <button 
-                      onClick={() => openWhatsApp(lang === 'ar' ? `أريد قراءة المزيد عن: ${post.title}` : `I want to read more about: ${post.title}`)}
+                    <a 
+                      href={post.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn"
                     >
                       {t.blog.readMore}
                       <ChevronRight className={`w-4 h-4 transition-transform group-hover/btn:translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover/btn:-translate-x-1' : ''}`} />
-                    </button>
+                    </a>
                   </div>
                 </motion.div>
               ))}
@@ -2181,110 +2201,78 @@ export default function App() {
         )}
       </main>
 
-      <footer className="bg-matte-black pt-24 pb-12 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
+      <footer className="footer-gradient pt-32 pb-12 px-6 relative overflow-hidden">
+        {/* Footer Background Mesh */}
+        <div className="absolute inset-0 bg-mesh-1 opacity-20 pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-            {/* Brand Column */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-3">
-                <Star className="w-8 h-8 text-snap-yellow fill-snap-yellow" />
-                <span className="text-2xl font-black tracking-tighter text-white">SNAP BOOST</span>
+            <div className="space-y-8">
+              <div className="flex items-center gap-4 group">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-snap-yellow blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                  <img 
+                    src="https://freesnapscores.com/assets/logo.svg" 
+                    alt="SnapScore Store" 
+                    className="w-12 h-12 relative z-10 drop-shadow-[0_0_15px_rgba(255,252,0,0.5)] group-hover:scale-110 group-hover:rotate-12 transition-all duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <span className="text-2xl font-black tracking-tighter text-glow-yellow group-hover:text-snap-yellow transition-colors">
+                  {lang === 'ar' ? 'سناب سكور ستور' : 'SnapScore Store'}
+                </span>
               </div>
-              <p className="text-gray-400 leading-relaxed font-medium">
+              <p className="text-gray-400 font-medium leading-relaxed">
                 {lang === 'ar' 
-                  ? 'الخدمة الرائدة عالمياً لرفع سكور السناب شات وتوفير الحسابات القديمة والموثقة بأمان تام.' 
-                  : 'The leading global service for Snapchat score boosting and providing aged, verified accounts with total security.'}
+                  ? 'المزود الرائد عالمياً لخدمات نمو سناب شات. نحن نساعدك على بناء حضور قوي وموثوق بأمان تام.' 
+                  : 'The world\'s leading provider of Snapchat growth services. We help you build a strong and credible presence safely.'}
               </p>
-              <div className="flex flex-wrap gap-3">
-                <a href="https://facebook.com/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="https://twitter.com/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a href="https://instagram.com/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="https://linkedin.com/company/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a href="https://youtube.com/@snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
-                  <Youtube className="w-5 h-5" />
-                </a>
-                <a href="https://t.me/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
-                  <Send className="w-5 h-5" />
-                </a>
-                <a href="https://reddit.com/user/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
-                  <Share2 className="w-5 h-5" />
-                </a>
-                <a href="https://pinterest.com/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
-                  <Star className="w-5 h-5" />
-                </a>
-                <button onClick={() => openWhatsApp('Social Inquiry')} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
-                  <WhatsAppIcon className="w-5 h-5" />
-                </button>
+              <div className="flex gap-4">
+                {['twitter', 'instagram', 'facebook'].map((social) => (
+                  <a key={social} href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all duration-300">
+                    <Star className="w-4 h-4" />
+                  </a>
+                ))}
               </div>
             </div>
 
-            {/* Quick Links */}
             <div>
-              <h4 className="text-white font-black mb-8 uppercase tracking-widest text-sm">{lang === 'ar' ? 'روابط سريعة' : 'Quick Links'}</h4>
-              <ul className="space-y-4 text-gray-400 font-bold">
-                <li><a href="#services" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'خدماتنا' : 'Our Services'}</a></li>
-                <li><a href="#catalog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'كتالوج الحسابات' : 'Account Catalog'}</a></li>
-                <li><a href="#how" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'كيف نعمل' : 'How It Works'}</a></li>
-                <li><a href="#blog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'المدونة' : 'Blog'}</a></li>
-                <li><a href="#faq" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الأسئلة الشائعة' : 'FAQ'}</a></li>
-                <li><button onClick={() => openWhatsApp('Contact')} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'اتصل بنا' : 'Contact Us'}</button></li>
+              <h4 className="text-xl font-black mb-8 uppercase tracking-widest text-snap-yellow">{lang === 'ar' ? 'روابط سريعة' : 'Quick Links'}</h4>
+              <ul className="space-y-4">
+                <li><a href="#catalog" className="text-gray-400 hover:text-snap-yellow transition-colors font-bold">{t.nav.catalog}</a></li>
+                <li><a href="#services" className="text-gray-400 hover:text-snap-yellow transition-colors font-bold">{t.nav.services}</a></li>
+                <li><a href="#tools" className="text-gray-400 hover:text-snap-yellow transition-colors font-bold">{t.nav.tools}</a></li>
+                <li><a href="#blog" className="text-gray-400 hover:text-snap-yellow transition-colors font-bold">{t.nav.blog}</a></li>
               </ul>
             </div>
 
-            {/* Services */}
             <div>
-              <h4 className="text-white font-black mb-8 uppercase tracking-widest text-sm">{lang === 'ar' ? 'خدماتنا' : 'Services'}</h4>
-              <ul className="space-y-4 text-gray-400 font-bold">
-                <li>{lang === 'ar' ? 'زيادة السكور' : 'Score Boosting'}</li>
-                <li>{lang === 'ar' ? 'حسابات قديمة' : 'Aged Accounts'}</li>
-                <li>{lang === 'ar' ? 'توثيق الحسابات' : 'Account Verification'}</li>
-                <li>{lang === 'ar' ? 'زيادة المشاهدات' : 'Views Growth'}</li>
+              <h4 className="text-xl font-black mb-8 uppercase tracking-widest text-snap-yellow">{lang === 'ar' ? 'خدماتنا' : 'Our Services'}</h4>
+              <ul className="space-y-4">
+                {t.nav.serviceItems.map((item) => (
+                  <li key={item.id}><a href="#" className="text-gray-400 hover:text-snap-yellow transition-colors font-bold">{item.title}</a></li>
+                ))}
               </ul>
             </div>
 
-            {/* Contact Info */}
             <div>
-              <h4 className="text-white font-black mb-8 uppercase tracking-widest text-sm">{lang === 'ar' ? 'تواصل معنا' : 'Contact'}</h4>
-              <div className="space-y-6">
-                <div className="flex items-center gap-4 text-gray-400">
-                  <div className="w-10 h-10 rounded-xl bg-snap-yellow/10 flex items-center justify-center text-snap-yellow">
-                    <WhatsAppIcon className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase tracking-widest font-black text-gray-500">WhatsApp</div>
-                    <div className="font-bold text-white">{WHATSAPP_NUMBER}</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 text-gray-400">
-                  <div className="w-10 h-10 rounded-xl bg-snap-yellow/10 flex items-center justify-center text-snap-yellow">
-                    <Globe className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase tracking-widest font-black text-gray-500">Region</div>
-                    <div className="font-bold text-white">Worldwide (USA, UK, Global)</div>
-                  </div>
-                </div>
-              </div>
+              <h4 className="text-xl font-black mb-8 uppercase tracking-widest text-snap-yellow">{lang === 'ar' ? 'تواصل معنا' : 'Contact Us'}</h4>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3 text-gray-400 font-bold">
+                  <WhatsAppIcon className="w-5 h-5 text-snap-yellow" />
+                  <span>{WHATSAPP_NUMBER}</span>
+                </li>
+                <li className="text-gray-400 font-bold">
+                  {lang === 'ar' ? 'متاحون 24/7 للمساعدة' : 'Available 24/7 for support'}
+                </li>
+              </ul>
             </div>
           </div>
 
           <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex flex-wrap justify-center gap-4 items-center">
-              <div className="flex gap-3 text-xl">
-              </div>
-            </div>
-            
-            <div className="text-gray-500 text-xs font-bold flex items-center gap-2">
-              {t.footer.rights}
-              <div className="mt-2 text-[10px] opacity-50 flex items-center gap-2">
+            <div className="text-gray-500 text-xs font-bold flex flex-col gap-2">
+              <div>{t.footer.rights}</div>
+              <div className="opacity-50 flex items-center gap-2">
                 <div className="w-4 h-4 bg-snap-yellow rounded-sm flex items-center justify-center">
                   <Star className="text-black w-2.5 h-2.5 fill-black" />
                 </div>
@@ -2306,7 +2294,7 @@ export default function App() {
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => openWhatsApp(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات سناب بوست' : 'Hello, I want to inquire about Snap Boost services')}
+        onClick={() => openWhatsApp(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات سناب سكور ستور' : 'Hello, I want to inquire about SnapScore Store services')}
         className="fixed bottom-24 right-8 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] flex items-center justify-center group"
       >
         <WhatsAppIcon className="w-10 h-10" />
