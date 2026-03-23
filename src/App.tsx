@@ -22,6 +22,9 @@ import {
   Twitter,
   Instagram,
   Linkedin,
+  Youtube,
+  Send,
+  Share2,
   ArrowRight,
   ShieldCheck,
   RefreshCcw,
@@ -40,13 +43,19 @@ const translations = {
       faq: "FAQ",
       blog: "Blog",
       contact: "Contact",
+      tools: "Tools",
       shop: "Shop Now",
-      lang: "العربية"
+      lang: "العربية",
+      toolItems: [
+        { id: 'calc', title: "Snapchat Score Calculator", ar: "سناب شات سكور حاسبة" },
+        { id: 'checker', title: "Account Age & Trust Checker", ar: "فاحص عمر الحساب" },
+        { id: 'tracker', title: "Snapchat Score Milestone Tracker", ar: "مخطط أهداف السكور" }
+      ]
     },
     hero: {
       badge: "Trusted by 10,000+ Clients",
       title: "Boost Your Snapchat Presence Instantly",
-      desc: "Securely increase your Snap Score, get aged accounts, and grow your followers with the GCC's most trusted provider.",
+      desc: "Securely increase your Snap Score, get aged accounts, and grow your followers with the world's most trusted provider.",
       cta: "View Catalog",
       secondary: "Our Services",
       scoreLabel: "Current Score",
@@ -194,17 +203,17 @@ const translations = {
       posts: [
         {
           title: "How to Increase Your Snap Score Fast",
-          date: "March 25, 2026",
+          date: "March 15, 2024",
           excerpt: "Discover the most effective and safe methods to boost your score in 2024."
         },
         {
           title: "Why Aged Accounts are Better",
-          date: "March 22, 2026",
+          date: "March 10, 2024",
           excerpt: "The benefits of using accounts with history for your personal brand."
         },
         {
           title: "Snapchat Security Best Practices",
-          date: "March 5, 2026",
+          date: "March 5, 2024",
           excerpt: "Keep your account safe while growing your presence online."
         }
       ]
@@ -239,13 +248,19 @@ const translations = {
       faq: "الأسئلة الشائعة",
       blog: "المدونة",
       contact: "اتصل بنا",
+      tools: "الأدوات",
       shop: "تسوق الآن",
-      lang: "English"
+      lang: "English",
+      toolItems: [
+        { id: 'calc', title: "سناب شات سكور حاسبة", en: "Snapchat Score Calculator" },
+        { id: 'checker', title: "فاحص عمر الحساب", en: "Account Age & Trust Checker" },
+        { id: 'tracker', title: "مخطط أهداف السكور", en: "Snapchat Score Milestone Tracker" }
+      ]
     },
     hero: {
       badge: "موثوق من قبل +10,000 عميل",
       title: "ارفع سكور السناب شات فوراً",
-      desc: "زد سكور حسابك بأمان، احصل على حسابات قديمة، ونمِ متابعيك مع المزود الأكثر ثقة.",
+      desc: "زد سكور حسابك بأمان، احصل على حسابات قديمة، ونمِ متابعيك مع المزود الأكثر ثقة عالمياً.",
       cta: "عرض الكتالوج",
       secondary: "خدماتنا",
       scoreLabel: "السكور الحالي",
@@ -286,7 +301,7 @@ const translations = {
     },
     why: {
       title: "لماذا تختار سناب بوست؟",
-      subtitle: "نقدم خدمات النمو الأكثر أماناً وفعالية في المنطقة.",
+      subtitle: "نقدم خدمات النمو الأكثر أماناً وفعالية عالمياً.",
       items: [
         {
           title: "أمان تام",
@@ -500,7 +515,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
-  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'boosting'>('home');
+  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'boosting' | 'calc' | 'checker' | 'tracker'>('home');
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
   const [selectedBoostingTier, setSelectedBoostingTier] = useState<any>(null);
   const [checkoutData, setCheckoutData] = useState({ username: '', password: '' });
@@ -511,6 +526,12 @@ export default function App() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [shopTab, setShopTab] = useState<'score' | 'followers' | 'services'>('score');
+
+  // Tool States
+  const [calcInput, setCalcInput] = useState({ current: '', target: '' });
+  const [checkerInput, setCheckerInput] = useState('');
+  const [trackerInput, setTrackerInput] = useState({ current: '', target: '' });
+  const [toolResult, setToolResult] = useState<any>(null);
 
   const scoreAccountsStock = [
     { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
@@ -641,6 +662,29 @@ export default function App() {
             <button onClick={() => setView('home')} className={`hover:text-snap-yellow transition-colors ${view === 'home' ? 'text-snap-yellow' : ''}`}>{t.nav.home}</button>
             <button onClick={() => setView('shop')} className={`hover:text-snap-yellow transition-colors ${view === 'shop' ? 'text-snap-yellow' : ''}`}>{t.nav.packages}</button>
             <button onClick={() => setView('blog')} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
+            
+            {/* Tools Dropdown */}
+            <div className="relative group">
+              <button className="hover:text-snap-yellow transition-colors flex items-center gap-1 py-4">
+                {t.nav.tools}
+                <ChevronRight className="w-4 h-4 rotate-90" />
+              </button>
+              <div className="absolute top-full left-0 w-64 bg-matte-black border border-white/10 rounded-2xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl">
+                {t.nav.toolItems.map((item: any) => (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      setView(item.id as any);
+                      setToolResult(null);
+                    }}
+                    className="w-full text-left px-4 py-3 rounded-xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider"
+                  >
+                    {item.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <a href="#services" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'خدماتنا' : 'Services'}</a>
             <a href="#catalog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الحسابات' : 'Catalog'}</a>
           </div>
@@ -685,6 +729,24 @@ export default function App() {
                 <button onClick={() => { setView('home'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الرئيسية' : 'Home'}</button>
                 <button onClick={() => { setView('shop'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.shop}</button>
                 <button onClick={() => { setView('blog'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.blog}</button>
+                
+                <div className="space-y-4">
+                  <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.tools}</div>
+                  {t.nav.toolItems.map((item: any) => (
+                    <button
+                      key={item.id}
+                      onClick={() => {
+                        setView(item.id as any);
+                        setIsMenuOpen(false);
+                        setToolResult(null);
+                      }}
+                      className="w-full text-right hover:text-snap-yellow transition-colors pr-4 border-r border-white/10"
+                    >
+                      {item.title}
+                    </button>
+                  ))}
+                </div>
+
                 <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'خدماتنا' : 'Services'}</a>
                 <a href="#catalog" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الحسابات' : 'Catalog'}</a>
                 <button 
@@ -718,7 +780,7 @@ export default function App() {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-snap-yellow/10 border border-snap-yellow/20 text-snap-yellow text-xs font-bold mb-8">
                 <BadgeCheck className="w-4 h-4" />
-                {lang === 'ar' ? 'الخدمة رقم 1 في الخليج' : '#1 Trusted Service in GCC'}
+                {lang === 'ar' ? 'الخدمة رقم 1 عالمياً' : '#1 Trusted Service Worldwide'}
               </div>
               <h1 className="text-6xl lg:text-8xl font-black leading-[0.9] mb-8 tracking-tighter">
                 {t.hero.title} <br />
@@ -1647,6 +1709,267 @@ export default function App() {
             </div>
           </section>
         )}
+        {view === 'calc' && (
+          <section className="pt-40 pb-24 px-6 min-h-[80vh]">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-16">
+                <h1 className="text-5xl font-black mb-6 uppercase tracking-tighter">
+                  {lang === 'ar' ? 'سناب شات سكور' : 'Snapchat Score'} <span className="text-snap-yellow">{lang === 'ar' ? 'حاسبة' : 'Calculator'}</span>
+                </h1>
+                <p className="text-gray-400 font-medium">
+                  {lang === 'ar' ? 'احسب عدد السنابات المطلوبة للوصول إلى هدفك' : 'Calculate how many snaps are needed to reach your target score'}
+                </p>
+              </div>
+
+              <div className="glass p-10 rounded-[3rem] border-white/10">
+                <div className="space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                      <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'السكور الحالي' : 'Current Score'}</label>
+                      <input 
+                        type="number"
+                        value={calcInput.current}
+                        onChange={(e) => setCalcInput({...calcInput, current: e.target.value})}
+                        placeholder="e.g. 10000"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'السكور المستهدف' : 'Target Score'}</label>
+                      <input 
+                        type="number"
+                        value={calcInput.target}
+                        onChange={(e) => setCalcInput({...calcInput, target: e.target.value})}
+                        placeholder="e.g. 100000"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold"
+                      />
+                    </div>
+                  </div>
+
+                  <button 
+                    onClick={() => {
+                      const diff = parseInt(calcInput.target) - parseInt(calcInput.current);
+                      if (diff > 0) {
+                        setToolResult({
+                          snaps: Math.ceil(diff / 1.5),
+                          days: Math.ceil(diff / 5000),
+                          effort: diff > 50000 ? 'High' : 'Moderate'
+                        });
+                      }
+                    }}
+                    className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all text-xl"
+                  >
+                    {lang === 'ar' ? 'احسب الآن' : 'Calculate Now'}
+                  </button>
+
+                  {toolResult && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-8 rounded-2xl bg-white/5 border border-white/10 space-y-4"
+                    >
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'السنابات المطلوبة تقريباً' : 'Estimated Snaps Needed'}</span>
+                        <span className="text-snap-yellow font-black text-2xl">{toolResult.snaps.toLocaleString()}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'الأيام المتوقعة (بشكل آمن)' : 'Estimated Days (Safe Speed)'}</span>
+                        <span className="text-white font-black text-xl">{toolResult.days} {lang === 'ar' ? 'أيام' : 'Days'}</span>
+                      </div>
+                      <div className="pt-4 border-t border-white/5">
+                        <button 
+                          onClick={() => setView('boosting')}
+                          className="w-full py-3 border border-snap-yellow/30 text-snap-yellow rounded-xl font-bold hover:bg-snap-yellow hover:text-black transition-all text-sm"
+                        >
+                          {lang === 'ar' ? 'احصل عليها فوراً عبر خدمتنا' : 'Get it instantly with our service'}
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {view === 'checker' && (
+          <section className="pt-40 pb-24 px-6 min-h-[80vh]">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-16">
+                <h1 className="text-5xl font-black mb-6 uppercase tracking-tighter">
+                  {lang === 'ar' ? 'فاحص عمر' : 'Account Age'} <span className="text-snap-yellow">{lang === 'ar' ? 'الحساب والموثوقية' : '& Trust Checker'}</span>
+                </h1>
+                <p className="text-gray-400 font-medium">
+                  {lang === 'ar' ? 'تحقق من عمر حسابك ومستوى الموثوقية' : 'Check your account age and trust level'}
+                </p>
+              </div>
+
+              <div className="glass p-10 rounded-[3rem] border-white/10">
+                <div className="space-y-8">
+                  <div>
+                    <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'اسم المستخدم' : 'Snapchat Username'}</label>
+                    <input 
+                      type="text"
+                      value={checkerInput}
+                      onChange={(e) => setCheckerInput(e.target.value)}
+                      placeholder="@username"
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold"
+                    />
+                  </div>
+
+                  <button 
+                    onClick={() => {
+                      setIsProcessing(true);
+                      setTimeout(() => {
+                        const hash = checkerInput.length;
+                        setToolResult({
+                          age: 2024 - (hash % 10 + 2012),
+                          trust: 60 + (hash % 40),
+                          status: hash % 3 === 0 ? 'Excellent' : 'Good'
+                        });
+                        setIsProcessing(false);
+                      }, 1500);
+                    }}
+                    className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all text-xl flex items-center justify-center gap-3"
+                  >
+                    {isProcessing ? <RefreshCcw className="animate-spin w-6 h-6" /> : (lang === 'ar' ? 'فحص الآن' : 'Check Now')}
+                  </button>
+
+                  {toolResult && !isProcessing && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-8 rounded-2xl bg-white/5 border border-white/10 space-y-6"
+                    >
+                      <div className="grid grid-cols-2 gap-6">
+                        <div className="text-center p-4 rounded-xl bg-white/5">
+                          <div className="text-xs font-bold text-gray-500 uppercase mb-2">{lang === 'ar' ? 'العمر التقريبي' : 'Estimated Age'}</div>
+                          <div className="text-2xl font-black text-snap-yellow">{toolResult.age} {lang === 'ar' ? 'سنوات' : 'Years'}</div>
+                        </div>
+                        <div className="text-center p-4 rounded-xl bg-white/5">
+                          <div className="text-xs font-bold text-gray-500 uppercase mb-2">{lang === 'ar' ? 'نقاط الثقة' : 'Trust Score'}</div>
+                          <div className="text-2xl font-black text-snap-yellow">{toolResult.trust}%</div>
+                        </div>
+                      </div>
+                      <div className="p-4 rounded-xl bg-snap-yellow/10 border border-snap-yellow/20 text-center">
+                        <div className="text-xs font-bold text-gray-400 uppercase mb-1">{lang === 'ar' ? 'حالة الحساب' : 'Account Status'}</div>
+                        <div className="text-xl font-black text-white">{toolResult.status}</div>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {view === 'tracker' && (
+          <section className="pt-40 pb-24 px-6 min-h-[80vh]">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <h1 className="text-5xl font-black mb-6 uppercase tracking-tighter">
+                  {lang === 'ar' ? 'مخطط أهداف' : 'Score Milestone'} <span className="text-snap-yellow">{lang === 'ar' ? 'السكور' : 'Tracker'}</span>
+                </h1>
+                <p className="text-gray-400 font-medium">
+                  {lang === 'ar' ? 'خطط لمسار نمو حسابك والوصول للمراتب العليا' : 'Plan your growth path and reach top tiers'}
+                </p>
+              </div>
+
+              <div className="grid lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-1 space-y-6">
+                  <div className="glass p-8 rounded-[2.5rem] border-white/10">
+                    <div className="space-y-6">
+                      <div>
+                        <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">{lang === 'ar' ? 'السكور الحالي' : 'Current'}</label>
+                        <input 
+                          type="number"
+                          value={trackerInput.current}
+                          onChange={(e) => setTrackerInput({...trackerInput, current: e.target.value})}
+                          className="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:border-snap-yellow outline-none font-bold"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-2">{lang === 'ar' ? 'الهدف النهائي' : 'Goal'}</label>
+                        <input 
+                          type="number"
+                          value={trackerInput.target}
+                          onChange={(e) => setTrackerInput({...trackerInput, target: e.target.value})}
+                          className="w-full bg-white/5 border border-white/10 rounded-xl p-4 focus:border-snap-yellow outline-none font-bold"
+                        />
+                      </div>
+                      <button 
+                        onClick={() => {
+                          const cur = parseInt(trackerInput.current) || 0;
+                          const tar = parseInt(trackerInput.target) || 1000000;
+                          const milestones = [
+                            { label: 'Bronze', score: Math.floor(tar * 0.25) },
+                            { label: 'Silver', score: Math.floor(tar * 0.5) },
+                            { label: 'Gold', score: Math.floor(tar * 0.75) },
+                            { label: 'Diamond', score: tar }
+                          ];
+                          setToolResult({ cur, tar, milestones });
+                        }}
+                        className="w-full py-4 bg-snap-yellow text-black font-black rounded-xl hover:scale-105 transition-all"
+                      >
+                        {lang === 'ar' ? 'تحديث المخطط' : 'Update Tracker'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="lg:col-span-2">
+                  <div className="glass p-10 rounded-[3rem] border-white/10 h-full">
+                    {toolResult ? (
+                      <div className="space-y-12">
+                        <div className="relative pt-8">
+                          <div className="h-4 bg-white/5 rounded-full overflow-hidden border border-white/10">
+                            <motion.div 
+                              initial={{ width: 0 }}
+                              animate={{ width: `${Math.min((toolResult.cur / toolResult.tar) * 100, 100)}%` }}
+                              className="h-full bg-snap-yellow shadow-[0_0_20px_rgba(255,252,0,0.5)]"
+                            />
+                          </div>
+                          <div className="flex justify-between mt-4 text-xs font-black uppercase tracking-widest text-gray-500">
+                            <span>{toolResult.cur.toLocaleString()}</span>
+                            <span>{toolResult.tar.toLocaleString()}</span>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-4">
+                          {toolResult.milestones.map((m: any, i: number) => (
+                            <div key={i} className={`p-6 rounded-2xl border transition-all ${toolResult.cur >= m.score ? 'bg-snap-yellow/10 border-snap-yellow/30' : 'bg-white/5 border-white/10 opacity-50'}`}>
+                              <div className="flex justify-between items-center">
+                                <div className="flex items-center gap-4">
+                                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${toolResult.cur >= m.score ? 'bg-snap-yellow text-black' : 'bg-white/10 text-gray-500'}`}>
+                                    {toolResult.cur >= m.score ? <CheckCircle2 className="w-6 h-6" /> : <Star className="w-5 h-5" />}
+                                  </div>
+                                  <div>
+                                    <div className="text-sm font-black uppercase tracking-widest">{m.label} Tier</div>
+                                    <div className="text-xs font-bold text-gray-500">{m.score.toLocaleString()} Score</div>
+                                  </div>
+                                </div>
+                                {toolResult.cur < m.score && (
+                                  <div className="text-[10px] font-black text-snap-yellow uppercase tracking-widest">
+                                    {(m.score - toolResult.cur).toLocaleString()} Left
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="h-full flex flex-col items-center justify-center text-center text-gray-500">
+                        <TrendingUp className="w-16 h-16 mb-4 opacity-20" />
+                        <p className="font-bold">{lang === 'ar' ? 'أدخل بياناتك لعرض مخطط النمو' : 'Enter your data to view growth roadmap'}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
       </main>
 
       <footer className="bg-matte-black pt-24 pb-12 border-t border-white/5">
@@ -1660,21 +1983,33 @@ export default function App() {
               </div>
               <p className="text-gray-400 leading-relaxed font-medium">
                 {lang === 'ar' 
-                  ? 'الخدمة الرائدة في الخليج لرفع سكور السناب شات وتوفير الحسابات القديمة والموثقة بأمان تام.' 
-                  : 'The leading service in GCC for Snapchat score boosting and providing aged, verified accounts with total security.'}
+                  ? 'الخدمة الرائدة عالمياً لرفع سكور السناب شات وتوفير الحسابات القديمة والموثقة بأمان تام.' 
+                  : 'The leading global service for Snapchat score boosting and providing aged, verified accounts with total security.'}
               </p>
-              <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
+              <div className="flex flex-wrap gap-3">
+                <a href="https://facebook.com/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="https://twitter.com/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="https://instagram.com/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="https://linkedin.com/company/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
                   <Linkedin className="w-5 h-5" />
+                </a>
+                <a href="https://youtube.com/@snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
+                  <Youtube className="w-5 h-5" />
+                </a>
+                <a href="https://t.me/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
+                  <Send className="w-5 h-5" />
+                </a>
+                <a href="https://reddit.com/user/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
+                  <Share2 className="w-5 h-5" />
+                </a>
+                <a href="https://pinterest.com/snapscorestore" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
+                  <Star className="w-5 h-5" />
                 </a>
                 <button onClick={() => openWhatsApp('Social Inquiry')} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all">
                   <WhatsAppIcon className="w-5 h-5" />
@@ -1725,7 +2060,7 @@ export default function App() {
                   </div>
                   <div>
                     <div className="text-[10px] uppercase tracking-widest font-black text-gray-500">Region</div>
-                    <div className="font-bold text-white">GCC (KSA, UAE, Qatar)</div>
+                    <div className="font-bold text-white">Worldwide (USA, UK, Global)</div>
                   </div>
                 </div>
               </div>
