@@ -41,7 +41,7 @@ const translations = {
       blog: "Blog",
       contact: "Contact",
       shop: "Shop Now",
-      lang: "Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©"
+      lang: "العربية"
     },
     hero: {
       badge: "Trusted by 10,000+ Clients",
@@ -213,10 +213,10 @@ const translations = {
       title: "Secure Payments",
       subtitle: "We accept all major payment methods",
       methods: [
-        { name: "Apple Pay", icon: "ï£¿" },
+        { name: "Apple Pay", icon: "" },
         { name: "Google Pay", icon: "stc" },
         { name: "Mada", icon: "mada" },
-        { name: "Credit Card", icon: "ðŸ’³" }
+        { name: "Credit Card", icon: "💳" }
       ]
     },
     cta: {
@@ -225,237 +225,237 @@ const translations = {
       button: "Contact on WhatsApp"
     },
     footer: {
-      rights: "Â© 2026 Snap Boost. All rights reserved.",
+      rights: "© 2026 Snap Boost. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
     }
   },
   ar: {
     nav: {
-      home: "Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©",
-      services: "Ø®Ø¯Ù…Ø§ØªÙ†Ø§",
-      catalog: "Ø§Ù„ÙƒØªØ§Ù„ÙˆØ¬",
-      how: "ÙƒÙŠÙ Ù†Ø¹Ù…Ù„",
-      faq: "Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©",
-      blog: "Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©",
-      contact: "Ø§ØªØµÙ„ Ø¨Ù†Ø§",
-      shop: "ØªØ³ÙˆÙ‚ Ø§Ù„Ø¢Ù†",
+      home: "الرئيسية",
+      services: "خدماتنا",
+      catalog: "الكتالوج",
+      how: "كيف نعمل",
+      faq: "الأسئلة الشائعة",
+      blog: "المدونة",
+      contact: "اتصل بنا",
+      shop: "تسوق الآن",
       lang: "English"
     },
     hero: {
-      badge: "Ù…ÙˆØ«ÙˆÙ‚ Ù…Ù† Ù‚Ø¨Ù„ +10,000 Ø¹Ù…ÙŠÙ„",
-      title: "Ø§Ø±ÙØ¹ Ø³ÙƒÙˆØ± Ø§Ù„Ø³Ù†Ø§Ø¨ Ø´Ø§Øª ÙÙˆØ±Ø§Ù‹",
-      desc: "Ø²Ø¯ Ø³ÙƒÙˆØ± Ø­Ø³Ø§Ø¨Ùƒ Ø¨Ø£Ù…Ø§Ù†ØŒ Ø§Ø­ØµÙ„ Ø¹Ù„Ù‰ Ø­Ø³Ø§Ø¨Ø§Øª Ù‚Ø¯ÙŠÙ…Ø©ØŒ ÙˆÙ†Ù…Ù Ù…ØªØ§Ø¨Ø¹ÙŠÙƒ Ù…Ø¹ Ø§Ù„Ù…Ø²ÙˆØ¯ Ø§Ù„Ø£ÙƒØ«Ø± Ø«Ù‚Ø©.",
-      cta: "Ø¹Ø±Ø¶ Ø§Ù„ÙƒØªØ§Ù„ÙˆØ¬",
-      secondary: "Ø®Ø¯Ù…Ø§ØªÙ†Ø§",
-      scoreLabel: "Ø§Ù„Ø³ÙƒÙˆØ± Ø§Ù„Ø­Ø§Ù„ÙŠ",
-      targetLabel: "Ø§Ù„Ø²ÙŠØ§Ø¯Ø© Ø§Ù„Ù…Ø³ØªÙ‡Ø¯ÙØ©"
+      badge: "موثوق من قبل +10,000 عميل",
+      title: "ارفع سكور السناب شات فوراً",
+      desc: "زد سكور حسابك بأمان، احصل على حسابات قديمة، ونمِ متابعيك مع المزود الأكثر ثقة.",
+      cta: "عرض الكتالوج",
+      secondary: "خدماتنا",
+      scoreLabel: "السكور الحالي",
+      targetLabel: "الزيادة المستهدفة"
     },
     shop: {
-      title: "Ø§Ù„ÙƒØªØ§Ù„ÙˆØ¬ Ø§Ù„Ù…Ù…ÙŠØ²",
-      subtitle: "Ø§Ø®ØªØ± Ø§Ù„Ø¨Ø§Ù‚Ø© Ø§Ù„Ù…Ù†Ø§Ø³Ø¨Ø© Ù„Ø§Ø­ØªÙŠØ§Ø¬Ø§ØªÙƒ",
-      scoreAccounts: "Ø­Ø³Ø§Ø¨Ø§Øª Ø³ÙƒÙˆØ±",
-      followerAccounts: "Ø­Ø³Ø§Ø¨Ø§Øª Ù…ØªØ§Ø¨Ø¹ÙŠÙ†",
-      servicesTab: "Ø®Ø¯Ù…Ø§Øª Ø§Ù„Ù†Ù…Ùˆ",
-      buy: "Ø·Ù„Ø¨ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨",
-      order: "Ø§Ø·Ù„Ø¨ Ø§Ù„Ø¢Ù†",
-      price: "Ø§Ù„Ø³Ø¹Ø±"
+      title: "الكتالوج المميز",
+      subtitle: "اختر الباقة المناسبة لاحتياجاتك",
+      scoreAccounts: "حسابات سكور",
+      followerAccounts: "حسابات متابعين",
+      servicesTab: "خدمات النمو",
+      buy: "طلب عبر واتساب",
+      order: "اطلب الآن",
+      price: "السعر"
     },
     guarantee: {
-      title: "Ø¶Ù…Ø§Ù† Ø§Ø³ØªØ±Ø¯Ø§Ø¯ Ø§Ù„Ø£Ù…ÙˆØ§Ù„ Ù„Ù…Ø¯Ø© 14 ÙŠÙˆÙ…Ø§Ù‹",
-      desc: "Ù†Ø­Ù† Ù†Ø«Ù‚ ÙÙŠ Ø®Ø¯Ù…Ø§ØªÙ†Ø§. Ø¥Ø°Ø§ Ù„Ù… ØªÙƒÙ† Ø±Ø§Ø¶ÙŠØ§Ù‹ØŒ Ø³Ù†Ø¹ÙŠØ¯ Ù„Ùƒ Ø£Ù…ÙˆØ§Ù„Ùƒ Ø®Ù„Ø§Ù„ 14 ÙŠÙˆÙ…Ø§Ù‹."
+      title: "ضمان استرداد الأموال لمدة 14 يوماً",
+      desc: "نحن نثق في خدماتنا. إذا لم تكن راضياً، سنعيد لك أموالك خلال 14 يوماً."
     },
     checkout: {
-      summary: "Ù…Ù„Ø®Øµ Ø§Ù„Ø·Ù„Ø¨",
-      package: "Ø§Ù„Ø¨Ø§Ù‚Ø© Ø§Ù„Ù…Ø®ØªØ§Ø±Ø©",
-      price: "Ø§Ù„Ø³Ø¹Ø± Ø§Ù„Ø¥Ø¬Ù…Ø§Ù„ÙŠ",
-      details: "ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø­Ø³Ø§Ø¨",
-      username: "Ø§Ø³Ù… Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… (Ø§Ù„ÙŠÙˆØ²Ø±)",
-      password: "ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± (Ù…Ø·Ù„ÙˆØ¨Ø© Ù„Ù„Ø³ÙƒÙˆØ±)",
-      notice: "Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ù…Ø´ÙØ±Ø© ÙˆØªØ³ØªØ®Ø¯Ù… ÙÙ‚Ø· Ù„Ø¹Ù…Ù„ÙŠØ© Ø§Ù„Ø±ÙØ¹. Ù†Ù†ØµØ­ Ø¨ØªØºÙŠÙŠØ± ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ± Ø¨Ø¹Ø¯ Ø§Ù„Ø§Ù†ØªÙ‡Ø§Ø¡.",
-      button: "ØªØ£ÙƒÙŠØ¯ Ø§Ù„Ø·Ù„Ø¨ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨",
-      processing: "Ø¬Ø§Ø±ÙŠ Ø§Ù„Ù…Ø¹Ø§Ù„Ø¬Ø©...",
-      paymentTitle: "Ø·Ø±ÙŠÙ‚Ø© Ø§Ù„Ø¯ÙØ¹ Ø§Ù„Ù…ÙØ¶Ù„Ø©",
-      productDetails: "Ø­Ø³Ø§Ø¨ Ø³Ù†Ø§Ø¨ Ø´Ø§Øª Ø¹Ø§Ù„ÙŠ Ø§Ù„Ø¬ÙˆØ¯Ø© Ø¨Ø§Ù„Ù…ÙˆØ§ØµÙØ§Øª Ø§Ù„Ù…Ø°ÙƒÙˆØ±Ø©. Ø§Ù„ØªØ³Ù„ÙŠÙ… ÙŠØ³ØªØºØ±Ù‚ Ø¹Ø§Ø¯Ø© 1-24 Ø³Ø§Ø¹Ø©."
+      summary: "ملخص الطلب",
+      package: "الباقة المختارة",
+      price: "السعر الإجمالي",
+      details: "تفاصيل الحساب",
+      username: "اسم المستخدم (اليوزر)",
+      password: "كلمة المرور (مطلوبة للسكور)",
+      notice: "بياناتك مشفرة وتستخدم فقط لعملية الرفع. ننصح بتغيير كلمة المرور بعد الانتهاء.",
+      button: "تأكيد الطلب عبر واتساب",
+      processing: "جاري المعالجة...",
+      paymentTitle: "طريقة الدفع المفضلة",
+      productDetails: "حساب سناب شات عالي الجودة بالمواصفات المذكورة. التسليم يستغرق عادة 1-24 ساعة."
     },
     packages: {
-      score: "Ø±ÙØ¹ Ø³ÙƒÙˆØ±",
-      followers: "Ù…ØªØ§Ø¨Ø¹ÙŠÙ†",
-      aged: "Ø­Ø³Ø§Ø¨ Ù‚Ø¯ÙŠÙ…",
-      verified: "Ù…ÙˆØ«Ù‚"
+      score: "رفع سكور",
+      followers: "متابعين",
+      aged: "حساب قديم",
+      verified: "موثق"
     },
     why: {
-      title: "Ù„Ù…Ø§Ø°Ø§ ØªØ®ØªØ§Ø± Ø³Ù†Ø§Ø¨ Ø¨ÙˆØ³ØªØŸ",
-      subtitle: "Ù†Ù‚Ø¯Ù… Ø®Ø¯Ù…Ø§Øª Ø§Ù„Ù†Ù…Ùˆ Ø§Ù„Ø£ÙƒØ«Ø± Ø£Ù…Ø§Ù†Ø§Ù‹ ÙˆÙØ¹Ø§Ù„ÙŠØ© ÙÙŠ Ø§Ù„Ù…Ù†Ø·Ù‚Ø©.",
+      title: "لماذا تختار سناب بوست؟",
+      subtitle: "نقدم خدمات النمو الأكثر أماناً وفعالية في المنطقة.",
       items: [
         {
-          title: "Ø£Ù…Ø§Ù† ØªØ§Ù…",
-          desc: "Ù†Ø³ØªØ®Ø¯Ù… ØªØ´ÙÙŠØ±Ø§Ù‹ Ù…ØªÙ‚Ø¯Ù…Ø§Ù‹ ÙˆØ·Ø±Ù‚Ø§Ù‹ Ø¢Ù…Ù†Ø© ØªØªÙˆØ§ÙÙ‚ Ù…Ø¹ Ø¥Ø±Ø´Ø§Ø¯Ø§Øª Ø§Ù„Ù…Ù†ØµØ©."
+          title: "أمان تام",
+          desc: "نستخدم تشفيراً متقدماً وطرقاً آمنة تتوافق مع إرشادات المنصة."
         },
         {
-          title: "Ø³Ø±Ø¹Ø© Ø§Ù„ØªÙ†ÙÙŠØ°",
-          desc: "ÙŠØªÙ… Ù…Ø¹Ø§Ù„Ø¬Ø© Ù…Ø¹Ø¸Ù… Ø§Ù„Ø·Ù„Ø¨Ø§Øª Ø®Ù„Ø§Ù„ Ø³Ø§Ø¹Ø§Øª. Ù†Ø­Ù† Ù†Ù‚Ø¯Ø± ÙˆÙ‚ØªÙƒ."
+          title: "سرعة التنفيذ",
+          desc: "يتم معالجة معظم الطلبات خلال ساعات. نحن نقدر وقتك."
         },
         {
-          title: "Ø¯Ø¹Ù… 24/7",
-          desc: "ÙØ±ÙŠÙ‚Ù†Ø§ Ø§Ù„Ø®Ø¨ÙŠØ± Ù…ØªØ§Ø­ Ø¹Ù„Ù‰ Ù…Ø¯Ø§Ø± Ø§Ù„Ø³Ø§Ø¹Ø© Ù„Ù…Ø³Ø§Ø¹Ø¯ØªÙƒ Ø¹Ø¨Ø± Ø§Ù„ÙˆØ§ØªØ³Ø§Ø¨."
+          title: "دعم 24/7",
+          desc: "فريقنا الخبير متاح على مدار الساعة لمساعدتك عبر الواتساب."
         }
       ]
     },
     catalog: {
-      title: "Ø§Ù„Ø­Ø³Ø§Ø¨Ø§Øª Ø§Ù„Ù…ØªØ§Ø­Ø©",
-      subtitle: "Ø­Ø³Ø§Ø¨Ø§Øª Ø¬Ø§Ù‡Ø²Ø© Ù„Ù„Ø§Ø³ØªØ®Ø¯Ø§Ù… Ù…Ø¹ Ø³ÙƒÙˆØ± Ø¹Ø§Ù„Ù ÙˆØªØ§Ø±ÙŠØ® Ù‚Ø¯ÙŠÙ…",
-      viewAll: "Ø¹Ø±Ø¶ ÙƒÙ„ Ø§Ù„Ø­Ø³Ø§Ø¨Ø§Øª",
-      score: "Ø§Ù„Ø³ÙƒÙˆØ±",
-      age: "Ø§Ù„Ø¹Ù…Ø±",
-      price: "Ø§Ù„Ø³Ø¹Ø±",
-      buy: "Ø´Ø±Ø§Ø¡ Ø§Ù„Ø¢Ù†",
-      order: "Ø§Ø·Ù„Ø¨ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨",
-      titleHighlight: "Ø§Ù„Ù…ØªØ§Ø­Ø©"
+      title: "الحسابات المتاحة",
+      subtitle: "حسابات جاهزة للاستخدام مع سكور عالٍ وتاريخ قديم",
+      viewAll: "عرض كل الحسابات",
+      score: "السكور",
+      age: "العمر",
+      price: "السعر",
+      buy: "شراء الآن",
+      order: "اطلب عبر واتساب",
+      titleHighlight: "المتاحة"
     },
     services: {
-      title: "Ø®Ø¯Ù…Ø§ØªÙ†Ø§ Ø§Ù„Ù…Ù…ÙŠØ²Ø©",
-      titleHighlight: "Ø§Ù„Ø­Ù„ÙˆÙ„",
-      subtitle: "ÙƒÙ„ Ù…Ø§ ØªØ­ØªØ§Ø¬Ù‡ Ù„Ù„Ø³ÙŠØ·Ø±Ø© Ø¹Ù„Ù‰ Ø³Ù†Ø§Ø¨ Ø´Ø§Øª",
+      title: "خدماتنا المميزة",
+      titleHighlight: "الحلول",
+      subtitle: "كل ما تحتاجه للسيطرة على سناب شات",
       items: [
         {
           icon: <TrendingUp className="w-8 h-8" />,
-          title: "Ø±ÙØ¹ Ø§Ù„Ø³ÙƒÙˆØ±",
-          desc: "Ø²Ø¯ Ø³ÙƒÙˆØ± Ø­Ø³Ø§Ø¨Ùƒ Ø¨Ø¢Ù„Ø§Ù Ø£Ùˆ Ù…Ù„Ø§ÙŠÙŠÙ† Ø§Ù„Ù†Ù‚Ø§Ø· Ø¨Ø£Ù…Ø§Ù† ÙˆØ¨Ø³Ø±Ø¹Ø©."
+          title: "رفع السكور",
+          desc: "زد سكور حسابك بآلاف أو ملايين النقاط بأمان وبسرعة."
         },
         {
           icon: <Infinity className="w-8 h-8" />,
-          title: "Ø­Ø³Ø§Ø¨Ø§Øª Ù‚Ø¯ÙŠÙ…Ø©",
-          desc: "Ø§Ø­ØµÙ„ Ø¹Ù„Ù‰ Ø­Ø³Ø§Ø¨Ø§Øª Ù…Ù†Ø´Ø£Ø© Ù…Ù† 2011-2020 Ù…Ø¹ Ù…ÙˆØ«ÙˆÙ‚ÙŠØ© Ø¹Ø§Ù„ÙŠØ©."
+          title: "حسابات قديمة",
+          desc: "احصل على حسابات منشأة من 2011-2020 مع موثوقية عالية."
         },
         {
           icon: <Users className="w-8 h-8" />,
-          title: "Ø²ÙŠØ§Ø¯Ø© Ø§Ù„Ù…ØªØ§Ø¨Ø¹ÙŠÙ†",
-          desc: "Ù†Ù…Ù Ù…Ù„ÙÙƒ Ø§Ù„Ø´Ø®ØµÙŠ Ø§Ù„Ø¹Ø§Ù… Ø¨Ù…ØªØ§Ø¨Ø¹ÙŠÙ† Ø­Ù‚ÙŠÙ‚ÙŠÙŠÙ† ÙˆÙ†Ø´Ø·ÙŠÙ†."
+          title: "زيادة المتابعين",
+          desc: "نمِ ملفك الشخصي العام بمتابعين حقيقيين ونشطين."
         }
       ]
     },
     how: {
-      title: "ÙƒÙŠÙ ÙŠØ¹Ù…Ù„ Ø§Ù„Ù†Ø¸Ø§Ù…",
-      subtitle: "Ø«Ù„Ø§Ø« Ø®Ø·ÙˆØ§Øª Ø¨Ø³ÙŠØ·Ø© Ù„ØªØ¹Ø²ÙŠØ² Ø­Ø¶ÙˆØ±Ùƒ",
+      title: "كيف يعمل النظام",
+      subtitle: "ثلاث خطوات بسيطة لتعزيز حضورك",
       steps: [
         {
           icon: <ShoppingBag className="w-10 h-10" />,
-          title: "Ø§Ø®ØªØ± Ø§Ù„Ø¨Ø§Ù‚Ø©",
-          desc: "Ø§Ø®ØªØ± Ø§Ù„Ø­Ø³Ø§Ø¨ Ø£Ùˆ Ø§Ù„Ø®Ø¯Ù…Ø© Ø§Ù„ØªÙŠ ØªÙ†Ø§Ø³Ø¨ Ø£Ù‡Ø¯Ø§ÙÙƒ."
+          title: "اختر الباقة",
+          desc: "اختر الحساب أو الخدمة التي تناسب أهدافك."
         },
         {
           icon: <RefreshCcw className="w-10 h-10" />,
-          title: "Ø²ÙˆØ¯Ù†Ø§ Ø¨Ø§Ù„ØªÙØ§ØµÙŠÙ„",
-          desc: "Ø£Ø¯Ø®Ù„ Ø§Ø³Ù… Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… ÙˆØ£ÙƒÙ…Ù„ Ø¹Ù…Ù„ÙŠØ© Ø§Ù„Ø¯ÙØ¹ Ø§Ù„Ø¢Ù…Ù†Ø©."
+          title: "زودنا بالتفاصيل",
+          desc: "أدخل اسم المستخدم وأكمل عملية الدفع الآمنة."
         },
         {
           icon: <Zap className="w-10 h-10" />,
-          title: "Ø§Ø³ØªÙ…ØªØ¹ Ø¨Ø§Ù„Ù†Ù…Ùˆ",
-          desc: "Ø§Ø³ØªØ±Ø®Ù Ø¨ÙŠÙ†Ù…Ø§ ÙŠÙ‚ÙˆÙ… ÙØ±ÙŠÙ‚Ù†Ø§ Ø¨Ù…Ø¹Ø§Ù„Ø¬Ø© Ø·Ù„Ø¨Ùƒ Ø¨Ø£Ù…Ø§Ù†."
+          title: "استمتع بالنمو",
+          desc: "استرخِ بينما يقوم فريقنا بمعالجة طلبك بأمان."
         }
       ]
     },
     stats: {
       items: [
-        { value: "10K+", label: "Ø¹Ù…ÙŠÙ„ Ø³Ø¹ÙŠØ¯" },
-        { value: "50K+", label: "Ø·Ù„Ø¨ Ù…ÙƒØªÙ…Ù„" },
-        { value: "12+", label: "Ø³Ù†ÙˆØ§Øª Ø®Ø¨Ø±Ø©" },
-        { value: "4.9", label: "Ù…ØªÙˆØ³Ø· Ø§Ù„ØªÙ‚ÙŠÙŠÙ…" }
+        { value: "10K+", label: "عميل سعيد" },
+        { value: "50K+", label: "طلب مكتمل" },
+        { value: "12+", label: "سنوات خبرة" },
+        { value: "4.9", label: "متوسط التقييم" }
       ]
     },
     faq: {
-      title: "Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©",
-      subtitle: "ÙƒÙ„ Ù…Ø§ ØªØ­ØªØ§Ø¬ Ù…Ø¹Ø±ÙØªÙ‡ Ø¹Ù† Ø®Ø¯Ù…Ø§ØªÙ†Ø§",
+      title: "الأسئلة الشائعة",
+      subtitle: "كل ما تحتاج معرفته عن خدماتنا",
       items: [
         {
-          q: "Ù‡Ù„ Ø§Ù„Ø®Ø¯Ù…Ø© Ø¢Ù…Ù†Ø© Ù„Ø­Ø³Ø§Ø¨ÙŠØŸ",
-          a: "Ù†Ø¹Ù…ØŒ Ù†Ø³ØªØ®Ø¯Ù… Ø·Ø±Ù‚Ø§Ù‹ Ø¢Ù…Ù†Ø© ØªØªÙˆØ§ÙÙ‚ Ù…Ø¹ Ø¥Ø±Ø´Ø§Ø¯Ø§Øª Ø³Ù†Ø§Ø¨ Ø´Ø§Øª. Ø®Ø¯Ù…Ù†Ø§ Ø£ÙƒØ«Ø± Ù…Ù† 10,000 Ø¹Ù…ÙŠÙ„ Ø¨Ø¯ÙˆÙ† Ø£ÙŠ Ù…Ø´Ø§ÙƒÙ„."
+          q: "هل الخدمة آمنة لحسابي؟",
+          a: "نعم، نستخدم طرقاً آمنة تتوافق مع إرشادات سناب شات. خدمنا أكثر من 10,000 عميل بدون أي مشاكل."
         },
         {
-          q: "ÙƒÙ… Ù…Ù† Ø§Ù„ÙˆÙ‚Øª ÙŠØ³ØªØºØ±Ù‚ Ø§Ù„ØªÙ†ÙÙŠØ°ØŸ",
-          a: "Ù…Ø¹Ø¸Ù… Ø§Ù„Ø·Ù„Ø¨Ø§Øª ØªÙƒØªÙ…Ù„ Ø®Ù„Ø§Ù„ 1-24 Ø³Ø§Ø¹Ø©. Ø±ÙØ¹ Ø§Ù„Ø³ÙƒÙˆØ± Ø§Ù„ÙƒØ¨ÙŠØ± Ù‚Ø¯ ÙŠØ³ØªØºØ±Ù‚ Ø­ØªÙ‰ 48 Ø³Ø§Ø¹Ø© Ù„Ø£Ù‚ØµÙ‰ Ø¯Ø±Ø¬Ø§Øª Ø§Ù„Ø£Ù…Ø§Ù†."
+          q: "كم من الوقت يستغرق التنفيذ؟",
+          a: "معظم الطلبات تكتمل خلال 1-24 ساعة. رفع السكور الكبير قد يستغرق حتى 48 ساعة لأقصى درجات الأمان."
         },
         {
-          q: "Ù‡Ù„ Ø£Ø­ØªØ§Ø¬ Ù„ØªØ²ÙˆÙŠØ¯ÙƒÙ… Ø¨ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ±ØŸ",
-          a: "Ù„Ø±ÙØ¹ Ø§Ù„Ø³ÙƒÙˆØ±ØŒ Ù†Ø­ØªØ§Ø¬ ÙˆØµÙˆÙ„Ø§Ù‹ Ù…Ø¤Ù‚ØªØ§Ù‹. Ù„Ø²ÙŠØ§Ø¯Ø© Ø§Ù„Ù…ØªØ§Ø¨Ø¹ÙŠÙ† Ø£Ùˆ Ø´Ø±Ø§Ø¡ Ø­Ø³Ø§Ø¨Ø§Øª Ø¬Ø¯ÙŠØ¯Ø©ØŒ Ù„Ø§ ÙŠÙ„Ø²Ù… ÙˆØ¬ÙˆØ¯ ÙƒÙ„Ù…Ø© Ù…Ø±ÙˆØ±."
+          q: "هل أحتاج لتزويدكم بكلمة المرور؟",
+          a: "لرفع السكور، نحتاج وصولاً مؤقتاً. لزيادة المتابعين أو شراء حسابات جديدة، لا يلزم وجود كلمة مرور."
         }
       ]
     },
     testimonials: {
-      title: "Ù‚ØµØµ Ù†Ø¬Ø§Ø­ Ø¹Ù…Ù„Ø§Ø¦Ù†Ø§",
-      subtitle: "Ø§Ø³ØªÙ…Ø¹ Ø¥Ù„Ù‰ Ø¹Ù…Ù„Ø§Ø¦Ù†Ø§ Ø§Ù„Ø±Ø§Ø¶ÙŠÙ†"
+      title: "قصص نجاح عملائنا",
+      subtitle: "استمع إلى عملائنا الراضين"
     },
     blog: {
-      title: "Ù†ØµØ§Ø¦Ø­ ÙˆØ£Ø®Ø¨Ø§Ø± Ø³Ù†Ø§Ø¨ Ø´Ø§Øª",
-      subtitle: "Ø§Ø¨Ù‚ÙŽ Ø¹Ù„Ù‰ Ø§Ø·Ù„Ø§Ø¹ Ø¨Ø£Ø­Ø¯Ø« Ø§Ù„Ø§ØªØ¬Ø§Ù‡Ø§Øª ÙˆØ§Ù„Ø§Ø³ØªØ±Ø§ØªÙŠØ¬ÙŠØ§Øª",
-      readMore: "Ø§Ù‚Ø±Ø£ Ø§Ù„Ù…Ø²ÙŠØ¯",
+      title: "نصائح وأخبار سناب شات",
+      subtitle: "ابقَ على اطلاع بأحدث الاتجاهات والاستراتيجيات",
+      readMore: "اقرأ المزيد",
       posts: [
         {
-          title: "ÙƒÙŠÙ ØªØ±ÙØ¹ Ø³ÙƒÙˆØ± Ø³Ù†Ø§Ø¨ Ø´Ø§Øª Ø¨Ø³Ø±Ø¹Ø©",
-          date: "15 Ù…Ø§Ø±Ø³ 2024",
-          excerpt: "Ø§ÙƒØªØ´Ù Ø£ÙƒØ«Ø± Ø§Ù„Ø·Ø±Ù‚ ÙØ¹Ø§Ù„ÙŠØ© ÙˆØ£Ù…Ø§Ù†Ø§Ù‹ Ù„Ø±ÙØ¹ Ø§Ù„Ø³ÙƒÙˆØ± ÙÙŠ 2024."
+          title: "كيف ترفع سكور سناب شات بسرعة",
+          date: "15 مارس 2024",
+          excerpt: "اكتشف أكثر الطرق فعالية وأماناً لرفع السكور في 2024."
         },
         {
-          title: "Ù„Ù…Ø§Ø°Ø§ Ø§Ù„Ø­Ø³Ø§Ø¨Ø§Øª Ø§Ù„Ù‚Ø¯ÙŠÙ…Ø© Ø£ÙØ¶Ù„ØŸ",
-          date: "10 Ù…Ø§Ø±Ø³ 2024",
-          excerpt: "ÙÙˆØ§Ø¦Ø¯ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø­Ø³Ø§Ø¨Ø§Øª Ù‚Ø¯ÙŠÙ…Ø© Ù„Ø¹Ù„Ø§Ù…ØªÙƒ Ø§Ù„ØªØ¬Ø§Ø±ÙŠØ© Ø§Ù„Ø´Ø®ØµÙŠØ©."
+          title: "لماذا الحسابات القديمة أفضل؟",
+          date: "10 مارس 2024",
+          excerpt: "فوائد استخدام حسابات قديمة لعلامتك التجارية الشخصية."
         },
         {
-          title: "Ø£ÙØ¶Ù„ Ù…Ù…Ø§Ø±Ø³Ø§Øª Ø£Ù…Ø§Ù† Ø³Ù†Ø§Ø¨ Ø´Ø§Øª",
-          date: "5 Ù…Ø§Ø±Ø³ 2024",
-          excerpt: "Ø­Ø§ÙØ¸ Ø¹Ù„Ù‰ Ø£Ù…Ø§Ù† Ø­Ø³Ø§Ø¨Ùƒ Ø£Ø«Ù†Ø§Ø¡ Ù†Ù…Ùˆ Ø­Ø¶ÙˆØ±Ùƒ Ø¹Ø¨Ø± Ø§Ù„Ø¥Ù†ØªØ±Ù†Øª."
+          title: "أفضل ممارسات أمان سناب شات",
+          date: "5 مارس 2024",
+          excerpt: "حافظ على أمان حسابك أثناء نمو حضورك عبر الإنترنت."
         }
       ]
     },
     payments: {
-      title: "Ø¯ÙØ¹ Ø¢Ù…Ù†",
-      subtitle: "Ù†Ù‚Ø¨Ù„ Ø¬Ù…ÙŠØ¹ Ø·Ø±Ù‚ Ø§Ù„Ø¯ÙØ¹ Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©",
+      title: "دفع آمن",
+      subtitle: "نقبل جميع طرق الدفع الرئيسية",
       methods: [
-        { name: "Apple Pay", icon: "ï£¿" },
+        { name: "Apple Pay", icon: "" },
         { name: "STC Pay", icon: "stc" },
         { name: "Mada", icon: "mada" },
-        { name: "Credit Card", icon: "ðŸ’³" }
+        { name: "Credit Card", icon: "💳" }
       ]
     },
     cta: {
-      title: "Ø¬Ø§Ù‡Ø² Ù„Ù„Ø§Ù†Ø·Ù„Ø§Ù‚ØŸ",
-      subtitle: "Ø§Ù†Ø¶Ù… Ø¥Ù„Ù‰ Ø¢Ù„Ø§Ù Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…ÙŠÙ† Ø§Ù„Ø±Ø§Ø¶ÙŠÙ† ÙˆØ§Ø¨Ø¯Ø£ ØªØ¹Ø²ÙŠØ² Ø­Ø³Ø§Ø¨Ùƒ Ø§Ù„ÙŠÙˆÙ….",
-      button: "ØªÙˆØ§ØµÙ„ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨"
+      title: "جاهز للانطلاق؟",
+      subtitle: "انضم إلى آلاف المستخدمين الراضين وابدأ تعزيز حسابك اليوم.",
+      button: "تواصل عبر واتساب"
     },
     footer: {
-      rights: "Â© 2024 Ø³Ù†Ø§Ø¨ Ø¨ÙˆØ³Øª. Ø¬Ù…ÙŠØ¹ Ø§Ù„Ø­Ù‚ÙˆÙ‚ Ù…Ø­ÙÙˆØ¸Ø©.",
-      privacy: "Ø³ÙŠØ§Ø³Ø© Ø§Ù„Ø®ØµÙˆØµÙŠØ©",
-      terms: "Ø´Ø±ÙˆØ· Ø§Ù„Ø®Ø¯Ù…Ø©"
+      rights: "© 2024 سناب بوست. جميع الحقوق محفوظة.",
+      privacy: "سياسة الخصوصية",
+      terms: "شروط الخدمة"
     }
   }
 };
 
 const testimonials = [
   {
-    name: { en: "Ahmed Al-Harbi", ar: "Ø£Ø­Ù…Ø¯ Ø§Ù„Ø­Ø±Ø¨ÙŠ" },
-    location: { en: "Riyadh, KSA", ar: "Ø§Ù„Ø±ÙŠØ§Ø¶ØŒ Ø§Ù„Ø³Ø¹ÙˆØ¯ÙŠØ©" },
+    name: { en: "Ahmed Al-Harbi", ar: "أحمد الحربي" },
+    location: { en: "Riyadh, KSA", ar: "الرياض، السعودية" },
     text: { 
       en: "Best service in the Middle East. My Snap score reached 1M in just 2 days. Highly recommended for anyone looking for reliability.", 
-      ar: "Ø£ÙØ¶Ù„ Ø®Ø¯Ù…Ø© ÙÙŠ Ø§Ù„Ø´Ø±Ù‚ Ø§Ù„Ø£ÙˆØ³Ø·. ÙˆØµÙ„ Ø³ÙƒÙˆØ± Ø­Ø³Ø§Ø¨ÙŠ Ø¥Ù„Ù‰ Ù…Ù„ÙŠÙˆÙ† ÙÙŠ ÙŠÙˆÙ…ÙŠÙ† ÙÙ‚Ø·. Ø£Ù†ØµØ­ Ø¨Ù‡ Ø¨Ø´Ø¯Ø© Ù„ÙƒÙ„ Ù…Ù† ÙŠØ¨Ø­Ø« Ø¹Ù† Ø§Ù„Ù…ØµØ¯Ø§Ù‚ÙŠØ©." 
+      ar: "أفضل خدمة في الشرق الأوسط. وصل سكور حسابي إلى مليون في يومين فقط. أنصح به بشدة لكل من يبحث عن المصداقية." 
     },
     avatar: "https://i.pinimg.com/736x/d4/d1/09/d4d10914504759b9c917d0b338e13744.jpg"
   },
   {
-    name: { en: "Sara Mohammed", ar: "Ø³Ø§Ø±Ø© Ù…Ø­Ù…Ø¯" },
-    location: { en: "Dubai, UAE", ar: "Ø¯Ø¨ÙŠØŒ Ø§Ù„Ø¥Ù…Ø§Ø±Ø§Øª" },
+    name: { en: "Sara Mohammed", ar: "سارة محمد" },
+    location: { en: "Dubai, UAE", ar: "دبي، الإمارات" },
     text: { 
       en: "I was worried about my account, but they reassured me and the service was extremely professional. Highly recommended.", 
-      ar: "ÙƒÙ†Øª Ø®Ø§ÙŠÙØ© Ø¹Ù„Ù‰ Ø­Ø³Ø§Ø¨ÙŠ Ø¨Ø³ Ø·Ù…Ù†ÙˆÙ†ÙŠ ÙˆØ§Ù„Ø®Ø¯Ù…Ø© ÙƒØ§Ù†Øª Ø§Ø­ØªØ±Ø§ÙÙŠØ© Ù„Ù„ØºØ§ÙŠØ©. Ø£Ù†ØµØ­ ÙÙŠÙ‡Ù… ÙˆØ¨Ù‚ÙˆØ©." 
+      ar: "كنت خايفة على حسابي بس طمنوني والخدمة كانت احترافية للغاية. أنصح فيهم وبقوة." 
     },
     avatar: "https://i.pinimg.com/1200x/3d/b5/31/3db5313f860c6c6f67480f238e2e4f27.jpg"
   },
   {
-    name: { en: "Sultan Al-Kuwari", ar: "Ø³Ù„Ø·Ø§Ù† Ø§Ù„ÙƒÙˆØ§Ø±ÙŠ" },
-    location: { en: "Doha, Qatar", ar: "Ø§Ù„Ø¯ÙˆØ­Ø©ØŒ Ù‚Ø·Ø±" },
+    name: { en: "Sultan Al-Kuwari", ar: "سلطان الكواري" },
+    location: { en: "Doha, Qatar", ar: "الدوحة، قطر" },
     text: { 
       en: "Best service I've dealt with in the Gulf. Credibility and speed in execution.", 
-      ar: "Ø£ÙØ¶Ù„ Ø®Ø¯Ù…Ø© ØªØ¹Ø§Ù…Ù„Øª Ù…Ø¹Ù‡Ø§ ÙÙŠ Ø§Ù„Ø®Ù„ÙŠØ¬. Ù…ØµØ¯Ø§Ù‚ÙŠØ© ÙˆØ³Ø±Ø¹Ø© ÙÙŠ Ø§Ù„ØªÙ†ÙÙŠØ°." 
+      ar: "أفضل خدمة تعاملت معها في الخليج. مصداقية وسرعة في التنفيذ." 
     },
     avatar: "https://i.pinimg.com/1200x/7b/76/90/7b7690d1d9769561cb5fb6fdb2045943.jpg"
   }
@@ -463,7 +463,7 @@ const testimonials = [
  {
     id: 1,
     name: "James Wilson",
-    country: "ðŸ‡ºðŸ‡¸ USA",
+    country: "🇺🇸 USA",
     date: "2 days ago",
     rating: 5,
     text: "Amazing service! My Snap score increased by 500k in less than 24 hours. Communication via WhatsApp was super smooth.",
@@ -471,17 +471,17 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Ø¹Ø¨Ø¯Ø§Ù„Ø¹Ø²ÙŠØ² Ø§Ù„Ø´Ù…Ø±ÙŠ",
-    country: "ðŸ‡¸ðŸ‡¦ Saudi Arabia",
+    name: "عبدالعزيز الشمري",
+    country: "🇸🇦 Saudi Arabia",
     date: "5 days ago",
     rating: 5,
-    text: "Ø®Ø¯Ù…Ø© Ù…Ù…ØªØ§Ø²Ø© ÙˆØ³Ø±ÙŠØ¹Ø© Ø¬Ø¯Ø§Ù‹. Ø§Ø´ØªØ±ÙŠØª Ø­Ø³Ø§Ø¨ Ù‚Ø¯ÙŠÙ… Ù…Ù† Ù¢Ù Ù¡Ù¤ ÙˆÙƒØ§Ù† Ø§Ù„Ø´ØºÙ„ Ø§Ø­ØªØ±Ø§ÙÙŠ. Ø£Ù†ØµØ­ Ø§Ù„Ø¬Ù…ÙŠØ¹ Ø¨Ø§Ù„ØªØ¹Ø§Ù…Ù„ Ù…Ø¹Ù‡Ù….",
+    text: "خدمة ممتازة وسريعة جداً. اشتريت حساب قديم من ٢٠١٤ وكان الشغل احترافي. أنصح الجميع بالتعامل معهم.",
     verified: true,
   },
   {
     id: 3,
     name: "Sarah Jenkins",
-    country: "ðŸ‡¬ðŸ‡§ UK",
+    country: "🇬🇧 UK",
     date: "1 week ago",
     rating: 5,
     text: "I was skeptical at first, but SnapScore Store is legit. Safest way to boost your profile without any risk of ban.",
@@ -507,7 +507,7 @@ const ReviewSection = () => {
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <h3 className="text-white font-bold text-lg">{review.name}</h3>
-                  <p className="text-gray-500 text-sm">{review.country} â€¢ {review.date}</p>
+                  <p className="text-gray-500 text-sm">{review.country} • {review.date}</p>
                 </div>
                 {review.verified && (
                   <span className="flex items-center gap-1 text-green-500 text-xs font-bold bg-green-500/10 px-2 py-1 rounded-full border border-green-500/20">
@@ -537,33 +537,33 @@ const ReviewSection = () => {
 
 const faqData = [
   {
-    q: { en: "Is it safe for my account?", ar: "Ù‡Ù„ Ø§Ù„Ø®Ø¯Ù…Ø© Ø¢Ù…Ù†Ø© Ù„Ø­Ø³Ø§Ø¨ÙŠØŸ" },
-    a: { en: "Yes, we use secure methods that comply with Snapchat's guidelines. We have served over 10,000 clients without issues.", ar: "Ù†Ø¹Ù…ØŒ Ù†Ø³ØªØ®Ø¯Ù… Ø·Ø±Ù‚Ø§Ù‹ Ø¢Ù…Ù†Ø© ØªØªÙˆØ§ÙÙ‚ Ù…Ø¹ Ø¥Ø±Ø´Ø§Ø¯Ø§Øª Ø³Ù†Ø§Ø¨ Ø´Ø§Øª. Ø®Ø¯Ù…Ù†Ø§ Ø£ÙƒØ«Ø± Ù…Ù† 10,000 Ø¹Ù…ÙŠÙ„ Ø¨Ø¯ÙˆÙ† Ø£ÙŠ Ù…Ø´Ø§ÙƒÙ„." }
+    q: { en: "Is it safe for my account?", ar: "هل الخدمة آمنة لحسابي؟" },
+    a: { en: "Yes, we use secure methods that comply with Snapchat's guidelines. We have served over 10,000 clients without issues.", ar: "نعم، نستخدم طرقاً آمنة تتوافق مع إرشادات سناب شات. خدمنا أكثر من 10,000 عميل بدون أي مشاكل." }
   },
   {
-    q: { en: "How long does it take?", ar: "ÙƒÙ… Ù…Ù† Ø§Ù„ÙˆÙ‚Øª ÙŠØ³ØªØºØ±Ù‚ Ø§Ù„ØªÙ†ÙÙŠØ°ØŸ" },
-    a: { en: "Most orders are completed within 1-24 hours. Larger score boosts might take up to 48 hours for maximum safety.", ar: "Ù…Ø¹Ø¸Ù… Ø§Ù„Ø·Ù„Ø¨Ø§Øª ØªÙƒØªÙ…Ù„ Ø®Ù„Ø§Ù„ 1-24 Ø³Ø§Ø¹Ø©. Ø±ÙØ¹ Ø§Ù„Ø³ÙƒÙˆØ± Ø§Ù„ÙƒØ¨ÙŠØ± Ù‚Ø¯ ÙŠØ³ØªØºØ±Ù‚ Ø­ØªÙ‰ 48 Ø³Ø§Ø¹Ø© Ù„Ø£Ù‚ØµÙ‰ Ø¯Ø±Ø¬Ø§Øª Ø§Ù„Ø£Ù…Ø§Ù†." }
+    q: { en: "How long does it take?", ar: "كم من الوقت يستغرق التنفيذ؟" },
+    a: { en: "Most orders are completed within 1-24 hours. Larger score boosts might take up to 48 hours for maximum safety.", ar: "معظم الطلبات تكتمل خلال 1-24 ساعة. رفع السكور الكبير قد يستغرق حتى 48 ساعة لأقصى درجات الأمان." }
   },
   {
-    q: { en: "Do I need to provide my password?", ar: "Ù‡Ù„ Ø£Ø­ØªØ§Ø¬ Ù„ØªØ²ÙˆÙŠØ¯ÙƒÙ… Ø¨ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ±ØŸ" },
-    a: { en: "For score boosting, we need temporary access. For followers or buying new accounts, no password is required.", ar: "Ù„Ø±ÙØ¹ Ø§Ù„Ø³ÙƒÙˆØ±ØŒ Ù†Ø­ØªØ§Ø¬ ÙˆØµÙˆÙ„Ø§Ù‹ Ù…Ø¤Ù‚ØªØ§Ù‹. Ù„Ø²ÙŠØ§Ø¯Ø© Ø§Ù„Ù…ØªØ§Ø¨Ø¹ÙŠÙ† Ø£Ùˆ Ø´Ø±Ø§Ø¡ Ø­Ø³Ø§Ø¨Ø§Øª Ø¬Ø¯ÙŠØ¯Ø©ØŒ Ù„Ø§ ÙŠÙ„Ø²Ù… ÙˆØ¬ÙˆØ¯ ÙƒÙ„Ù…Ø© Ù…Ø±ÙˆØ±." }
+    q: { en: "Do I need to provide my password?", ar: "هل أحتاج لتزويدكم بكلمة المرور؟" },
+    a: { en: "For score boosting, we need temporary access. For followers or buying new accounts, no password is required.", ar: "لرفع السكور، نحتاج وصولاً مؤقتاً. لزيادة المتابعين أو شراء حسابات جديدة، لا يلزم وجود كلمة مرور." }
   }
 ];
 
 const catalog = [
-  { id: 1, score: "5K+", price: "$3", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "Ø­Ø³Ø§Ø¨ Ø¬Ø¯ÙŠØ¯" } },
-  { id: 2, score: "10K+", price: "$5", age: "2022", type: "Basic", description: { en: "Established Account", ar: "Ø­Ø³Ø§Ø¨ Ù‚Ø§Ø¦Ù…" } },
-  { id: 3, score: "20K+", price: "$7", age: "2021", type: "Growth", description: { en: "Active Account", ar: "Ø­Ø³Ø§Ø¨ Ù†Ø´Ø·" } },
-  { id: 4, score: "50K+", price: "$12", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "ØªÙØ§Ø¹Ù„ Ø¹Ø§Ù„ÙŠ" } },
-  { id: 5, score: "100K+", price: "$18", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "Ø­Ø¶ÙˆØ± Ø§Ø­ØªØ±Ø§ÙÙŠ" } },
-  { id: 6, score: "200K+", price: "$22", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "Ø­Ø³Ø§Ø¨ Ø³Ù„Ø·Ø©" } },
-  { id: 7, score: "300K+", price: "$25", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "Ø­Ø¶ÙˆØ± Ø®Ø¨ÙŠØ±" } },
-  { id: 8, score: "500K+", price: "$32", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "Ø­Ø¶ÙˆØ± Ø§Ù„Ù†Ø®Ø¨Ø©" } },
-  { id: 9, score: "700K+", price: "$40", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "Ø­Ø¶ÙˆØ± Ø£Ù‚ØµÙ‰" } },
-  { id: 10, score: "1M+", price: "$50", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "Ø­Ø§Ù„Ø© Ø£Ø³Ø·ÙˆØ±ÙŠØ©" } },
-  { id: 11, score: "2M+", price: "$80", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "Ø­Ø§Ù„Ø© Ø®Ø±Ø§ÙÙŠØ©" } },
-  { id: 12, score: "5M+", price: "$120", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "Ø³Ù„Ø·Ø© Ø¥Ù„Ù‡ÙŠØ©" } },
-  { id: 13, score: "10M+", price: "$250", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "Ø§Ù„Ø³Ù„Ø·Ø© Ø§Ù„Ù‚ØµÙˆÙ‰" } },
+  { id: 1, score: "5K+", price: "$3", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
+  { id: 2, score: "10K+", price: "$5", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
+  { id: 3, score: "20K+", price: "$7", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
+  { id: 4, score: "50K+", price: "$12", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
+  { id: 5, score: "100K+", price: "$18", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
+  { id: 6, score: "200K+", price: "$22", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
+  { id: 7, score: "300K+", price: "$25", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
+  { id: 8, score: "500K+", price: "$32", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
+  { id: 9, score: "700K+", price: "$40", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
+  { id: 10, score: "1M+", price: "$50", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
+  { id: 11, score: "2M+", price: "$80", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
+  { id: 12, score: "5M+", price: "$120", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
+  { id: 13, score: "10M+", price: "$250", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
 ];
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -587,39 +587,39 @@ export default function App() {
   const [shopTab, setShopTab] = useState<'score' | 'followers' | 'services'>('score');
 
   const scoreAccountsStock = [
-    { id: 'sa5k', amount: '5,000', price: '$3', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'Ø­Ø³Ø§Ø¨ Ø³ÙƒÙˆØ± Ø¨Ø¯Ø§ÙŠØ©' } },
-    { id: 'sa10k', amount: '10,000', price: '$5', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'Ø­Ø³Ø§Ø¨ Ø³ÙƒÙˆØ± Ù‚Ø¯ÙŠÙ…' } },
-    { id: 'sa20k', amount: '20,000', price: '$7', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'Ø­Ø³Ø§Ø¨ Ø³ÙƒÙˆØ± Ù†Ù…Ùˆ' } },
-    { id: 'sa50k', amount: '50,000', price: '$20', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'ÙØ¦Ø© Ø³ÙƒÙˆØ± Ø´Ø§Ø¦Ø¹Ø©' } },
-    { id: 'sa100k', amount: '100,000', price: '$14', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'Ø¬Ø§Ù‡Ø² Ù„Ù„Ù…Ø¤Ø«Ø±ÙŠÙ†' } },
-    { id: 'sa200k', amount: '200,000', price: '$16', type: 'Score Account', desc: { en: 'Pro Status', ar: 'Ù…Ø³ØªÙˆÙ‰ Ø§Ù„Ù…Ø­ØªØ±ÙÙŠÙ†' } },
-    { id: 'sa300k', amount: '300,000', price: '$20', type: 'Score Account', desc: { en: 'Expert Status', ar: 'Ù…Ø³ØªÙˆÙ‰ Ø§Ù„Ø®Ø¨Ø±Ø§Ø¡' } },
-    { id: 'sa500k', amount: '500,000', price: '$30', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'Ø­Ø¶ÙˆØ± Ø§Ù„Ù†Ø®Ø¨Ø©' } },
-    { id: 'sa700k', amount: '700,000', price: '$40', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'Ø­Ø¶ÙˆØ± Ø£Ù‚ØµÙ‰' } },
-    { id: 'sa1m', amount: '1,000,000', price: '$50', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'Ø­Ø§Ù„Ø© Ø£Ø³Ø·ÙˆØ±ÙŠØ©' } },
-    { id: 'sa2m', amount: '2,000,000', price: '$80', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'Ù…Ù„ÙŠÙˆÙ†ÙŠØ± Ù…Ø²Ø¯ÙˆØ¬' } },
-    { id: 'sa5m', amount: '5,000,000', price: '$150', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'Ø³Ù„Ø·Ø© Ø¶Ø®Ù…Ø©' } },
-    { id: 'sa10m', amount: '10,000,000', price: '$500', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'Ø§Ù„Ø³Ù„Ø·Ø© Ø§Ù„Ù‚ØµÙˆÙ‰' } },
+    { id: 'sa5k', amount: '5,000', price: '$3', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
+    { id: 'sa10k', amount: '10,000', price: '$5', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
+    { id: 'sa20k', amount: '20,000', price: '$7', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
+    { id: 'sa50k', amount: '50,000', price: '$20', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
+    { id: 'sa100k', amount: '100,000', price: '$14', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
+    { id: 'sa200k', amount: '200,000', price: '$16', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
+    { id: 'sa300k', amount: '300,000', price: '$20', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
+    { id: 'sa500k', amount: '500,000', price: '$30', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'sa700k', amount: '700,000', price: '$40', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
+    { id: 'sa1m', amount: '1,000,000', price: '$50', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
+    { id: 'sa2m', amount: '2,000,000', price: '$80', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
+    { id: 'sa5m', amount: '5,000,000', price: '$150', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
+    { id: 'sa10m', amount: '10,000,000', price: '$500', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
   ];
 
   const followerAccountsStock = [
-    { id: 'fa5k', amount: '5,000', price: '$45', type: 'Follower Account', desc: { en: 'Rising Star', ar: 'Ù†Ø¬Ù… ØµØ§Ø¹Ø¯' } },
-    { id: 'fa10k', amount: '10,000', price: '$85', type: 'Follower Account', desc: { en: 'Popular Account', ar: 'Ø­Ø³Ø§Ø¨ Ø´Ø§Ø¦Ø¹' } },
-    { id: 'fa20k', amount: '20,000', price: '$150', type: 'Follower Account', desc: { en: 'Influencer Pack', ar: 'Ø¨Ø§Ù‚Ø© Ø§Ù„Ù…Ø¤Ø«Ø±ÙŠÙ†' } },
-    { id: 'fa50k', amount: '50,000', price: '$350', type: 'Follower Account', desc: { en: 'Elite Presence', ar: 'Ø­Ø¶ÙˆØ± Ø§Ù„Ù†Ø®Ø¨Ø©' } },
-    { id: 'fa100k', amount: '100,000', price: '$650', type: 'Follower Account', desc: { en: 'Verified Potential', ar: 'Ø¥Ù…ÙƒØ§Ù†ÙŠØ© ØªÙˆØ«ÙŠÙ‚' } },
-    { id: 'fa200k', amount: '200,000', price: '$1100', type: 'Follower Account', desc: { en: 'Mega Account', ar: 'Ø­Ø³Ø§Ø¨ Ø¶Ø®Ù…' } },
-    { id: 'fa300k', amount: '300,000', price: '$1500', type: 'Follower Account', desc: { en: 'Pro Account', ar: 'Ø­Ø³Ø§Ø¨ Ù…Ø­ØªØ±Ù' } },
-    { id: 'fa500k', amount: '500,000', price: '$2200', type: 'Follower Account', desc: { en: 'Top Tier Presence', ar: 'Ø­Ø¶ÙˆØ± Ù…Ù† Ø§Ù„ÙØ¦Ø© Ø§Ù„Ø£ÙˆÙ„Ù‰' } },
-    { id: 'fa700k', amount: '700,000', price: '$2900', type: 'Follower Account', desc: { en: 'Ultimate Reach', ar: 'ÙˆØµÙˆÙ„ Ø£Ù‚ØµÙ‰' } },
+    { id: 'fa5k', amount: '5,000', price: '$45', type: 'Follower Account', desc: { en: 'Rising Star', ar: 'نجم صاعد' } },
+    { id: 'fa10k', amount: '10,000', price: '$85', type: 'Follower Account', desc: { en: 'Popular Account', ar: 'حساب شائع' } },
+    { id: 'fa20k', amount: '20,000', price: '$150', type: 'Follower Account', desc: { en: 'Influencer Pack', ar: 'باقة المؤثرين' } },
+    { id: 'fa50k', amount: '50,000', price: '$350', type: 'Follower Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'fa100k', amount: '100,000', price: '$650', type: 'Follower Account', desc: { en: 'Verified Potential', ar: 'إمكانية توثيق' } },
+    { id: 'fa200k', amount: '200,000', price: '$1100', type: 'Follower Account', desc: { en: 'Mega Account', ar: 'حساب ضخم' } },
+    { id: 'fa300k', amount: '300,000', price: '$1500', type: 'Follower Account', desc: { en: 'Pro Account', ar: 'حساب محترف' } },
+    { id: 'fa500k', amount: '500,000', price: '$2200', type: 'Follower Account', desc: { en: 'Top Tier Presence', ar: 'حضور من الفئة الأولى' } },
+    { id: 'fa700k', amount: '700,000', price: '$2900', type: 'Follower Account', desc: { en: 'Ultimate Reach', ar: 'وصول أقصى' } },
   ];
 
   const servicesList = [
-    { id: 's_boost', title: 'Snap Score Boost', price: 'From $3', icon: <TrendingUp />, desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'Ø§Ø±ÙØ¹ Ø³ÙƒÙˆØ± Ø­Ø³Ø§Ø¨Ùƒ Ù…Ù† 5000 Ø¥Ù„Ù‰ Ù…Ù„ÙŠÙˆÙ† Ø¨Ø£Ù…Ø§Ù†.' } },
-    { id: 's_lens', title: 'Snapchat AR Lens Create', price: 'Contact Us', icon: <Zap />, desc: { en: 'Custom AR lenses created for your profile.', ar: 'Ø¹Ø¯Ø³Ø§Øª ÙˆØ§Ù‚Ø¹ Ù…Ø¹Ø²Ø² Ù…Ø®ØµØµØ© Ù„Ù…Ù„ÙÙƒ Ø§Ù„Ø´Ø®ØµÙŠ.' } },
-    { id: 's_followers', title: 'Snapchat Follower Increase', price: 'From $20', icon: <Users />, desc: { en: 'Increase real followers on your account.', ar: 'Ø²ÙŠØ§Ø¯Ø© Ù…ØªØ§Ø¨Ø¹ÙŠÙ† Ø­Ù‚ÙŠÙ‚ÙŠÙŠÙ† Ø¹Ù„Ù‰ Ø­Ø³Ø§Ø¨Ùƒ.' } },
-    { id: 's_badge', title: 'Get Verified Badge', price: 'Contact Us', icon: <BadgeCheck />, desc: { en: 'Professional assistance for the Gold Star badge.', ar: 'Ù…Ø³Ø§Ø¹Ø¯Ø© Ø§Ø­ØªØ±Ø§ÙÙŠØ© Ù„Ù„Ø­ØµÙˆÙ„ Ø¹Ù„Ù‰ Ø´Ø§Ø±Ø© Ø§Ù„Ù†Ø¬Ù…Ø© Ø§Ù„Ø°Ù‡Ø¨ÙŠØ©.' } },
-    { id: 's_views', title: 'View Service', price: 'From $3', icon: <Eye />, desc: { en: 'Boost your story views instantly.', ar: 'Ø¹Ø²Ø² Ù…Ø´Ø§Ù‡Ø¯Ø§Øª Ø§Ù„Ø³ØªÙˆØ±ÙŠ Ø§Ù„Ø®Ø§ØµØ© Ø¨Ùƒ ÙÙˆØ±Ø§Ù‹.' } },
+    { id: 's_boost', title: 'Snap Score Boost', price: 'From $3', icon: <TrendingUp />, desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'ارفع سكور حسابك من 5000 إلى مليون بأمان.' } },
+    { id: 's_lens', title: 'Snapchat AR Lens Create', price: 'Contact Us', icon: <Zap />, desc: { en: 'Custom AR lenses created for your profile.', ar: 'عدسات واقع معزز مخصصة لملفك الشخصي.' } },
+    { id: 's_followers', title: 'Snapchat Follower Increase', price: 'From $20', icon: <Users />, desc: { en: 'Increase real followers on your account.', ar: 'زيادة متابعين حقيقيين على حسابك.' } },
+    { id: 's_badge', title: 'Get Verified Badge', price: 'Contact Us', icon: <BadgeCheck />, desc: { en: 'Professional assistance for the Gold Star badge.', ar: 'مساعدة احترافية للحصول على شارة النجمة الذهبية.' } },
+    { id: 's_views', title: 'View Service', price: 'From $3', icon: <Eye />, desc: { en: 'Boost your story views instantly.', ar: 'عزز مشاهدات الستوري الخاصة بك فوراً.' } },
   ];
 
   const boostingTiers = [
@@ -707,7 +707,7 @@ export default function App() {
             </div>
             <div className="flex flex-col leading-none">
               <span className="text-2xl font-black tracking-tighter text-white uppercase">SNAP BOOST</span>
-              <span className="text-[10px] font-bold text-snap-yellow tracking-[0.3em] uppercase">{lang === 'ar' ? 'Ø³Ù†Ø§Ø¨ Ø¨ÙˆØ³Øª' : 'Professional Services'}</span>
+              <span className="text-[10px] font-bold text-snap-yellow tracking-[0.3em] uppercase">{lang === 'ar' ? 'سناب بوست' : 'Professional Services'}</span>
             </div>
           </div>
           
@@ -715,8 +715,8 @@ export default function App() {
             <button onClick={() => setView('home')} className={`hover:text-snap-yellow transition-colors ${view === 'home' ? 'text-snap-yellow' : ''}`}>{t.nav.home}</button>
             <button onClick={() => setView('shop')} className={`hover:text-snap-yellow transition-colors ${view === 'shop' ? 'text-snap-yellow' : ''}`}>{t.nav.packages}</button>
             <button onClick={() => setView('blog')} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
-            <a href="#services" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'Ø®Ø¯Ù…Ø§ØªÙ†Ø§' : 'Services'}</a>
-            <a href="#catalog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'Ø§Ù„Ø­Ø³Ø§Ø¨Ø§Øª' : 'Catalog'}</a>
+            <a href="#services" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'خدماتنا' : 'Services'}</a>
+            <a href="#catalog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الحسابات' : 'Catalog'}</a>
           </div>
 
           <div className="flex items-center gap-4">
@@ -728,7 +728,7 @@ export default function App() {
               {t.nav.lang}
             </button>
             <button 
-              onClick={() => openWhatsApp(lang === 'ar' ? 'Ù…Ø±Ø­Ø¨Ø§Ù‹ØŒ Ø£Ø±ÙŠØ¯ Ø§Ù„Ø§Ø³ØªÙØ³Ø§Ø± Ø¹Ù† Ø®Ø¯Ù…Ø§Øª Ø³Ù†Ø§Ø¨ Ø¨ÙˆØ³Øª' : 'Hello, I want to inquire about Snap Boost services')}
+              onClick={() => openWhatsApp(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات سناب بوست' : 'Hello, I want to inquire about Snap Boost services')}
               className="hidden sm:flex px-6 py-2.5 bg-snap-yellow text-black font-black rounded-full hover:scale-105 transition-all duration-300 text-sm shadow-[0_0_20px_rgba(255,252,0,0.3)]"
             >
               {t.nav.contact}
@@ -756,15 +756,15 @@ export default function App() {
               className="md:hidden bg-matte-black border-t border-white/10 overflow-hidden"
             >
               <div className="flex flex-col p-6 gap-6 text-lg font-bold text-gray-400">
-                <button onClick={() => { setView('home'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠØ©' : 'Home'}</button>
+                <button onClick={() => { setView('home'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الرئيسية' : 'Home'}</button>
                 <button onClick={() => { setView('shop'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.shop}</button>
                 <button onClick={() => { setView('blog'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.blog}</button>
-                <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'Ø®Ø¯Ù…Ø§ØªÙ†Ø§' : 'Services'}</a>
-                <a href="#catalog" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'Ø§Ù„Ø­Ø³Ø§Ø¨Ø§Øª' : 'Catalog'}</a>
+                <a href="#services" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'خدماتنا' : 'Services'}</a>
+                <a href="#catalog" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الحسابات' : 'Catalog'}</a>
                 <button 
                   onClick={() => {
                     setIsMenuOpen(false);
-                    openWhatsApp(lang === 'ar' ? 'Ù…Ø±Ø­Ø¨Ø§Ù‹ØŒ Ø£Ø±ÙŠØ¯ Ø§Ù„Ø§Ø³ØªÙØ³Ø§Ø± Ø¹Ù† Ø®Ø¯Ù…Ø§Øª Ø³Ù†Ø§Ø¨ Ø¨ÙˆØ³Øª' : 'Hello, I want to inquire about Snap Boost services');
+                    openWhatsApp(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات سناب بوست' : 'Hello, I want to inquire about Snap Boost services');
                   }}
                   className="w-full py-4 bg-snap-yellow text-black font-black rounded-xl text-center"
                 >
@@ -792,7 +792,7 @@ export default function App() {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-snap-yellow/10 border border-snap-yellow/20 text-snap-yellow text-xs font-bold mb-8">
                 <BadgeCheck className="w-4 h-4" />
-                {lang === 'ar' ? 'Ø§Ù„Ø®Ø¯Ù…Ø© Ø±Ù‚Ù… 1 ÙÙŠ Ø§Ù„Ø®Ù„ÙŠØ¬' : '#1 Trusted Service in GCC'}
+                {lang === 'ar' ? 'الخدمة رقم 1 في الخليج' : '#1 Trusted Service in GCC'}
               </div>
               <h1 className="text-6xl lg:text-8xl font-black leading-[0.9] mb-8 tracking-tighter">
                 {t.hero.title} <br />
@@ -985,7 +985,7 @@ export default function App() {
                   <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{item.score}</div>
                   <div className="text-3xl font-bold text-white/90 mb-10">{item.price}</div>
                   <button 
-                    onClick={() => openWhatsApp(lang === 'ar' ? `Ø£Ø±ÙŠØ¯ Ø´Ø±Ø§Ø¡ Ø­Ø³Ø§Ø¨ Ø³Ù†Ø§Ø¨ Ø´Ø§Øª Ø¨Ø³ÙƒÙˆØ± ${item.score} ÙˆØ³Ø¹Ø± ${item.price}` : `I want to buy a Snapchat account with score ${item.score} for ${item.price}`)}
+                    onClick={() => openWhatsApp(lang === 'ar' ? `أريد شراء حساب سناب شات بسكور ${item.score} وسعر ${item.price}` : `I want to buy a Snapchat account with score ${item.score} for ${item.price}`)}
                     className="w-full py-4 bg-white/5 border border-white/10 rounded-2xl font-black hover:bg-snap-yellow hover:text-black transition-all flex items-center justify-center gap-3 text-lg"
                   >
                     <WhatsAppIcon className="w-6 h-6" />
@@ -1150,7 +1150,7 @@ export default function App() {
                     <h3 className="text-2xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors">{post.title}</h3>
                     <p className="text-gray-400 mb-8 leading-relaxed">{post.excerpt}</p>
                     <button 
-                      onClick={() => openWhatsApp(lang === 'ar' ? `Ø£Ø±ÙŠØ¯ Ù‚Ø±Ø§Ø¡Ø© Ø§Ù„Ù…Ø²ÙŠØ¯ Ø¹Ù†: ${post.title}` : `I want to read more about: ${post.title}`)}
+                      onClick={() => openWhatsApp(lang === 'ar' ? `أريد قراءة المزيد عن: ${post.title}` : `I want to read more about: ${post.title}`)}
                       className="text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn"
                     >
                       {t.blog.readMore}
@@ -1217,12 +1217,12 @@ export default function App() {
             <div className="grid lg:grid-cols-2 gap-20 items-center">
               <div>
                 <h2 className="text-4xl lg:text-6xl font-black mb-8 uppercase tracking-tight">
-                  {lang === 'ar' ? 'ØªÙˆØ§ØµÙ„ Ù…Ø¹' : 'Get in Touch with'} <br />
-                  <span className="text-snap-yellow">{lang === 'ar' ? 'ÙØ±ÙŠÙ‚ Ø§Ù„Ø®Ø¨Ø±Ø§Ø¡' : 'Our Experts'}</span>
+                  {lang === 'ar' ? 'تواصل مع' : 'Get in Touch with'} <br />
+                  <span className="text-snap-yellow">{lang === 'ar' ? 'فريق الخبراء' : 'Our Experts'}</span>
                 </h2>
                 <p className="text-xl text-gray-400 mb-10 leading-relaxed">
                   {lang === 'ar' 
-                    ? 'Ù‡Ù„ Ù„Ø¯ÙŠÙƒ Ø§Ø³ØªÙØ³Ø§Ø± Ø®Ø§ØµØŸ ÙØ±ÙŠÙ‚Ù†Ø§ Ù…ØªØ§Ø­ Ø¹Ù„Ù‰ Ù…Ø¯Ø§Ø± Ø§Ù„Ø³Ø§Ø¹Ø© Ù„Ù…Ø³Ø§Ø¹Ø¯ØªÙƒ ÙÙŠ Ø§Ø®ØªÙŠØ§Ø± Ø§Ù„Ø¨Ø§Ù‚Ø© Ø§Ù„Ù…Ù†Ø§Ø³Ø¨Ø© ÙˆØªØ£Ù…ÙŠÙ† Ø­Ø³Ø§Ø¨Ùƒ.' 
+                    ? 'هل لديك استفسار خاص؟ فريقنا متاح على مدار الساعة لمساعدتك في اختيار الباقة المناسبة وتأمين حسابك.' 
                     : 'Have a specific question? Our team is available 24/7 to help you choose the right package and secure your account.'}
                 </p>
                 <div className="space-y-6">
@@ -1250,26 +1250,26 @@ export default function App() {
               <div className="glass p-10 rounded-[3rem] border-white/10">
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'Ø§Ù„Ø§Ø³Ù…' : 'Name'}</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors" placeholder={lang === 'ar' ? 'Ø£Ø¯Ø®Ù„ Ø§Ø³Ù…Ùƒ' : 'Your name'} />
+                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'الاسم' : 'Name'}</label>
+                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors" placeholder={lang === 'ar' ? 'أدخل اسمك' : 'Your name'} />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'Ø§Ù„Ø®Ø¯Ù…Ø© Ø§Ù„Ù…Ø·Ù„ÙˆØ¨Ø©' : 'Service Needed'}</label>
+                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'الخدمة المطلوبة' : 'Service Needed'}</label>
                     <select className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors appearance-none">
-                      <option className="bg-matte-black">{lang === 'ar' ? 'Ø²ÙŠØ§Ø¯Ø© Ø§Ù„Ø³ÙƒÙˆØ±' : 'Score Boosting'}</option>
-                      <option className="bg-matte-black">{lang === 'ar' ? 'Ø´Ø±Ø§Ø¡ Ø­Ø³Ø§Ø¨' : 'Buy Account'}</option>
-                      <option className="bg-matte-black">{lang === 'ar' ? 'ØªÙˆØ«ÙŠÙ‚ Ø§Ù„Ø­Ø³Ø§Ø¨' : 'Verification'}</option>
+                      <option className="bg-matte-black">{lang === 'ar' ? 'زيادة السكور' : 'Score Boosting'}</option>
+                      <option className="bg-matte-black">{lang === 'ar' ? 'شراء حساب' : 'Buy Account'}</option>
+                      <option className="bg-matte-black">{lang === 'ar' ? 'توثيق الحساب' : 'Verification'}</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'Ø§Ù„Ø±Ø³Ø§Ù„Ø©' : 'Message'}</label>
-                    <textarea className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors h-32" placeholder={lang === 'ar' ? 'ÙƒÙŠÙ ÙŠÙ…ÙƒÙ†Ù†Ø§ Ù…Ø³Ø§Ø¹Ø¯ØªÙƒØŸ' : 'How can we help?'}></textarea>
+                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'الرسالة' : 'Message'}</label>
+                    <textarea className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors h-32" placeholder={lang === 'ar' ? 'كيف يمكننا مساعدتك؟' : 'How can we help?'}></textarea>
                   </div>
                   <button 
-                    onClick={() => openWhatsApp(lang === 'ar' ? 'Ø£Ø±ÙŠØ¯ Ø§Ø³ØªØ´Ø§Ø±Ø© Ø¨Ø®ØµÙˆØµ Ø®Ø¯Ù…Ø§Øª Ø³Ù†Ø§Ø¨ Ø´Ø§Øª' : 'I want a consultation regarding Snapchat services')}
+                    onClick={() => openWhatsApp(lang === 'ar' ? 'أريد استشارة بخصوص خدمات سناب شات' : 'I want a consultation regarding Snapchat services')}
                     className="w-full py-5 bg-snap-yellow text-black font-black rounded-xl hover:scale-105 transition-transform shadow-lg"
                   >
-                    {lang === 'ar' ? 'Ø¥Ø±Ø³Ø§Ù„ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨' : 'Send via WhatsApp'}
+                    {lang === 'ar' ? 'إرسال عبر واتساب' : 'Send via WhatsApp'}
                   </button>
                 </div>
               </div>
@@ -1330,7 +1330,7 @@ export default function App() {
               </p>
               
               <button 
-                onClick={() => openWhatsApp(lang === 'ar' ? 'Ø£Ø±ÙŠØ¯ Ø§Ù„Ø¨Ø¯Ø¡ ÙÙŠ Ø§Ø³ØªØ®Ø¯Ø§Ù… Ø®Ø¯Ù…Ø§ØªÙƒÙ… Ø§Ù„Ù…Ù…ÙŠØ²Ø©' : 'I want to start using your premium services')}
+                onClick={() => openWhatsApp(lang === 'ar' ? 'أريد البدء في استخدام خدماتكم المميزة' : 'I want to start using your premium services')}
                 className="bg-black text-white px-10 py-5 rounded-2xl font-black text-xl flex items-center gap-4 mx-auto hover:scale-105 transition-transform animate-whatsapp"
               >
                 <WhatsAppIcon className="w-8 h-8" />
@@ -1447,7 +1447,7 @@ export default function App() {
                               setView('boosting');
                               window.scrollTo(0, 0);
                             } else {
-                              openWhatsApp(lang === 'ar' ? `Ø£Ø±ÙŠØ¯ Ø·Ù„Ø¨ Ø®Ø¯Ù…Ø©: ${service.title}` : `I want to order service: ${service.title}`);
+                              openWhatsApp(lang === 'ar' ? `أريد طلب خدمة: ${service.title}` : `I want to order service: ${service.title}`);
                             }
                           }}
                           className="w-full py-5 bg-white/5 border border-white/10 rounded-2xl font-black hover:bg-snap-yellow hover:text-black transition-all flex items-center justify-center gap-3 text-lg"
@@ -1485,7 +1485,7 @@ export default function App() {
                     <span className="text-2xl font-black text-white">{selectedPackage.price}</span>
                   </div>
                   <div className="pt-6 border-t border-white/5">
-                    <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">{lang === 'ar' ? 'ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ù…Ù†ØªØ¬' : 'Product Details'}</h3>
+                    <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">{lang === 'ar' ? 'تفاصيل المنتج' : 'Product Details'}</h3>
                     <p className="text-sm text-gray-400 leading-relaxed">
                       {t.checkout.productDetails}
                     </p>
@@ -1511,7 +1511,7 @@ export default function App() {
                       value={checkoutData.password}
                       onChange={(e) => setCheckoutData({...checkoutData, password: e.target.value})}
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors text-lg" 
-                      placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" 
+                      placeholder="••••••••" 
                     />
                   </div>
 
@@ -1589,7 +1589,7 @@ export default function App() {
                       <h3 className="text-2xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors">{post.title}</h3>
                       <p className="text-gray-400 mb-8 leading-relaxed">{post.excerpt}</p>
                       <button 
-                        onClick={() => openWhatsApp(lang === 'ar' ? `Ø£Ø±ÙŠØ¯ Ù‚Ø±Ø§Ø¡Ø© Ø§Ù„Ù…Ø²ÙŠØ¯ Ø¹Ù†: ${post.title}` : `I want to read more about: ${post.title}`)}
+                        onClick={() => openWhatsApp(lang === 'ar' ? `أريد قراءة المزيد عن: ${post.title}` : `I want to read more about: ${post.title}`)}
                         className="text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn"
                       >
                         {t.blog.readMore}
@@ -1609,10 +1609,10 @@ export default function App() {
                 <>
                   <div className="text-center mb-20">
                     <h1 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">
-                      {lang === 'ar' ? 'Ø§Ø®ØªØ± Ø¨Ø§Ù‚Ø©' : 'Select'} <span className="text-snap-yellow">{lang === 'ar' ? 'Ø±ÙØ¹ Ø§Ù„Ø³ÙƒÙˆØ±' : 'Score Boost'}</span>
+                      {lang === 'ar' ? 'اختر باقة' : 'Select'} <span className="text-snap-yellow">{lang === 'ar' ? 'رفع السكور' : 'Score Boost'}</span>
                     </h1>
                     <p className="text-xl text-gray-400 font-medium">
-                      {lang === 'ar' ? 'Ø§Ø®ØªØ± Ø§Ù„ÙƒÙ…ÙŠØ© Ø§Ù„ØªÙŠ ØªØ±ÙŠØ¯ Ø¥Ø¶Ø§ÙØªÙ‡Ø§ Ù„Ø­Ø³Ø§Ø¨Ùƒ Ø§Ù„Ø´Ø®ØµÙŠ' : 'Choose the amount you want to add to your personal account'}
+                      {lang === 'ar' ? 'اختر الكمية التي تريد إضافتها لحسابك الشخصي' : 'Choose the amount you want to add to your personal account'}
                     </p>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -1630,7 +1630,7 @@ export default function App() {
                           onClick={() => setSelectedBoostingTier(tier)}
                           className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
                         >
-                          {lang === 'ar' ? 'Ø§Ø®ØªÙŠØ§Ø± Ø§Ù„Ø¨Ø§Ù‚Ø©' : 'Select Package'}
+                          {lang === 'ar' ? 'اختيار الباقة' : 'Select Package'}
                         </button>
                       </motion.div>
                     ))}
@@ -1640,7 +1640,7 @@ export default function App() {
                 <div className="max-w-3xl mx-auto">
                   <div className="glass p-10 lg:p-16 rounded-[3rem] border-white/10">
                     <div className="flex items-center justify-between mb-12">
-                      <h1 className="text-4xl font-black uppercase tracking-tight">{lang === 'ar' ? 'ØªÙØ§ØµÙŠÙ„ Ø§Ù„Ø­Ø³Ø§Ø¨' : 'Account Details'}</h1>
+                      <h1 className="text-4xl font-black uppercase tracking-tight">{lang === 'ar' ? 'تفاصيل الحساب' : 'Account Details'}</h1>
                       <button onClick={() => setSelectedBoostingTier(null)} className="text-gray-500 hover:text-white transition-colors">
                         <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
                       </button>
@@ -1649,18 +1649,18 @@ export default function App() {
                     <div className="space-y-8">
                       <div className="p-8 rounded-2xl bg-white/5 border border-white/10">
                         <div className="flex justify-between items-center mb-4">
-                          <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'Ø§Ù„Ø¨Ø§Ù‚Ø© Ø§Ù„Ù…Ø®ØªØ§Ø±Ø©' : 'Selected Tier'}</span>
+                          <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'الباقة المختارة' : 'Selected Tier'}</span>
                           <span className="text-snap-yellow font-black text-xl">{selectedBoostingTier.amount} Score</span>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'Ø§Ù„Ø³Ø¹Ø±' : 'Price'}</span>
+                          <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'السعر' : 'Price'}</span>
                           <span className="text-white font-black text-xl">{selectedBoostingTier.price}</span>
                         </div>
                       </div>
 
                       <div className="space-y-6">
                         <div>
-                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ' : 'Email'}</label>
+                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</label>
                           <input 
                             type="email"
                             value={checkoutData.username}
@@ -1670,12 +1670,12 @@ export default function App() {
                           />
                         </div>
                         <div>
-                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'ÙƒÙ„Ù…Ø© Ø§Ù„Ù…Ø±ÙˆØ±' : 'Password'}</label>
+                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'كلمة المرور' : 'Password'}</label>
                           <input 
                             type="password"
                             value={checkoutData.password}
                             onChange={(e) => setCheckoutData({...checkoutData, password: e.target.value})}
-                            placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                            placeholder="••••••••"
                             className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow focus:ring-1 focus:ring-snap-yellow outline-none transition-all font-bold"
                           />
                         </div>
@@ -1685,7 +1685,7 @@ export default function App() {
                         <ShieldCheck className="w-6 h-6 text-snap-yellow flex-shrink-0" />
                         <p className="text-xs text-gray-400 leading-relaxed font-medium">
                           {lang === 'ar' 
-                            ? 'Ø¨ÙŠØ§Ù†Ø§ØªÙƒ Ù…Ø´ÙØ±Ø© ÙˆØªØ³ØªØ®Ø¯Ù… ÙÙ‚Ø· Ù„Ø¹Ù…Ù„ÙŠØ© Ø§Ù„Ø±ÙØ¹. Ø³ÙŠØªÙ… Ø¥Ø±Ø³Ø§Ù„ Ø·Ù„Ø¨Ùƒ Ø¹Ø¨Ø± Ø§Ù„ÙˆØ§ØªØ³Ø§Ø¨.' 
+                            ? 'بياناتك مشفرة وتستخدم فقط لعملية الرفع. سيتم إرسال طلبك عبر الواتساب.' 
                             : 'Your data is encrypted and used only for the boosting process. Your order will be sent via WhatsApp.'}
                         </p>
                       </div>
@@ -1705,12 +1705,12 @@ export default function App() {
                         {isProcessing ? (
                           <>
                             <RefreshCcw className="w-6 h-6 animate-spin" />
-                            {lang === 'ar' ? 'Ø¬Ø§Ø±ÙŠ Ø§Ù„Ù…Ø¹Ø§Ù„Ø¬Ø©...' : 'Processing...'}
+                            {lang === 'ar' ? 'جاري المعالجة...' : 'Processing...'}
                           </>
                         ) : (
                           <>
                             <WhatsAppIcon className="w-6 h-6" />
-                            {lang === 'ar' ? 'Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø·Ù„Ø¨ Ø¹Ø¨Ø± ÙˆØ§ØªØ³Ø§Ø¨' : 'Send Order via WhatsApp'}
+                            {lang === 'ar' ? 'إرسال الطلب عبر واتساب' : 'Send Order via WhatsApp'}
                           </>
                         )}
                       </button>
@@ -1734,7 +1734,7 @@ export default function App() {
               </div>
               <p className="text-gray-400 leading-relaxed font-medium">
                 {lang === 'ar' 
-                  ? 'Ø§Ù„Ø®Ø¯Ù…Ø© Ø§Ù„Ø±Ø§Ø¦Ø¯Ø© ÙÙŠ Ø§Ù„Ø®Ù„ÙŠØ¬ Ù„Ø±ÙØ¹ Ø³ÙƒÙˆØ± Ø§Ù„Ø³Ù†Ø§Ø¨ Ø´Ø§Øª ÙˆØªÙˆÙÙŠØ± Ø§Ù„Ø­Ø³Ø§Ø¨Ø§Øª Ø§Ù„Ù‚Ø¯ÙŠÙ…Ø© ÙˆØ§Ù„Ù…ÙˆØ«Ù‚Ø© Ø¨Ø£Ù…Ø§Ù† ØªØ§Ù….' 
+                  ? 'الخدمة الرائدة في الخليج لرفع سكور السناب شات وتوفير الحسابات القديمة والموثقة بأمان تام.' 
                   : 'The leading service in GCC for Snapchat score boosting and providing aged, verified accounts with total security.'}
               </p>
               <div className="flex gap-4">
@@ -1758,31 +1758,31 @@ export default function App() {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-white font-black mb-8 uppercase tracking-widest text-sm">{lang === 'ar' ? 'Ø±ÙˆØ§Ø¨Ø· Ø³Ø±ÙŠØ¹Ø©' : 'Quick Links'}</h4>
+              <h4 className="text-white font-black mb-8 uppercase tracking-widest text-sm">{lang === 'ar' ? 'روابط سريعة' : 'Quick Links'}</h4>
               <ul className="space-y-4 text-gray-400 font-bold">
-                <li><a href="#services" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'Ø®Ø¯Ù…Ø§ØªÙ†Ø§' : 'Our Services'}</a></li>
-                <li><a href="#catalog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'ÙƒØªØ§Ù„ÙˆØ¬ Ø§Ù„Ø­Ø³Ø§Ø¨Ø§Øª' : 'Account Catalog'}</a></li>
-                <li><a href="#how" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'ÙƒÙŠÙ Ù†Ø¹Ù…Ù„' : 'How It Works'}</a></li>
-                <li><a href="#blog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'Ø§Ù„Ù…Ø¯ÙˆÙ†Ø©' : 'Blog'}</a></li>
-                <li><a href="#faq" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'Ø§Ù„Ø£Ø³Ø¦Ù„Ø© Ø§Ù„Ø´Ø§Ø¦Ø¹Ø©' : 'FAQ'}</a></li>
-                <li><button onClick={() => openWhatsApp('Contact')} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'Ø§ØªØµÙ„ Ø¨Ù†Ø§' : 'Contact Us'}</button></li>
+                <li><a href="#services" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'خدماتنا' : 'Our Services'}</a></li>
+                <li><a href="#catalog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'كتالوج الحسابات' : 'Account Catalog'}</a></li>
+                <li><a href="#how" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'كيف نعمل' : 'How It Works'}</a></li>
+                <li><a href="#blog" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'المدونة' : 'Blog'}</a></li>
+                <li><a href="#faq" className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الأسئلة الشائعة' : 'FAQ'}</a></li>
+                <li><button onClick={() => openWhatsApp('Contact')} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'اتصل بنا' : 'Contact Us'}</button></li>
               </ul>
             </div>
 
             {/* Services */}
             <div>
-              <h4 className="text-white font-black mb-8 uppercase tracking-widest text-sm">{lang === 'ar' ? 'Ø®Ø¯Ù…Ø§ØªÙ†Ø§' : 'Services'}</h4>
+              <h4 className="text-white font-black mb-8 uppercase tracking-widest text-sm">{lang === 'ar' ? 'خدماتنا' : 'Services'}</h4>
               <ul className="space-y-4 text-gray-400 font-bold">
-                <li>{lang === 'ar' ? 'Ø²ÙŠØ§Ø¯Ø© Ø§Ù„Ø³ÙƒÙˆØ±' : 'Score Boosting'}</li>
-                <li>{lang === 'ar' ? 'Ø­Ø³Ø§Ø¨Ø§Øª Ù‚Ø¯ÙŠÙ…Ø©' : 'Aged Accounts'}</li>
-                <li>{lang === 'ar' ? 'ØªÙˆØ«ÙŠÙ‚ Ø§Ù„Ø­Ø³Ø§Ø¨Ø§Øª' : 'Account Verification'}</li>
-                <li>{lang === 'ar' ? 'Ø²ÙŠØ§Ø¯Ø© Ø§Ù„Ù…Ø´Ø§Ù‡Ø¯Ø§Øª' : 'Views Growth'}</li>
+                <li>{lang === 'ar' ? 'زيادة السكور' : 'Score Boosting'}</li>
+                <li>{lang === 'ar' ? 'حسابات قديمة' : 'Aged Accounts'}</li>
+                <li>{lang === 'ar' ? 'توثيق الحسابات' : 'Account Verification'}</li>
+                <li>{lang === 'ar' ? 'زيادة المشاهدات' : 'Views Growth'}</li>
               </ul>
             </div>
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-white font-black mb-8 uppercase tracking-widest text-sm">{lang === 'ar' ? 'ØªÙˆØ§ØµÙ„ Ù…Ø¹Ù†Ø§' : 'Contact'}</h4>
+              <h4 className="text-white font-black mb-8 uppercase tracking-widest text-sm">{lang === 'ar' ? 'تواصل معنا' : 'Contact'}</h4>
               <div className="space-y-6">
                 <div className="flex items-center gap-4 text-gray-400">
                   <div className="w-10 h-10 rounded-xl bg-snap-yellow/10 flex items-center justify-center text-snap-yellow">
@@ -1836,12 +1836,12 @@ export default function App() {
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => openWhatsApp(lang === 'ar' ? 'Ù…Ø±Ø­Ø¨Ø§Ù‹ØŒ Ø£Ø±ÙŠØ¯ Ø§Ù„Ø§Ø³ØªÙØ³Ø§Ø± Ø¹Ù† Ø®Ø¯Ù…Ø§Øª Ø³Ù†Ø§Ø¨ Ø¨ÙˆØ³Øª' : 'Hello, I want to inquire about Snap Boost services')}
+        onClick={() => openWhatsApp(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات سناب بوست' : 'Hello, I want to inquire about Snap Boost services')}
         className="fixed bottom-24 right-8 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] flex items-center justify-center group"
       >
         <WhatsAppIcon className="w-10 h-10" />
         <div className="absolute right-full mr-4 bg-white text-black px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
-          {lang === 'ar' ? 'ØªØ­Ø¯Ø« Ù…Ø¹Ù†Ø§' : 'Chat with us'}
+          {lang === 'ar' ? 'تحدث معنا' : 'Chat with us'}
         </div>
       </motion.button>
 
