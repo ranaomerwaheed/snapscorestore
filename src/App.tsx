@@ -559,6 +559,33 @@ const testimonials = [
       ar: "أفضل خدمة تعاملت معها في الخليج. مصداقية وسرعة في التنفيذ." 
     },
     avatar: "https://picsum.photos/seed/user3/100/100"
+  },
+  {
+    name: { en: "Layla Hassan", ar: "ليلى حسن" },
+    location: { en: "Kuwait City, Kuwait", ar: "مدينة الكويت، الكويت" },
+    text: { 
+      en: "Incredible results! My account looks so much more professional now. The support team was very helpful.", 
+      ar: "نتائج مذهلة! حسابي يبدو أكثر احترافية الآن. فريق الدعم كان متعاوناً جداً." 
+    },
+    avatar: "https://picsum.photos/seed/user4/100/100"
+  },
+  {
+    name: { en: "Omar Farooq", ar: "عمر فاروق" },
+    location: { en: "Manama, Bahrain", ar: "المنامة، البحرين" },
+    text: { 
+      en: "Fast delivery and great communication. I will definitely use this service again for my other accounts.", 
+      ar: "تسليم سريع وتواصل رائع. سأستخدم هذه الخدمة بالتأكيد مرة أخرى لحساباتي الأخرى." 
+    },
+    avatar: "https://picsum.photos/seed/user5/100/100"
+  },
+  {
+    name: { en: "Noura Al-Said", ar: "نورة السعيد" },
+    location: { en: "Muscat, Oman", ar: "مسقط، عمان" },
+    text: { 
+      en: "The AI tools are a game changer! I love the Bitmoji creator. The score boost was also perfect.", 
+      ar: "أدوات الذكاء الاصطناعي غيرت كل شيء! أحببت منشئ البيتموجي. زيادة السكور كانت مثالية أيضاً." 
+    },
+    avatar: "https://picsum.photos/seed/user6/100/100"
   }
 ];
 
@@ -574,6 +601,18 @@ const faqData = [
   {
     q: { en: "Do I need to provide my password?", ar: "هل أحتاج لتزويدكم بكلمة المرور؟" },
     a: { en: "For score boosting, we need temporary access. For followers or buying new accounts, no password is required.", ar: "لرفع السكور، نحتاج وصولاً مؤقتاً. لزيادة المتابعين أو شراء حسابات جديدة، لا يلزم وجود كلمة مرور." }
+  },
+  {
+    q: { en: "What is the 14-Day Money Back Guarantee?", ar: "ما هو ضمان استرداد الأموال لمدة 14 يوماً؟" },
+    a: { en: "We stand by our service. If you're not satisfied with the results, we'll refund your purchase within 14 days.", ar: "نحن نثق في خدماتنا. إذا لم تكن راضياً عن النتائج، سنعيد لك أموالك خلال 14 يوماً." }
+  },
+  {
+    q: { en: "How can I contact support?", ar: "كيف يمكنني التواصل مع الدعم؟" },
+    a: { en: "You can reach us 24/7 via WhatsApp, Email, or our social media channels. We're always here to help!", ar: "يمكنك التواصل معنا على مدار الساعة عبر الواتساب، البريد الإلكتروني، أو قنوات التواصل الاجتماعي الخاصة بنا." }
+  },
+  {
+    q: { en: "Are the tools real?", ar: "هل الأدوات حقيقية؟" },
+    a: { en: "Yes! Our Bitmoji Creator, AI Lens Simulator, and Snap Map Finder are fully functional and powered by advanced AI models.", ar: "نعم! منشئ بيتموجي، محاكي العدسات، ومكتشف المواقع كلها أدوات وظيفية بالكامل ومدعومة بنماذج الذكاء الاصطناعي المتقدمة." }
   }
 ];
 
@@ -911,12 +950,39 @@ export default function App() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextTestimonial();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
   };
 
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const getPackageColor = (amount: string) => {
+    let numStr = amount.replace(/,/g, '').replace(/\+/g, '').toUpperCase();
+    let num = 0;
+    if (numStr.endsWith('K')) {
+      num = parseFloat(numStr.replace('K', '')) * 1000;
+    } else if (numStr.endsWith('M')) {
+      num = parseFloat(numStr.replace('M', '')) * 1000000;
+    } else {
+      num = parseInt(numStr);
+    }
+
+    if (num <= 100000) {
+      return 'bg-gradient-to-br from-blue-600/20 to-cyan-500/20 border-blue-500/30 hover:border-blue-500/60 shadow-[0_0_30px_rgba(37,99,235,0.1)]';
+    } else if (num <= 700000) {
+      return 'bg-gradient-to-br from-purple-600/20 to-pink-500/20 border-purple-500/30 hover:border-purple-500/60 shadow-[0_0_30px_rgba(147,51,234,0.1)]';
+    } else {
+      return 'bg-gradient-to-br from-orange-600/20 to-yellow-400/20 border-orange-500/30 hover:border-orange-500/60 shadow-[0_0_30px_rgba(234,88,12,0.1)]';
+    }
   };
 
   const openWhatsApp = (message: string) => {
@@ -937,7 +1003,7 @@ export default function App() {
       <header className="fixed top-0 left-0 right-0 z-50 header-gradient backdrop-blur-3xl shadow-[0_10px_50px_rgba(0,0,0,0.8)]">
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
           {/* Header Glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-snap-yellow/50 to-transparent"></div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-snap-yellow/60 to-transparent blur-[1px]"></div>
           
           <div className="flex items-center gap-3 group cursor-pointer" onClick={() => setView('home')}>
             <div className="relative">
@@ -965,7 +1031,7 @@ export default function App() {
                 <ChevronRight className="w-4 h-4 rotate-90" />
               </button>
               <div className="absolute top-full left-0 w-64 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-snap-yellow/5 to-transparent rounded-3xl pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-snap-yellow/20 to-orange-500/10 rounded-3xl pointer-events-none"></div>
                 {t.nav.catalogItems.map((item: any) => (
                   <button
                     key={item.id}
@@ -996,7 +1062,7 @@ export default function App() {
                 <ChevronRight className="w-4 h-4 rotate-90" />
               </button>
               <div className="absolute top-full left-0 w-64 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-snap-yellow/5 to-transparent rounded-3xl pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/10 rounded-3xl pointer-events-none"></div>
                 {t.nav.serviceItems.map((item: any) => (
                   <button
                     key={item.id}
@@ -1011,7 +1077,7 @@ export default function App() {
                         setShopTab('services');
                       }
                     }}
-                    className="w-full text-left px-4 py-3 rounded-2xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider relative z-10"
+                    className="w-full text-left px-4 py-3 rounded-2xl hover:bg-blue-500 hover:text-white transition-all text-xs font-black uppercase tracking-wider relative z-10"
                   >
                     {item.title}
                   </button>
@@ -1026,7 +1092,7 @@ export default function App() {
                 <ChevronRight className="w-4 h-4 rotate-90" />
               </button>
               <div className="absolute top-full left-0 w-64 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-snap-yellow/5 to-transparent rounded-3xl pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/10 rounded-3xl pointer-events-none"></div>
                 {t.nav.toolItems.map((item: any) => (
                   <button
                     key={item.id}
@@ -1034,7 +1100,7 @@ export default function App() {
                       setView(item.id as any);
                       setToolResult(null);
                     }}
-                    className="w-full text-left px-4 py-3 rounded-2xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider relative z-10"
+                    className="w-full text-left px-4 py-3 rounded-2xl hover:bg-purple-500 hover:text-white transition-all text-xs font-black uppercase tracking-wider relative z-10"
                   >
                     {item.title}
                   </button>
@@ -1355,21 +1421,24 @@ export default function App() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.05 }}
-                  className="glass p-10 rounded-[3rem] border border-white/5 hover:border-snap-yellow/30 transition-all group relative overflow-hidden"
+                  className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${getPackageColor(item.score)}`}
                 >
-                  <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-20 transition-opacity">
-                    <Star className="w-20 h-20 text-snap-yellow" />
+                  <div className="absolute inset-0 backdrop-blur-xl pointer-events-none"></div>
+                  <div className="relative z-10">
+                    <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-20 transition-opacity">
+                      <Star className="w-20 h-20 text-snap-yellow" />
+                    </div>
+                    <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{item.description[lang]}</div>
+                    <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{item.score}</div>
+                    <div className="text-3xl font-bold text-white/90 mb-10">{item.price}</div>
+                    <button 
+                      onClick={() => openWhatsApp(lang === 'ar' ? `أريد شراء حساب سناب شات بسكور ${item.score} وسعر ${item.price}` : `I want to buy a Snapchat account with score ${item.score} for ${item.price}`)}
+                      className="w-full py-4 bg-white/5 border border-white/10 rounded-2xl font-black hover:bg-snap-yellow hover:text-black transition-all flex items-center justify-center gap-3 text-lg"
+                    >
+                      <WhatsAppIcon className="w-6 h-6" />
+                      {t.catalog.order}
+                    </button>
                   </div>
-                  <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{item.description[lang]}</div>
-                  <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{item.score}</div>
-                  <div className="text-3xl font-bold text-white/90 mb-10">{item.price}</div>
-                  <button 
-                    onClick={() => openWhatsApp(lang === 'ar' ? `أريد شراء حساب سناب شات بسكور ${item.score} وسعر ${item.price}` : `I want to buy a Snapchat account with score ${item.score} for ${item.price}`)}
-                    className="w-full py-4 bg-white/5 border border-white/10 rounded-2xl font-black hover:bg-snap-yellow hover:text-black transition-all flex items-center justify-center gap-3 text-lg"
-                  >
-                    <WhatsAppIcon className="w-6 h-6" />
-                    {t.catalog.order}
-                  </button>
                 </motion.div>
               ))}
             </div>
@@ -1387,7 +1456,11 @@ export default function App() {
             <div className="grid md:grid-cols-3 gap-12">
               {t.how.steps.map((step, i) => (
                 <div key={i} className="relative text-center group">
-                  <div className="w-24 h-24 bg-matte-black border-2 border-snap-yellow rounded-[2rem] flex items-center justify-center mx-auto mb-8 text-3xl font-black text-snap-yellow shadow-[0_0_30px_rgba(255,252,0,0.1)] group-hover:scale-110 transition-transform duration-500 relative">
+                  <div className={`w-24 h-24 rounded-[2rem] flex items-center justify-center mx-auto mb-8 text-3xl font-black shadow-[0_0_30px_rgba(255,252,0,0.1)] group-hover:scale-110 transition-transform duration-500 relative ${
+                    i === 0 ? 'bg-blue-600/20 text-blue-400 border-2 border-blue-500/50' : 
+                    i === 1 ? 'bg-purple-600/20 text-purple-400 border-2 border-purple-500/50' : 
+                    'bg-orange-600/20 text-orange-400 border-2 border-orange-500/50'
+                  }`}>
                     <div className="absolute -top-3 -right-3 w-8 h-8 bg-snap-yellow text-black rounded-full text-sm flex items-center justify-center border-4 border-matte-black">
                       {i + 1}
                     </div>
@@ -1423,11 +1496,19 @@ export default function App() {
                         setView('shop');
                         setShopTab('services');
                       }}
-                      className="flex gap-8 p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-snap-yellow/30 transition-all cursor-pointer group/service"
+                      className={`flex gap-8 p-8 rounded-[2rem] border transition-all cursor-pointer group/service ${
+                        i === 0 ? 'bg-blue-600/10 border-blue-500/20 hover:border-blue-500/50' : 
+                        i === 1 ? 'bg-purple-600/10 border-purple-500/20 hover:border-purple-500/50' : 
+                        'bg-orange-600/10 border-orange-500/20 hover:border-orange-500/50'
+                      }`}
                     >
-                      <div className="flex-shrink-0 p-4 bg-snap-yellow/10 rounded-2xl h-fit group-hover/service:bg-snap-yellow group-hover/service:text-black transition-colors">{service.icon}</div>
+                      <div className={`flex-shrink-0 p-4 rounded-2xl h-fit transition-colors ${
+                        i === 0 ? 'bg-blue-500/10 text-blue-400 group-hover/service:bg-blue-500 group-hover/service:text-white' : 
+                        i === 1 ? 'bg-purple-500/10 text-purple-400 group-hover/service:bg-purple-500 group-hover/service:text-white' : 
+                        'bg-orange-500/10 text-orange-400 group-hover/service:bg-orange-500 group-hover/service:text-white'
+                      }`}>{service.icon}</div>
                       <div>
-                        <h4 className="text-2xl font-black mb-3 group-hover/service:text-snap-yellow transition-colors">{service.title}</h4>
+                        <h4 className="text-2xl font-black mb-3 group-hover/service:text-white transition-colors">{service.title}</h4>
                         <p className="text-gray-400 text-lg leading-relaxed">{service.desc}</p>
                       </div>
                     </motion.div>
@@ -1470,13 +1551,21 @@ export default function App() {
 
             <div className="space-y-4">
               {t.faq.items.map((item, i) => (
-                <div key={i} className="border border-white/10 rounded-2xl overflow-hidden">
+                <div key={i} className={`border rounded-2xl overflow-hidden transition-all ${
+                  i % 3 === 0 ? 'border-blue-500/20 bg-blue-500/5' : 
+                  i % 3 === 1 ? 'border-purple-500/20 bg-purple-500/5' : 
+                  'border-orange-500/20 bg-orange-500/5'
+                }`}>
                   <button 
                     onClick={() => setActiveFaq(activeFaq === i ? null : i)}
-                    className="w-full p-6 flex items-center justify-between text-right bg-white/5 hover:bg-white/10 transition-colors"
+                    className="w-full p-6 flex items-center justify-between text-right hover:bg-white/5 transition-colors"
                   >
                     <span className={`text-lg font-bold ${lang === 'ar' ? 'text-right' : 'text-left'} flex-1`}>{item.q}</span>
-                    <ChevronRight className={`w-5 h-5 text-snap-yellow transition-transform ${activeFaq === i ? 'rotate-90' : ''}`} />
+                    <ChevronRight className={`w-5 h-5 transition-transform ${activeFaq === i ? 'rotate-90' : ''} ${
+                      i % 3 === 0 ? 'text-blue-400' : 
+                      i % 3 === 1 ? 'text-purple-400' : 
+                      'text-orange-400'
+                    }`} />
                   </button>
                   <AnimatePresence>
                     {activeFaq === i && (
@@ -1566,19 +1655,34 @@ export default function App() {
                   initial={{ opacity: 0, x: lang === 'ar' ? -100 : 100 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: lang === 'ar' ? 100 : -100 }}
-                  className="glass p-10 rounded-[3rem] text-center"
+                  className={`p-10 rounded-[3rem] text-center border relative overflow-hidden ${
+                    currentTestimonial % 3 === 0 ? 'bg-gradient-to-br from-blue-600/20 to-cyan-500/20 border-blue-500/30' : 
+                    currentTestimonial % 3 === 1 ? 'bg-gradient-to-br from-purple-600/20 to-pink-500/20 border-purple-500/30' : 
+                    'bg-gradient-to-br from-orange-600/20 to-yellow-400/20 border-orange-500/30'
+                  }`}
                 >
-                  <img 
-                    src={testimonials[currentTestimonial].avatar} 
-                    alt={testimonials[currentTestimonial].name[lang]}
-                    className="w-20 h-20 rounded-full mx-auto mb-6 border-2 border-snap-yellow p-1"
-                    referrerPolicy="no-referrer"
-                  />
-                  <p className="text-2xl font-medium italic mb-8 leading-relaxed">
-                    "{testimonials[currentTestimonial].text[lang]}"
-                  </p>
-                  <div className="font-bold text-snap-yellow">{testimonials[currentTestimonial].name[lang]}</div>
-                  <div className="text-sm text-gray-500">{testimonials[currentTestimonial].location[lang]}</div>
+                  <div className="absolute inset-0 backdrop-blur-xl pointer-events-none"></div>
+                  <div className="relative z-10">
+                    <img 
+                      src={testimonials[currentTestimonial].avatar} 
+                      alt={testimonials[currentTestimonial].name[lang]}
+                      className={`w-20 h-20 rounded-full mx-auto mb-6 border-2 p-1 ${
+                        currentTestimonial % 3 === 0 ? 'border-blue-400' : 
+                        currentTestimonial % 3 === 1 ? 'border-purple-400' : 
+                        'border-orange-400'
+                      }`}
+                      referrerPolicy="no-referrer"
+                    />
+                    <p className="text-2xl font-medium italic mb-8 leading-relaxed">
+                      "{testimonials[currentTestimonial].text[lang]}"
+                    </p>
+                    <div className={`font-bold text-3xl mb-2 ${
+                      currentTestimonial % 3 === 0 ? 'text-blue-400' : 
+                      currentTestimonial % 3 === 1 ? 'text-purple-400' : 
+                      'text-orange-400'
+                    }`}>{testimonials[currentTestimonial].name[lang]}</div>
+                    <div className="text-sm text-gray-500">{testimonials[currentTestimonial].location[lang]}</div>
+                  </div>
                 </motion.div>
               </AnimatePresence>
 
@@ -1615,8 +1719,8 @@ export default function App() {
                     : 'Have a specific question? Our team is available 24/7 to help you choose the right package and secure your account.'}
                 </p>
                 <div className="space-y-6">
-                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10">
-                    <div className="w-14 h-14 rounded-full bg-snap-yellow/10 flex items-center justify-center text-snap-yellow">
+                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-blue-600/10 border border-blue-500/20 group hover:border-blue-500/50 transition-all">
+                    <div className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all">
                       <WhatsAppIcon className="w-8 h-8" />
                     </div>
                     <div>
@@ -1624,8 +1728,8 @@ export default function App() {
                       <div className="text-2xl font-black text-white">{WHATSAPP_NUMBER}</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10">
-                    <div className="w-14 h-14 rounded-full bg-snap-yellow/10 flex items-center justify-center text-snap-yellow">
+                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-purple-600/10 border border-purple-500/20 group hover:border-purple-500/50 transition-all">
+                    <div className="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all">
                       <Send className="w-8 h-8" />
                     </div>
                     <div>
@@ -1633,16 +1737,16 @@ export default function App() {
                       <div className="text-2xl font-black text-white">support@snapscore.store</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-white/5 border border-white/10">
-                    <div className="w-14 h-14 rounded-full bg-snap-yellow/10 flex items-center justify-center text-snap-yellow">
+                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-orange-600/10 border border-orange-500/20 group hover:border-orange-500/50 transition-all">
+                    <div className="w-14 h-14 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-all">
                       <Share2 className="w-8 h-8" />
                     </div>
                     <div>
                       <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">Social Media</div>
                       <div className="flex gap-4 mt-2">
-                        <Facebook className="w-6 h-6 hover:text-snap-yellow cursor-pointer transition-colors" />
-                        <Twitter className="w-6 h-6 hover:text-snap-yellow cursor-pointer transition-colors" />
-                        <Instagram className="w-6 h-6 hover:text-snap-yellow cursor-pointer transition-colors" />
+                        <Facebook className="w-6 h-6 hover:text-blue-400 cursor-pointer transition-colors" />
+                        <Twitter className="w-6 h-6 hover:text-blue-400 cursor-pointer transition-colors" />
+                        <Instagram className="w-6 h-6 hover:text-pink-400 cursor-pointer transition-colors" />
                       </div>
                     </div>
                   </div>
@@ -1711,17 +1815,20 @@ export default function App() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.05 }}
-                        className="glass p-10 rounded-[3rem] border border-white/5 hover:border-snap-yellow/30 transition-all group relative overflow-hidden"
+                        className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${getPackageColor(pkg.amount)}`}
                       >
-                        <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{pkg.desc[lang]}</div>
-                        <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{pkg.amount}</div>
-                        <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
-                        <button 
-                          onClick={() => handleBuy(pkg)}
-                          className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
-                        >
-                          {t.shop.buy}
-                        </button>
+                        <div className="absolute inset-0 backdrop-blur-xl pointer-events-none"></div>
+                        <div className="relative z-10">
+                          <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{pkg.desc[lang]}</div>
+                          <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{pkg.amount}</div>
+                          <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
+                          <button 
+                            onClick={() => handleBuy(pkg)}
+                            className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
+                          >
+                            {t.shop.buy}
+                          </button>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
@@ -1743,17 +1850,20 @@ export default function App() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.05 }}
-                        className="glass p-10 rounded-[3rem] border border-white/5 hover:border-snap-yellow/30 transition-all group relative overflow-hidden"
+                        className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${getPackageColor(pkg.amount)}`}
                       >
-                        <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{pkg.desc[lang]}</div>
-                        <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{pkg.amount}</div>
-                        <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
-                        <button 
-                          onClick={() => handleBuy(pkg)}
-                          className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
-                        >
-                          {t.shop.buy}
-                        </button>
+                        <div className="absolute inset-0 backdrop-blur-xl pointer-events-none"></div>
+                        <div className="relative z-10">
+                          <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{pkg.desc[lang]}</div>
+                          <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{pkg.amount}</div>
+                          <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
+                          <button 
+                            onClick={() => handleBuy(pkg)}
+                            className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
+                          >
+                            {t.shop.buy}
+                          </button>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
@@ -1954,16 +2064,19 @@ export default function App() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: i * 0.05 }}
-                        className="glass p-10 rounded-[3rem] border border-white/5 hover:border-snap-yellow/30 transition-all group relative overflow-hidden"
+                        className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${getPackageColor(tier.amount)}`}
                       >
-                        <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{tier.amount}</div>
-                        <div className="text-3xl font-bold text-white/90 mb-10">{tier.price}</div>
-                        <button 
-                          onClick={() => setSelectedBoostingTier(tier)}
-                          className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
-                        >
-                          {lang === 'ar' ? 'اختيار الباقة' : 'Select Package'}
-                        </button>
+                        <div className="absolute inset-0 backdrop-blur-xl pointer-events-none"></div>
+                        <div className="relative z-10">
+                          <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{tier.amount}</div>
+                          <div className="text-3xl font-bold text-white/90 mb-10">{tier.price}</div>
+                          <button 
+                            onClick={() => setSelectedBoostingTier(tier)}
+                            className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
+                          >
+                            {lang === 'ar' ? 'اختيار الباقة' : 'Select Package'}
+                          </button>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
@@ -2598,14 +2711,14 @@ export default function App() {
             </div>
           </div>
 
-          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="text-gray-500 text-xs font-bold flex flex-col gap-2">
-              <div>{t.footer.rights}</div>
-              <div className="opacity-50 flex items-center gap-2">
-                <div className="w-4 h-4 bg-snap-yellow rounded-sm flex items-center justify-center">
-                  <Star className="text-black w-2.5 h-2.5 fill-black" />
+          <div className="mt-12 pt-8 border-t border-snap-yellow/20 flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-r from-snap-yellow/10 via-transparent to-snap-yellow/10 p-8 rounded-[2rem] shadow-[0_0_40px_rgba(255,252,0,0.05)]">
+            <div className="text-gray-400 text-sm font-bold flex flex-col gap-2">
+              <div className="text-white">{t.footer.rights}</div>
+              <div className="opacity-70 flex items-center gap-2">
+                <div className="w-5 h-5 bg-snap-yellow rounded-md flex items-center justify-center">
+                  <Star className="text-black w-3 h-3 fill-black" />
                 </div>
-                We are not affiliated with Snapchat Inc.
+                <span className="text-xs">We are not affiliated with Snapchat Inc.</span>
               </div>
             </div>
             
