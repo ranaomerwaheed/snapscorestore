@@ -459,34 +459,6 @@ const testimonials = [
     },
     avatar: "https://i.pinimg.com/1200x/7b/76/90/7b7690d1d9769561cb5fb6fdb2045943.jpg"
   }
-
- {
-    id: 1,
-    name: "James Wilson",
-    country: "🇺🇸 USA",
-    date: "2 days ago",
-    rating: 5,
-    text: "Amazing service! My Snap score increased by 500k in less than 24 hours. Communication via WhatsApp was super smooth.",
-    verified: true,
-  },
-  {
-    id: 2,
-    name: "عبدالعزيز الشمري",
-    country: "🇸🇦 Saudi Arabia",
-    date: "5 days ago",
-    rating: 5,
-    text: "خدمة ممتازة وسريعة جداً. اشتريت حساب قديم من ٢٠١٤ وكان الشغل احترافي. أنصح الجميع بالتعامل معهم.",
-    verified: true,
-  },
-  {
-    id: 3,
-    name: "Sarah Jenkins",
-    country: "🇬🇧 UK",
-    date: "1 week ago",
-    rating: 5,
-    text: "I was skeptical at first, but SnapScore Store is legit. Safest way to boost your profile without any risk of ban.",
-    verified: true,
-  }
 ];
 
 const ReviewSection = () => {
