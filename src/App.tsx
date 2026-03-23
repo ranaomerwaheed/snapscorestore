@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { GoogleGenAI, Type } from "@google/genai";
 import { 
   Infinity, 
   Lock, 
@@ -28,7 +29,14 @@ import {
   ArrowRight,
   ShieldCheck,
   RefreshCcw,
-  ShoppingBag
+  ShoppingBag,
+  Camera,
+  MapPin,
+  UserCircle,
+  Upload,
+  Download,
+  Loader2,
+  Search
 } from 'lucide-react';
 
 const WHATSAPP_NUMBER = "+923431390157";
@@ -49,7 +57,10 @@ const translations = {
       toolItems: [
         { id: 'calc', title: "Snapchat Score Calculator", ar: "سناب شات سكور حاسبة" },
         { id: 'checker', title: "Account Age & Trust Checker", ar: "فاحص عمر الحساب" },
-        { id: 'tracker', title: "Snapchat Score Milestone Tracker", ar: "مخطط أهداف السكور" }
+        { id: 'tracker', title: "Snapchat Score Milestone Tracker", ar: "مخطط أهداف السكور" },
+        { id: 'bitmoji', title: "Bitmoji Avatar Creator", ar: "منشئ صور بيتموجي" },
+        { id: 'lens', title: "AI Lens Simulator", ar: "محاكي عدسات الذكاء الاصطناعي" },
+        { id: 'map', title: "Snap Map Location Finder", ar: "مكتشف مواقع خريطة سناب" }
       ],
       serviceItems: [
         { id: 'boosting', title: "Score Boosting", ar: "زيادة السكور" },
@@ -259,6 +270,30 @@ const translations = {
       rights: "© 2024 SnapScore Store. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
+    },
+    tools_ui: {
+      bitmoji: {
+        title: "Bitmoji Avatar Creator",
+        subtitle: "Describe your perfect avatar and let AI create it",
+        placeholder: "e.g. A cool guy with sunglasses, blue hoodie, and blonde hair",
+        button: "Generate Avatar",
+        result: "Your Custom Avatar"
+      },
+      lens: {
+        title: "AI Lens Simulator",
+        subtitle: "Upload a photo and apply Snapchat-style lenses",
+        upload: "Upload Photo",
+        type: "Select Lens Type",
+        button: "Apply Lens",
+        result: "Lens Applied"
+      },
+      map: {
+        title: "Snap Map Location Finder",
+        subtitle: "Explore popular Snapchat hotspots anywhere in the world",
+        placeholder: "Enter city or place name",
+        button: "Find Hotspots",
+        result: "Popular Hotspots"
+      }
     }
   },
   ar: {
@@ -276,7 +311,10 @@ const translations = {
       toolItems: [
         { id: 'calc', title: "سناب شات سكور حاسبة", en: "Snapchat Score Calculator" },
         { id: 'checker', title: "فاحص عمر الحساب", en: "Account Age & Trust Checker" },
-        { id: 'tracker', title: "مخطط أهداف السكور", en: "Snapchat Score Milestone Tracker" }
+        { id: 'tracker', title: "مخطط أهداف السكور", en: "Snapchat Score Milestone Tracker" },
+        { id: 'bitmoji', title: "منشئ صور بيتموجي", en: "Bitmoji Avatar Creator" },
+        { id: 'lens', title: "محاكي عدسات الذكاء الاصطناعي", en: "AI Lens Simulator" },
+        { id: 'map', title: "مكتشف مواقع خريطة سناب", en: "Snap Map Location Finder" }
       ],
       serviceItems: [
         { id: 'boosting', title: "زيادة السكور", en: "Score Boosting" },
@@ -486,6 +524,30 @@ const translations = {
       rights: "© 2024 سناب سكور ستور. جميع الحقوق محفوظة.",
       privacy: "سياسة الخصوصية",
       terms: "شروط الخدمة"
+    },
+    tools_ui: {
+      bitmoji: {
+        title: "منشئ صور بيتموجي",
+        subtitle: "صف شخصيتك المثالية ودع الذكاء الاصطناعي ينشئها",
+        placeholder: "مثال: شاب رائع يرتدي نظارات شمسية، هودي أزرق، وشعر أشقر",
+        button: "إنشاء الصورة",
+        result: "صورتك المخصصة"
+      },
+      lens: {
+        title: "محاكي عدسات الذكاء الاصطناعي",
+        subtitle: "ارفع صورة وطبق عدسات سناب شات الشهيرة",
+        upload: "رفع صورة",
+        type: "اختر نوع العدسة",
+        button: "تطبيق العدسة",
+        result: "تم تطبيق العدسة"
+      },
+      map: {
+        title: "مكتشف مواقع خريطة سناب",
+        subtitle: "استكشف المواقع الشهيرة على خريطة سناب في أي مكان في العالم",
+        placeholder: "أدخل اسم المدينة أو المكان",
+        button: "البحث عن المواقع",
+        result: "المواقع الشهيرة"
+      }
     }
   }
 };
@@ -559,7 +621,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
-  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'boosting' | 'calc' | 'checker' | 'tracker'>('home');
+  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map'>('home');
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
   const [selectedBoostingTier, setSelectedBoostingTier] = useState<any>(null);
   const [checkoutData, setCheckoutData] = useState({ username: '', password: '' });
@@ -575,7 +637,140 @@ export default function App() {
   const [calcInput, setCalcInput] = useState({ current: '', target: '' });
   const [checkerInput, setCheckerInput] = useState('');
   const [trackerInput, setTrackerInput] = useState({ current: '', target: '' });
+  const [bitmojiInput, setBitmojiInput] = useState('');
+  const [lensInput, setLensInput] = useState<string | null>(null);
+  const [lensType, setLensType] = useState('cartoon');
+  const [mapInput, setMapInput] = useState('');
   const [toolResult, setToolResult] = useState<any>(null);
+  const [isToolLoading, setIsToolLoading] = useState(false);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleBitmoji = async () => {
+    if (!bitmojiInput) return;
+    setIsToolLoading(true);
+    setToolResult(null);
+    try {
+      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash-image',
+        contents: {
+          parts: [
+            {
+              text: `Create a high-quality Snapchat Bitmoji-style avatar based on this description: ${bitmojiInput}. The style should be clean, 3D-rendered, and iconic to Snapchat's aesthetic.`,
+            },
+          ],
+        },
+        config: {
+          imageConfig: {
+            aspectRatio: "1:1",
+            imageSize: "1K"
+          }
+        }
+      });
+      
+      let imageUrl = null;
+      for (const part of response.candidates?.[0]?.content?.parts || []) {
+        if (part.inlineData) {
+          imageUrl = `data:image/png;base64,${part.inlineData.data}`;
+          break;
+        }
+      }
+      
+      if (imageUrl) {
+        setToolResult({ image: imageUrl });
+      } else {
+        throw new Error("No image generated");
+      }
+    } catch (error) {
+      console.error("Bitmoji Error:", error);
+      alert(lang === 'ar' ? 'فشل في إنشاء الصورة. يرجى المحاولة مرة أخرى.' : 'Failed to generate image. Please try again.');
+    } finally {
+      setIsToolLoading(false);
+    }
+  };
+
+  const handleLens = async () => {
+    if (!lensInput) return;
+    setIsToolLoading(true);
+    setToolResult(null);
+    try {
+      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash-image',
+        contents: {
+          parts: [
+            {
+              inlineData: {
+                data: lensInput.split(',')[1],
+                mimeType: "image/png",
+              },
+            },
+            {
+              text: `Apply a Snapchat-style ${lensType} lens filter to this person's face. Make it look like a real Snapchat lens effect.`,
+            },
+          ],
+        },
+      });
+      
+      let imageUrl = null;
+      for (const part of response.candidates?.[0]?.content?.parts || []) {
+        if (part.inlineData) {
+          imageUrl = `data:image/png;base64,${part.inlineData.data}`;
+          break;
+        }
+      }
+      
+      if (imageUrl) {
+        setToolResult({ image: imageUrl });
+      } else {
+        throw new Error("No image generated");
+      }
+    } catch (error) {
+      console.error("Lens Error:", error);
+      alert(lang === 'ar' ? 'فشل في تطبيق العدسة. يرجى المحاولة مرة أخرى.' : 'Failed to apply lens. Please try again.');
+    } finally {
+      setIsToolLoading(false);
+    }
+  };
+
+  const handleMap = async () => {
+    if (!mapInput) return;
+    setIsToolLoading(true);
+    setToolResult(null);
+    try {
+      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+      const response = await ai.models.generateContent({
+        model: "gemini-3-flash-preview",
+        contents: `Find interesting locations and Snap Map hotspots near: ${mapInput}. Provide a list of 3-5 places with a brief description of why they are popular on Snapchat.`,
+        config: {
+          tools: [{ googleMaps: {} }],
+        },
+      });
+      
+      const text = response.text;
+      const chunks = response.candidates?.[0]?.groundingMetadata?.groundingChunks;
+      const maps = chunks?.filter(c => c.maps).map(c => c.maps) || [];
+      
+      setToolResult({ text, maps });
+    } catch (error) {
+      console.error("Map Error:", error);
+      alert(lang === 'ar' ? 'فشل في العثور على المواقع. يرجى المحاولة مرة أخرى.' : 'Failed to find locations. Please try again.');
+    } finally {
+      setIsToolLoading(false);
+    }
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setLensInput(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const scoreAccountsStock = [
     { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
@@ -663,7 +858,7 @@ export default function App() {
       }
 
       // Handle basic views
-      const validViews = ['home', 'shop', 'checkout', 'blog', 'boosting', 'calc', 'checker', 'tracker'];
+      const validViews = ['home', 'shop', 'checkout', 'blog', 'boosting', 'calc', 'checker', 'tracker', 'bitmoji', 'lens', 'map'];
       if (validViews.includes(hash)) {
         setView(hash as any);
         window.scrollTo(0, 0);
@@ -2194,6 +2389,220 @@ export default function App() {
                       </div>
                     )}
                   </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+        {view === 'bitmoji' && (
+          <section className="pt-40 pb-24 px-6 min-h-[80vh]">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-16">
+                <h1 className="text-5xl font-black mb-6 uppercase tracking-tighter">
+                  {t.tools_ui.bitmoji.title}
+                </h1>
+                <p className="text-gray-400 font-medium">{t.tools_ui.bitmoji.subtitle}</p>
+              </div>
+
+              <div className="glass p-10 rounded-[3rem] border-white/10">
+                <div className="space-y-8">
+                  <div>
+                    <label className="block text-xs font-black uppercase tracking-widest text-gray-500 mb-3 ml-2">{lang === 'ar' ? 'وصف الشخصية' : 'Character Description'}</label>
+                    <textarea 
+                      value={bitmojiInput}
+                      onChange={(e) => setBitmojiInput(e.target.value)}
+                      placeholder={t.tools_ui.bitmoji.placeholder}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow outline-none transition-all font-bold min-h-[120px] resize-none"
+                    />
+                  </div>
+
+                  <button 
+                    onClick={handleBitmoji}
+                    disabled={isToolLoading || !bitmojiInput}
+                    className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all text-xl flex items-center justify-center gap-3 disabled:opacity-50"
+                  >
+                    {isToolLoading ? <Loader2 className="animate-spin w-6 h-6" /> : (
+                      <>
+                        <UserCircle className="w-6 h-6" />
+                        {t.tools_ui.bitmoji.button}
+                      </>
+                    )}
+                  </button>
+
+                  {toolResult?.image && !isToolLoading && (
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="space-y-6"
+                    >
+                      <div className="text-center text-xs font-black uppercase tracking-widest text-gray-500">{t.tools_ui.bitmoji.result}</div>
+                      <div className="aspect-square rounded-[2rem] overflow-hidden border-4 border-snap-yellow/20 shadow-2xl max-w-sm mx-auto">
+                        <img src={toolResult.image} alt="Bitmoji" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                      </div>
+                      <div className="flex justify-center">
+                        <a 
+                          href={toolResult.image} 
+                          download="bitmoji-avatar.png"
+                          className="flex items-center gap-2 text-snap-yellow font-black uppercase tracking-widest text-sm hover:underline"
+                        >
+                          <Download className="w-4 h-4" />
+                          {lang === 'ar' ? 'تحميل الصورة' : 'Download Image'}
+                        </a>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {view === 'lens' && (
+          <section className="pt-40 pb-24 px-6 min-h-[80vh]">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center mb-16">
+                <h1 className="text-5xl font-black mb-6 uppercase tracking-tighter">
+                  {t.tools_ui.lens.title}
+                </h1>
+                <p className="text-gray-400 font-medium">{t.tools_ui.lens.subtitle}</p>
+              </div>
+
+              <div className="glass p-10 rounded-[3rem] border-white/10">
+                <div className="space-y-8">
+                  <div 
+                    onClick={() => fileInputRef.current?.click()}
+                    className="aspect-video rounded-2xl border-2 border-dashed border-white/10 flex flex-col items-center justify-center cursor-pointer hover:border-snap-yellow/50 transition-colors overflow-hidden relative group"
+                  >
+                    {lensInput ? (
+                      <img src={lensInput} alt="Preview" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                    ) : (
+                      <>
+                        <Upload className="w-12 h-12 text-gray-600 mb-4 group-hover:text-snap-yellow transition-colors" />
+                        <span className="text-gray-500 font-bold">{t.tools_ui.lens.upload}</span>
+                      </>
+                    )}
+                    <input 
+                      type="file" 
+                      ref={fileInputRef} 
+                      onChange={handleImageUpload} 
+                      className="hidden" 
+                      accept="image/*"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    {['cartoon', 'anime', 'zombie', 'superhero'].map((type) => (
+                      <button
+                        key={type}
+                        onClick={() => setLensType(type)}
+                        className={`py-4 rounded-xl font-black uppercase tracking-widest text-xs border transition-all ${lensType === type ? 'bg-snap-yellow text-black border-snap-yellow' : 'bg-white/5 text-gray-500 border-white/10 hover:border-white/30'}`}
+                      >
+                        {type}
+                      </button>
+                    ))}
+                  </div>
+
+                  <button 
+                    onClick={handleLens}
+                    disabled={isToolLoading || !lensInput}
+                    className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all text-xl flex items-center justify-center gap-3 disabled:opacity-50"
+                  >
+                    {isToolLoading ? <Loader2 className="animate-spin w-6 h-6" /> : (
+                      <>
+                        <Camera className="w-6 h-6" />
+                        {t.tools_ui.lens.button}
+                      </>
+                    )}
+                  </button>
+
+                  {toolResult?.image && !isToolLoading && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-6"
+                    >
+                      <div className="text-center text-xs font-black uppercase tracking-widest text-gray-500">{t.tools_ui.lens.result}</div>
+                      <div className="aspect-square rounded-[2rem] overflow-hidden border-4 border-snap-yellow/20 shadow-2xl max-w-sm mx-auto">
+                        <img src={toolResult.image} alt="Lens Result" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {view === 'map' && (
+          <section className="pt-40 pb-24 px-6 min-h-[80vh]">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <h1 className="text-5xl font-black mb-6 uppercase tracking-tighter">
+                  {t.tools_ui.map.title}
+                </h1>
+                <p className="text-gray-400 font-medium">{t.tools_ui.map.subtitle}</p>
+              </div>
+
+              <div className="glass p-10 rounded-[3rem] border-white/10">
+                <div className="space-y-8">
+                  <div className="relative">
+                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-500 w-6 h-6" />
+                    <input 
+                      type="text"
+                      value={mapInput}
+                      onChange={(e) => setMapInput(e.target.value)}
+                      placeholder={t.tools_ui.map.placeholder}
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl pl-16 pr-6 py-6 focus:border-snap-yellow outline-none transition-all font-bold text-lg"
+                    />
+                  </div>
+
+                  <button 
+                    onClick={handleMap}
+                    disabled={isToolLoading || !mapInput}
+                    className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all text-xl flex items-center justify-center gap-3 disabled:opacity-50"
+                  >
+                    {isToolLoading ? <Loader2 className="animate-spin w-6 h-6" /> : (
+                      <>
+                        <MapPin className="w-6 h-6" />
+                        {t.tools_ui.map.button}
+                      </>
+                    )}
+                  </button>
+
+                  {toolResult && !isToolLoading && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-8"
+                    >
+                      <div className="text-xs font-black uppercase tracking-widest text-gray-500 text-center">{t.tools_ui.map.result}</div>
+                      
+                      <div className="prose prose-invert max-w-none">
+                        <div className="text-gray-300 leading-relaxed whitespace-pre-wrap">
+                          {toolResult.text}
+                        </div>
+                      </div>
+
+                      {toolResult.maps && toolResult.maps.length > 0 && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {toolResult.maps.map((m: any, i: number) => (
+                            <a 
+                              key={i} 
+                              href={m.uri} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-snap-yellow/30 transition-all group"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="font-black group-hover:text-snap-yellow transition-colors">{m.title}</span>
+                                <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-snap-yellow transition-all group-hover:translate-x-1" />
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </motion.div>
+                  )}
                 </div>
               </div>
             </div>
