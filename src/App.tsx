@@ -1147,76 +1147,85 @@ export default function App() {
               exit={{ height: 0, opacity: 0 }}
               className="md:hidden bg-matte-black border-t border-white/10 overflow-hidden"
             >
-              <div className="flex flex-col p-6 gap-6 text-lg font-bold text-gray-400">
-                <button onClick={() => { setView('home'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الرئيسية' : 'Home'}</button>
+              <div className={`flex flex-col p-6 gap-6 text-lg font-bold text-gray-400 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+                <button onClick={() => { setView('home'); setIsMenuOpen(false); }} className="hover:text-snap-yellow transition-colors">{lang === 'ar' ? 'الرئيسية' : 'Home'}</button>
                 
                 <div className="space-y-4">
-                  <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.catalog}</div>
-                  {t.nav.catalogItems.map((item: any) => (
-                    <button
-                      key={item.id}
-                      onClick={() => {
-                        if (item.id === 'score' || item.id === 'age') {
-                          setView('shop');
-                          setShopTab('score');
-                        } else if (item.id === 'followers') {
-                          setView('shop');
-                          setShopTab('followers');
-                        } else {
-                          setView('shop');
-                          setShopTab('services');
-                        }
-                        setIsMenuOpen(false);
-                      }}
-                      className="w-full text-right hover:text-snap-yellow transition-colors pr-4 border-r border-white/10"
-                    >
-                      {item.title}
-                    </button>
-                  ))}
+                  <div className={`text-xs font-black text-snap-yellow uppercase tracking-widest ${lang === 'ar' ? 'text-right' : 'text-left'}`}>{t.nav.catalog}</div>
+                  <div className={`flex flex-col gap-3 ${lang === 'ar' ? 'pr-4 border-r' : 'pl-4 border-l'} border-white/10`}>
+                    {t.nav.catalogItems.map((item: any) => (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          if (item.id === 'score' || item.id === 'age') {
+                            setView('shop');
+                            setShopTab('score');
+                          } else if (item.id === 'followers') {
+                            setView('shop');
+                            setShopTab('followers');
+                          } else {
+                            setView('shop');
+                            setShopTab('services');
+                          }
+                          setIsMenuOpen(false);
+                        }}
+                        className="text-right hover:text-snap-yellow transition-colors"
+                        style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
+                      >
+                        {item.title}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.services}</div>
-                  {t.nav.serviceItems.map((item: any) => (
-                    <button
-                      key={item.id}
-                      onClick={() => {
-                        if (item.id === 'boosting') {
-                          setView('boosting');
-                        } else if (item.id === 'followers') {
-                          setView('shop');
-                          setShopTab('followers');
-                        } else {
-                          setView('shop');
-                          setShopTab('services');
-                        }
-                        setIsMenuOpen(false);
-                      }}
-                      className="w-full text-right hover:text-snap-yellow transition-colors pr-4 border-r border-white/10"
-                    >
-                      {item.title}
-                    </button>
-                  ))}
+                  <div className={`text-xs font-black text-snap-yellow uppercase tracking-widest ${lang === 'ar' ? 'text-right' : 'text-left'}`}>{t.nav.services}</div>
+                  <div className={`flex flex-col gap-3 ${lang === 'ar' ? 'pr-4 border-r' : 'pl-4 border-l'} border-white/10`}>
+                    {t.nav.serviceItems.map((item: any) => (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          if (item.id === 'boosting') {
+                            setView('boosting');
+                          } else if (item.id === 'followers') {
+                            setView('shop');
+                            setShopTab('followers');
+                          } else {
+                            setView('shop');
+                            setShopTab('services');
+                          }
+                          setIsMenuOpen(false);
+                        }}
+                        className="text-right hover:text-snap-yellow transition-colors"
+                        style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
+                      >
+                        {item.title}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="text-right text-xs font-black text-snap-yellow uppercase tracking-widest">{t.nav.tools}</div>
-                  {t.nav.toolItems.map((item: any) => (
-                    <button
-                      key={item.id}
-                      onClick={() => {
-                        setView(item.id as any);
-                        setIsMenuOpen(false);
-                        setToolResult(null);
-                      }}
-                      className="w-full text-right hover:text-snap-yellow transition-colors pr-4 border-r border-white/10"
-                    >
-                      {item.title}
-                    </button>
-                  ))}
+                  <div className={`text-xs font-black text-snap-yellow uppercase tracking-widest ${lang === 'ar' ? 'text-right' : 'text-left'}`}>{t.nav.tools}</div>
+                  <div className={`flex flex-col gap-3 ${lang === 'ar' ? 'pr-4 border-r' : 'pl-4 border-l'} border-white/10`}>
+                    {t.nav.toolItems.map((item: any) => (
+                      <button
+                        key={item.id}
+                        onClick={() => {
+                          setView(item.id as any);
+                          setIsMenuOpen(false);
+                          setToolResult(null);
+                        }}
+                        className="text-right hover:text-snap-yellow transition-colors"
+                        style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
+                      >
+                        {item.title}
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
-                <button onClick={() => { setView('blog'); setIsMenuOpen(false); }} className="text-right hover:text-snap-yellow transition-colors">{t.nav.blog}</button>
+                <button onClick={() => { setView('blog'); setIsMenuOpen(false); }} className="hover:text-snap-yellow transition-colors">{t.nav.blog}</button>
                 
                 <a href="#how" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{t.nav.how}</a>
                 <a href="#faq" onClick={() => setIsMenuOpen(false)} className="hover:text-snap-yellow transition-colors">{t.nav.faq}</a>
@@ -1254,9 +1263,13 @@ export default function App() {
                 {lang === 'ar' ? 'الخدمة رقم 1 عالمياً' : '#1 Trusted Service Worldwide'}
               </div>
               <h1 className="text-6xl lg:text-8xl font-black leading-[0.9] mb-8 tracking-tighter">
-                {t.hero.title} <br />
-                <span className="text-snap-yellow drop-shadow-[0_0_30px_rgba(255,252,0,0.3)]">{t.hero.titleHighlight}</span> <br />
-                <span className="text-3xl lg:text-5xl block mt-4 text-white/90">{t.hero.subtitle}</span>
+                <span className="bg-gradient-to-r from-white via-snap-yellow to-white bg-clip-text text-transparent animate-gradient-x">
+                  {t.hero.title}
+                </span> <br />
+                <span className="text-snap-yellow drop-shadow-[0_0_30px_rgba(255,252,0,0.5)] inline-block hover:scale-105 transition-transform duration-500">
+                  {t.hero.titleHighlight}
+                </span> <br />
+                <span className="text-3xl lg:text-5xl block mt-4 text-white/90 font-bold italic">{t.hero.subtitle}</span>
               </h1>
               <p className="text-xl text-gray-400 mb-10 max-w-lg leading-relaxed font-medium">
                 {t.hero.desc}
@@ -1344,21 +1357,35 @@ export default function App() {
 
 
         {/* Stats Section */}
-        <section className="py-20 px-6 bg-matte-black border-y border-white/5 bg-mesh-2 section-divider">
-          <div className="max-w-7xl mx-auto">
+        <section className="py-20 px-6 bg-matte-black border-y border-white/5 bg-mesh-2 section-divider relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-orange-500/5 opacity-30"></div>
+          <div className="max-w-7xl mx-auto relative z-10">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
-              {t.stats.items.map((stat, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="text-5xl lg:text-7xl font-black text-snap-yellow mb-2 tracking-tighter">{stat.value}</div>
-                  <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">{stat.label}</div>
-                </motion.div>
-              ))}
+              {t.stats.items.map((stat, i) => {
+                const colors = [
+                  'from-blue-500 to-cyan-400',
+                  'from-purple-500 to-pink-400',
+                  'from-orange-500 to-yellow-400',
+                  'from-green-500 to-emerald-400'
+                ];
+                return (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="text-center group"
+                  >
+                    <div className={`text-5xl lg:text-7xl font-black mb-2 tracking-tighter bg-gradient-to-br ${colors[i % colors.length]} bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300`}>
+                      {stat.value}
+                    </div>
+                    <div className="text-sm font-bold text-gray-400 uppercase tracking-widest group-hover:text-white transition-colors">
+                      {stat.label}
+                    </div>
+                    <div className={`mt-4 h-1 w-12 mx-auto rounded-full bg-gradient-to-r ${colors[i % colors.length]} opacity-30 group-hover:opacity-100 transition-opacity`}></div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -2748,21 +2775,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-
-      {/* Floating WhatsApp Button */}
-      <motion.button
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => openWhatsApp(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات سناب سكور ستور' : 'Hello, I want to inquire about SnapScore Store services')}
-        className="fixed bottom-24 right-8 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full shadow-[0_0_20px_rgba(37,211,102,0.4)] flex items-center justify-center group"
-      >
-        <WhatsAppIcon className="w-10 h-10" />
-        <div className="absolute right-full mr-4 bg-white text-black px-4 py-2 rounded-xl text-sm font-bold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-xl">
-          {lang === 'ar' ? 'تحدث معنا' : 'Chat with us'}
-        </div>
-      </motion.button>
 
       {/* Scroll to Top */}
       <AnimatePresence>
