@@ -611,6 +611,76 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) {
+        setView('home');
+        return;
+      }
+
+      // Handle basic views
+      const validViews = ['home', 'shop', 'checkout', 'blog', 'boosting', 'calc', 'checker', 'tracker'];
+      if (validViews.includes(hash)) {
+        setView(hash as any);
+        window.scrollTo(0, 0);
+        return;
+      }
+
+      // Handle home page anchors
+      const homeAnchors = ['services', 'catalog', 'how', 'faq', 'contact'];
+      if (homeAnchors.includes(hash)) {
+        setView('home');
+        // Browser will handle scrolling to anchor if element exists
+        return;
+      }
+
+      // Handle shop tabs
+      if (hash.startsWith('shop-')) {
+        const tab = hash.split('-')[1];
+        if (['score', 'followers', 'services'].includes(tab)) {
+          setView('shop');
+          setShopTab(tab as any);
+          window.scrollTo(0, 0);
+        }
+      }
+
+      // Handle direct product checkout
+      if (hash.startsWith('buy-')) {
+        const productId = hash.split('-')[1];
+        const pkg = [...scoreAccountsStock, ...followerAccountsStock].find(p => p.id === productId);
+        if (pkg) {
+          setSelectedPackage(pkg);
+          setView('checkout');
+          window.scrollTo(0, 0);
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange(); // Initial check
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  useEffect(() => {
+    const currentHash = window.location.hash.replace('#', '');
+    if (view === 'home' && currentHash !== '') {
+      // Don't force home hash if we are just on the home page
+    } else if (view === 'shop') {
+      window.location.hash = `shop-${shopTab}`;
+    } else if (view === 'checkout' && selectedPackage) {
+      window.location.hash = `buy-${selectedPackage.id}`;
+    } else if (view !== 'home' && currentHash !== view) {
+      // Sync view to hash if it's not home
+      // We don't want to overwrite specific hashes like buy- or shop- if we are already in that view
+      const isSpecialHash = currentHash.startsWith('buy-') || currentHash.startsWith('shop-');
+      if (!isSpecialHash) {
+        window.location.hash = view;
+      }
+    }
+  }, [view, shopTab, selectedPackage]);
+
+  useEffect(() => {
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
   }, [lang]);
