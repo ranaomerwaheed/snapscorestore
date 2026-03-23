@@ -108,7 +108,7 @@ const translations = {
       verified: "Verified"
     },
     why: {
-      title: "Why Choose Snap Boost?",
+      title: "Why Choose SnapScore Store?",
       subtitle: "We provide the most secure and efficient growth services in the region.",
       items: [
         {
@@ -183,7 +183,7 @@ const translations = {
       items: [
         { value: "10K+", label: "Happy Clients" },
         { value: "50K+", label: "Orders Completed" },
-        { value: "5+", label: "Years Experience" },
+        { value: "12+", label: "Years Experience" },
         { value: "4.9", label: "Average Rating" }
       ]
     },
@@ -216,17 +216,17 @@ const translations = {
       posts: [
         {
           title: "How to Increase Your Snap Score Fast",
-          date: "March 15, 2026",
+          date: "March 15, 2024",
           excerpt: "Discover the most effective and safe methods to boost your score in 2024."
         },
         {
           title: "Why Aged Accounts are Better",
-          date: "March 10, 2026",
+          date: "March 10, 2024",
           excerpt: "The benefits of using accounts with history for your personal brand."
         },
         {
           title: "Snapchat Security Best Practices",
-          date: "March 5, 2026",
+          date: "March 5, 2024",
           excerpt: "Keep your account safe while growing your presence online."
         }
       ]
@@ -235,7 +235,7 @@ const translations = {
       title: "Secure Payments",
       subtitle: "We accept all major payment methods",
       methods: [
-        { name: "Google Pay", icon: "" },
+        { name: "Apple Pay", icon: "" },
         { name: "STC Pay", icon: "stc" },
         { name: "Mada", icon: "mada" },
         { name: "Credit Card", icon: "💳" }
@@ -247,7 +247,7 @@ const translations = {
       button: "Contact on WhatsApp"
     },
     footer: {
-      rights: "© 2024 Snap Boost. All rights reserved.",
+      rights: "© 2024 SnapScore Store. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
     }
@@ -326,7 +326,7 @@ const translations = {
       verified: "موثق"
     },
     why: {
-      title: "لماذا تختار سناب بوست؟",
+      title: "لماذا تختار سناب سكور ستور؟",
       subtitle: "نقدم خدمات النمو الأكثر أماناً وفعالية عالمياً.",
       items: [
         {
@@ -401,7 +401,7 @@ const translations = {
       items: [
         { value: "10K+", label: "عميل سعيد" },
         { value: "50K+", label: "طلب مكتمل" },
-        { value: "5+", label: "سنوات خبرة" },
+        { value: "12+", label: "سنوات خبرة" },
         { value: "4.9", label: "متوسط التقييم" }
       ]
     },
@@ -465,7 +465,7 @@ const translations = {
       button: "تواصل عبر واتساب"
     },
     footer: {
-      rights: "© 2024 سناب بوست. جميع الحقوق محفوظة.",
+      rights: "© 2024 سناب سكور ستور. جميع الحقوق محفوظة.",
       privacy: "سياسة الخصوصية",
       terms: "شروط الخدمة"
     }
@@ -480,7 +480,7 @@ const testimonials = [
       en: "Best service in the Middle East. My Snap score reached 1M in just 2 days. Highly recommended for anyone looking for reliability.", 
       ar: "أفضل خدمة في الشرق الأوسط. وصل سكور حسابي إلى مليون في يومين فقط. أنصح به بشدة لكل من يبحث عن المصداقية." 
     },
-    avatar: "https://i.pinimg.com/736x/d4/d1/09/d4d10914504759b9c917d0b338e13744.jpg"
+    avatar: "https://picsum.photos/seed/user1/100/100"
   },
   {
     name: { en: "Sara Mohammed", ar: "سارة محمد" },
@@ -489,7 +489,7 @@ const testimonials = [
       en: "I was worried about my account, but they reassured me and the service was extremely professional. Highly recommended.", 
       ar: "كنت خايفة على حسابي بس طمنوني والخدمة كانت احترافية للغاية. أنصح فيهم وبقوة." 
     },
-    avatar: "https://i.pinimg.com/1200x/3d/b5/31/3db5313f860c6c6f67480f238e2e4f27.jpg"
+    avatar: "https://picsum.photos/seed/user2/100/100"
   },
   {
     name: { en: "Sultan Al-Kuwari", ar: "سلطان الكواري" },
@@ -498,7 +498,7 @@ const testimonials = [
       en: "Best service I've dealt with in the Gulf. Credibility and speed in execution.", 
       ar: "أفضل خدمة تعاملت معها في الخليج. مصداقية وسرعة في التنفيذ." 
     },
-    avatar: "https://i.pinimg.com/1200x/7b/76/90/7b7690d1d9769561cb5fb6fdb2045943.jpg"
+    avatar: "https://picsum.photos/seed/user3/100/100"
   }
 ];
 
@@ -518,9 +518,9 @@ const faqData = [
 ];
 
 const catalog = [
-  { id: 1, score: "5K+", price: "$3", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
-  { id: 2, score: "10K+", price: "$5", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
-  { id: 3, score: "20K+", price: "$7", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
+  { id: 1, score: "5K+", price: "$15", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
+  { id: 2, score: "10K+", price: "$25", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
+  { id: 3, score: "20K+", price: "$35", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
   { id: 4, score: "50K+", price: "$55", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
   { id: 5, score: "100K+", price: "$95", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
   { id: 6, score: "200K+", price: "$160", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
@@ -560,52 +560,52 @@ export default function App() {
   const [toolResult, setToolResult] = useState<any>(null);
 
   const scoreAccountsStock = [
-    { id: 'sa5k', amount: '5,000', price: '$3', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
-    { id: 'sa10k', amount: '10,000', price: '$5', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
-    { id: 'sa20k', amount: '20,000', price: '$7', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
-    { id: 'sa50k', amount: '50,000', price: '$9', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
-    { id: 'sa100k', amount: '100,000', price: '$12', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
-    { id: 'sa200k', amount: '200,000', price: '$16', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
-    { id: 'sa300k', amount: '300,000', price: '$19', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
-    { id: 'sa500k', amount: '500,000', price: '$25', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
-    { id: 'sa700k', amount: '700,000', price: '$32', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
-    { id: 'sa1m', amount: '1,000,000', price: '$40', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
-    { id: 'sa2m', amount: '2,000,000', price: '$50', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
-    { id: 'sa5m', amount: '5,000,000', price: '$100', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
-    { id: 'sa10m', amount: '10,000,000', price: '$190', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
+    { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
+    { id: 'sa10k', amount: '10,000', price: '$25', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
+    { id: 'sa20k', amount: '20,000', price: '$35', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
+    { id: 'sa50k', amount: '50,000', price: '$55', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
+    { id: 'sa100k', amount: '100,000', price: '$95', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
+    { id: 'sa200k', amount: '200,000', price: '$160', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
+    { id: 'sa300k', amount: '300,000', price: '$220', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
+    { id: 'sa500k', amount: '500,000', price: '$280', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'sa700k', amount: '700,000', price: '$350', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
+    { id: 'sa1m', amount: '1,000,000', price: '$450', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
+    { id: 'sa2m', amount: '2,000,000', price: '$850', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
+    { id: 'sa5m', amount: '5,000,000', price: '$1800', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
+    { id: 'sa10m', amount: '10,000,000', price: '$3500', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
   ];
 
   const followerAccountsStock = [
-    { id: 'fa5k', amount: '5,000', price: '$20', type: 'Follower Account', desc: { en: 'Rising Star', ar: 'نجم صاعد' } },
-    { id: 'fa10k', amount: '10,000', price: '$32', type: 'Follower Account', desc: { en: 'Popular Account', ar: 'حساب شائع' } },
-    { id: 'fa20k', amount: '20,000', price: '$70', type: 'Follower Account', desc: { en: 'Influencer Pack', ar: 'باقة المؤثرين' } },
-    { id: 'fa50k', amount: '50,000', price: '$140', type: 'Follower Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
-    { id: 'fa100k', amount: '100,000', price: '$250', type: 'Follower Account', desc: { en: 'Verified Potential', ar: 'إمكانية توثيق' } },
-    { id: 'fa200k', amount: '200,000', price: '$320', type: 'Follower Account', desc: { en: 'Mega Account', ar: 'حساب ضخم' } },
-    { id: 'fa300k', amount: '300,000', price: '$399', type: 'Follower Account', desc: { en: 'Pro Account', ar: 'حساب محترف' } },
-    { id: 'fa500k', amount: '500,000', price: '$460', type: 'Follower Account', desc: { en: 'Top Tier Presence', ar: 'حضور من الفئة الأولى' } },
-    { id: 'fa700k', amount: '700,000', price: '$699', type: 'Follower Account', desc: { en: 'Ultimate Reach', ar: 'وصول أقصى' } },
+    { id: 'fa5k', amount: '5,000', price: '$45', type: 'Follower Account', desc: { en: 'Rising Star', ar: 'نجم صاعد' } },
+    { id: 'fa10k', amount: '10,000', price: '$85', type: 'Follower Account', desc: { en: 'Popular Account', ar: 'حساب شائع' } },
+    { id: 'fa20k', amount: '20,000', price: '$150', type: 'Follower Account', desc: { en: 'Influencer Pack', ar: 'باقة المؤثرين' } },
+    { id: 'fa50k', amount: '50,000', price: '$350', type: 'Follower Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'fa100k', amount: '100,000', price: '$650', type: 'Follower Account', desc: { en: 'Verified Potential', ar: 'إمكانية توثيق' } },
+    { id: 'fa200k', amount: '200,000', price: '$1100', type: 'Follower Account', desc: { en: 'Mega Account', ar: 'حساب ضخم' } },
+    { id: 'fa300k', amount: '300,000', price: '$1500', type: 'Follower Account', desc: { en: 'Pro Account', ar: 'حساب محترف' } },
+    { id: 'fa500k', amount: '500,000', price: '$2200', type: 'Follower Account', desc: { en: 'Top Tier Presence', ar: 'حضور من الفئة الأولى' } },
+    { id: 'fa700k', amount: '700,000', price: '$2900', type: 'Follower Account', desc: { en: 'Ultimate Reach', ar: 'وصول أقصى' } },
   ];
 
   const servicesList = [
-    { id: 's_boost', title: 'Snap Score Boost', price: 'From $3', icon: <TrendingUp />, desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'ارفع سكور حسابك من 5000 إلى مليون بأمان.' } },
+    { id: 's_boost', title: 'Snap Score Boost', price: 'From $10', icon: <TrendingUp />, desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'ارفع سكور حسابك من 5000 إلى مليون بأمان.' } },
     { id: 's_lens', title: 'Snapchat AR Lens Create', price: 'Contact Us', icon: <Zap />, desc: { en: 'Custom AR lenses created for your profile.', ar: 'عدسات واقع معزز مخصصة لملفك الشخصي.' } },
-    { id: 's_followers', title: 'Snapchat Follower Increase', price: 'From $5', icon: <Users />, desc: { en: 'Increase real followers on your account.', ar: 'زيادة متابعين حقيقيين على حسابك.' } },
+    { id: 's_followers', title: 'Snapchat Follower Increase', price: 'From $20', icon: <Users />, desc: { en: 'Increase real followers on your account.', ar: 'زيادة متابعين حقيقيين على حسابك.' } },
     { id: 's_badge', title: 'Get Verified Badge', price: 'Contact Us', icon: <BadgeCheck />, desc: { en: 'Professional assistance for the Gold Star badge.', ar: 'مساعدة احترافية للحصول على شارة النجمة الذهبية.' } },
-    { id: 's_views', title: 'View Service', price: 'From $3', icon: <Eye />, desc: { en: 'Boost your story views instantly.', ar: 'عزز مشاهدات الستوري الخاصة بك فوراً.' } },
+    { id: 's_views', title: 'View Service', price: 'From $15', icon: <Eye />, desc: { en: 'Boost your story views instantly.', ar: 'عزز مشاهدات الستوري الخاصة بك فوراً.' } },
   ];
 
   const boostingTiers = [
-    { id: 'b5k', amount: '5,000', price: '$3' },
-    { id: 'b10k', amount: '10,000', price: '$5' },
-    { id: 'b20k', amount: '20,000', price: '$7' },
-    { id: 'b50k', amount: '50,000', price: '$9' },
-    { id: 'b100k', amount: '100,000', price: '$12' },
-    { id: 'b200k', amount: '200,000', price: '$15' },
-    { id: 'b300k', amount: '300,000', price: '$20' },
-    { id: 'b500k', amount: '500,000', price: '$25' },
-    { id: 'b700k', amount: '700,000', price: '$30' },
-    { id: 'b1m', amount: '1,000,000', price: '$40' },
+    { id: 'b5k', amount: '5,000', price: '$10' },
+    { id: 'b10k', amount: '10,000', price: '$18' },
+    { id: 'b20k', amount: '20,000', price: '$35' },
+    { id: 'b50k', amount: '50,000', price: '$80' },
+    { id: 'b100k', amount: '100,000', price: '$150' },
+    { id: 'b200k', amount: '200,000', price: '$280' },
+    { id: 'b300k', amount: '300,000', price: '$400' },
+    { id: 'b500k', amount: '500,000', price: '$650' },
+    { id: 'b700k', amount: '700,000', price: '$850' },
+    { id: 'b1m', amount: '1,000,000', price: '$1200' },
   ];
 
   const handleBuy = (pkg: any) => {
@@ -734,23 +734,31 @@ export default function App() {
   return (
     <div className={`min-h-screen bg-matte-black selection:bg-snap-yellow selection:text-black overflow-x-hidden font-${lang === 'ar' ? 'cairo' : 'sans'} relative`}>
       {/* Background Mesh */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-30">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(at_0%_0%,hsla(59,100%,50%,0.1)_0,transparent_50%)]"></div>
-        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(at_100%_100%,hsla(59,100%,50%,0.1)_0,transparent_50%)]"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,252,0,0.05)_0%,transparent_70%)]"></div>
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(at_0%_0%,hsla(59,100%,50%,0.15)_0,transparent_50%)]"></div>
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(at_100%_100%,hsla(59,100%,50%,0.15)_0,transparent_50%)]"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,252,0,0.08)_0%,transparent_70%)]"></div>
       </div>
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-matte-black/80 backdrop-blur-xl border-b border-white/10">
-        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative group cursor-pointer">
-              <Star className="w-10 h-10 text-snap-yellow fill-snap-yellow group-hover:rotate-12 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-snap-yellow blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-matte-black/95 backdrop-blur-3xl border-b border-white/10 shadow-[0_10px_50px_rgba(0,0,0,0.8)]">
+        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
+          {/* Header Glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-snap-yellow/50 to-transparent"></div>
+          
+          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => setView('home')}>
+            <div className="relative">
+              <img 
+                src="https://freesnapscores.com/assets/logo.svg" 
+                alt="SnapScore Store Logo" 
+                className="w-12 h-12 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 drop-shadow-[0_0_15px_rgba(255,252,0,0.6)]"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-snap-yellow blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-500"></div>
             </div>
             <div className="flex flex-col leading-none">
-              <span className="text-2xl font-black tracking-tighter text-white uppercase">SNAP BOOST</span>
-              <span className="text-[10px] font-bold text-snap-yellow tracking-[0.3em] uppercase">{lang === 'ar' ? 'سناب بوست' : 'Professional Services'}</span>
+              <span className="text-2xl font-black tracking-tighter text-white uppercase group-hover:text-snap-yellow transition-all duration-300 text-glow-yellow">SnapScore Store</span>
+              <span className="text-[10px] font-bold text-snap-yellow tracking-[0.3em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">{lang === 'ar' ? 'سناب سكور ستور' : 'Premium Services'}</span>
             </div>
           </div>
           
@@ -953,7 +961,7 @@ export default function App() {
                 <button 
                   onClick={() => {
                     setIsMenuOpen(false);
-                    openWhatsApp(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات سناب بوست' : 'Hello, I want to inquire about Snap Boost services');
+                    openWhatsApp(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات سناب سكور ستور' : 'Hello, I want to inquire about SnapScore Store services');
                   }}
                   className="w-full py-4 bg-snap-yellow text-black font-black rounded-xl text-center"
                 >
@@ -969,7 +977,7 @@ export default function App() {
         {view === 'home' && (
           <>
             {/* Hero Section */}
-        <section className="relative pt-40 pb-24 px-6 overflow-hidden">
+        <section className="relative pt-40 pb-24 px-6 overflow-hidden bg-mesh-1 section-divider">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,252,0,0.05)_0%,transparent_70%)] pointer-events-none"></div>
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             {/* Text Side */}
@@ -1100,7 +1108,7 @@ export default function App() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 px-6 bg-matte-black border-y border-white/5">
+        <section className="py-20 px-6 bg-matte-black border-y border-white/5 bg-mesh-2 section-divider">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
               {t.stats.items.map((stat, i) => (
@@ -1120,7 +1128,7 @@ export default function App() {
         </section>
 
         {/* Why Choose Us Grid */}
-        <section id="services" className="py-32 px-6 bg-gradient-to-b from-matte-black to-zinc-900/30">
+        <section id="services" className="py-32 px-6 bg-gradient-to-b from-matte-black to-zinc-900/30 section-divider">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tight">{t.why.title}</h2>
@@ -1149,7 +1157,7 @@ export default function App() {
         </section>
 
         {/* Catalog Section */}
-        <section id="catalog" className="py-32 px-6 bg-matte-black relative overflow-hidden">
+        <section id="catalog" className="py-32 px-6 bg-matte-black relative overflow-hidden bg-mesh-1 section-divider">
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="text-center mb-20">
               <h2 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">
@@ -1187,7 +1195,7 @@ export default function App() {
         </section>
 
         {/* How It Works */}
-        <section id="how" className="py-32 px-6 bg-zinc-900/20">
+        <section id="how" className="py-32 px-6 bg-zinc-900/20 bg-mesh-2 section-divider">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tight">{t.how.title}</h2>
@@ -1215,7 +1223,7 @@ export default function App() {
         </section>
 
         {/* Premium Services */}
-        <section className="py-32 px-6 bg-matte-black relative">
+        <section className="py-32 px-6 bg-matte-black relative bg-mesh-1 section-divider">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-20 items-center">
               <div>
@@ -1271,7 +1279,7 @@ export default function App() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className="py-32 px-6 bg-matte-black">
+        <section id="faq" className="py-32 px-6 bg-matte-black bg-mesh-2 section-divider">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tight">{t.faq.title}</h2>
@@ -1494,7 +1502,7 @@ export default function App() {
 
             {/* Payment Logos Row */}
             <div className="mt-16 flex flex-wrap justify-center items-center gap-12 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-              <img src="https://i.postimg.cc/Y0WCqgnD/Visa.png" alt="Visa" className="h-8" referrerPolicy="no-referrer" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-8" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-12" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" className="h-10" referrerPolicy="no-referrer" />
               <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-8" referrerPolicy="no-referrer" />
