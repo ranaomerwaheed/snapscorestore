@@ -459,6 +459,80 @@ const testimonials = [
     },
     avatar: "https://i.pinimg.com/1200x/7b/76/90/7b7690d1d9769561cb5fb6fdb2045943.jpg"
   }
+
+ {
+    id: 1,
+    name: "James Wilson",
+    country: "🇺🇸 USA",
+    date: "2 days ago",
+    rating: 5,
+    text: "Amazing service! My Snap score increased by 500k in less than 24 hours. Communication via WhatsApp was super smooth.",
+    verified: true,
+  },
+  {
+    id: 2,
+    name: "عبدالعزيز الشمري",
+    country: "🇸🇦 Saudi Arabia",
+    date: "5 days ago",
+    rating: 5,
+    text: "خدمة ممتازة وسريعة جداً. اشتريت حساب قديم من ٢٠١٤ وكان الشغل احترافي. أنصح الجميع بالتعامل معهم.",
+    verified: true,
+  },
+  {
+    id: 3,
+    name: "Sarah Jenkins",
+    country: "🇬🇧 UK",
+    date: "1 week ago",
+    rating: 5,
+    text: "I was skeptical at first, but SnapScore Store is legit. Safest way to boost your profile without any risk of ban.",
+    verified: true,
+  }
+];
+
+const ReviewSection = () => {
+  return (
+    <section className="py-20 bg-black/50 backdrop-blur-lg">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-white mb-4">Trusted by Users Globally</h2>
+          <div className="flex items-center justify-center gap-2 text-yellow-500">
+            {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" className="w-6 h-6" />)}
+            <span className="text-white ml-2 font-semibold">4.9/5 based on 10k+ orders</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {reviews.map((review) => (
+            <div key={review.id} className="p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-black border border-gray-800 hover:border-blue-500 transition-all duration-300">
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  <h3 className="text-white font-bold text-lg">{review.name}</h3>
+                  <p className="text-gray-500 text-sm">{review.country} • {review.date}</p>
+                </div>
+                {review.verified && (
+                  <span className="flex items-center gap-1 text-green-500 text-xs font-bold bg-green-500/10 px-2 py-1 rounded-full border border-green-500/20">
+                    <BadgeCheck className="w-4 h-4" /> VERIFIED
+                  </span>
+                )}
+              </div>
+              <div className="flex gap-1 mb-4 text-yellow-500">
+                {[...Array(review.rating)].map((_, i) => <Star key={i} fill="currentColor" className="w-4 h-4" />)}
+              </div>
+              <p className="text-gray-300 italic leading-relaxed">"{review.text}"</p>
+            </div>
+          ))}
+        </div>
+        
+        {/* Trust Badges */}
+        <div className="mt-16 flex flex-wrap justify-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" className="h-8" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-8" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-8" />
+        </div>
+      </div>
+    </section>
+  );
+};
 ];
 
 const faqData = [
