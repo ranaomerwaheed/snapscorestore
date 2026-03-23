@@ -36,7 +36,9 @@ import {
   Upload,
   Download,
   Loader2,
-  Search
+  Search,
+  Calculator,
+  User
 } from 'lucide-react';
 
 const WHATSAPP_NUMBER = "+923431390157";
@@ -260,6 +262,50 @@ const translations = {
       rights: "© 2024 SnapScore Store. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
+    },
+    privacy: {
+      title: "Privacy Policy",
+      lastUpdated: "Last Updated: March 2024",
+      sections: [
+        {
+          title: "1. Information We Collect",
+          content: "We collect information you provide directly to us when you place an order, including your Snapchat username and, in some cases, account credentials required for score boosting services."
+        },
+        {
+          title: "2. How We Use Your Information",
+          content: "We use the information we collect to provide, maintain, and improve our services, to process your transactions, and to communicate with you."
+        },
+        {
+          title: "3. Data Security",
+          content: "We implement a variety of security measures to maintain the safety of your personal information. Your credentials are encrypted and used only for the duration of the service."
+        },
+        {
+          title: "4. Third-Party Disclosure",
+          content: "We do not sell, trade, or otherwise transfer to outside parties your personally identifiable information."
+        }
+      ]
+    },
+    terms: {
+      title: "Terms of Service",
+      lastUpdated: "Last Updated: March 2024",
+      sections: [
+        {
+          title: "1. Acceptance of Terms",
+          content: "By accessing and using SnapScore Store, you accept and agree to be bound by the terms and provision of this agreement."
+        },
+        {
+          title: "2. Description of Service",
+          content: "SnapScore Store provides social media growth services. We are not affiliated with Snapchat Inc."
+        },
+        {
+          title: "3. User Responsibilities",
+          content: "You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account."
+        },
+        {
+          title: "4. Refund Policy",
+          content: "Due to the nature of digital services, all sales are final. Refunds are only issued if we are unable to complete the service."
+        }
+      ]
     },
     tools_ui: {
       bitmoji: {
@@ -505,6 +551,50 @@ const translations = {
       privacy: "سياسة الخصوصية",
       terms: "شروط الخدمة"
     },
+    privacy: {
+      title: "سياسة الخصوصية",
+      lastUpdated: "آخر تحديث: مارس 2024",
+      sections: [
+        {
+          title: "1. المعلومات التي نجمعها",
+          content: "نجمع المعلومات التي تقدمها لنا مباشرة عند تقديم طلب، بما في ذلك اسم مستخدم سناب شات الخاص بك، وفي بعض الحالات، بيانات اعتماد الحساب المطلوبة لخدمات زيادة السكور."
+        },
+        {
+          title: "2. كيف نستخدم معلوماتك",
+          content: "نستخدم المعلومات التي نجمعها لتوفير خدماتنا وصيانتها وتحسينها، ومعالجة معاملاتك، والتواصل معك."
+        },
+        {
+          title: "3. أمن البيانات",
+          content: "نحن ننفذ مجموعة متنوعة من الإجراءات الأمنية للحفاظ على سلامة معلوماتك الشخصية. يتم تشفير بيانات اعتمادك واستخدامها فقط طوال مدة الخدمة."
+        },
+        {
+          title: "4. الإفصاح لأطراف ثالثة",
+          content: "نحن لا نبيع أو نتاجر أو ننقل معلوماتك الشخصية إلى أطراف خارجية."
+        }
+      ]
+    },
+    terms: {
+      title: "شروط الخدمة",
+      lastUpdated: "آخر تحديث: مارس 2024",
+      sections: [
+        {
+          title: "1. قبول الشروط",
+          content: "من خلال الوصول إلى سناب سكور ستور واستخدامه، فإنك تقبل وتوافق على الالتزام بشروط وأحكام هذه الاتفاقية."
+        },
+        {
+          title: "2. وصف الخدمة",
+          content: "يوفر سناب سكور ستور خدمات نمو وسائل التواصل الاجتماعي. نحن لسنا تابعين لشركة سناب شات."
+        },
+        {
+          title: "3. مسؤوليات المستخدم",
+          content: "أنت مسؤول عن الحفاظ على سرية معلومات حسابك وعن جميع الأنشطة التي تحدث تحت حسابك."
+        },
+        {
+          title: "4. سياسة الاسترداد",
+          content: "نظراً لطبيعة الخدمات الرقمية، فإن جميع المبيعات نهائية. يتم إصدار المبالغ المستردة فقط إذا لم نتمكن من إكمال الخدمة."
+        }
+      ]
+    },
     tools_ui: {
       bitmoji: {
         title: "منشئ صور بيتموجي",
@@ -640,7 +730,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
-  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map'>('home');
+  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms'>('home');
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
   const [selectedBoostingTier, setSelectedBoostingTier] = useState<any>(null);
   const [checkoutData, setCheckoutData] = useState({ username: '', password: '' });
@@ -1568,6 +1658,68 @@ export default function App() {
           </div>
         </section>
 
+        {/* Tools Section */}
+        <section id="tools" className="py-32 px-6 bg-matte-black relative bg-mesh-2 section-divider">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tight">
+                {lang === 'ar' ? 'أدواتنا' : 'Our'} <span className="text-snap-yellow">{lang === 'ar' ? 'المجانية' : 'Tools'}</span>
+              </h2>
+              <div className="w-32 h-1.5 bg-snap-yellow mx-auto rounded-full"></div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {t.nav.toolItems.map((tool: any, i: number) => (
+                <motion.div
+                  key={tool.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  onClick={() => {
+                    setView(tool.id as any);
+                    window.scrollTo(0, 0);
+                  }}
+                  className={`p-10 rounded-[3rem] border transition-all group cursor-pointer relative overflow-hidden ${
+                    i % 4 === 0 ? 'bg-blue-600/10 border-blue-500/20 hover:border-blue-500/50' : 
+                    i % 4 === 1 ? 'bg-purple-600/10 border-purple-500/20 hover:border-purple-500/50' : 
+                    i % 4 === 2 ? 'bg-orange-600/10 border-orange-500/20 hover:border-orange-500/50' :
+                    'bg-green-600/10 border-green-500/20 hover:border-green-500/50'
+                  }`}
+                >
+                  <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
+                    i % 4 === 0 ? 'bg-blue-500/10' : 
+                    i % 4 === 1 ? 'bg-purple-500/10' : 
+                    i % 4 === 2 ? 'bg-orange-500/10' :
+                    'bg-green-500/10'
+                  }`}></div>
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${
+                    i % 4 === 0 ? 'bg-blue-500/10 text-blue-400' : 
+                    i % 4 === 1 ? 'bg-purple-500/10 text-purple-400' : 
+                    i % 4 === 2 ? 'bg-orange-500/10 text-orange-400' :
+                    'bg-green-500/10 text-green-400'
+                  }`}>
+                    {i === 0 ? <Calculator className="w-8 h-8" /> : 
+                     i === 1 ? <ShieldCheck className="w-8 h-8" /> : 
+                     i === 2 ? <TrendingUp className="w-8 h-8" /> : 
+                     i === 3 ? <User className="w-8 h-8" /> : 
+                     i === 4 ? <Zap className="w-8 h-8" /> : 
+                     <MapPin className="w-8 h-8" />}
+                  </div>
+                  <h3 className="text-2xl font-black mb-4 group-hover:text-snap-yellow transition-colors">{lang === 'ar' ? tool.ar : tool.title}</h3>
+                  <p className="text-gray-400 leading-relaxed mb-8">
+                    {lang === 'ar' ? 'استخدم أداتنا المجانية لتحسين تجربتك على سناب شات.' : 'Use our free tool to enhance your Snapchat experience.'}
+                  </p>
+                  <div className="flex items-center gap-2 text-snap-yellow font-bold uppercase tracking-widest text-xs">
+                    {lang === 'ar' ? 'جرب الآن' : 'Try Now'}
+                    <ChevronRight className={`w-4 h-4 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* FAQ Section */}
         <section id="faq" className="py-32 px-6 bg-matte-black bg-mesh-2 section-divider">
           <div className="max-w-3xl mx-auto">
@@ -1912,9 +2064,25 @@ export default function App() {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1 }}
-                        className="glass p-10 rounded-[3rem] border border-white/5 hover:border-snap-yellow/30 transition-all group"
+                        className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${
+                          i % 4 === 0 ? 'bg-blue-600/10 border-blue-500/20 hover:border-blue-500/50' : 
+                          i % 4 === 1 ? 'bg-purple-600/10 border-purple-500/20 hover:border-purple-500/50' : 
+                          i % 4 === 2 ? 'bg-orange-600/10 border-orange-500/20 hover:border-orange-500/50' :
+                          'bg-green-600/10 border-green-500/20 hover:border-green-500/50'
+                        }`}
                       >
-                        <div className="w-16 h-16 bg-snap-yellow/10 rounded-2xl flex items-center justify-center mb-8 text-snap-yellow group-hover:scale-110 transition-transform">
+                        <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
+                          i % 4 === 0 ? 'bg-blue-500/10' : 
+                          i % 4 === 1 ? 'bg-purple-500/10' : 
+                          i % 4 === 2 ? 'bg-orange-500/10' :
+                          'bg-green-500/10'
+                        }`}></div>
+                        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${
+                          i % 4 === 0 ? 'bg-blue-500/10 text-blue-400' : 
+                          i % 4 === 1 ? 'bg-purple-500/10 text-purple-400' : 
+                          i % 4 === 2 ? 'bg-orange-500/10 text-orange-400' :
+                          'bg-green-500/10 text-green-400'
+                        }`}>
                           {React.cloneElement(service.icon as React.ReactElement, { className: "w-8 h-8" })}
                         </div>
                         <h3 className="text-3xl font-black mb-4 group-hover:text-snap-yellow transition-colors">{service.title}</h3>
@@ -1929,7 +2097,7 @@ export default function App() {
                               openWhatsApp(lang === 'ar' ? `أريد طلب خدمة: ${service.title}` : `I want to order service: ${service.title}`);
                             }
                           }}
-                          className="w-full py-5 bg-white/5 border border-white/10 rounded-2xl font-black hover:bg-snap-yellow hover:text-black transition-all flex items-center justify-center gap-3 text-lg"
+                          className="w-full py-5 bg-white/5 border border-white/10 rounded-2xl font-black hover:bg-snap-yellow hover:text-black transition-all flex items-center justify-center gap-3 text-lg relative z-10"
                         >
                           <WhatsAppIcon className="w-6 h-6" />
                           {t.shop.order}
@@ -2091,11 +2259,26 @@ export default function App() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: i * 0.05 }}
-                        className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${getPackageColor(tier.amount)}`}
+                        className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${
+                          i % 4 === 0 ? 'bg-blue-600/10 border-blue-500/20 hover:border-blue-500/50' : 
+                          i % 4 === 1 ? 'bg-purple-600/10 border-purple-500/20 hover:border-purple-500/50' : 
+                          i % 4 === 2 ? 'bg-orange-600/10 border-orange-500/20 hover:border-orange-500/50' :
+                          'bg-green-600/10 border-green-500/20 hover:border-green-500/50'
+                        }`}
                       >
-                        <div className="absolute inset-0 backdrop-blur-xl pointer-events-none"></div>
+                        <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
+                          i % 4 === 0 ? 'bg-blue-500/10' : 
+                          i % 4 === 1 ? 'bg-purple-500/10' : 
+                          i % 4 === 2 ? 'bg-orange-500/10' :
+                          'bg-green-500/10'
+                        }`}></div>
                         <div className="relative z-10">
-                          <div className="text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">{tier.amount}</div>
+                          <div className={`text-6xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter ${
+                             i % 4 === 0 ? 'text-blue-400' : 
+                             i % 4 === 1 ? 'text-purple-400' : 
+                             i % 4 === 2 ? 'text-orange-400' :
+                             'text-green-400'
+                          }`}>{tier.amount}</div>
                           <div className="text-3xl font-bold text-white/90 mb-10">{tier.price}</div>
                           <button 
                             onClick={() => setSelectedBoostingTier(tier)}
@@ -2193,6 +2376,54 @@ export default function App() {
             </div>
           </section>
         )}
+        {view === 'privacy' && (
+          <section className="pt-40 pb-24 px-6 min-h-[80vh]">
+            <div className="max-w-4xl mx-auto">
+              <div className="glass p-10 lg:p-16 rounded-[3rem] border-white/10">
+                <div className="flex items-center justify-between mb-12">
+                  <h1 className="text-4xl lg:text-6xl font-black uppercase tracking-tight">{t.privacy.title}</h1>
+                  <button onClick={() => setView('home')} className="text-gray-500 hover:text-white transition-colors">
+                    <ChevronLeft className={`w-8 h-8 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+                <div className="text-snap-yellow font-bold mb-12">{t.privacy.lastUpdated}</div>
+                <div className="space-y-12">
+                  {t.privacy.sections.map((section: any, i: number) => (
+                    <div key={i} className="space-y-4">
+                      <h2 className="text-2xl font-black text-white uppercase tracking-tight">{section.title}</h2>
+                      <p className="text-gray-400 leading-relaxed text-lg">{section.content}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {view === 'terms' && (
+          <section className="pt-40 pb-24 px-6 min-h-[80vh]">
+            <div className="max-w-4xl mx-auto">
+              <div className="glass p-10 lg:p-16 rounded-[3rem] border-white/10">
+                <div className="flex items-center justify-between mb-12">
+                  <h1 className="text-4xl lg:text-6xl font-black uppercase tracking-tight">{t.terms.title}</h1>
+                  <button onClick={() => setView('home')} className="text-gray-500 hover:text-white transition-colors">
+                    <ChevronLeft className={`w-8 h-8 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+                <div className="text-snap-yellow font-bold mb-12">{t.terms.lastUpdated}</div>
+                <div className="space-y-12">
+                  {t.terms.sections.map((section: any, i: number) => (
+                    <div key={i} className="space-y-4">
+                      <h2 className="text-2xl font-black text-white uppercase tracking-tight">{section.title}</h2>
+                      <p className="text-gray-400 leading-relaxed text-lg">{section.content}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
         {view === 'calc' && (
           <section className="pt-40 pb-24 px-6 min-h-[80vh]">
             <div className="max-w-3xl mx-auto">
@@ -2767,10 +2998,26 @@ export default function App() {
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>
-              <div className="flex gap-8 text-xs font-bold text-gray-500">
-                <a href="#" className="hover:text-snap-yellow transition-colors">{t.footer.privacy}</a>
-                <a href="#" className="hover:text-snap-yellow transition-colors">{t.footer.terms}</a>
-              </div>
+            <div className="flex gap-8 text-xs font-bold text-gray-500">
+              <button 
+                onClick={() => {
+                  setView('privacy');
+                  window.scrollTo(0, 0);
+                }} 
+                className="hover:text-snap-yellow transition-colors"
+              >
+                {t.footer.privacy}
+              </button>
+              <button 
+                onClick={() => {
+                  setView('terms');
+                  window.scrollTo(0, 0);
+                }} 
+                className="hover:text-snap-yellow transition-colors"
+              >
+                {t.footer.terms}
+              </button>
+            </div>
             </div>
           </div>
         </div>
