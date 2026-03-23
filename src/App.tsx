@@ -231,25 +231,25 @@ const translations = {
       posts: [
         {
           title: "Snapchat Account Safety Guide: Safe Login Practices & Ban Prevention",
-          date: "March 20, 2024",
+          date: "March 29, 2026",
           excerpt: "Learn how to keep your account safe and prevent bans with our comprehensive safety guide.",
           link: "https://freesnapscores.com/blog/snapchat-account-safety-guide"
         },
         {
           title: "Snapchat Score Top-Up: Important Information During Top-Up Process",
-          date: "March 18, 2024",
+          date: "March 28, 2026",
           excerpt: "Everything you need to know about the score top-up process and what to expect.",
           link: "https://freesnapscores.com/blog/snapchat-score-topup"
         },
         {
           title: "Buy Premade Snapchat Accounts with High SnapScore (10k to 1M+)",
-          date: "March 15, 2024",
+          date: "March 25, 2026",
           excerpt: "Discover the benefits of buying premade accounts with high scores and how to choose the right one.",
           link: "https://freesnapscores.com/blog/buy-premade-snapchat-accounts-with-high-snapscore"
         },
         {
           title: "How to Increase Your Snap Score Fast & Safely in 2024",
-          date: "March 12, 2024",
+          date: "March 27, 2026",
           excerpt: "Discover the most effective and safe methods to boost your score in 2024.",
           link: "https://freesnapscores.com/blog/how-to-increase-snapchat-score"
         }
@@ -261,7 +261,7 @@ const translations = {
       button: "Contact on WhatsApp"
     },
     footer: {
-      rights: "© 2024 SnapScore Store. All rights reserved.",
+      rights: "© 2026 SnapScore Store. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
     },
@@ -483,7 +483,7 @@ const translations = {
       items: [
         { value: "10K+", label: "عميل سعيد" },
         { value: "50K+", label: "طلب مكتمل" },
-        { value: "12+", label: "سنوات خبرة" },
+        { value: "5+", label: "سنوات خبرة" },
         { value: "4.9", label: "متوسط التقييم" }
       ]
     },
@@ -633,7 +633,7 @@ const testimonials = [
       en: "Best service in the Middle East. My Snap score reached 1M in just 2 days. Highly recommended for anyone looking for reliability.", 
       ar: "أفضل خدمة في الشرق الأوسط. وصل سكور حسابي إلى مليون في يومين فقط. أنصح به بشدة لكل من يبحث عن المصداقية." 
     },
-    avatar: "https://picsum.photos/seed/user1/100/100"
+    avatar: "https://i.pinimg.com/736x/d4/d1/09/d4d10914504759b9c917d0b338e13744.jpg"
   },
   {
     name: { en: "Sara Mohammed", ar: "سارة محمد" },
@@ -642,7 +642,7 @@ const testimonials = [
       en: "I was worried about my account, but they reassured me and the service was extremely professional. Highly recommended.", 
       ar: "كنت خايفة على حسابي بس طمنوني والخدمة كانت احترافية للغاية. أنصح فيهم وبقوة." 
     },
-    avatar: "https://picsum.photos/seed/user2/100/100"
+    avatar: "https://i.pinimg.com/1200x/3d/b5/31/3db5313f860c6c6f67480f238e2e4f27.jpg"
   },
   {
     name: { en: "Sultan Al-Kuwari", ar: "سلطان الكواري" },
@@ -651,7 +651,7 @@ const testimonials = [
       en: "Best service I've dealt with in the Gulf. Credibility and speed in execution.", 
       ar: "أفضل خدمة تعاملت معها في الخليج. مصداقية وسرعة في التنفيذ." 
     },
-    avatar: "https://picsum.photos/seed/user3/100/100"
+    avatar: "https://i.pinimg.com/1200x/7b/76/90/7b7690d1d9769561cb5fb6fdb2045943.jpg"
   },
   {
     name: { en: "Layla Hassan", ar: "ليلى حسن" },
@@ -660,7 +660,7 @@ const testimonials = [
       en: "Incredible results! My account looks so much more professional now. The support team was very helpful.", 
       ar: "نتائج مذهلة! حسابي يبدو أكثر احترافية الآن. فريق الدعم كان متعاوناً جداً." 
     },
-    avatar: "https://picsum.photos/seed/user4/100/100"
+    avatar: "https://i.pinimg.com/736x/91/71/1a/91711a2f66907fb5ec910aee34cb6bcf.jpg"
   },
   {
     name: { en: "Omar Farooq", ar: "عمر فاروق" },
@@ -669,7 +669,7 @@ const testimonials = [
       en: "Fast delivery and great communication. I will definitely use this service again for my other accounts.", 
       ar: "تسليم سريع وتواصل رائع. سأستخدم هذه الخدمة بالتأكيد مرة أخرى لحساباتي الأخرى." 
     },
-    avatar: "https://picsum.photos/seed/user5/100/100"
+    avatar: "https://i.pinimg.com/1200x/1d/8a/73/1d8a739993cc900a8c8935c602583a68.jpg"
   },
   {
     name: { en: "Noura Al-Said", ar: "نورة السعيد" },
@@ -678,7 +678,7 @@ const testimonials = [
       en: "The AI tools are a game changer! I love the Bitmoji creator. The score boost was also perfect.", 
       ar: "أدوات الذكاء الاصطناعي غيرت كل شيء! أحببت منشئ البيتموجي. زيادة السكور كانت مثالية أيضاً." 
     },
-    avatar: "https://picsum.photos/seed/user6/100/100"
+    avatar: "https://i.pinimg.com/736x/d7/f8/74/d7f8747a5779b78be30c1f5f3dd76a3d.jpg"
   }
 ];
 
