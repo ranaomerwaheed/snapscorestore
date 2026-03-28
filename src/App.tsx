@@ -89,8 +89,8 @@ const translations = {
     hero: {
       badge: "Trusted by 10,000+ Clients",
       title: "Boost Your Snapchat Presence Instantly",
-      titleHighlight: "SnapScore Store",
-      subtitle: "The Ultimate Growth Platform",
+      titleHighlight: "",
+      subtitle: "",
       desc: "Securely increase your Snap Score, get aged accounts, and grow your followers with the world's most trusted provider.",
       cta: "View Catalog",
       secondary: "Our Services",
@@ -673,8 +673,8 @@ By cross-promoting and building a strong Snapchat following, you own a direct li
     hero: {
       badge: "موثوق من قبل +10,000 عميل",
       title: "ارفع سكور السناب شات فوراً",
-      titleHighlight: "متجر سكور سناب",
-      subtitle: "المنصة الأقوى للنمو",
+      titleHighlight: "",
+      subtitle: "",
       desc: "زد سكور حسابك بأمان، احصل على حسابات قديمة، ونمِ متابعيك مع المزود الأكثر ثقة عالمياً.",
       cta: "عرض الكتالوج",
       secondary: "خدماتنا",
@@ -1278,6 +1278,143 @@ const verifiedAccountsStock = [
   { id: 'vpublic', amount: 'Public Profile', price: '$50', desc: { en: 'Verified public profile status', ar: 'حالة ملف تعريف عام موثقة' } },
 ];
 
+const ServiceDetail = ({ service, lang, onBack, onOrder }: { service: any, lang: string, onBack: () => void, onOrder: (s: any) => void }) => {
+  const title = lang === 'ar' ? (service.arTitle || service.title) : service.title;
+  const desc = lang === 'ar' ? (service.desc.ar || service.desc.en) : service.desc.en;
+
+  return (
+    <section className="pt-40 pb-24 px-6 min-h-screen bg-matte-black">
+      <div className="max-w-4xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="glass rounded-[3rem] border-white/10 overflow-hidden shadow-2xl p-8 lg:p-16"
+        >
+          <button 
+            onClick={onBack}
+            className="mb-12 w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all shadow-lg"
+          >
+            <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+          </button>
+
+          <div className="flex flex-col lg:flex-row gap-12 items-start">
+            <div className="w-24 h-24 rounded-3xl bg-snap-yellow/20 flex items-center justify-center text-snap-yellow shrink-0 shadow-inner">
+              {React.cloneElement(service.icon as React.ReactElement, { className: "w-12 h-12" })}
+            </div>
+            <div className="flex-1">
+              <h1 className="text-4xl lg:text-6xl font-black mb-6 italic text-white uppercase tracking-tighter">
+                {title}
+              </h1>
+              <div className="flex flex-wrap gap-4 mb-10">
+                <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                  <CreditCard className="w-5 h-5 text-snap-yellow" />
+                  <span className="font-bold text-white">{service.price}</span>
+                </div>
+                <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                  <RefreshCcw className="w-5 h-5 text-snap-yellow" />
+                  <span className="font-bold text-white">{service.deliveryTime}</span>
+                </div>
+                <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
+                  <ShieldCheck className="w-5 h-5 text-snap-yellow" />
+                  <span className="font-bold text-white">{service.guarantee}</span>
+                </div>
+              </div>
+              <p className="text-xl text-gray-300 leading-relaxed mb-12 font-medium">
+                {desc}
+              </p>
+              <button 
+                onClick={() => onOrder(service)}
+                className="w-full lg:w-auto px-12 py-6 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_10px_40px_rgba(255,252,0,0.3)] flex items-center justify-center gap-3 text-xl"
+              >
+                <ShoppingBag className="w-6 h-6" />
+                {lang === 'ar' ? 'اطلب الآن عبر واتساب' : 'Order via WhatsApp'}
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const ProductDetail = ({ product, lang, onBack, onBuy }: { product: any, lang: string, onBack: () => void, onBuy: (p: any) => void }) => {
+  const desc = lang === 'ar' ? (product.desc.ar || product.desc.en) : product.desc.en;
+
+  return (
+    <section className="pt-40 pb-24 px-6 min-h-screen bg-matte-black">
+      <div className="max-w-4xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="glass rounded-[3rem] border-white/10 overflow-hidden shadow-2xl p-8 lg:p-16"
+        >
+          <button 
+            onClick={onBack}
+            className="mb-12 w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all shadow-lg"
+          >
+            <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+          </button>
+
+          <div className="flex flex-col lg:flex-row gap-12 items-start">
+            <div className="w-full lg:w-1/2 aspect-square rounded-[2.5rem] bg-gradient-to-br from-snap-yellow/20 to-transparent border-2 border-snap-yellow/30 flex items-center justify-center relative overflow-hidden group">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,252,0,0.1)_0%,transparent_70%)] group-hover:scale-150 transition-transform duration-1000"></div>
+              <div className="text-center relative z-10">
+                <div className="text-7xl lg:text-9xl font-black text-snap-yellow mb-4 drop-shadow-[0_0_30px_rgba(255,252,0,0.5)]">
+                  {product.amount}
+                </div>
+                <div className="text-xl lg:text-2xl font-black text-white uppercase tracking-widest opacity-60">
+                  {product.type === 'Score Account' ? (lang === 'ar' ? 'سكور' : 'Score') : (lang === 'ar' ? 'متابع' : 'Followers')}
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex-1 w-full">
+              <h1 className="text-4xl lg:text-6xl font-black mb-8 italic text-white uppercase tracking-tighter">
+                {product.type} {product.amount}
+              </h1>
+              
+              <div className="grid grid-cols-2 gap-4 mb-10">
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                  <span className="block text-gray-500 text-xs uppercase font-black mb-2">{lang === 'ar' ? 'السعر' : 'Price'}</span>
+                  <span className="text-2xl font-black text-snap-yellow">{product.price}</span>
+                </div>
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                  <span className="block text-gray-500 text-xs uppercase font-black mb-2">{lang === 'ar' ? 'وقت التسليم' : 'Delivery'}</span>
+                  <span className="text-2xl font-black text-white">{product.deliveryTime}</span>
+                </div>
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                  <span className="block text-gray-500 text-xs uppercase font-black mb-2">{lang === 'ar' ? 'سنة الإنشاء' : 'Account Age'}</span>
+                  <span className="text-2xl font-black text-white">{product.age}</span>
+                </div>
+                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+                  <span className="block text-gray-500 text-xs uppercase font-black mb-2">
+                    {product.type === 'Score Account' ? (lang === 'ar' ? 'المتابعين' : 'Followers') : (lang === 'ar' ? 'السكور' : 'Score')}
+                  </span>
+                  <span className="text-2xl font-black text-white">
+                    {product.type === 'Score Account' ? product.followers : product.score}
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-xl text-gray-300 leading-relaxed mb-12 font-medium">
+                {desc}
+              </p>
+
+              <button 
+                onClick={() => onBuy(product)}
+                className="w-full px-12 py-6 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_10px_40px_rgba(255,252,0,0.3)] flex items-center justify-center gap-3 text-xl"
+              >
+                <ShoppingBag className="w-6 h-6" />
+                {lang === 'ar' ? 'اشترِ الآن' : 'Buy Now'}
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: () => void }) => {
   const [copied, setCopied] = useState(false);
   const content = lang === 'ar' ? (post.arContent || post.content) : post.content;
@@ -1421,7 +1558,7 @@ const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: (
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
-  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'blog_detail' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify'>('home');
+  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'blog-detail' | 'service-detail' | 'product-detail' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify'>('home');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedBlogPost, setSelectedBlogPost] = useState<any>(null);
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
@@ -1585,39 +1722,39 @@ export default function App() {
   };
 
   const scoreAccountsStock = [
-    { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
-    { id: 'sa10k', amount: '10,000', price: '$25', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
-    { id: 'sa20k', amount: '20,000', price: '$35', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
-    { id: 'sa50k', amount: '50,000', price: '$55', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
-    { id: 'sa100k', amount: '100,000', price: '$95', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
-    { id: 'sa200k', amount: '200,000', price: '$160', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
-    { id: 'sa300k', amount: '300,000', price: '$220', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
-    { id: 'sa500k', amount: '500,000', price: '$280', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
-    { id: 'sa700k', amount: '700,000', price: '$350', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
-    { id: 'sa1m', amount: '1,000,000', price: '$450', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
-    { id: 'sa2m', amount: '2,000,000', price: '$850', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
-    { id: 'sa5m', amount: '5,000,000', price: '$1800', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
-    { id: 'sa10m', amount: '10,000,000', price: '$3500', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
+    { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', age: '2023', followers: '100-500', deliveryTime: '1-2 Hours', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
+    { id: 'sa10k', amount: '10,000', price: '$25', type: 'Score Account', age: '2022', followers: '500-1k', deliveryTime: '1-2 Hours', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
+    { id: 'sa20k', amount: '20,000', price: '$35', type: 'Score Account', age: '2021', followers: '1k-2k', deliveryTime: '2-4 Hours', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
+    { id: 'sa50k', amount: '50,000', price: '$55', type: 'Score Account', age: '2020', followers: '2k-5k', deliveryTime: '4-6 Hours', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
+    { id: 'sa100k', amount: '100,000', price: '$95', type: 'Score Account', age: '2019', followers: '5k-10k', deliveryTime: '6-12 Hours', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
+    { id: 'sa200k', amount: '200,000', price: '$160', type: 'Score Account', age: '2018', followers: '10k-20k', deliveryTime: '12-24 Hours', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
+    { id: 'sa300k', amount: '300,000', price: '$220', type: 'Score Account', age: '2017', followers: '20k-30k', deliveryTime: '24-48 Hours', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
+    { id: 'sa500k', amount: '500,000', price: '$280', type: 'Score Account', age: '2016', followers: '30k-50k', deliveryTime: '2-3 Days', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'sa700k', amount: '700,000', price: '$350', type: 'Score Account', age: '2015', followers: '50k-70k', deliveryTime: '3-5 Days', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
+    { id: 'sa1m', amount: '1,000,000', price: '$450', type: 'Score Account', age: '2014', followers: '100k+', deliveryTime: '5-7 Days', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
+    { id: 'sa2m', amount: '2,000,000', price: '$850', type: 'Score Account', age: '2013', followers: '200k+', deliveryTime: '7-10 Days', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
+    { id: 'sa5m', amount: '5,000,000', price: '$1800', type: 'Score Account', age: '2012', followers: '500k+', deliveryTime: '10-15 Days', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
+    { id: 'sa10m', amount: '10,000,000', price: '$3500', type: 'Score Account', age: '2011', followers: '1M+', deliveryTime: '15-20 Days', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
   ];
 
   const followerAccountsStock = [
-    { id: 'fa5k', amount: '5,000', price: '$45', type: 'Follower Account', desc: { en: 'Rising Star', ar: 'نجم صاعد' } },
-    { id: 'fa10k', amount: '10,000', price: '$85', type: 'Follower Account', desc: { en: 'Popular Account', ar: 'حساب شائع' } },
-    { id: 'fa20k', amount: '20,000', price: '$150', type: 'Follower Account', desc: { en: 'Influencer Pack', ar: 'باقة المؤثرين' } },
-    { id: 'fa50k', amount: '50,000', price: '$350', type: 'Follower Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
-    { id: 'fa100k', amount: '100,000', price: '$650', type: 'Follower Account', desc: { en: 'Verified Potential', ar: 'إمكانية توثيق' } },
-    { id: 'fa200k', amount: '200,000', price: '$1100', type: 'Follower Account', desc: { en: 'Mega Account', ar: 'حساب ضخم' } },
-    { id: 'fa300k', amount: '300,000', price: '$1500', type: 'Follower Account', desc: { en: 'Pro Account', ar: 'حساب محترف' } },
-    { id: 'fa500k', amount: '500,000', price: '$2200', type: 'Follower Account', desc: { en: 'Top Tier Presence', ar: 'حضور من الفئة الأولى' } },
-    { id: 'fa700k', amount: '700,000', price: '$2900', type: 'Follower Account', desc: { en: 'Ultimate Reach', ar: 'وصول أقصى' } },
+    { id: 'fa5k', amount: '5,000', price: '$45', type: 'Follower Account', age: '2022', score: '1k-5k', deliveryTime: '1-2 Hours', desc: { en: 'Rising Star', ar: 'نجم صاعد' } },
+    { id: 'fa10k', amount: '10,000', price: '$85', type: 'Follower Account', age: '2021', score: '5k-10k', deliveryTime: '2-4 Hours', desc: { en: 'Popular Account', ar: 'حساب شائع' } },
+    { id: 'fa20k', amount: '20,000', price: '$150', type: 'Follower Account', age: '2020', score: '10k-20k', deliveryTime: '4-6 Hours', desc: { en: 'Influencer Pack', ar: 'باقة المؤثرين' } },
+    { id: 'fa50k', amount: '50,000', price: '$350', type: 'Follower Account', age: '2019', score: '20k-50k', deliveryTime: '6-12 Hours', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'fa100k', amount: '100,000', price: '$650', type: 'Follower Account', age: '2018', score: '50k-100k', deliveryTime: '12-24 Hours', desc: { en: 'Verified Potential', ar: 'إمكانية توثيق' } },
+    { id: 'fa200k', amount: '200,000', price: '$1100', type: 'Follower Account', age: '2017', score: '100k-200k', deliveryTime: '24-48 Hours', desc: { en: 'Mega Account', ar: 'حساب ضخم' } },
+    { id: 'fa300k', amount: '300,000', price: '$1500', type: 'Follower Account', age: '2016', score: '200k-300k', deliveryTime: '2-3 Days', desc: { en: 'Pro Account', ar: 'حساب محترف' } },
+    { id: 'fa500k', amount: '500,000', price: '$2200', type: 'Follower Account', age: '2015', score: '300k-500k', deliveryTime: '3-5 Days', desc: { en: 'Top Tier Presence', ar: 'حضور من الفئة الأولى' } },
+    { id: 'fa700k', amount: '700,000', price: '$2900', type: 'Follower Account', age: '2014', score: '500k-700k', deliveryTime: '5-7 Days', desc: { en: 'Ultimate Reach', ar: 'وصول أقصى' } },
   ];
 
   const servicesList = [
-    { id: 's_boost', title: 'Snap Score Boost', price: 'From $10', icon: <TrendingUp />, desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'ارفع سكور حسابك من 5000 إلى مليون بأمان.' } },
-    { id: 's_lens', title: 'Snapchat AR Lens Create', price: 'Contact Us', icon: <Zap />, desc: { en: 'Custom AR lenses created for your profile.', ar: 'عدسات واقع معزز مخصصة لملفك الشخصي.' } },
-    { id: 's_followers', title: 'Snapchat Follower Increase', price: 'From $20', icon: <Users />, desc: { en: 'Increase real followers on your account.', ar: 'زيادة متابعين حقيقيين على حسابك.' } },
-    { id: 's_badge', title: 'Get Verified Badge', price: 'Contact Us', icon: <BadgeCheck />, desc: { en: 'Professional assistance for the Gold Star badge.', ar: 'مساعدة احترافية للحصول على شارة النجمة الذهبية.' } },
-    { id: 's_views', title: 'View Service', price: 'From $15', icon: <Eye />, desc: { en: 'Boost your story views instantly.', ar: 'عزز مشاهدات الستوري الخاصة بك فوراً.' } },
+    { id: 's_boost', title: 'Snap Score Boost', price: 'From $10', icon: <TrendingUp />, deliveryTime: '1-48 Hours', guarantee: '100% Safe', desc: { en: 'Boost your own account from 5k to 1M score safely.', ar: 'ارفع سكور حسابك من 5000 إلى مليون بأمان.' } },
+    { id: 's_lens', title: 'Snapchat AR Lens Create', price: 'Contact Us', icon: <Zap />, deliveryTime: '3-5 Days', guarantee: 'Custom Design', desc: { en: 'Custom AR lenses created for your profile.', ar: 'عدسات واقع معزز مخصصة لملفك الشخصي.' } },
+    { id: 's_followers', title: 'Snapchat Follower Increase', price: 'From $20', icon: <Users />, deliveryTime: '1-24 Hours', guarantee: 'Non-Drop', desc: { en: 'Increase real followers on your account.', ar: 'زيادة متابعين حقيقيين على حسابك.' } },
+    { id: 's_badge', title: 'Get Verified Badge', price: 'Contact Us', icon: <BadgeCheck />, deliveryTime: '7-14 Days', guarantee: 'Official Badge', desc: { en: 'Professional assistance for the Gold Star badge.', ar: 'مساعدة احترافية للحصول على شارة النجمة الذهبية.' } },
+    { id: 's_views', title: 'View Service', price: 'From $15', icon: <Eye />, deliveryTime: '1-2 Hours', guarantee: 'Instant Start', desc: { en: 'Boost your story views instantly.', ar: 'عزز مشاهدات الستوري الخاصة بك فوراً.' } },
   ];
 
   const boostingTiers = [
