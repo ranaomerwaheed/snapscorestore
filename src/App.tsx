@@ -246,7 +246,7 @@ const translations = {
         {
           title: "Snapchat Account Safety Guide: Safe Login Practices & Ban Prevention",
           arTitle: "دليل أمان حساب سناب شات: ممارسات تسجيل الدخول الآمن ومنع الحظر",
-          date: "March 20, 2024",
+          date: "March 20, 2026",
           excerpt: "Learn how to keep your account safe and prevent bans with our comprehensive safety guide.",
           arExcerpt: "تعرف على كيفية الحفاظ على أمان حسابك ومنع الحظر من خلال دليل الأمان الشامل الخاص بنا.",
           thumbnail: "https://picsum.photos/seed/snap-safety/1200/800",
@@ -390,7 +390,7 @@ By following safe login practices, waiting before making changes, and keeping ac
         },
         {
           title: "Snapchat Score Top-Up: Important Information During Top-Up Process",
-          date: "March 18, 2024",
+          date: "March 28, 2026",
           excerpt: "Everything you need to know about the score top-up process and what to expect.",
           thumbnail: "https://freesnapscores.com/blog/snapscore-topup.svg",
           content: `Please read the following information carefully before the score top-up process begins. These instructions are necessary to ensure a smooth and uninterrupted service.
@@ -458,7 +458,7 @@ Once confirmation is given:
         },
         {
           title: "Buy Premade Snapchat Accounts with High SnapScore (10k to 1M+)",
-          date: "March 15, 2024",
+          date: "March 28, 2026",
           excerpt: "Discover the benefits of buying premade accounts with high scores and how to choose the right one.",
           thumbnail: "https://freesnapscores.com/blog/snapscore-boost.svg",
           content: `Ready to level up instantly? Why spend weeks, months, or even years trying to push your SnapScore up manually when you can leap straight to the top? We are the ultimate destination to buy Snapchat premade accounts with massive scores ready to go.
@@ -502,8 +502,8 @@ Don't wait any longer. High SnapScore accounts are in heavy demand, and our inve
         },
         {
           title: "Snapchat Cross-Promotion Tips: Grow Followers Fast on Any Platform",
-          date: "March 12, 2024",
-          excerpt: "Discover the most effective and safe methods to boost your score in 2024.",
+          date: "March 29, 2026",
+          excerpt: "Discover the most effective and safe methods to boost your score in 2026.",
           thumbnail: "https://freesnapscores.com/blog/cross-promotion.svg",
           content: `Here is the truth: Growing a Snapchat account from zero strictly inside Snapchat is hard. The discovery features are getting better, but they aren't perfect.
 
@@ -562,13 +562,13 @@ By cross-promoting and building a strong Snapchat following, you own a direct li
       button: "Contact on WhatsApp"
     },
     footer: {
-      rights: "© 2024 SnapScore Store. All rights reserved.",
+      rights: "© 2026 SnapScore Store. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
     },
     privacy: {
       title: "Privacy Policy",
-      lastUpdated: "Last Updated: March 2024",
+      lastUpdated: "Last Updated: March 2026",
       sections: [
         {
           title: "1. Information We Collect",
@@ -590,7 +590,7 @@ By cross-promoting and building a strong Snapchat following, you own a direct li
     },
     terms: {
       title: "Terms of Service",
-      lastUpdated: "Last Updated: March 2024",
+      lastUpdated: "Last Updated: March 2026",
       sections: [
         {
           title: "1. Acceptance of Terms",
