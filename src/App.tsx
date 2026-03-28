@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+=import React, { useState, useEffect, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { motion, AnimatePresence } from 'motion/react';
 import { GoogleGenAI, Type } from "@google/genai";
 import { 
-  Infinity, 
+  InfinityIcon, 
   Lock, 
   Star, 
+  HelpCircle, 
   MessageCircle, 
   ChevronLeft, 
   ChevronRight,
@@ -39,7 +41,10 @@ import {
   Search,
   Calculator,
   User,
-  History
+  History,
+  ExternalLink,
+  Link,
+  AlertTriangle
 } from 'lucide-react';
 
 const WHATSAPP_NUMBER = "+923431390157";
@@ -83,11 +88,14 @@ const translations = {
     hero: {
       badge: "Trusted by 10,000+ Clients",
       title: "Boost Your Snapchat Presence Instantly",
+      titleHighlight: "SnapScore Store",
+      subtitle: "The Ultimate Growth Platform",
       desc: "Securely increase your Snap Score, get aged accounts, and grow your followers with the world's most trusted provider.",
       cta: "View Catalog",
       secondary: "Our Services",
       scoreLabel: "Current Score",
-      targetLabel: "Target Boost"
+      targetLabel: "Target Boost",
+      protection: "100% Account Safety Guaranteed"
     },
     shop: {
       title: "Premium Catalog",
@@ -158,7 +166,7 @@ const translations = {
           desc: "Increase your Snap Score by thousands or millions safely and quickly."
         },
         {
-          icon: <Infinity className="w-8 h-8" />,
+          icon: <InfinityIcon className="w-8 h-8" />,
           title: "Aged Accounts",
           desc: "Get established accounts from 2011-2020 with high trust scores."
         },
@@ -168,6 +176,11 @@ const translations = {
           desc: "Grow your public profile with real-looking, active followers."
         }
       ]
+    },
+    snapify: {
+      titleHighlight: "Snapify Pro",
+      subtitle: "The Ultimate Growth Platform",
+      protection: "100% Account Safety Guaranteed"
     },
     how: {
       title: "How It Works",
@@ -231,27 +244,314 @@ const translations = {
       posts: [
         {
           title: "Snapchat Account Safety Guide: Safe Login Practices & Ban Prevention",
-          date: "March 29, 2026",
+          arTitle: "دليل أمان حساب سناب شات: ممارسات تسجيل الدخول الآمن ومنع الحظر",
+          date: "March 20, 2024",
           excerpt: "Learn how to keep your account safe and prevent bans with our comprehensive safety guide.",
-          link: "https://freesnapscores.com/blog/snapchat-account-safety-guide"
+          arExcerpt: "تعرف على كيفية الحفاظ على أمان حسابك ومنع الحظر من خلال دليل الأمان الشامل الخاص بنا.",
+          thumbnail: "https://picsum.photos/seed/snap-safety/1200/800",
+          content: `Snapchat uses advanced security systems to protect user accounts from unauthorized access, fraud, and misuse. While logging in from a new IP address or a different country is not automatically a violation, unsafe login practices and sudden activity can trigger security checks that may lead to a temporary or permanent account ban.
+
+This guide explains how to safely log in, what actions to avoid, and the main reasons Snapchat accounts get banned.
+
+### How to Safely Log In to a Snapchat Account
+Safe login behavior is critical, especially when accessing an account for the first time or from a new IP address.
+
+**1. Use a Stable and Real Internet Connection**
+*   Always log in using real mobile data or trusted home Wi-Fi
+*   Avoid public Wi-Fi networks
+*   Never use VPNs or proxy services
+A stable IP helps Snapchat recognize the login as legitimate.
+
+**2. Use One Device Only**
+*   Log in from one device
+*   Do not switch between multiple phones or emulators
+*   Avoid logging in from multiple locations in a short time
+Frequent device changes raise security red flags.
+
+**3. Log In Calmly and Naturally**
+*   Enter login details normally
+*   Avoid repeated login attempts
+*   If login fails, wait before trying again
+Multiple failed attempts can cause temporary locks.
+
+**4. Do Not Change Any Account Information Immediately**
+After logging in:
+*   Do not change email
+*   Do not change password
+*   Do not change username
+Wait at least 3 days, preferably 15–30 days, before making any changes.
+
+### What to Do After Logging In (First 3 Days)
+For the first 3 days after login, keep the account inactive. This means:
+*   Do not add friends
+*   Do not accept friend requests
+*   Do not send messages
+*   Do not edit profile details
+This period helps Snapchat’s system trust the account’s new activity pattern.
+
+### Safe Usage Rules After 3 Days
+Once the initial period is complete:
+*   Add or accept no more than 5 friends per day
+*   Avoid bulk actions
+*   Increase activity slowly and naturally
+*   Do not send repetitive or spam-like messages
+
+### Why IP Change + Immediate Actions Cause Bans
+When an account logs in from a new IP or country and immediately changes credentials or starts adding many friends, Snapchat may interpret this as a compromised or hacked account, which can lead to a permanent ban without appeal.
+
+### Reasons Why Snapchat Accounts Get Banned
+Below are the most common reasons for Snapchat bans:
+*   **Immediate Credential Changes After New IP Login:** Changing email, password, or username right after login from a new IP.
+*   **Excessive Friend Requests:** Adding or accepting too many friends in a short time.
+*   **VPN or Proxy Usage:** VPNs often use flagged IPs that Snapchat considers high-risk.
+*   **Abnormal or Automated Activity:** Fast actions that do not match normal human behavior.
+*   **Multiple Devices or Locations:** Logging in from several devices or countries within a short period.
+*   **Use of Third-Party Apps or Bots:** Any unofficial app, plugin, or automation tool violates Snapchat policies.
+*   **Repeated Login Failures:** Too many incorrect password attempts.
+
+### Best Practices to Keep Your Account Safe
+*   Use one device and one network
+*   Avoid VPNs completely
+*   Keep activity minimal at the start
+*   Follow waiting periods before making changes
+*   Use Snapchat normally and patiently
+
+### Conclusion
+Safely logging into a Snapchat account requires patience and controlled behavior. While IP or country changes alone do not cause bans, immediate profile changes, VPN usage, and aggressive activity significantly increase the risk of a permanent ban.
+
+By following safe login practices, waiting before making changes, and keeping activity limited, users can greatly reduce the risk of losing access to their Snapchat account.`,
+          arContent: `يستخدم سناب شات أنظمة أمان متقدمة لحماية حسابات المستخدمين من الوصول غير المصرح به والاحتيال وسوء الاستخدام. في حين أن تسجيل الدخول من عنوان IP جديد أو بلد مختلف ليس انتهاكًا تلقائيًا، إلا أن ممارسات تسجيل الدخول غير الآمنة والنشاط المفاجئ يمكن أن تؤدي إلى فحوصات أمنية قد تؤدي إلى حظر حساب مؤقت أو دائم.
+
+يشرح هذا الدليل كيفية تسجيل الدخول بأمان، وما هي الإجراءات التي يجب تجنبها، والأسباب الرئيسية لحظر حسابات سناب شات.
+
+### كيفية تسجيل الدخول بأمان إلى حساب سناب شات
+يعد سلوك تسجيل الدخول الآمن أمرًا بالغ الأهمية، خاصة عند الوصول إلى حساب لأول مرة أو من عنوان IP جديد.
+
+**1. استخدم اتصال إنترنت مستقر وحقيقي**
+*   قم دائمًا بتسجيل الدخول باستخدام بيانات الهاتف المحمول الحقيقية أو شبكة Wi-Fi منزلية موثوقة
+*   تجنب شبكات Wi-Fi العامة
+*   لا تستخدم أبدًا شبكات VPN أو خدمات الوكيل يساعد عنوان IP المستقر سناب شات في التعرف على تسجيل الدخول كأمر مشروع.
+
+**2. استخدم جهازًا واحدًا فقط**
+*   سجل الدخول من جهاز واحد
+*   لا تنتقل بين هواتف متعددة أو محاكيات
+*   تجنب تسجيل الدخول من مواقع متعددة في وقت قصير تثير تغييرات الجهاز المتكررة مخاوف أمنية.
+
+**3. سجل الدخول بهدوء وبشكل طبيعي**
+*   أدخل تفاصيل تسجيل الدخول بشكل طبيعي
+*   تجنب محاولات تسجيل الدخول المتكررة
+*   إذا فشل تسجيل الدخول، انتظر قبل المحاولة مرة أخرى يمكن أن تؤدي محاولات تسجيل الدخول الفاشلة المتعددة إلى أقفال مؤقتة.
+
+**4. لا تغير أي معلومات حساب على الفور**
+بعد تسجيل الدخول:
+*   لا تغير البريد الإلكتروني
+*   لا تغير كلمة المرور
+*   لا تغير اسم المستخدم انتظر 3 أيام على الأقل، ويفضل 15-30 يومًا، قبل إجراء أي تغييرات.
+
+### ماذا تفعل بعد تسجيل الدخول (أول 3 أيام)
+خلال أول 3 أيام بعد تسجيل الدخول، حافظ على عدم نشاط الحساب. هذا يعني:
+*   لا تضف أصدقاء
+*   لا تقبل طلبات الصداقة
+*   لا ترسل رسائل
+*   لا تعدل تفاصيل الملف الشخصي تساعد هذه فترة نظام سناب شات على الوثوق بنمط نشاط الحساب الجديد.
+
+### قواعد الاستخدام الآمن بعد 3 أيام
+بمجرد اكتمال الفترة الأولية:
+*   أضف أو اقبل ما لا يزيد عن 5 أصدقاء يوميًا
+*   تجنب الإجراءات الجماعية
+*   زد النشاط ببطء وبشكل طبيعي
+*   لا ترسل رسائل متكررة أو تشبه الرسائل غير المرغوب فيها
+
+### لماذا يسبب تغيير عنوان IP + الإجراءات الفورية الحظر
+عندما يسجل حساب الدخول من عنوان IP أو بلد جديد ويغير بيانات الاعتماد على الفور أو يبدأ في إضافة العديد من الأصدقاء، قد يفسر سناب شات ذلك على أنه حساب مخترق أو مقرصن، مما قد يؤدي إلى حظر دائم دون استئناف.
+
+### أسباب حظر حسابات سناب شات
+فيما يلي الأسباب الأكثر شيوعًا لحظر سناب شات:
+*   **تغييرات فورية في بيانات الاعتماد بعد تسجيل الدخول بـ IP جديد:** تغيير البريد الإلكتروني أو كلمة المرور أو اسم المستخدم مباشرة بعد تسجيل الدخول من عنوان IP جديد.
+*   **طلبات صداقة مفرطة:** إضافة أو قبول الكثير من الأصدقاء في وقت قصير.
+*   **استخدام VPN أو الوكيل:** غالبًا ما تستخدم شبكات VPN عناوين IP تم وضع علامة عليها والتي يعتبرها سناب شات عالية المخاطر.
+*   **نشاط غير طبيعي أو آلي:** إجراءات سريعة لا تتطابق مع سلوك الإنسان الطبيعي.
+*   **أجهزة أو مواقع متعددة:** تسجيل الدخول من عدة أجهزة أو بلدان خلال فترة قصيرة.
+*   **استخدام تطبيقات أو برامج تابعة لجهات خارجية:** أي تطبيق غير رسمي أو مكون إضافي أو أداة أتمتة ينتهك سياسات سناب شات.
+*   **فشل تسجيل الدخول المتكرر:** الكثير من محاولات كلمة المرور غير الصحيحة.
+
+### أفضل الممارسات للحفاظ على أمان حسابك
+*   استخدم جهازًا واحدًا وشبكة واحدة
+*   تجنب شبكات VPN تمامًا
+*   حافظ على الحد الأدنى من النشاط في البداية
+*   اتبع فترات الانتظار قبل إجراء التغييرات
+*   استخدم سناب شات بشكل طبيعي وصبور
+
+### الخاتمة
+يتطلب تسجيل الدخول بأمان إلى حساب سناب شات الصبر والسلوك المنضبط. في حين أن تغييرات IP أو البلد وحدها لا تسبب الحظر، فإن تغييرات الملف الشخصي الفورية واستخدام VPN والنشاط العدواني تزيد بشكل كبير من خطر الحظر الدائم.
+
+من خلال اتباع ممارسات تسجيل الدخول الآمنة، والانتظار قبل إجراء التغييرات، والحفاظ على نشاط محدود، يمكن للمستخدمين تقليل خطر فقدان الوصول إلى حساب سناب شات الخاص بهم بشكل كبير.`
         },
         {
           title: "Snapchat Score Top-Up: Important Information During Top-Up Process",
-          date: "March 28, 2026",
+          date: "March 18, 2024",
           excerpt: "Everything you need to know about the score top-up process and what to expect.",
-          link: "https://freesnapscores.com/blog/snapchat-score-topup"
+          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fsnapscore-topup.svg&w=828&q=75",
+          content: `Please read the following information carefully before the score top-up process begins. These instructions are necessary to ensure a smooth and uninterrupted service.
+
+### 🔒 1. Account Login Restriction During Service
+Once the score top-up process has started, the buyer must not log in to the Snapchat account until the service is completed.
+
+**⚠️ Logging in during the process may:**
+*   Interrupt score progress
+*   Slow down the service
+*   Cause temporary restrictions on the account
+The buyer should wait for confirmation before accessing the account again.
+
+### 👤 2. Single Access Requirement
+During the score top-up, the account should remain active from only one side.
+
+**If the same account is accessed simultaneously from multiple locations or devices:**
+*   Snapchat systems may detect unusual activity
+*   The account may be temporarily locked
+*   The score process may stop automatically
+For this reason, the buyer must remain logged out during the service.
+
+### 📱 3. Device & Network Instructions
+*   The buyer should log out from all devices before the process begins
+*   Do not refresh, log in, or switch devices during the top-up
+*   Stable processing requires no activity from the buyer's side
+*   Any interruption can affect completion time
+
+### 📈 4. Score Increase Behavior
+Snapchat score increases gradually, not instantly.
+*   Score updates may take time to reflect
+*   Temporary pauses are normal during processing
+*   Checking the account repeatedly can disrupt the process
+Patience during the service period is required.
+
+### 📬 5. Communication & Confirmation Rule
+The buyer should only log back into the account after receiving confirmation that the score top-up is complete.
+
+**✅ Important Reminders:**
+*   Do not assume completion without confirmation
+*   Early login may cancel the remaining process
+*   Follow seller instructions strictly
+
+### ⚖️ 6. Responsibility for Instructions
+If the buyer does not follow the provided instructions:
+
+**🚫 Consequences of Non-Compliance:**
+*   Any delay or interruption will not be the seller's responsibility
+*   The service may not be repeated
+*   The order may be considered completed as-is
+These rules exist only to ensure successful delivery.
+
+### ✅ 7. After Completion
+Once confirmation is given:
+*   The buyer may log in and use the account normally
+*   The score top-up service is considered finished
+*   No further action is required unless stated
+
+### Important Disclaimer
+*   This is a third-party score top-up service
+*   The service is not affiliated with or endorsed by Snapchat
+*   Results depend on Snapchat's system behavior and limitations
+
+📊 Ready to boost your Snapchat score? Visit SnapScores.store to get started with our reliable score top-up service. Follow the instructions above for a smooth experience!`
         },
         {
           title: "Buy Premade Snapchat Accounts with High SnapScore (10k to 1M+)",
-          date: "March 25, 2026",
+          date: "March 15, 2024",
           excerpt: "Discover the benefits of buying premade accounts with high scores and how to choose the right one.",
-          link: "https://freesnapscores.com/blog/buy-premade-snapchat-accounts-with-high-snapscore"
+          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fsnapscore-boost.svg&w=828&q=75",
+          content: `Ready to level up instantly? Why spend weeks, months, or even years trying to push your SnapScore up manually when you can leap straight to the top? We are the ultimate destination to buy Snapchat premade accounts with massive scores ready to go.
+
+You want influence, you want credibility, and you want it right now. Creating a brand new account with a zero score won't cut it in 2026. Whether you need a starter account at 10k or an elite 1 Million+ SnapScore account, we have precisely what you need in our inventory.
+
+### ⭐ Why You Should Buy ONLY From Us
+The market is full of scammers selling banned or stolen accounts. Buy ONLY from SnapScoresStore!
+
+*   **100% Organic Accounts:** Our accounts are naturally grown without bots or banned scripts.
+*   **Zero Shadowbans:** Clean IP creation means these accounts are fully ready for use.
+*   **Instant Delivery:** Get your username and password details instantly upon purchase.
+*   **Every Range Available:** From 10k to 1 Million+, we have the perfect account for your needs.
+*   **Full Access Security:** You get complete ownership and can change all details.
+Don't risk your money elsewhere! We are the ONLY trusted source on the web.
+
+### 🔥 Buy Snapchat SnapScores Accounts: Every Range Available
+We cater to everyone. Whether you're a casual user wanting a head start or a brand looking for immediate authority, we offer premade Snapchat accounts in every score bracket:
+
+*   **Starter Tier (10k - 50k SnapScore):** Perfect for secondary accounts or individuals looking to quickly establish a normal presence without looking like a bot.
+*   **Influencer Tier (100k - 500k SnapScore):** Elite accounts meant for people who want to look popular. Great for marketing, business, and jumping straight into the "Snap Star" territory.
+*   **God Tier (1 Million+ SnapScore):** The absolute pinnacle. Only a fraction of Snapchat users ever reach 1 Million points. Instantly command respect.
+We stock all of these. You select the exact score range you want, check out safely through our portal, and log in to your new powerhouse account.
+
+### 🤖 Wait! Before You Go... Try Our Free Meta AI Downloader
+Besides providing the world's best premade Snapchat accounts, we also offer the internet's most advanced free tools. Have you ever generated or seen an incredible AI video on Facebook, Instagram, or WhatsApp and wished you could save it?
+
+Now you can! Try our highly popular Meta AI Downloader. It's 100% free, fast, and saves stunning AI-generated videos straight to your device with no watermarks.
+
+From social media to your camera roll in seconds. Grab the tool today to complement your massive new Snapchat presence!
+
+### 🌍 Our Global Reach: Serving You Everywhere
+Our digital assets aren't bound by borders. We provide premier Snapchat services specifically optimized for locations across the globe. We highly recommend checking out our dedicated local guides for SnapScore services and premade accounts in your area:
+
+📍 New York, USA | 📍 Los Angeles, USA | 📍 Chicago, USA | 📍 Miami, USA | 📍 Dallas, USA | 📍 United States | 📍 London, UK | 📍 United Kingdom | 📍 Toronto, Canada | 📍 Canada | 📍 Sydney, Australia | 📍 Australia | 📍 Dubai, UAE | 📍 United Arab Emirates | 📍 Riyadh, Saudi Arabia | 📍 Jeddah, Saudi Arabia | 📍 Saudi Arabia | 📍 Doha, Qatar | 📍 Qatar | 📍 Kuwait City | 📍 Kuwait | 📍 Paris, France | 📍 France | 📍 Berlin, Germany | 📍 Germany | 📍 Egypt | 📍 Nigeria | 📍 South Africa
+
+### Ready To Claim Your New Account?
+Don't wait any longer. High SnapScore accounts are in heavy demand, and our inventory updates daily. When you want the absolute best, most secure, and instantly accessible Snap accounts, buy ONLY from us.
+
+🚀 Stop waiting! Head over to our Services page now to browse our current premade account inventory, or use our tools to boost your existing score.`
         },
         {
-          title: "How to Increase Your Snap Score Fast & Safely in 2024",
-          date: "March 27, 2026",
+          title: "Snapchat Cross-Promotion Tips: Grow Followers Fast on Any Platform",
+          date: "March 12, 2024",
           excerpt: "Discover the most effective and safe methods to boost your score in 2024.",
-          link: "https://freesnapscores.com/blog/how-to-increase-snapchat-score"
+          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fcross-promotion.svg&w=828&q=75",
+          content: `Here is the truth: Growing a Snapchat account from zero strictly inside Snapchat is hard. The discovery features are getting better, but they aren't perfect.
+
+The secret to rapid growth? Cross-Promotion. You likely have followers on Instagram, TikTok, or even friends on WhatsApp. You need to build a bridge that moves them from there to here. Here is how to become a cross-platform master.
+
+### 👻 The Snapcode: Your Secret Weapon
+Your Snapcode (that yellow ghost with dots) is the most powerful tool you have. It's a QR code that instantly adds you.
+
+*   **Customize It:** Put your selfie in the ghost. Make it recognizable.
+*   **Print It:** Put it on business cards, stickers, or even your car (if you're bold).
+*   **Digital Everywhere:** Make it your profile picture on other private accounts.
+
+### 📸 Instagram to Snapchat
+Instagram is your showroom; Snapchat is your living room.
+
+*   **Link in Bio:** Use a tool like Linktree and make "Add me on Snap" the top button.
+*   **Story Teasers:** Post a blurred or intriguing photo on your Insta Story with text: "Full story/uncensored rant only on Snapchat! Link in bio." FOMO (Fear Of Missing Out) works.
+*   **Highlights:** Create an "Add Me" highlight on your Insta profile with your Snapcode.
+
+### 🎵 TikTok to Snapchat
+TikTok gives you viral reach; Snapchat gives you connection.
+
+*   **The CTA (Call to Action):** End your TikToks with "More behind the scenes on my Snap!"
+*   **Bio Link:** TikTok allows you to link your Snapchat directly in your profile. Ensure it's connected!
+*   **Exclusive Content:** "I'm doing a Q&A on Snapchat right now, go ask me anything!"
+
+### 📺 YouTube to Snapchat
+YouTube is for polished content. Snapchat is for the raw "vlog" style.
+
+*   **Description Box:** Put your Snap link at the very top.
+*   **On-Screen Graphics:** Flash your Snapcode on screen during your video intro and outro.
+*   **Community Tab:** Post your Snapcode in a YouTube Community post.
+
+### 💘 Dating Apps (Tinder/Bumble)
+Okay, this is a bit different, but effective for personal brands.
+
+Many people put their Snapchat in their bio. It's a low-pressure way for people to connect with you. Just be careful with privacy settings!
+
+💡 **Pro Tip:** Give them a REASON to add you. "Add me on Snap" is boring. "Add me on Snap for daily marketing tips" or "Add me for exclusive discount codes" is compelling.
+
+### 🔄 The "Content Loop" Strategy
+Don't just move people to Snapchat. Move them around.
+
+Post a Snap saying "Just posted a new TikTok!" Post a TikTok saying "Check my Insta!" Keep your audience moving between platforms. This signals to all algorithms that your audience is super engaged.
+
+### Build Your Ecosystem
+Don't build your house on rented land. If TikTok gets banned or Instagram changes its algorithm, you lose everything.
+
+By cross-promoting and building a strong Snapchat following, you own a direct line to your fans that no algorithm can take away. Start building those bridges today!`
         }
       ]
     },
@@ -261,7 +561,7 @@ const translations = {
       button: "Contact on WhatsApp"
     },
     footer: {
-      rights: "© 2026 SnapScore Store. All rights reserved.",
+      rights: "© 2024 SnapScore Store. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service"
     },
@@ -372,11 +672,14 @@ const translations = {
     hero: {
       badge: "موثوق من قبل +10,000 عميل",
       title: "ارفع سكور السناب شات فوراً",
+      titleHighlight: "متجر سكور سناب",
+      subtitle: "المنصة الأقوى للنمو",
       desc: "زد سكور حسابك بأمان، احصل على حسابات قديمة، ونمِ متابعيك مع المزود الأكثر ثقة عالمياً.",
       cta: "عرض الكتالوج",
       secondary: "خدماتنا",
       scoreLabel: "السكور الحالي",
-      targetLabel: "الزيادة المستهدفة"
+      targetLabel: "الزيادة المستهدفة",
+      protection: "ضمان أمان الحساب بنسبة 100%"
     },
     shop: {
       title: "الكتالوج المميز",
@@ -447,7 +750,7 @@ const translations = {
           desc: "زد سكور حسابك بآلاف أو ملايين النقاط بأمان وبسرعة."
         },
         {
-          icon: <Infinity className="w-8 h-8" />,
+          icon: <InfinityIcon className="w-8 h-8" />,
           title: "حسابات قديمة",
           desc: "احصل على حسابات منشأة من 2011-2020 مع موثوقية عالية."
         },
@@ -457,6 +760,11 @@ const translations = {
           desc: "نمِ ملفك الشخصي العام بمتابعين حقيقيين ونشطين."
         }
       ]
+    },
+    snapify: {
+      titleHighlight: "سناب فاي برو",
+      subtitle: "المنصة الأقوى للنمو",
+      protection: "ضمان أمان الحساب بنسبة 100%"
     },
     how: {
       title: "كيف يعمل النظام",
@@ -483,7 +791,7 @@ const translations = {
       items: [
         { value: "10K+", label: "عميل سعيد" },
         { value: "50K+", label: "طلب مكتمل" },
-        { value: "5+", label: "سنوات خبرة" },
+        { value: "12+", label: "سنوات خبرة" },
         { value: "4.9", label: "متوسط التقييم" }
       ]
     },
@@ -522,25 +830,244 @@ const translations = {
           title: "دليل أمان حساب سناب شات: ممارسات تسجيل الدخول الآمن ومنع الحظر",
           date: "20 مارس 2024",
           excerpt: "تعرف على كيفية الحفاظ على أمان حسابك ومنع الحظر من خلال دليل الأمان الشامل الخاص بنا.",
-          link: "https://freesnapscores.com/blog/snapchat-account-safety-guide"
+          thumbnail: "https://freesnapscores.com/blog/snapchat-account-safety-guide",
+          content: `Snapchat uses advanced security systems to protect user accounts from unauthorized access, fraud, and misuse. While logging in from a new IP address or a different country is not automatically a violation, unsafe login practices and sudden activity can trigger security checks that may lead to a temporary or permanent account ban.
+
+This guide explains how to safely log in, what actions to avoid, and the main reasons Snapchat accounts get banned.
+
+### How to Safely Log In to a Snapchat Account
+Safe login behavior is critical, especially when accessing an account for the first time or from a new IP address.
+
+**1. Use a Stable and Real Internet Connection**
+*   Always log in using real mobile data or trusted home Wi-Fi
+*   Avoid public Wi-Fi networks
+*   Never use VPNs or proxy services
+A stable IP helps Snapchat recognize the login as legitimate.
+
+**2. Use One Device Only**
+*   Log in from one device
+*   Do not switch between multiple phones or emulators
+*   Avoid logging in from multiple locations in a short time
+Frequent device changes raise security red flags.
+
+**3. Log In Calmly and Naturally**
+*   Enter login details normally
+*   Avoid repeated login attempts
+*   If login fails, wait before trying again
+Multiple failed attempts can cause temporary locks.
+
+**4. Do Not Change Any Account Information Immediately**
+After logging in:
+*   Do not change email
+*   Do not change password
+*   Do not change username
+Wait at least 3 days, preferably 15–30 days, before making any changes.
+
+### What to Do After Logging In (First 3 Days)
+For the first 3 days after login, keep the account inactive. This means:
+*   Do not add friends
+*   Do not accept friend requests
+*   Do not send messages
+*   Do not edit profile details
+This period helps Snapchat’s system trust the account’s new activity pattern.
+
+### Safe Usage Rules After 3 Days
+Once the initial period is complete:
+*   Add or accept no more than 5 friends per day
+*   Avoid bulk actions
+*   Increase activity slowly and naturally
+*   Do not send repetitive or spam-like messages
+
+### Why IP Change + Immediate Actions Cause Bans
+When an account logs in from a new IP or country and immediately changes credentials or starts adding many friends, Snapchat may interpret this as a compromised or hacked account, which can lead to a permanent ban without appeal.
+
+### Reasons Why Snapchat Accounts Get Banned
+Below are the most common reasons for Snapchat bans:
+*   **Immediate Credential Changes After New IP Login:** Changing email, password, or username right after login from a new IP.
+*   **Excessive Friend Requests:** Adding or accepting too many friends in a short time.
+*   **VPN or Proxy Usage:** VPNs often use flagged IPs that Snapchat considers high-risk.
+*   **Abnormal or Automated Activity:** Fast actions that do not match normal human behavior.
+*   **Multiple Devices or Locations:** Logging in from several devices or countries within a short period.
+*   **Use of Third-Party Apps or Bots:** Any unofficial app, plugin, or automation tool violates Snapchat policies.
+*   **Repeated Login Failures:** Too many incorrect password attempts.
+
+### Best Practices to Keep Your Account Safe
+*   Use one device and one network
+*   Avoid VPNs completely
+*   Keep activity minimal at the start
+*   Follow waiting periods before making changes
+*   Use Snapchat normally and patiently
+
+### Conclusion
+Safely logging into a Snapchat account requires patience and controlled behavior. While IP or country changes alone do not cause bans, immediate profile changes, VPN usage, and aggressive activity significantly increase the risk of a permanent ban.
+
+By following safe login practices, waiting before making changes, and keeping activity limited, users can greatly reduce the risk of losing access to their Snapchat account.`
         },
         {
           title: "شحن سكور سناب شات: معلومات مهمة أثناء عملية الشحن",
           date: "18 مارس 2024",
           excerpt: "كل ما تحتاج معرفته عن عملية شحن السكور وماذا تتوقع.",
-          link: "https://freesnapscores.com/blog/snapchat-score-topup"
+          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fsnapscore-topup.svg&w=828&q=75",
+          content: `Please read the following information carefully before the score top-up process begins. These instructions are necessary to ensure a smooth and uninterrupted service.
+
+### 🔒 1. Account Login Restriction During Service
+Once the score top-up process has started, the buyer must not log in to the Snapchat account until the service is completed.
+
+**⚠️ Logging in during the process may:**
+*   Interrupt score progress
+*   Slow down the service
+*   Cause temporary restrictions on the account
+The buyer should wait for confirmation before accessing the account again.
+
+### 👤 2. Single Access Requirement
+During the score top-up, the account should remain active from only one side.
+
+**If the same account is accessed simultaneously from multiple locations or devices:**
+*   Snapchat systems may detect unusual activity
+*   The account may be temporarily locked
+*   The score process may stop automatically
+For this reason, the buyer must remain logged out during the service.
+
+### 📱 3. Device & Network Instructions
+*   The buyer should log out from all devices before the process begins
+*   Do not refresh, log in, or switch devices during the top-up
+*   Stable processing requires no activity from the buyer's side
+*   Any interruption can affect completion time
+
+### 📈 4. Score Increase Behavior
+Snapchat score increases gradually, not instantly.
+*   Score updates may take time to reflect
+*   Temporary pauses are normal during processing
+*   Checking the account repeatedly can disrupt the process
+Patience during the service period is required.
+
+### 📬 5. Communication & Confirmation Rule
+The buyer should only log back into the account after receiving confirmation that the score top-up is complete.
+
+**✅ Important Reminders:**
+*   Do not assume completion without confirmation
+*   Early login may cancel the remaining process
+*   Follow seller instructions strictly
+
+### ⚖️ 6. Responsibility for Instructions
+If the buyer does not follow the provided instructions:
+
+**🚫 Consequences of Non-Compliance:**
+*   Any delay or interruption will not be the seller's responsibility
+*   The service may not be repeated
+*   The order may be considered completed as-is
+These rules exist only to ensure successful delivery.
+
+### ✅ 7. After Completion
+Once confirmation is given:
+*   The buyer may log in and use the account normally
+*   The score top-up service is considered finished
+*   No further action is required unless stated
+
+### Important Disclaimer
+*   This is a third-party score top-up service
+*   The service is not affiliated with or endorsed by Snapchat
+*   Results depend on Snapchat's system behavior and limitations
+
+📊 Ready to boost your Snapchat score? Visit SnapScores.store to get started with our reliable score top-up service. Follow the instructions above for a smooth experience!`
         },
         {
           title: "شراء حسابات سناب شات جاهزة بسكور عالٍ (10 آلاف إلى مليون+)",
           date: "15 مارس 2024",
           excerpt: "اكتشف فوائد شراء حسابات جاهزة بسكور عالٍ وكيفية اختيار الحساب المناسب.",
-          link: "https://freesnapscores.com/blog/buy-premade-snapchat-accounts-with-high-snapscore"
+          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fsnapscore-boost.svg&w=828&q=75",
+          content: `Ready to level up instantly? Why spend weeks, months, or even years trying to push your SnapScore up manually when you can leap straight to the top? We are the ultimate destination to buy Snapchat premade accounts with massive scores ready to go.
+
+You want influence, you want credibility, and you want it right now. Creating a brand new account with a zero score won't cut it in 2026. Whether you need a starter account at 10k or an elite 1 Million+ SnapScore account, we have precisely what you need in our inventory.
+
+### ⭐ Why You Should Buy ONLY From Us
+The market is full of scammers selling banned or stolen accounts. Buy ONLY from SnapScoresStore!
+
+*   **100% Organic Accounts:** Our accounts are naturally grown without bots or banned scripts.
+*   **Zero Shadowbans:** Clean IP creation means these accounts are fully ready for use.
+*   **Instant Delivery:** Get your username and password details instantly upon purchase.
+*   **Every Range Available:** From 10k to 1 Million+, we have the perfect account for your needs.
+*   **Full Access Security:** You get complete ownership and can change all details.
+Don't risk your money elsewhere! We are the ONLY trusted source on the web.
+
+### 🔥 Buy Snapchat SnapScores Accounts: Every Range Available
+We cater to everyone. Whether you're a casual user wanting a head start or a brand looking for immediate authority, we offer premade Snapchat accounts in every score bracket:
+
+*   **Starter Tier (10k - 50k SnapScore):** Perfect for secondary accounts or individuals looking to quickly establish a normal presence without looking like a bot.
+*   **Influencer Tier (100k - 500k SnapScore):** Elite accounts meant for people who want to look popular. Great for marketing, business, and jumping straight into the "Snap Star" territory.
+*   **God Tier (1 Million+ SnapScore):** The absolute pinnacle. Only a fraction of Snapchat users ever reach 1 Million points. Instantly command respect.
+We stock all of these. You select the exact score range you want, check out safely through our portal, and log in to your new powerhouse account.
+
+### 🤖 Wait! Before You Go... Try Our Free Meta AI Downloader
+Besides providing the world's best premade Snapchat accounts, we also offer the internet's most advanced free tools. Have you ever generated or seen an incredible AI video on Facebook, Instagram, or WhatsApp and wished you could save it?
+
+Now you can! Try our highly popular Meta AI Downloader. It's 100% free, fast, and saves stunning AI-generated videos straight to your device with no watermarks.
+
+From social media to your camera roll in seconds. Grab the tool today to complement your massive new Snapchat presence!
+
+### 🌍 Our Global Reach: Serving You Everywhere
+Our digital assets aren't bound by borders. We provide premier Snapchat services specifically optimized for locations across the globe. We highly recommend checking out our dedicated local guides for SnapScore services and premade accounts in your area:
+
+📍 New York, USA | 📍 Los Angeles, USA | 📍 Chicago, USA | 📍 Miami, USA | 📍 Dallas, USA | 📍 United States | 📍 London, UK | 📍 United Kingdom | 📍 Toronto, Canada | 📍 Canada | 📍 Sydney, Australia | 📍 Australia | 📍 Dubai, UAE | 📍 United Arab Emirates | 📍 Riyadh, Saudi Arabia | 📍 Jeddah, Saudi Arabia | 📍 Saudi Arabia | 📍 Doha, Qatar | 📍 Qatar | 📍 Kuwait City | 📍 Kuwait | 📍 Paris, France | 📍 France | 📍 Berlin, Germany | 📍 Germany | 📍 Egypt | 📍 Nigeria | 📍 South Africa
+
+### Ready To Claim Your New Account?
+Don't wait any longer. High SnapScore accounts are in heavy demand, and our inventory updates daily. When you want the absolute best, most secure, and instantly accessible Snap accounts, buy ONLY from us.
+
+🚀 Stop waiting! Head over to our Services page now to browse our current premade account inventory, or use our tools to boost your existing score.`
         },
         {
           title: "كيف ترفع سكور سناب شات بسرعة وأمان في 2024",
           date: "12 مارس 2024",
           excerpt: "اكتشف أكثر الطرق فعالية وأماناً لرفع السكور في 2024.",
-          link: "https://freesnapscores.com/blog/how-to-increase-snapchat-score"
+          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fcross-promotion.svg&w=828&q=75",
+          content: `Here is the truth: Growing a Snapchat account from zero strictly inside Snapchat is hard. The discovery features are getting better, but they aren't perfect.
+
+The secret to rapid growth? Cross-Promotion. You likely have followers on Instagram, TikTok, or even friends on WhatsApp. You need to build a bridge that moves them from there to here. Here is how to become a cross-platform master.
+
+### 👻 The Snapcode: Your Secret Weapon
+Your Snapcode (that yellow ghost with dots) is the most powerful tool you have. It's a QR code that instantly adds you.
+
+*   **Customize It:** Put your selfie in the ghost. Make it recognizable.
+*   **Print It:** Put it on business cards, stickers, or even your car (if you're bold).
+*   **Digital Everywhere:** Make it your profile picture on other private accounts.
+
+### 📸 Instagram to Snapchat
+Instagram is your showroom; Snapchat is your living room.
+
+*   **Link in Bio:** Use a tool like Linktree and make "Add me on Snap" the top button.
+*   **Story Teasers:** Post a blurred or intriguing photo on your Insta Story with text: "Full story/uncensored rant only on Snapchat! Link in bio." FOMO (Fear Of Missing Out) works.
+*   **Highlights:** Create an "Add Me" highlight on your Insta profile with your Snapcode.
+
+### 🎵 TikTok to Snapchat
+TikTok gives you viral reach; Snapchat gives you connection.
+
+*   **The CTA (Call to Action):** End your TikToks with "More behind the scenes on my Snap!"
+*   **Bio Link:** TikTok allows you to link your Snapchat directly in your profile. Ensure it's connected!
+*   **Exclusive Content:** "I'm doing a Q&A on Snapchat right now, go ask me anything!"
+
+### 📺 YouTube to Snapchat
+YouTube is for polished content. Snapchat is for the raw "vlog" style.
+
+*   **Description Box:** Put your Snap link at the very top.
+*   **On-Screen Graphics:** Flash your Snapcode on screen during your video intro and outro.
+*   **Community Tab:** Post your Snapcode in a YouTube Community post.
+
+### 💘 Dating Apps (Tinder/Bumble)
+Okay, this is a bit different, but effective for personal brands.
+
+Many people put their Snapchat in their bio. It's a low-pressure way for people to connect with you. Just be careful with privacy settings!
+
+💡 **Pro Tip:** Give them a REASON to add you. "Add me on Snap" is boring. "Add me on Snap for daily marketing tips" or "Add me for exclusive discount codes" is compelling.
+
+### 🔄 The "Content Loop" Strategy
+Don't just move people to Snapchat. Move them around.
+
+Post a Snap saying "Just posted a new TikTok!" Post a TikTok saying "Check my Insta!" Keep your audience moving between platforms. This signals to all algorithms that your audience is super engaged.
+
+### Build Your Ecosystem
+Don't build your house on rented land. If TikTok gets banned or Instagram changes its algorithm, you lose everything.
+
+By cross-promoting and building a strong Snapchat following, you own a direct line to your fans that no algorithm can take away. Start building those bridges today!`
         }
       ]
     },
@@ -633,7 +1160,7 @@ const testimonials = [
       en: "Best service in the Middle East. My Snap score reached 1M in just 2 days. Highly recommended for anyone looking for reliability.", 
       ar: "أفضل خدمة في الشرق الأوسط. وصل سكور حسابي إلى مليون في يومين فقط. أنصح به بشدة لكل من يبحث عن المصداقية." 
     },
-    avatar: "https://i.pinimg.com/736x/d4/d1/09/d4d10914504759b9c917d0b338e13744.jpg"
+    avatar: "https://picsum.photos/seed/user1/100/100"
   },
   {
     name: { en: "Sara Mohammed", ar: "سارة محمد" },
@@ -642,7 +1169,7 @@ const testimonials = [
       en: "I was worried about my account, but they reassured me and the service was extremely professional. Highly recommended.", 
       ar: "كنت خايفة على حسابي بس طمنوني والخدمة كانت احترافية للغاية. أنصح فيهم وبقوة." 
     },
-    avatar: "https://i.pinimg.com/1200x/3d/b5/31/3db5313f860c6c6f67480f238e2e4f27.jpg"
+    avatar: "https://picsum.photos/seed/user2/100/100"
   },
   {
     name: { en: "Sultan Al-Kuwari", ar: "سلطان الكواري" },
@@ -651,7 +1178,7 @@ const testimonials = [
       en: "Best service I've dealt with in the Gulf. Credibility and speed in execution.", 
       ar: "أفضل خدمة تعاملت معها في الخليج. مصداقية وسرعة في التنفيذ." 
     },
-    avatar: "https://i.pinimg.com/1200x/7b/76/90/7b7690d1d9769561cb5fb6fdb2045943.jpg"
+    avatar: "https://picsum.photos/seed/user3/100/100"
   },
   {
     name: { en: "Layla Hassan", ar: "ليلى حسن" },
@@ -660,7 +1187,7 @@ const testimonials = [
       en: "Incredible results! My account looks so much more professional now. The support team was very helpful.", 
       ar: "نتائج مذهلة! حسابي يبدو أكثر احترافية الآن. فريق الدعم كان متعاوناً جداً." 
     },
-    avatar: "https://i.pinimg.com/736x/91/71/1a/91711a2f66907fb5ec910aee34cb6bcf.jpg"
+    avatar: "https://picsum.photos/seed/user4/100/100"
   },
   {
     name: { en: "Omar Farooq", ar: "عمر فاروق" },
@@ -669,7 +1196,7 @@ const testimonials = [
       en: "Fast delivery and great communication. I will definitely use this service again for my other accounts.", 
       ar: "تسليم سريع وتواصل رائع. سأستخدم هذه الخدمة بالتأكيد مرة أخرى لحساباتي الأخرى." 
     },
-    avatar: "https://i.pinimg.com/1200x/1d/8a/73/1d8a739993cc900a8c8935c602583a68.jpg"
+    avatar: "https://picsum.photos/seed/user5/100/100"
   },
   {
     name: { en: "Noura Al-Said", ar: "نورة السعيد" },
@@ -678,7 +1205,7 @@ const testimonials = [
       en: "The AI tools are a game changer! I love the Bitmoji creator. The score boost was also perfect.", 
       ar: "أدوات الذكاء الاصطناعي غيرت كل شيء! أحببت منشئ البيتموجي. زيادة السكور كانت مثالية أيضاً." 
     },
-    avatar: "https://i.pinimg.com/736x/d7/f8/74/d7f8747a5779b78be30c1f5f3dd76a3d.jpg"
+    avatar: "https://picsum.photos/seed/user6/100/100"
   }
 ];
 
@@ -710,19 +1237,19 @@ const faqData = [
 ];
 
 const catalog = [
-  { id: 1, score: "5K+", price: "$3", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
-  { id: 2, score: "10K+", price: "$5", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
-  { id: 3, score: "20K+", price: "$7", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
-  { id: 4, score: "50K+", price: "$12", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
-  { id: 5, score: "100K+", price: "$18", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
-  { id: 6, score: "200K+", price: "$22", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
-  { id: 7, score: "300K+", price: "$25", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
-  { id: 8, score: "500K+", price: "$32", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
-  { id: 9, score: "700K+", price: "$40", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
-  { id: 10, score: "1M+", price: "$50", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
-  { id: 11, score: "2M+", price: "$80", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
-  { id: 12, score: "5M+", price: "$150", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
-  { id: 13, score: "10M+", price: "$280", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
+  { id: 1, score: "5K+", price: "$15", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
+  { id: 2, score: "10K+", price: "$25", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
+  { id: 3, score: "20K+", price: "$35", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
+  { id: 4, score: "50K+", price: "$55", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
+  { id: 5, score: "100K+", price: "$95", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
+  { id: 6, score: "200K+", price: "$160", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
+  { id: 7, score: "300K+", price: "$220", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
+  { id: 8, score: "500K+", price: "$280", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
+  { id: 9, score: "700K+", price: "$350", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
+  { id: 10, score: "1M+", price: "$450", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
+  { id: 11, score: "2M+", price: "$850", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
+  { id: 12, score: "5M+", price: "$1800", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
+  { id: 13, score: "10M+", price: "$3500", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
 ];
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -750,10 +1277,116 @@ const verifiedAccountsStock = [
   { id: 'vpublic', amount: 'Public Profile', price: '$50', desc: { en: 'Verified public profile status', ar: 'حالة ملف تعريف عام موثقة' } },
 ];
 
+const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: () => void }) => {
+  const content = lang === 'ar' ? (post.arContent || post.content) : post.content;
+  const title = lang === 'ar' ? (post.arTitle || post.title) : post.title;
+
+  return (
+    <section className="pt-40 pb-24 px-6 min-h-screen bg-matte-black">
+      <div className="max-w-4xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="glass rounded-[3rem] border-white/10 overflow-hidden shadow-2xl"
+        >
+          <div className="relative h-[300px] lg:h-[500px]">
+            <img 
+              src={post.thumbnail || `https://picsum.photos/seed/blog-${post.title}/1200/800`} 
+              alt={title} 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-matte-black via-matte-black/20 to-transparent"></div>
+            <button 
+              onClick={onBack}
+              className="absolute top-8 left-8 w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all z-20 shadow-lg"
+            >
+              <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+            </button>
+          </div>
+
+          <div className="p-8 lg:p-16 -mt-20 relative z-10">
+            <div className="inline-block px-6 py-3 rounded-2xl bg-snap-yellow text-black font-black text-sm uppercase tracking-widest mb-8 shadow-[0_10px_30px_rgba(255,252,0,0.3)]">
+              {post.date}
+            </div>
+            <h1 className="text-4xl lg:text-7xl font-black mb-12 leading-tight tracking-tighter italic text-white uppercase">
+              {title}
+            </h1>
+            
+            <div className="prose prose-invert prose-snap max-w-none">
+              <div className={`text-gray-300 leading-relaxed text-xl space-y-10 markdown-body ${lang === 'ar' ? 'text-right' : 'text-left'}`} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+                <ReactMarkdown
+                  components={{
+                    h2: ({node, ...props}) => (
+                      <div className="my-16 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-600/20 to-purple-600/5 border border-blue-500/30 shadow-2xl relative overflow-hidden group">
+                        <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors"></div>
+                        <h2 className="text-3xl lg:text-5xl font-black text-blue-400 m-0 uppercase tracking-tighter italic relative z-10" {...props} />
+                      </div>
+                    ),
+                    h3: ({node, ...props}) => (
+                      <div className="my-12 p-8 rounded-[2rem] bg-gradient-to-r from-snap-yellow/10 to-transparent border-l-8 border-snap-yellow shadow-xl relative overflow-hidden">
+                        <h3 className="text-2xl lg:text-4xl font-black text-snap-yellow m-0 uppercase tracking-tight relative z-10" {...props} />
+                      </div>
+                    ),
+                    p: ({node, ...props}) => <p className="text-gray-300 leading-relaxed font-medium mb-8 text-lg lg:text-xl" {...props} />,
+                    ul: ({node, ...props}) => <ul className="space-y-6 my-10 list-none p-0" {...props} />,
+                    ol: ({node, ...props}) => <ol className="space-y-6 my-10 list-decimal list-inside p-0" {...props} />,
+                    li: ({node, ...props}) => (
+                      <li className="flex items-start gap-4 text-gray-300 font-medium bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-snap-yellow/30 transition-all">
+                        <div className="w-2 h-2 rounded-full bg-snap-yellow mt-3 shrink-0 shadow-[0_0_10px_rgba(255,252,0,0.5)]"></div>
+                        <span className="flex-1">{props.children}</span>
+                      </li>
+                    ),
+                    strong: ({node, ...props}) => <strong className="text-white font-black bg-white/10 px-2 py-0.5 rounded" {...props} />,
+                    blockquote: ({node, ...props}) => (
+                      <div className="my-12 p-10 rounded-[2rem] bg-purple-600/10 border-2 border-dashed border-purple-500/30 relative">
+                        <div className="absolute -top-6 left-10 px-4 py-2 bg-purple-500 text-white text-xs font-black uppercase tracking-widest rounded-lg">Important Note</div>
+                        <blockquote className="italic text-purple-200 m-0 text-2xl font-medium leading-relaxed" {...props} />
+                      </div>
+                    )
+                  }}
+                >
+                  {content}
+                </ReactMarkdown>
+              </div>
+            </div>
+
+            <div className="mt-20 pt-12 border-t border-white/10 flex flex-col lg:flex-row items-center justify-between gap-10">
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-snap-yellow/20 flex items-center justify-center text-snap-yellow shadow-inner">
+                  <Share2 className="w-8 h-8" />
+                </div>
+                <div>
+                  <span className="block font-black text-white uppercase tracking-widest text-lg">
+                    {lang === 'ar' ? 'شارك هذا المقال' : 'Share this article'}
+                  </span>
+                  <span className="text-gray-500 text-sm">{lang === 'ar' ? 'انشر المعرفة مع أصدقائك' : 'Spread the knowledge with your friends'}</span>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <button className="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all shadow-lg hover:-translate-y-1">
+                  <Facebook className="w-6 h-6" />
+                </button>
+                <button className="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all shadow-lg hover:-translate-y-1">
+                  <Twitter className="w-6 h-6" />
+                </button>
+                <button className="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all shadow-lg hover:-translate-y-1">
+                  <Instagram className="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
-  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify'>('home');
+  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'blog_detail' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify'>('home');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedBlogPost, setSelectedBlogPost] = useState<any>(null);
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
   const [selectedBoostingTier, setSelectedBoostingTier] = useState<any>(null);
   const [checkoutData, setCheckoutData] = useState({ username: '', password: '' });
@@ -764,24 +1397,15 @@ export default function App() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [shopTab, setShopTab] = useState<'score' | 'followers' | 'services'>('score');
+  const [isSnapifyUnlocked, setIsSnapifyUnlocked] = useState(false);
+  const [snapifyCode, setSnapifyCode] = useState('');
+  const [showUsage, setShowUsage] = useState(false);
 
   const handleToolClick = (toolId: string, isPro?: boolean) => {
-    if (isPro) {
-      const code = prompt(lang === 'ar' ? 'أدخل كود الوصول لـ Snapify Pro:' : 'Enter access code for Snapify Pro:');
-      if (code === 'A1B2C3$1') {
-        setView('snapify');
-        window.scrollTo(0, 0);
-        setIsMenuOpen(false);
-        setToolResult(null);
-      } else if (code !== null) {
-        alert(lang === 'ar' ? 'كود غير صحيح!' : 'Incorrect code!');
-      }
-    } else {
-      setView(toolId as any);
-      window.scrollTo(0, 0);
-      setIsMenuOpen(false);
-      setToolResult(null);
-    }
+    setView(toolId as any);
+    window.scrollTo(0, 0);
+    setIsMenuOpen(false);
+    setToolResult(null);
   };
 
   // Tool States
@@ -924,31 +1548,31 @@ export default function App() {
   };
 
   const scoreAccountsStock = [
-    { id: 'sa5k', amount: '5,000', price: '$3', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
-    { id: 'sa10k', amount: '10,000', price: '$5', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
-    { id: 'sa20k', amount: '20,000', price: '$7', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
-    { id: 'sa50k', amount: '50,000', price: '$12', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
-    { id: 'sa100k', amount: '100,000', price: '$18', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
-    { id: 'sa200k', amount: '200,000', price: '$22', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
-    { id: 'sa300k', amount: '300,000', price: '$25', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
-    { id: 'sa500k', amount: '500,000', price: '$32', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
-    { id: 'sa700k', amount: '700,000', price: '$40', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
-    { id: 'sa1m', amount: '1,000,000', price: '$50', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
-    { id: 'sa2m', amount: '2,000,000', price: '$80', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
-    { id: 'sa5m', amount: '5,000,000', price: '$120', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
-    { id: 'sa10m', amount: '10,000,000', price: '$280', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
+    { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
+    { id: 'sa10k', amount: '10,000', price: '$25', type: 'Score Account', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
+    { id: 'sa20k', amount: '20,000', price: '$35', type: 'Score Account', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
+    { id: 'sa50k', amount: '50,000', price: '$55', type: 'Score Account', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
+    { id: 'sa100k', amount: '100,000', price: '$95', type: 'Score Account', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
+    { id: 'sa200k', amount: '200,000', price: '$160', type: 'Score Account', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
+    { id: 'sa300k', amount: '300,000', price: '$220', type: 'Score Account', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
+    { id: 'sa500k', amount: '500,000', price: '$280', type: 'Score Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'sa700k', amount: '700,000', price: '$350', type: 'Score Account', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
+    { id: 'sa1m', amount: '1,000,000', price: '$450', type: 'Score Account', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
+    { id: 'sa2m', amount: '2,000,000', price: '$850', type: 'Score Account', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
+    { id: 'sa5m', amount: '5,000,000', price: '$1800', type: 'Score Account', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
+    { id: 'sa10m', amount: '10,000,000', price: '$3500', type: 'Score Account', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
   ];
 
   const followerAccountsStock = [
-    { id: 'fa5k', amount: '5,000', price: '$10', type: 'Follower Account', desc: { en: 'Rising Star', ar: 'نجم صاعد' } },
-    { id: 'fa10k', amount: '10,000', price: '$25', type: 'Follower Account', desc: { en: 'Popular Account', ar: 'حساب شائع' } },
-    { id: 'fa20k', amount: '20,000', price: '$50', type: 'Follower Account', desc: { en: 'Influencer Pack', ar: 'باقة المؤثرين' } },
-    { id: 'fa50k', amount: '50,000', price: '$160', type: 'Follower Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
-    { id: 'fa100k', amount: '100,000', price: '$240', type: 'Follower Account', desc: { en: 'Verified Potential', ar: 'إمكانية توثيق' } },
-    { id: 'fa200k', amount: '200,000', price: '$300', type: 'Follower Account', desc: { en: 'Mega Account', ar: 'حساب ضخم' } },
-    { id: 'fa300k', amount: '300,000', price: '$350', type: 'Follower Account', desc: { en: 'Pro Account', ar: 'حساب محترف' } },
-    { id: 'fa500k', amount: '500,000', price: '$470', type: 'Follower Account', desc: { en: 'Top Tier Presence', ar: 'حضور من الفئة الأولى' } },
-    { id: 'fa700k', amount: '700,000', price: '$520', type: 'Follower Account', desc: { en: 'Ultimate Reach', ar: 'وصول أقصى' } },
+    { id: 'fa5k', amount: '5,000', price: '$45', type: 'Follower Account', desc: { en: 'Rising Star', ar: 'نجم صاعد' } },
+    { id: 'fa10k', amount: '10,000', price: '$85', type: 'Follower Account', desc: { en: 'Popular Account', ar: 'حساب شائع' } },
+    { id: 'fa20k', amount: '20,000', price: '$150', type: 'Follower Account', desc: { en: 'Influencer Pack', ar: 'باقة المؤثرين' } },
+    { id: 'fa50k', amount: '50,000', price: '$350', type: 'Follower Account', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'fa100k', amount: '100,000', price: '$650', type: 'Follower Account', desc: { en: 'Verified Potential', ar: 'إمكانية توثيق' } },
+    { id: 'fa200k', amount: '200,000', price: '$1100', type: 'Follower Account', desc: { en: 'Mega Account', ar: 'حساب ضخم' } },
+    { id: 'fa300k', amount: '300,000', price: '$1500', type: 'Follower Account', desc: { en: 'Pro Account', ar: 'حساب محترف' } },
+    { id: 'fa500k', amount: '500,000', price: '$2200', type: 'Follower Account', desc: { en: 'Top Tier Presence', ar: 'حضور من الفئة الأولى' } },
+    { id: 'fa700k', amount: '700,000', price: '$2900', type: 'Follower Account', desc: { en: 'Ultimate Reach', ar: 'وصول أقصى' } },
   ];
 
   const servicesList = [
@@ -1344,11 +1968,15 @@ export default function App() {
                       <button
                         key={item.id}
                         onClick={() => handleToolClick(item.id, item.isPro)}
-                        className="text-right hover:text-snap-yellow transition-colors flex items-center justify-end gap-2"
+                        className={`hover:text-snap-yellow transition-colors flex items-center gap-2 ${lang === 'ar' ? 'flex-row-reverse justify-start' : 'justify-start'}`}
                         style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
                       >
                         {item.title}
-                        {item.isPro && <span className="text-[8px] bg-snap-yellow text-black px-1.5 py-0.5 rounded-md font-black">PRO</span>}
+                        {item.isPro ? (
+                          <span className="text-[8px] bg-snap-yellow text-black px-1.5 py-0.5 rounded-md font-black">PRO</span>
+                        ) : (
+                          <span className="text-[8px] bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded-md border border-green-500/30 font-black">FREE</span>
+                        )}
                       </button>
                     ))}
                   </div>
@@ -1550,7 +2178,7 @@ export default function App() {
                     i === 1 ? 'bg-purple-500/10 text-purple-400' : 
                     'bg-orange-500/10 text-orange-400'
                   }`}>
-                    {i === 0 ? <Lock className="w-10 h-10" /> : i === 1 ? <ShieldCheck className="w-10 h-10" /> : <Infinity className="w-10 h-10" />}
+                    {i === 0 ? <Lock className="w-10 h-10" /> : i === 1 ? <ShieldCheck className="w-10 h-10" /> : <InfinityIcon className="w-10 h-10" />}
                   </div>
                   <h3 className="text-3xl font-black mb-4 text-white">{item.title}</h3>
                   <p className="text-gray-400 leading-relaxed text-lg">{item.desc}</p>
@@ -1602,7 +2230,7 @@ export default function App() {
                       cat.color === 'orange' ? 'bg-orange-500/10 text-orange-400' :
                       'bg-green-500/10 text-green-400'
                     }`}>
-                      {React.cloneElement(cat.icon as React.ReactElement, { className: "w-8 h-8" })}
+                      {React.cloneElement(cat.icon as React.ReactElement<any>, { className: "w-8 h-8" })}
                     </div>
                     <h3 className="text-2xl font-black mb-4 group-hover:text-snap-yellow transition-colors">{cat.title[lang]}</h3>
                     <p className="text-gray-400 text-sm mb-8 leading-relaxed">{cat.desc[lang]}</p>
@@ -1739,9 +2367,13 @@ export default function App() {
                     'bg-green-600/10 border-green-500/20 hover:border-green-500/50'
                   }`}
                 >
-                  {tool.isPro && (
+                  {tool.isPro ? (
                     <div className="absolute top-6 right-6 px-3 py-1 bg-snap-yellow text-black text-[10px] font-black rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(255,252,0,0.5)] z-20">
                       PRO
+                    </div>
+                  ) : (
+                    <div className="absolute top-6 right-6 px-3 py-1 bg-green-500/20 text-green-400 text-[10px] font-black rounded-full border border-green-500/30 uppercase tracking-widest z-20">
+                      FREE
                     </div>
                   )}
                   <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
@@ -1762,7 +2394,7 @@ export default function App() {
                      tool.id === 'bitmoji' ? <User className="w-8 h-8" /> : 
                      tool.id === 'lens' ? <Zap className="w-8 h-8" /> : 
                      tool.id === 'map' ? <MapPin className="w-8 h-8" /> :
-                     <Infinity className="w-8 h-8" />}
+                     <InfinityIcon className="w-8 h-8" />}
                   </div>
                   <h3 className="text-2xl font-black mb-4 group-hover:text-snap-yellow transition-colors">{lang === 'ar' ? tool.ar : tool.title}</h3>
                   <p className="text-gray-400 leading-relaxed mb-8">
@@ -1864,15 +2496,17 @@ export default function App() {
                       <div className="text-xs font-bold text-snap-yellow uppercase tracking-widest mb-4">{post.date}</div>
                       <h3 className="text-2xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors">{post.title}</h3>
                       <p className="text-gray-400 mb-8 leading-relaxed">{post.excerpt}</p>
-                      <a 
-                        href={post.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <button 
+                        onClick={() => {
+                          setSelectedBlogPost(post);
+                          setView('blog_detail');
+                          window.scrollTo(0, 0);
+                        }}
                         className="text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn"
                       >
                         {t.blog.readMore}
                         <ChevronRight className={`w-4 h-4 transition-transform group-hover/btn:translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover/btn:-translate-x-1' : ''}`} />
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </motion.div>
@@ -1947,7 +2581,7 @@ export default function App() {
         {/* Contact Section */}
         <section id="contact" className="py-32 px-6 bg-gradient-to-b from-zinc-900/30 to-matte-black">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
                 <h2 className="text-4xl lg:text-6xl font-black mb-8 uppercase tracking-tight">
                   {lang === 'ar' ? 'تواصل مع' : 'Get in Touch with'} <br />
@@ -1993,7 +2627,7 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="glass p-10 rounded-[3rem] border-white/10">
+              <div className="glass p-6 lg:p-10 rounded-[2rem] lg:rounded-[3rem] border-white/10">
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'الاسم' : 'Name'}</label>
@@ -2026,6 +2660,14 @@ export default function App() {
 
 
           </>
+        )}
+
+        {view === 'blog_detail' && selectedBlogPost && (
+          <BlogDetail 
+            post={selectedBlogPost} 
+            lang={lang} 
+            onBack={() => setView('home')} 
+          />
         )}
 
         {view === 'category_detail' && selectedCategory && (
@@ -2207,7 +2849,7 @@ export default function App() {
                           i % 4 === 2 ? 'bg-orange-500/10 text-orange-400' :
                           'bg-green-500/10 text-green-400'
                         }`}>
-                          {React.cloneElement(service.icon as React.ReactElement, { className: "w-8 h-8" })}
+                          {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-8 h-8" })}
                         </div>
                         <h3 className="text-3xl font-black mb-4 group-hover:text-snap-yellow transition-colors">{service.title}</h3>
                         <p className="text-gray-400 mb-8 leading-relaxed">{service.desc[lang]}</p>
@@ -2351,9 +2993,16 @@ export default function App() {
                       i % 4 === 2 ? 'bg-orange-500/10' :
                       'bg-green-500/10'
                     }`}></div>
-                    <div className="aspect-video overflow-hidden">
+                    <div 
+                      className="aspect-video overflow-hidden cursor-pointer"
+                      onClick={() => {
+                        setSelectedBlogPost(post);
+                        setView('blog_detail');
+                        window.scrollTo(0, 0);
+                      }}
+                    >
                       <img 
-                        src={`https://picsum.photos/seed/blog-page-${i}/600/400`} 
+                        src={post.thumbnail || `https://picsum.photos/seed/blog-page-${i}/600/400`} 
                         alt={post.title} 
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         referrerPolicy="no-referrer"
@@ -2361,10 +3010,23 @@ export default function App() {
                     </div>
                     <div className="p-8">
                       <div className="text-xs font-bold text-snap-yellow uppercase tracking-widest mb-4">{post.date}</div>
-                      <h3 className="text-2xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors">{post.title}</h3>
+                      <h3 
+                        className="text-2xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors cursor-pointer"
+                        onClick={() => {
+                          setSelectedBlogPost(post);
+                          setView('blog_detail');
+                          window.scrollTo(0, 0);
+                        }}
+                      >
+                        {post.title}
+                      </h3>
                       <p className="text-gray-400 mb-8 leading-relaxed">{post.excerpt}</p>
                       <button 
-                        onClick={() => openWhatsApp(lang === 'ar' ? `أريد قراءة المزيد عن: ${post.title}` : `I want to read more about: ${post.title}`)}
+                        onClick={() => {
+                          setSelectedBlogPost(post);
+                          setView('blog_detail');
+                          window.scrollTo(0, 0);
+                        }}
                         className="text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn"
                       >
                         {t.blog.readMore}
@@ -3080,92 +3742,390 @@ export default function App() {
         )}
 
         {view === 'snapify' && (
-          <section className="pt-40 pb-24 px-6 min-h-[80vh] bg-mesh-1">
-            <div className="max-w-6xl mx-auto">
-              <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
-                <div>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-snap-yellow/10 border border-snap-yellow/20 text-snap-yellow text-xs font-black mb-4 uppercase tracking-widest">
-                    <Star className="w-4 h-4 fill-snap-yellow" />
-                    Snapify Pro Active
-                  </div>
-                  <h1 className="text-5xl lg:text-7xl font-black uppercase tracking-tighter">
-                    {lang === 'ar' ? 'سناب فاي برو' : 'Snapify Pro'} <span className="text-snap-yellow italic">Dashboard</span>
-                  </h1>
-                </div>
-                <div className="flex items-center gap-4 p-6 glass rounded-3xl border-white/10">
-                  <div className="w-12 h-12 rounded-2xl bg-snap-yellow/20 flex items-center justify-center">
-                    <User className="w-6 h-6 text-snap-yellow" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">Welcome Back</div>
-                    <div className="text-lg font-black text-white">Pro Member</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                {[
-                  { label: 'Account Health', value: '98%', icon: <ShieldCheck className="w-6 h-6" />, color: 'green' },
-                  { label: 'Growth Rate', value: '+12.5%', icon: <TrendingUp className="w-6 h-6" />, color: 'blue' },
-                  { label: 'Safety Status', value: 'Protected', icon: <Lock className="w-6 h-6" />, color: 'purple' }
-                ].map((stat, i) => (
-                  <div key={i} className="p-8 rounded-[2.5rem] glass border-white/10 relative overflow-hidden group">
-                    <div className={`absolute -top-10 -right-10 w-32 h-32 bg-${stat.color}-500/10 rounded-full blur-3xl group-hover:bg-${stat.color}-500/20 transition-colors`}></div>
-                    <div className={`w-12 h-12 rounded-xl bg-${stat.color}-500/10 text-${stat.color}-400 flex items-center justify-center mb-6`}>
-                      {stat.icon}
+          <section className="min-h-screen pt-40 pb-32 px-6 bg-matte-black bg-mesh-3 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto relative z-10">
+              {!isSnapifyUnlocked ? (
+                <div className="max-w-4xl mx-auto space-y-12">
+                  {/* Verification Box */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-12 rounded-[3rem] glass border-white/10 text-center relative overflow-hidden group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-snap-yellow/5 via-transparent to-purple-500/5 opacity-50"></div>
+                    <div className="relative z-10">
+                      <div className="w-20 h-20 bg-snap-yellow/20 rounded-3xl flex items-center justify-center mx-auto mb-8 animate-bounce">
+                        <Lock className="w-10 h-10 text-snap-yellow" />
+                      </div>
+                      <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tighter italic">
+                        {lang === 'ar' ? 'التحقق من الوصول' : 'Access Verification'}
+                      </h2>
+                      <p className="text-gray-400 mb-10 text-lg font-medium max-w-xl mx-auto leading-relaxed">
+                        {lang === 'ar' 
+                          ? 'سناب فاي برو متاح حصرياً للمستخدمين المعتمدين. يرجى إدخال كود الوصول الخاص بك للمتابعة.' 
+                          : 'Snapify Pro is exclusively available to verified users. Please enter your unique access code to continue.'}
+                      </p>
+                      
+                      <div className="max-w-md mx-auto space-y-6">
+                        <div className="relative group/input">
+                          <input 
+                            type="text" 
+                            value={snapifyCode}
+                            onChange={(e) => setSnapifyCode(e.target.value)}
+                            placeholder={lang === 'ar' ? 'أدخل الكود هنا...' : 'Enter access code here...'}
+                            className="w-full px-8 py-6 bg-white/5 border-2 border-white/10 rounded-2xl text-white font-black text-center tracking-[0.5em] focus:border-snap-yellow focus:bg-white/10 transition-all outline-none text-2xl uppercase placeholder:tracking-normal placeholder:text-gray-600"
+                          />
+                          <div className="absolute inset-0 rounded-2xl bg-snap-yellow/5 blur-xl opacity-0 group-focus-within/input:opacity-100 transition-opacity"></div>
+                        </div>
+                        
+                        <button 
+                          onClick={() => {
+                            if (snapifyCode === 'A1B2C3$1') {
+                              setIsSnapifyUnlocked(true);
+                              window.scrollTo(0, 0);
+                            } else {
+                              alert(lang === 'ar' ? 'كود غير صحيح!' : 'Incorrect code!');
+                            }
+                          }}
+                          className="w-full py-6 bg-snap-yellow hover:bg-yellow-400 text-black font-black rounded-2xl uppercase tracking-widest text-lg shadow-[0_10px_30px_rgba(255,252,0,0.3)] hover:shadow-[0_15px_40px_rgba(255,252,0,0.5)] transition-all hover:-translate-y-1 active:scale-95"
+                        >
+                          {lang === 'ar' ? 'فتح لوحة التحكم' : 'Unlock Dashboard'}
+                        </button>
+                      </div>
                     </div>
-                    <div className="text-sm text-gray-400 font-bold uppercase tracking-widest mb-2">{stat.label}</div>
-                    <div className="text-4xl font-black text-white tracking-tighter">{stat.value}</div>
-                  </div>
-                ))}
-              </div>
+                  </motion.div>
 
-              <div className="grid lg:grid-cols-2 gap-8">
-                <div className="p-10 rounded-[3rem] glass border-white/10 relative overflow-hidden">
-                  <h3 className="text-2xl font-black mb-8 flex items-center gap-3">
-                    <Zap className="w-6 h-6 text-snap-yellow" />
-                    {lang === 'ar' ? 'مميزات برو الحصرية' : 'Exclusive Pro Features'}
-                  </h3>
-                  <div className="space-y-4">
-                    {[
-                      { title: 'Advanced Ghost Mode', desc: 'Browse stories without being seen.' },
-                      { title: 'Score Multiplier', desc: 'Boost your score 2x faster than normal.' },
-                      { title: 'Private Story Downloader', desc: 'Save any story directly to your device.' },
-                      { title: 'Custom Bitmoji Outfits', desc: 'Unlock exclusive designer clothing.' }
-                    ].map((feature, i) => (
-                      <div key={i} className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-snap-yellow/50 transition-all group cursor-pointer">
-                        <div className="flex justify-between items-center">
-                          <div>
-                            <div className="font-black text-white mb-1 group-hover:text-snap-yellow transition-colors">{feature.title}</div>
-                            <div className="text-xs text-gray-400 font-medium">{feature.desc}</div>
+                  {/* What is Snapify? */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    className="p-12 rounded-[3rem] glass border-white/10 relative overflow-hidden group"
+                  >
+                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors"></div>
+                    <div className="relative z-10">
+                      <h3 className="text-3xl font-black mb-6 flex items-center gap-4 text-blue-400 uppercase tracking-tight">
+                        <div className="p-3 bg-blue-500/10 rounded-xl">
+                          <InfinityIcon className="w-8 h-8" />
+                        </div>
+                        {lang === 'ar' ? 'ما هو سناب فاي؟' : 'What is Snapify?'}
+                      </h3>
+                      <p className="text-gray-300 text-lg leading-relaxed font-medium">
+                        Snapify is an advanced Snapchat automation tool developed by FreeSnapScores for power users who want to grow their Snapchat presence faster. Unlike manual growth strategies that require hours of daily effort, Snapify automates the organic engagement actions that naturally increase your SnapScore — including automated snap sending, streak maintenance, and story-view automation.
+                        <br /><br />
+                        Snapify is available exclusively to verified users on FreeSnapScores. It operates entirely through a web-based interface — no software downloads, no browser extensions, and no third-party app installations required. Because Snapify is access-restricted, it can deliver premium automation capabilities while maintaining the quality standards our users expect.
+                      </p>
+                    </div>
+                  </motion.div>
+
+                  {/* Key Features */}
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <motion.div 
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="p-10 rounded-[3rem] glass border-white/10 relative overflow-hidden group"
+                    >
+                      <div className="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors"></div>
+                      <h3 className="text-2xl font-black mb-8 text-purple-400 uppercase tracking-tight flex items-center gap-3">
+                        <Zap className="w-6 h-6" />
+                        {lang === 'ar' ? 'المميزات الرئيسية' : 'Key Features'}
+                      </h3>
+                      <ul className="space-y-6">
+                        {[
+                          { title: 'Score Multiplier', desc: 'Accelerate your SnapScore growth with optimized sending patterns.' },
+                          { title: 'Streak Guardian', desc: 'Never lose a streak again with automated daily snap exchanges.' },
+                          { title: 'Story Engagement', desc: 'Increase your visibility by automatically viewing friend stories.' },
+                          { title: 'Safe-Mode Tech', desc: 'Built-in delays and human-like patterns to ensure account safety.' }
+                        ].map((item, i) => (
+                          <li key={i} className="flex gap-4">
+                            <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                              <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                            </div>
+                            <div>
+                              <div className="font-black text-white mb-1">{item.title}</div>
+                              <div className="text-sm text-gray-400 font-medium leading-relaxed">{item.desc}</div>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+
+                    <motion.div 
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="p-10 rounded-[3rem] glass border-white/10 relative overflow-hidden group"
+                    >
+                      <div className="absolute -top-24 -right-24 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl group-hover:bg-orange-500/20 transition-colors"></div>
+                      <h3 className="text-2xl font-black mb-8 text-orange-400 uppercase tracking-tight flex items-center gap-3">
+                        <HelpCircle className="w-6 h-6" />
+                        {lang === 'ar' ? 'كيف يعمل؟' : 'How It Works'}
+                      </h3>
+                      <div className="space-y-8">
+                        {[
+                          { step: '01', title: 'Account Connection', desc: 'Securely link your account via our encrypted web interface.' },
+                          { step: '02', title: 'Configure Settings', desc: 'Choose your growth speed and specific automation tasks.' },
+                          { step: '03', title: 'Launch Automation', desc: 'Snapify begins performing engagement actions on your behalf.' }
+                        ].map((item, i) => (
+                          <div key={i} className="flex gap-6">
+                            <div className="text-4xl font-black text-orange-500/20 italic">{item.step}</div>
+                            <div>
+                              <div className="font-black text-white mb-1">{item.title}</div>
+                              <div className="text-sm text-gray-400 font-medium leading-relaxed">{item.desc}</div>
+                            </div>
                           </div>
-                          <div className="w-8 h-8 rounded-full bg-snap-yellow/10 flex items-center justify-center text-snap-yellow opacity-0 group-hover:opacity-100 transition-all">
-                            <ArrowRight className="w-4 h-4" />
+                        ))}
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Responsible Usage */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="p-12 rounded-[3rem] glass border-white/10 relative overflow-hidden group"
+                  >
+                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-green-500/10 rounded-full blur-3xl group-hover:bg-green-500/20 transition-colors"></div>
+                    <h3 className="text-3xl font-black mb-6 text-green-400 uppercase tracking-tight flex items-center gap-4">
+                      <ShieldCheck className="w-8 h-8" />
+                      {lang === 'ar' ? 'الاستخدام المسؤول' : 'Responsible Usage'}
+                    </h3>
+                    <p className="text-gray-300 text-lg leading-relaxed font-medium">
+                      While Snapify is designed with safety as a priority, we recommend using it responsibly. Avoid extreme automation speeds and ensure your account has a verified email and phone number. Snapify is intended to supplement organic growth, not replace it entirely.
+                    </p>
+                  </motion.div>
+
+                  {/* FAQs */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="p-12 rounded-[3rem] glass border-white/10 relative overflow-hidden group"
+                  >
+                    <div className="absolute -top-24 -right-24 w-64 h-64 bg-snap-yellow/5 rounded-full blur-3xl group-hover:bg-snap-yellow/10 transition-colors"></div>
+                    <h3 className="text-3xl font-black mb-10 text-snap-yellow uppercase tracking-tight flex items-center gap-4">
+                      <Star className="w-8 h-8" />
+                      {lang === 'ar' ? 'الأسئلة الشائعة' : 'Snapify Pro FAQs'}
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      {[
+                        { q: 'Is Snapify safe to use?', a: 'Yes, Snapify uses human-like interaction patterns to remain within platform guidelines.' },
+                        { q: 'Do I need to download anything?', a: 'No, Snapify is 100% web-based and works on any device with a browser.' },
+                        { q: 'How do I get an access code?', a: 'Access codes are provided to premium customers and verified community members.' },
+                        { q: 'Can I use it on multiple accounts?', a: 'Each access code is linked to a single Snapchat account for security.' }
+                      ].map((faq, i) => (
+                        <div key={i} className="space-y-3">
+                          <div className="font-black text-white flex items-start gap-3">
+                            <span className="text-snap-yellow">Q:</span>
+                            {faq.q}
+                          </div>
+                          <div className="text-gray-400 font-medium pl-7 leading-relaxed">
+                            {faq.a}
                           </div>
                         </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              ) : (
+                <div className="space-y-12">
+                  <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
+                    <div>
+                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-snap-yellow/10 border border-snap-yellow/20 text-snap-yellow text-xs font-black mb-4 uppercase tracking-widest">
+                        <Star className="w-4 h-4 fill-snap-yellow" />
+                        Snapify Pro Active
                       </div>
-                    ))}
+                      <h1 className="text-5xl lg:text-7xl font-black uppercase tracking-tighter">
+                        {lang === 'ar' ? 'الوصول إلى أداة سناب فاي' : 'Snapify Tool Access'}
+                      </h1>
+                    </div>
+                    <div className="flex items-center gap-4 p-6 glass rounded-3xl border-white/10">
+                      <div className="w-12 h-12 rounded-2xl bg-snap-yellow/20 flex items-center justify-center">
+                        <User className="w-6 h-6 text-snap-yellow" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">Welcome Back</div>
+                        <div className="text-lg font-black text-white">Pro Member</div>
+                      </div>
+                    </div>
                   </div>
-                </div>
 
-                <div className="p-10 rounded-[3rem] glass border-white/10 relative overflow-hidden flex flex-col justify-center items-center text-center">
-                  <div className="w-24 h-24 rounded-full bg-snap-yellow/20 flex items-center justify-center mb-8 animate-pulse">
-                    <Infinity className="w-12 h-12 text-snap-yellow" />
+                  <div className="grid lg:grid-cols-2 gap-8">
+                    {/* Action Buttons */}
+                    <div className="space-y-6">
+                      <a 
+                        href="https://web.snapchat.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between p-8 rounded-[2.5rem] bg-blue-600/20 border border-blue-500/30 hover:bg-blue-600/30 transition-all group"
+                      >
+                        <div className="flex items-center gap-6">
+                          <div className="w-16 h-16 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400">
+                            <ExternalLink className="w-8 h-8" />
+                          </div>
+                          <div>
+                            <div className="text-2xl font-black text-white uppercase italic">Open Snapchat Web</div>
+                            <div className="text-blue-400/70 font-bold">Access the official web platform</div>
+                          </div>
+                        </div>
+                        <ArrowRight className="w-6 h-6 text-blue-400 group-hover:translate-x-2 transition-transform" />
+                      </a>
+
+                      <a 
+                        href="https://freesnapscores.com/snapify/snapify.user.js" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between p-8 rounded-[2.5rem] bg-snap-yellow text-black hover:scale-[1.02] transition-all group shadow-[0_20px_50px_rgba(255,252,0,0.2)]"
+                      >
+                        <div className="flex items-center gap-6">
+                          <div className="w-16 h-16 rounded-2xl bg-black/10 flex items-center justify-center">
+                            <Download className="w-8 h-8" />
+                          </div>
+                          <div>
+                            <div className="text-2xl font-black uppercase italic">Install Snapify Script</div>
+                            <div className="font-bold opacity-70">Click to install via userscript manager</div>
+                          </div>
+                        </div>
+                        <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                      </a>
+
+                      <div className="p-8 rounded-[2.5rem] glass border-white/10 space-y-6">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-xl font-black uppercase tracking-tight flex items-center gap-3">
+                            <Link className="w-5 h-5 text-snap-yellow" />
+                            Direct Script URL
+                          </h3>
+                          <button 
+                            onClick={() => {
+                              navigator.clipboard.writeText('https://freesnapscores.com/snapify/snapify.user.js');
+                              alert('URL Copied!');
+                            }}
+                            className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
+                          >
+                            Copy
+                          </button>
+                        </div>
+                        <div className="p-4 bg-black/40 rounded-xl border border-white/5 font-mono text-sm text-gray-400 break-all">
+                          https://freesnapscores.com/snapify/snapify.user.js
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Installation Instructions */}
+                    <div className="p-10 rounded-[3rem] glass border-white/10 relative overflow-hidden">
+                      <div className="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
+                      <h3 className="text-2xl font-black mb-8 text-purple-400 uppercase tracking-tight flex items-center gap-3">
+                        <ShieldCheck className="w-6 h-6" />
+                        Installation Instructions
+                      </h3>
+                      <div className="space-y-6 relative z-10">
+                        {[
+                          { step: '01', title: 'Install Manager', desc: 'Install a userscript manager extension (like Tampermonkey) for your browser.' },
+                          { step: '02', title: 'Click Install', desc: 'Click the "Install Snapify Script" button above.' },
+                          { step: '03', title: 'Confirm Installation', desc: 'Your userscript manager will prompt you to install the script.' },
+                          { step: '04', title: 'Navigate to Web', desc: 'After installation, navigate to Snapchat Web to use the tool.' }
+                        ].map((item, i) => (
+                          <div key={i} className="flex gap-6">
+                            <div className="text-3xl font-black text-purple-500/20 italic">{item.step}</div>
+                            <div>
+                              <div className="font-black text-white mb-1">{item.title}</div>
+                              <div className="text-sm text-gray-400 font-medium leading-relaxed">{item.desc}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-3xl font-black mb-4 uppercase tracking-tighter">
-                    {lang === 'ar' ? 'المزيد قريباً' : 'More Coming Soon'}
-                  </h3>
-                  <p className="text-gray-400 max-w-sm mx-auto font-medium">
-                    {lang === 'ar' ? 'نحن نعمل باستمرار على إضافة أدوات ومميزات جديدة لمشتركي برو.' : 'We are constantly working on adding new tools and features for our Pro members.'}
-                  </p>
-                  <button 
-                    onClick={() => setView('home')}
-                    className="mt-10 px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl transition-all"
-                  >
-                    {lang === 'ar' ? 'العودة للرئيسية' : 'Back to Home'}
-                  </button>
+
+                  {/* Usage Instructions */}
+                  <div className="p-10 rounded-[3rem] glass border-white/10">
+                    <button 
+                      onClick={() => setShowUsage(!showUsage)}
+                      className="w-full flex items-center justify-between text-left"
+                    >
+                      <h3 className="text-3xl font-black uppercase tracking-tighter flex items-center gap-4">
+                        <HelpCircle className="w-8 h-8 text-snap-yellow" />
+                        {showUsage ? '▼ Hide Usage Instructions' : '▶ Show Usage Instructions'}
+                      </h3>
+                    </button>
+                    
+                    <AnimatePresence>
+                      {showUsage && (
+                        <motion.div 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pt-12 space-y-12">
+                            <div className="grid md:grid-cols-2 gap-12">
+                              <div className="space-y-6">
+                                <h4 className="text-2xl font-black text-white uppercase italic">How to Use Snapify</h4>
+                                <p className="text-gray-400 leading-relaxed font-medium">
+                                  After installation, navigate to Snapchat Web where you'll see a control panel in the bottom-right corner:
+                                </p>
+                                <div className="space-y-4">
+                                  <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+                                    <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400 font-black">AUTO</div>
+                                    <div className="text-gray-300 font-bold">Start automatic capture and sending</div>
+                                  </div>
+                                  <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+                                    <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center text-red-400 font-black">STOP</div>
+                                    <div className="text-gray-300 font-bold">Pause the automation</div>
+                                  </div>
+                                  <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+                                    <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 font-black">S</div>
+                                    <div className="text-gray-300 font-bold">Ctrl+Alt+S keyboard shortcut to toggle</div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="space-y-6">
+                                <h4 className="text-2xl font-black text-white uppercase italic">Automation Workflow</h4>
+                                <ul className="space-y-4">
+                                  {[
+                                    'Navigate to the camera automatically',
+                                    'Capture snaps using adaptive techniques',
+                                    'Select recipients based on your configuration',
+                                    'Send snaps with human-like timing delays',
+                                    'Handle errors and retries automatically'
+                                  ].map((item, i) => (
+                                    <li key={i} className="flex items-center gap-4 text-gray-400 font-medium">
+                                      <div className="w-2 h-2 bg-snap-yellow rounded-full"></div>
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+
+                            <div className="p-8 rounded-[2rem] bg-orange-500/10 border border-orange-500/20">
+                              <div className="flex items-center gap-4 mb-4">
+                                <AlertTriangle className="w-6 h-6 text-orange-400" />
+                                <h4 className="text-xl font-black text-orange-400 uppercase tracking-tight">Pro Tip for Safety</h4>
+                              </div>
+                              <p className="text-orange-200/70 font-medium leading-relaxed">
+                                To maintain account safety, we recommend running Snapify in sessions of 30-60 minutes followed by a break. Avoid sending more than 500 snaps per hour to keep your account health in the green zone.
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <div className="text-center">
+                    <button 
+                      onClick={() => setView('home')}
+                      className="px-12 py-5 bg-white/5 hover:bg-white/10 text-white font-black rounded-2xl transition-all uppercase tracking-widest border border-white/10"
+                    >
+                      {lang === 'ar' ? 'العودة للرئيسية' : 'Back to Home'}
+                    </button>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </section>
         )}
@@ -3252,19 +4212,19 @@ export default function App() {
             
             <div className="flex flex-col gap-6">
               <div className="flex gap-4">
-                <a href="https://faceboook.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="https://x.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a href="https://instagram.com/snapscoresstore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://youtube.com/snapstorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Youtube className="w-5 h-5" />
                 </a>
-                <a href="https://linkdin.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>
