@@ -180,7 +180,7 @@ const translations = {
     },
     snapify: {
       titleHighlight: "Snapify Pro",
-      subtitle: "The Ultimate Growth Platform",
+      subtitle: "",
       protection: "100% Account Safety Guaranteed"
     },
     how: {
@@ -606,93 +606,7 @@ By cross-promoting and building a strong Snapchat following, you own a direct li
         },
         {
           title: "4. Refund Policy",
-          content: "Due to the nature of digital services, all sales are final. Refunds are only issued if we are unable to complete the service."
-        }
-      ]
-    },
-    tools_ui: {
-      bitmoji: {
-        title: "Bitmoji Avatar Creator",
-        subtitle: "Describe your perfect avatar and let AI create it",
-        placeholder: "e.g. A cool guy with sunglasses, blue hoodie, and blonde hair",
-        button: "Generate Avatar",
-        result: "Your Custom Avatar"
-      },
-      lens: {
-        title: "AI Lens Simulator",
-        subtitle: "Upload a photo and apply Snapchat-style lenses",
-        upload: "Upload Photo",
-        type: "Select Lens Type",
-        button: "Apply Lens",
-        result: "Lens Applied"
-      },
-      map: {
-        title: "Snap Map Location Finder",
-        subtitle: "Explore popular Snapchat hotspots anywhere in the world",
-        placeholder: "Enter city or place name",
-        button: "Find Hotspots",
-        result: "Popular Hotspots"
-      }
-    }
-  },
-  ar: {
-    nav: {
-      home: "الرئيسية",
-      services: "خدماتنا",
-      catalog: "الكتالوج",
-      how: "كيف نعمل",
-      faq: "الأسئلة الشائعة",
-      blog: "المدونة",
-      contact: "اتصل بنا",
-      tools: "الأدوات",
-      shop: "تسوق الآن",
-      lang: "English",
-      toolItems: [
-        { id: 'calc', title: "سناب شات سكور حاسبة", en: "Snapchat Score Calculator" },
-        { id: 'checker', title: "فاحص عمر الحساب", en: "Account Age & Trust Checker" },
-        { id: 'tracker', title: "مخطط أهداف السكور", en: "Snapchat Score Milestone Tracker" },
-        { id: 'bitmoji', title: "منشئ صور بيتموجي", en: "Bitmoji Avatar Creator" },
-        { id: 'lens', title: "محاكي عدسات الذكاء الاصطناعي", en: "AI Lens Simulator" },
-        { id: 'map', title: "مكتشف مواقع خريطة سناب", en: "Snap Map Location Finder" },
-        { id: 'snapify', title: "سناب فاي برو", en: "Snapify Pro", isPro: true }
-      ],
-      serviceItems: [
-        { id: 'boosting', title: "زيادة السكور", en: "Score Boosting" },
-        { id: 'followers', title: "زيادة المتابعين", en: "Follower Increase" },
-        { id: 'views', title: "مشاهدات الستوري", en: "Stories Spotlight View" },
-        { id: 'lens', title: "إنشاء عدسات", en: "Create Lens" },
-        { id: 'badge', title: "توثيق الحساب", en: "Verified Badge" }
-      ],
-      catalogItems: [
-        { id: 'score', title: "حسابات سكور", en: "Score Account" },
-        { id: 'followers', title: "حسابات متابعين", en: "Follower Account" },
-        { id: 'age', title: "حسابات قديمة", en: "Age Account" },
-        { id: 'verified', title: "حسابات موثقة", en: "Verified Account" }
-      ]
-    },
-    hero: {
-      badge: "موثوق من قبل +10,000 عميل",
-      title: "ارفع سكور السناب شات فوراً",
-      titleHighlight: "",
-      subtitle: "",
-      desc: "زد سكور حسابك بأمان، احصل على حسابات قديمة، ونمِ متابعيك مع المزود الأكثر ثقة عالمياً.",
-      cta: "عرض الكتالوج",
-      secondary: "خدماتنا",
-      scoreLabel: "السكور الحالي",
-      targetLabel: "الزيادة المستهدفة",
-      protection: "ضمان أمان الحساب بنسبة 100%"
-    },
-    shop: {
-      title: "الكتالوج المميز",
-      subtitle: "اختر الباقة المناسبة لاحتياجاتك",
-      scoreAccounts: "حسابات سكور",
-      followerAccounts: "حسابات متابعين",
-      servicesTab: "خدمات النمو",
-      buy: "طلب عبر واتساب",
-      order: "اطلب الآن",
-      price: "السعر"
-    },
-    checkout: {
+          content: "Due to the nature of digital services, all sales are final. Refunds are    checkout: {
       summary: "ملخص الطلب",
       package: "الباقة المختارة",
       price: "السعر الإجمالي",
@@ -764,7 +678,7 @@ By cross-promoting and building a strong Snapchat following, you own a direct li
     },
     snapify: {
       titleHighlight: "سناب فاي برو",
-      subtitle: "المنصة الأقوى للنمو",
+      subtitle: "",
       protection: "ضمان أمان الحساب بنسبة 100%"
     },
     how: {
@@ -832,111 +746,308 @@ By cross-promoting and building a strong Snapchat following, you own a direct li
           date: "20 مارس 2024",
           excerpt: "تعرف على كيفية الحفاظ على أمان حسابك ومنع الحظر من خلال دليل الأمان الشامل الخاص بنا.",
           thumbnail: "https://freesnapscores.com/blog/snapchat-account-safety-guide",
-          content: `Snapchat uses advanced security systems to protect user accounts from unauthorized access, fraud, and misuse. While logging in from a new IP address or a different country is not automatically a violation, unsafe login practices and sudden activity can trigger security checks that may lead to a temporary or permanent account ban.
+          content: `سناب شات يستخدم أنظمة أمان متقدمة لحماية حسابات المستخدمين من الوصول غير المصرح به والاحتيال وإساءة الاستخدام. بينما لا يعد تسجيل الدخول من عنوان IP جديد أو بلد مختلف انتهاكًا تلقائيًا، فإن ممارسات تسجيل الدخول غير الآمنة والنشاط المفاجئ يمكن أن تؤدي إلى فحوصات أمنية قد تؤدي إلى حظر الحساب مؤقتًا أو دائمًا.
 
-This guide explains how to safely log in, what actions to avoid, and the main reasons Snapchat accounts get banned.
+هذا الدليل يشرح كيفية تسجيل الدخول بأمان، وما هي الإجراءات التي يجب تجنبها، والأسباب الرئيسية لحظر حسابات سناب شات.
 
-### How to Safely Log In to a Snapchat Account
-Safe login behavior is critical, especially when accessing an account for the first time or from a new IP address.
+### كيفية تسجيل الدخول بأمان إلى حساب سناب شات
+سلوك تسجيل الدخول الآمن أمر بالغ الأهمية، خاصة عند الوصول إلى حساب لأول مرة أو من عنوان IP جديد.
 
-**1. Use a Stable and Real Internet Connection**
-*   Always log in using real mobile data or trusted home Wi-Fi
-*   Avoid public Wi-Fi networks
-*   Never use VPNs or proxy services
-A stable IP helps Snapchat recognize the login as legitimate.
+**1. استخدم اتصال إنترنت مستقر وحقيقي**
+*   قم دائمًا بتسجيل الدخول باستخدام بيانات الهاتف المحمول الحقيقية أو شبكة Wi-Fi منزلية موثوقة
+*   تجنب شبكات Wi-Fi العامة
+*   لا تستخدم أبدًا شبكات VPN أو خدمات البروكسي
+يساعد عنوان IP المستقر سناب شات في التعرف على تسجيل الدخول كعملية مشروعة.
 
-**2. Use One Device Only**
-*   Log in from one device
-*   Do not switch between multiple phones or emulators
-*   Avoid logging in from multiple locations in a short time
-Frequent device changes raise security red flags.
+**2. استخدم جهازًا واحدًا فقط**
+*   سجل الدخول من جهاز واحد
+*   لا تتنقل بين هواتف متعددة أو محاكيات
+*   تجنب تسجيل الدخول من مواقع متعددة في وقت قصير
+تغييرات الجهاز المتكررة ترفع علامات التحذير الأمنية.
 
-**3. Log In Calmly and Naturally**
-*   Enter login details normally
-*   Avoid repeated login attempts
-*   If login fails, wait before trying again
-Multiple failed attempts can cause temporary locks.
+**3. سجل الدخول بهدوء وبشكل طبيعي**
+*   أدخل تفاصيل تسجيل الدخول بشكل طبيعي
+*   تجنب محاولات تسجيل الدخول المتكررة
+*   إذا فشل تسجيل الدخول، انتظر قبل المحاولة مرة أخرى
+المحاولات الفاشلة المتعددة يمكن أن تسبب أقفالاً مؤقتة.
 
-**4. Do Not Change Any Account Information Immediately**
-After logging in:
-*   Do not change email
-*   Do not change password
-*   Do not change username
-Wait at least 3 days, preferably 15–30 days, before making any changes.
+**4. لا تغير أي معلومات للحساب على الفور**
+بعد تسجيل الدخول:
+*   لا تغير البريد الإلكتروني
+*   لا تغير كلمة المرور
+*   لا تغير اسم المستخدم
+انتظر 3 أيام على الأقل، ويفضل 15-30 يومًا، قبل إجراء أي تغييرات.
 
-### What to Do After Logging In (First 3 Days)
-For the first 3 days after login, keep the account inactive. This means:
-*   Do not add friends
-*   Do not accept friend requests
-*   Do not send messages
-*   Do not edit profile details
-This period helps Snapchat’s system trust the account’s new activity pattern.
+### ماذا تفعل بعد تسجيل الدخول (أول 3 أيام)
+خلال أول 3 أيام بعد تسجيل الدخول، حافظ على عدم نشاط الحساب. هذا يعني:
+*   لا تضف أصدقاء
+*   لا تقبل طلبات الصداقة
+*   لا ترسل رسائل
+*   لا تعدل تفاصيل الملف الشخصي
+هذه الفترة تساعد نظام سناب شات على الوثوق بنمط النشاط الجديد للحساب.
 
-### Safe Usage Rules After 3 Days
-Once the initial period is complete:
-*   Add or accept no more than 5 friends per day
-*   Avoid bulk actions
-*   Increase activity slowly and naturally
-*   Do not send repetitive or spam-like messages
+### قواعد الاستخدام الآمن بعد 3 أيام
+بمجرد اكتمال الفترة الأولية:
+*   لا تضف أو تقبل أكثر من 5 أصدقاء يوميًا
+*   تجنب الإجراءات الجماعية
+*   زد النشاط ببطء وبشكل طبيعي
+*   لا ترسل رسائل متكررة أو تبدو كرسائل مزعجة
 
-### Why IP Change + Immediate Actions Cause Bans
-When an account logs in from a new IP or country and immediately changes credentials or starts adding many friends, Snapchat may interpret this as a compromised or hacked account, which can lead to a permanent ban without appeal.
+### لماذا يسبب تغيير IP + الإجراءات الفورية الحظر
+عندما يسجل حساب الدخول من IP أو بلد جديد ويغير بيانات الاعتماد فورًا أو يبدأ في إضافة العديد من الأصدقاء، قد يفسر سناب شات ذلك على أنه حساب مخترق أو مقرصن، مما قد يؤدي إلى حظر دائم دون استئناف.
 
-### Reasons Why Snapchat Accounts Get Banned
-Below are the most common reasons for Snapchat bans:
-*   **Immediate Credential Changes After New IP Login:** Changing email, password, or username right after login from a new IP.
-*   **Excessive Friend Requests:** Adding or accepting too many friends in a short time.
-*   **VPN or Proxy Usage:** VPNs often use flagged IPs that Snapchat considers high-risk.
-*   **Abnormal or Automated Activity:** Fast actions that do not match normal human behavior.
-*   **Multiple Devices or Locations:** Logging in from several devices or countries within a short period.
-*   **Use of Third-Party Apps or Bots:** Any unofficial app, plugin, or automation tool violates Snapchat policies.
-*   **Repeated Login Failures:** Too many incorrect password attempts.
+### أسباب حظر حسابات سناب شات
+فيما يلي الأسباب الأكثر شيوعًا لحظر سناب شات:
+*   **تغييرات فورية في بيانات الاعتماد بعد تسجيل الدخول من IP جديد:** تغيير البريد الإلكتروني أو كلمة المرور أو اسم المستخدم مباشرة بعد تسجيل الدخول من IP جديد.
+*   **طلبات الصداقة المفرطة:** إضافة أو قبول عدد كبير جدًا من الأصدقاء في وقت قصير.
+*   **استخدام VPN أو بروكسي:** غالبًا ما تستخدم شبكات VPN عناوين IP تم الإبلاغ عنها والتي يعتبرها سناب شات عالية المخاطر.
+*   **نشاط غير طبيعي أو آلي:** إجراءات سريعة لا تتطابق مع السلوك البشري الطبيعي.
+*   **أجهزة أو مواقع متعددة:** تسجيل الدخول من عدة أجهزة أو بلدان خلال فترة قصيرة.
+*   **استخدام تطبيقات الطرف الثالث أو البوتات:** أي تطبيق غير رسمي أو إضافة أو أداة أتمتة تنتهك سياسات سناب شات.
+*   **فشل تسجيل الدخول المتكرر:** الكثير من محاولات كلمة المرور غير الصحيحة.
 
-### Best Practices to Keep Your Account Safe
-*   Use one device and one network
-*   Avoid VPNs completely
-*   Keep activity minimal at the start
-*   Follow waiting periods before making changes
-*   Use Snapchat normally and patiently
+### أفضل الممارسات للحفاظ على أمان حسابك
+*   استخدم جهازًا واحدًا وشبكة واحدة
+*   تجنب شبكات VPN تمامًا
+*   حافظ على الحد الأدنى من النشاط في البداية
+*   اتبع فترات الانتظار قبل إجراء التغييرات
+*   استخدم سناب شات بشكل طبيعي وبصبر
 
-### Conclusion
-Safely logging into a Snapchat account requires patience and controlled behavior. While IP or country changes alone do not cause bans, immediate profile changes, VPN usage, and aggressive activity significantly increase the risk of a permanent ban.
+### خاتمة
+يتطلب تسجيل الدخول بأمان إلى حساب سناب شات الصبر والسلوك المنضبط. بينما لا تسبب تغييرات IP أو البلد وحدها الحظر، فإن تغييرات الملف الشخصي الفورية واستخدام VPN والنشاط العدواني تزيد بشكل كبير من خطر الحظر الدائم.
 
-By following safe login practices, waiting before making changes, and keeping activity limited, users can greatly reduce the risk of losing access to their Snapchat account.`
+باتباع ممارسات تسجيل الدخول الآمن، والانتظار قبل إجراء التغييرات، والحفاظ على نشاط محدود، يمكن للمستخدمين تقليل خطر فقدان الوصول إلى حساب سناب شات الخاص بهم بشكل كبير.`
         },
         {
           title: "شحن سكور سناب شات: معلومات مهمة أثناء عملية الشحن",
           date: "18 مارس 2024",
           excerpt: "كل ما تحتاج معرفته عن عملية شحن السكور وماذا تتوقع.",
           thumbnail: "https://freesnapscores.com/blog/snapscore-topup.svg",
-          content: `Please read the following information carefully before the score top-up process begins. These instructions are necessary to ensure a smooth and uninterrupted service.
+          content: `يرجى قراءة المعلومات التالية بعناية قبل بدء عملية شحن السكور. هذه التعليمات ضرورية لضمان خدمة سلسة وغير منقطعة.
 
-### 🔒 1. Account Login Restriction During Service
-Once the score top-up process has started, the buyer must not log in to the Snapchat account until the service is completed.
+### 🔒 1. قيود تسجيل الدخول إلى الحساب أثناء الخدمة
+بمجرد بدء عملية شحن السكور، يجب على المشتري عدم تسجيل الدخول إلى حساب سناب شات حتى تكتمل الخدمة.
 
-**⚠️ Logging in during the process may:**
-*   Interrupt score progress
-*   Slow down the service
-*   Cause temporary restrictions on the account
-The buyer should wait for confirmation before accessing the account again.
+**⚠️ تسجيل الدخول أثناء العملية قد يؤدي إلى:**
+*   مقاطعة تقدم السكور
+*   إبطاء الخدمة
+*   التسبب في قيود مؤقتة على الحساب
+يجب على المشتري انتظار التأكيد قبل الوصول إلى الحساب مرة أخرى.
 
-### 👤 2. Single Access Requirement
-During the score top-up, the account should remain active from only one side.
+### 👤 2. متطلبات الوصول الفردي
+أثناء شحن السكور، يجب أن يظل الحساب نشطًا من جانب واحد فقط.
 
-**If the same account is accessed simultaneously from multiple locations or devices:**
-*   Snapchat systems may detect unusual activity
-*   The account may be temporarily locked
-*   The score process may stop automatically
-For this reason, the buyer must remain logged out during the service.
+**إذا تم الوصول إلى نفس الحساب في وقت واحد من مواقع أو أجهزة متعددة:**
+*   قد تكتشف أنظمة سناب شات نشاطًا غير عادي
+*   قد يتم قفل الحساب مؤقتًا
+*   قد تتوقف عملية السكور تلقائيًا
+لهذا السبب، يجب أن يظل المشتري مسجلاً الخروج أثناء الخدمة.
 
-### 📱 3. Device & Network Instructions
-*   The buyer should log out from all devices before the process begins
-*   Do not refresh, log in, or switch devices during the top-up
-*   Stable processing requires no activity from the buyer's side
-*   Any interruption can affect completion time
+### 📱 3. تعليمات الجهاز والشبكة
+*   يجب على المشتري تسجيل الخروج من جميع الأجهزة قبل بدء العملية
+*   لا تقم بالتحديث أو تسجيل الدخول أو تبديل الأجهزة أثناء الشحن
+*   تتطلب المعالجة المستقرة عدم وجود نشاط من جانب المشتري
+*   أي انقطاع يمكن أن يؤثر على وقت الإكمال
 
-### 📈 4. Score Increase Behavior
-Snapchat score increases gradually, not instantly.
+### 📈 4. سلوك زيادة السكور
+يزداد سكور سناب شات تدريجيًا، وليس فورًا.
+*   قد تستغرق تحديثات السكور وقتًا لتظهر
+*   التوقفات المؤقتة طبيعية أثناء المعالجة
+*   التحقق من الحساب بشكل متكرر يمكن أن يعطل العملية
+الصبر مطلوب خلال فترة الخدمة.
+
+### 📬 5. قاعدة التواصل والتأكيد
+يجب على المشتري تسجيل الدخول مرة أخرى إلى الحساب فقط بعد تلقي تأكيد بأن شحن السكور قد اكتمل.
+
+**✅ تذكيرات مهمة:**
+*   لا تفترض الإكمال دون تأكيد
+*   تسجيل الدخول المبكر قد يلغي العملية المتبقية
+*   اتبع تعليمات البائع بدقة
+
+### ⚖️ 6. المسؤولية عن التعليمات
+إذا لم يتبع المشتري التعليمات المقدمة:
+
+**🚫 عواقب عدم الامتثال:**
+*   أي تأخير أو انقطاع لن يكون من مسؤولية البائع
+*   قد لا يتم تكرار الخدمة
+*   قد يعتبر الطلب مكتملاً كما هو
+هذه القواعد موجودة فقط لضمان التسليم الناجح.
+
+### ✅ 7. بعد الإكمال
+بمجرد إعطاء التأكيد:
+*   يمكن للمشتري تسجيل الدخول واستخدام الحساب بشكل طبيعي
+*   تعتبر خدمة شحن السكور منتهية
+*   لا يلزم اتخاذ أي إجراء آخر ما لم ينص على خلاف ذلك
+
+### إخلاء مسؤولية مهم
+*   هذه خدمة شحن سكور من طرف ثالث
+*   الخدمة ليست تابعة لسناب شات أو معتمدة منه
+*   تعتمد النتائج على سلوك نظام سناب شات وقيوده
+
+📊 هل أنت مستعد لتعزيز سكور سناب شات الخاص بك؟ تفضل بزيارة freesnapscores.com للبدء في خدمة شحن السكور الموثوقة لدينا. اتبع التعليمات أعلاه لتجربة سلسة!`
+        },
+        {
+          title: "شراء حسابات سناب شات جاهزة بسكور عالٍ (10 آلاف إلى مليون+)",
+          date: "15 مارس 2024",
+          excerpt: "اكتشف فوائد شراء حسابات جاهزة بسكور عالٍ وكيفية اختيار الحساب المناسب.",
+          thumbnail: "https://freesnapscores.com/blog/snapscore-boost.svg",
+          content: `هل أنت مستعد لرفع مستواك على الفور؟ لماذا تقضي أسابيع أو شهورًا أو حتى سنوات في محاولة رفع سكور سناب شات يدويًا بينما يمكنك القفز مباشرة إلى القمة؟ نحن الوجهة النهائية لشراء حسابات سناب شات الجاهزة بسكور هائل وجاهزة للاستخدام.
+
+أنت تريد التأثير، وتريد المصداقية، وتريدها الآن. إنشاء حساب جديد تمامًا بسكور صفر لن يفي بالغرض في عام 2026. سواء كنت بحاجة إلى حساب مبتدئ بـ 10 آلاف أو حساب سكور مليون+ للنخبة، فلدينا بالضبط ما تحتاجه في مخزوننا.
+
+### ⭐ لماذا يجب عليك الشراء منا فقط
+السوق مليء بالمحتالين الذين يبيعون حسابات محظورة أو مسروقة. اشترِ فقط من متجر SnapScore!
+
+*   **حسابات عضوية 100%:** حساباتنا تنمو بشكل طبيعي بدون بوتات أو سكربتات محظورة.
+*   **صفر حظر ظل:** إنشاء IP نظيف يعني أن هذه الحسابات جاهزة تمامًا للاستخدام.
+*   **تسليم فوري:** احصل على تفاصيل اسم المستخدم وكلمة المرور فور الشراء.
+*   **كل النطاقات متاحة:** من 10 آلاف إلى مليون+، لدينا الحساب المثالي لاحتياجاتك.
+*   **أمان الوصول الكامل:** تحصل على ملكية كاملة ويمكنك تغيير جميع التفاصيل.
+لا تخاطر بأموالك في مكان آخر! نحن المصدر الوحيد الموثوق به على الويب.
+
+### 🔥 شراء حسابات سكور سناب شات: كل النطاقات متاحة
+نحن نلبي احتياجات الجميع. سواء كنت مستخدمًا عاديًا يريد بداية قوية أو علامة تجارية تبحث عن سلطة فورية، فنحن نقدم حسابات سناب شات جاهزة في كل فئة سكور:
+
+*   **فئة المبتدئين (10 آلاف - 50 ألف سكور):** مثالية للحسابات الثانوية أو الأفراد الذين يتطلعون إلى إنشاء حضور طبيعي بسرعة دون أن يبدوا كبوت.
+*   **فئة المؤثرين (100 ألف - 500 ألف سكور):** حسابات النخبة المخصصة للأشخاص الذين يريدون أن يبدوا مشهورين. رائعة للتسويق والأعمال والقفز مباشرة إلى منطقة "نجم سناب".
+*   **فئة الآلهة (مليون+ سكور):** القمة المطلقة. نسبة ضئيلة فقط من مستخدمي سناب شات يصلون إلى مليون نقطة. احصل على الاحترام فورًا.
+نحن نوفر كل هذه. أنت تختار نطاق السكور الدقيق الذي تريده، وتدفع بأمان من خلال بوابتنا، وتسجل الدخول إلى حسابك القوي الجديد.
+
+### 🤖 انتظر! قبل أن تذهب... جرب أداة تحميل Meta AI المجانية
+إلى جانب توفير أفضل حسابات سناب شات الجاهزة في العالم، نقدم أيضًا أكثر الأدوات المجانية تقدمًا على الإنترنت. هل سبق لك أن أنشأت أو رأيت فيديو ذكاء اصطناعي رائعًا على فيسبوك أو إنستغرام أو واتساب وتمنيت لو كان بإمكانك حفظه؟
+
+الآن يمكنك ذلك! جرب أداة تحميل Meta AI الشهيرة للغاية. إنها مجانية 100% وسريعة وتحفظ فيديوهات مذهلة من صنع الذكاء الاصطناعي مباشرة على جهازك بدون علامات مائية.
+
+من وسائل التواصل الاجتماعي إلى معرض الصور الخاص بك في ثوانٍ. احصل على الأداة اليوم لتكمل حضورك الهائل الجديد على سناب شات!
+
+### 🌍 وصولنا العالمي: نخدمك في كل مكان
+أصولنا الرقمية لا تلتزم بالحدود. نحن نقدم خدمات سناب شات متميزة مصممة خصيصًا لمواقع في جميع أنحاء العالم. نوصي بشدة بالاطلاع على أدلتنا المحلية المخصصة لخدمات SnapScore والحسابات الجاهزة في منطقتك:
+
+📍 نيويورك، الولايات المتحدة الأمريكية | 📍 لوس أنجلوس، الولايات المتحدة الأمريكية | 📍 شيكاغو، الولايات المتحدة الأمريكية | 📍 ميامي، الولايات المتحدة الأمريكية | 📍 دالاس، الولايات المتحدة الأمريكية | 📍 الولايات المتحدة الأمريكية | 📍 لندن، المملكة المتحدة | 📍 المملكة المتحدة | 📍 تورونتو، كندا | 📍 كندا | 📍 سيدني، أستراليا | 📍 أستراليا | 📍 دبي، الإمارات العربية المتحدة | 📍 الإمارات العربية المتحدة | 📍 الرياض، المملكة العربية السعودية | 📍 جدة، المملكة العربية السعودية | 📍 المملكة العربية السعودية | 📍 الدوحة، قطر | 📍 قطر | 📍 مدينة الكويت | 📍 الكويت | 📍 باريس، فرنسا | 📍 فرنسا | 📍 برلين، ألمانيا | 📍 ألمانيا | 📍 مصر | 📍 نيجيريا | 📍 جنوب أفريقيا
+
+### هل أنت مستعد للمطالبة بحسابك الجديد؟
+لا تنتظر أكثر من ذلك. حسابات السكور العالي مطلوبة بشدة، ومخزوننا يتحدث يوميًا. عندما تريد الأفضل والأكثر أمانًا والأسهل وصولاً، اشترِ منا فقط.
+
+🚀 توقف عن الانتظار! توجه إلى صفحة خدماتنا الآن لتصفح مخزون الحسابات الجاهزة الحالي لدينا، أو استخدم أدواتنا لتعزيز سكورك الحالي.`
+        }
+      ]
+    }, من خطر الحظر الدائم.
+
+باتباع ممارسات تسجيل الدخول الآمن، والانتظار قبل إجراء التغييرات، والحفاظ على نشاط محدود، يمكن للمستخدمين تقليل خطر فقدان الوصول إلى حساب سناب شات الخاص بهم بشكل كبير.`
+        },
+        {
+          title: "شحن سكور سناب شات: معلومات مهمة أثناء عملية الشحن",
+          date: "18 مارس 2024",
+          excerpt: "كل ما تحتاج معرفته عن عملية شحن السكور وماذا تتوقع.",
+          thumbnail: "https://freesnapscores.com/blog/snapscore-topup.svg",
+          content: `يرجى قراءة المعلومات التالية بعناية قبل بدء عملية شحن السكور. هذه التعليمات ضرورية لضمان خدمة سلسة وغير منقطعة.
+
+### 🔒 1. قيود تسجيل الدخول إلى الحساب أثناء الخدمة
+بمجرد بدء عملية شحن السكور، يجب على المشتري عدم تسجيل الدخول إلى حساب سناب شات حتى تكتمل الخدمة.
+
+**⚠️ تسجيل الدخول أثناء العملية قد يؤدي إلى:**
+*   مقاطعة تقدم السكور
+*   إبطاء الخدمة
+*   التسبب في قيود مؤقتة على الحساب
+يجب على المشتري انتظار التأكيد قبل الوصول إلى الحساب مرة أخرى.
+
+### 👤 2. متطلبات الوصول الفردي
+أثناء شحن السكور، يجب أن يظل الحساب نشطًا من جانب واحد فقط.
+
+**إذا تم الوصول إلى نفس الحساب في وقت واحد من مواقع أو أجهزة متعددة:**
+*   قد تكتشف أنظمة سناب شات نشاطًا غير عادي
+*   قد يتم قفل الحساب مؤقتًا
+*   قد تتوقف عملية السكور تلقائيًا
+لهذا السبب، يجب أن يظل المشتري مسجلاً الخروج أثناء الخدمة.
+
+### 📱 3. تعليمات الجهاز والشبكة
+*   يجب على المشتري تسجيل الخروج من جميع الأجهزة قبل بدء العملية
+*   لا تقم بالتحديث أو تسجيل الدخول أو تبديل الأجهزة أثناء الشحن
+*   تتطلب المعالجة المستقرة عدم وجود نشاط من جانب المشتري
+*   أي انقطاع يمكن أن يؤثر على وقت الإكمال
+
+### 📈 4. سلوك زيادة السكور
+يزداد سكور سناب شات تدريجيًا، وليس فورًا.
+*   قد تستغرق تحديثات السكور وقتًا لتظهر
+*   التوقفات المؤقتة طبيعية أثناء المعالجة
+*   التحقق من الحساب بشكل متكرر يمكن أن يعطل العملية
+الصبر مطلوب خلال فترة الخدمة.
+
+### 📬 5. قاعدة التواصل والتأكيد
+يجب على المشتري تسجيل الدخول مرة أخرى إلى الحساب فقط بعد تلقي تأكيد بأن شحن السكور قد اكتمل.
+
+**✅ تذكيرات مهمة:**
+*   لا تفترض الإكمال دون تأكيد
+*   تسجيل الدخول المبكر قد يلغي العملية المتبقية
+*   اتبع تعليمات البائع بدقة
+
+### ⚖️ 6. المسؤولية عن التعليمات
+إذا لم يتبع المشتري التعليمات المقدمة:
+
+**🚫 عواقب عدم الامتثال:**
+*   أي تأخير أو انقطاع لن يكون من مسؤولية البائع
+*   قد لا يتم تكرار الخدمة
+*   قد يعتبر الطلب مكتملاً كما هو
+هذه القواعد موجودة فقط لضمان التسليم الناجح.
+
+### ✅ 7. بعد الإكمال
+بمجرد إعطاء التأكيد:
+*   يمكن للمشتري تسجيل الدخول واستخدام الحساب بشكل طبيعي
+*   تعتبر خدمة شحن السكور منتهية
+*   لا يلزم اتخاذ أي إجراء آخر ما لم ينص على خلاف ذلك
+
+### إخلاء مسؤولية مهم
+*   هذه خدمة شحن سكور من طرف ثالث
+*   الخدمة ليست تابعة لسناب شات أو معتمدة منه
+*   تعتمد النتائج على سلوك نظام سناب شات وقيوده
+
+📊 هل أنت مستعد لتعزيز سكور سناب شات الخاص بك؟ تفضل بزيارة freesnapscores.com للبدء في خدمة شحن السكور الموثوقة لدينا. اتبع التعليمات أعلاه لتجربة سلسة!`
+        },
+        {
+          title: "شراء حسابات سناب شات جاهزة بسكور عالٍ (10 آلاف إلى مليون+)",
+          date: "15 مارس 2024",
+          excerpt: "اكتشف فوائد شراء حسابات جاهزة بسكور عالٍ وكيفية اختيار الحساب المناسب.",
+          thumbnail: "https://freesnapscores.com/blog/snapscore-boost.svg",
+          content: `هل أنت مستعد لرفع مستواك على الفور؟ لماذا تقضي أسابيع أو شهورًا أو حتى سنوات في محاولة رفع سكور سناب شات يدويًا بينما يمكنك القفز مباشرة إلى القمة؟ نحن الوجهة النهائية لشراء حسابات سناب شات الجاهزة بسكور هائل وجاهزة للاستخدام.
+
+أنت تريد التأثير، وتريد المصداقية، وتريدها الآن. إنشاء حساب جديد تمامًا بسكور صفر لن يفي بالغرض في عام 2026. سواء كنت بحاجة إلى حساب مبتدئ بـ 10 آلاف أو حساب سكور مليون+ للنخبة، فلدينا بالضبط ما تحتاجه في مخزوننا.
+
+### ⭐ لماذا يجب عليك الشراء منا فقط
+السوق مليء بالمحتالين الذين يبيعون حسابات محظورة أو مسروقة. اشترِ فقط من متجر SnapScore!
+
+*   **حسابات عضوية 100%:** حساباتنا تنمو بشكل طبيعي بدون بوتات أو سكربتات محظورة.
+*   **صفر حظر ظل:** إنشاء IP نظيف يعني أن هذه الحسابات جاهزة تمامًا للاستخدام.
+*   **تسليم فوري:** احصل على تفاصيل اسم المستخدم وكلمة المرور فور الشراء.
+*   **كل النطاقات متاحة:** من 10 آلاف إلى مليون+، لدينا الحساب المثالي لاحتياجاتك.
+*   **أمان الوصول الكامل:** تحصل على ملكية كاملة ويمكنك تغيير جميع التفاصيل.
+لا تخاطر بأموالك في مكان آخر! نحن المصدر الوحيد الموثوق به على الويب.
+
+### 🔥 شراء حسابات سكور سناب شات: كل النطاقات متاحة
+نحن نلبي احتياجات الجميع. سواء كنت مستخدمًا عاديًا يريد بداية قوية أو علامة تجارية تبحث عن سلطة فورية، فنحن نقدم حسابات سناب شات جاهزة في كل فئة سكور:
+
+*   **فئة المبتدئين (10 آلاف - 50 ألف سكور):** مثالية للحسابات الثانوية أو الأفراد الذين يتطلعون إلى إنشاء حضور طبيعي بسرعة دون أن يبدوا كبوت.
+*   **فئة المؤثرين (100 ألف - 500 ألف سكور):** حسابات النخبة المخصصة للأشخاص الذين يريدون أن يبدوا مشهورين. رائعة للتسويق والأعمال والقفز مباشرة إلى منطقة "نجم سناب".
+*   **فئة الآلهة (مليون+ سكور):** القمة المطلقة. نسبة ضئيلة فقط من مستخدمي سناب شات يصلون إلى مليون نقطة. احصل على الاحترام فورًا.
+نحن نوفر كل هذه. أنت تختار نطاق السكور الدقيق الذي تريده، وتدفع بأمان من خلال بوابتنا، وتسجل الدخول إلى حسابك القوي الجديد.
+
+### 🤖 انتظر! قبل أن تذهب... جرب أداة تحميل Meta AI المجانية
+إلى جانب توفير أفضل حسابات سناب شات الجاهزة في العالم، نقدم أيضًا أكثر الأدوات المجانية تقدمًا على الإنترنت. هل سبق لك أن أنشأت أو رأيت فيديو ذكاء اصطناعي رائعًا على فيسبوك أو إنستغرام أو واتساب وتمنيت لو كان بإمكانك حفظه؟
+
+الآن يمكنك ذلك! جرب أداة تحميل Meta AI الشهيرة للغاية. إنها مجانية 100% وسريعة وتحفظ فيديوهات مذهلة من صنع الذكاء الاصطناعي مباشرة على جهازك بدون علامات مائية.
+
+من وسائل التواصل الاجتماعي إلى معرض الصور الخاص بك في ثوانٍ. احصل على الأداة اليوم لتكمل حضورك الهائل الجديد على سناب شات!
+
+### 🌍 وصولنا العالمي: نخدمك في كل مكان
+أصولنا الرقمية لا تلتزم بالحدود. نحن نقدم خدمات سناب شات متميزة مصممة خصيصًا لمواقع في جميع أنحاء العالم. نوصي بشدة بالاطلاع على أدلتنا المحلية المخصصة لخدمات SnapScore والحسابات الجاهزة في منطقتك:
+
+📍 نيويورك، الولايات المتحدة الأمريكية | 📍 لوس أنجلوس، الولايات المتحدة الأمريكية | 📍 شيكاغو، الولايات المتحدة الأمريكية | 📍 ميامي، الولايات المتحدة الأمريكية | 📍 دالاس، الولايات المتحدة الأمريكية | 📍 الولايات المتحدة الأمريكية | 📍 لندن، المملكة المتحدة | 📍 المملكة المتحدة | 📍 تورونتو، كندا | 📍 كندا | 📍 سيدني، أستراليا | 📍 أستراليا | 📍 دبي، الإمارات العربية المتحدة | 📍 الإمارات العربية المتحدة | 📍 الرياض، المملكة العربية السعودية | 📍 جدة، المملكة العربية السعودية | 📍 المملكة العربية السعودية | 📍 الدوحة، قطر | 📍 قطر | 📍 مدينة الكويت | 📍 الكويت | 📍 باريس، فرنسا | 📍 فرنسا | 📍 برلين، ألمانيا | 📍 ألمانيا | 📍 مصر | 📍 نيجيريا | 📍 جنوب أفريقيا
+
+### هل أنت مستعد للمطالبة بحسابك الجديد؟
+لا تنتظر أكثر من ذلك. حسابات السكور العالي مطلوبة بشدة، ومخزوننا يتحدث يوميًا. عندما تريد الأفضل والأكثر أمانًا والأسهل وصولاً، اشترِ منا فقط.
+
+🚀 توقف عن الانتظار! توجه إلى صفحة خدماتنا الآن لتصفح مخزون الحسابات الجاهزة الحالي لدينا، أو استخدم أدواتنا لتعزيز سكورك الحالي.`
+        }
+      ]at score increases gradually, not instantly.
 *   Score updates may take time to reflect
 *   Temporary pauses are normal during processing
 *   Checking the account repeatedly can disrupt the process
@@ -1021,54 +1132,54 @@ Don't wait any longer. High SnapScore accounts are in heavy demand, and our inve
           date: "12 مارس 2024",
           excerpt: "اكتشف أكثر الطرق فعالية وأماناً لرفع السكور في 2024.",
           thumbnail: "https://freesnapscores.com/blog/cross-promotion.svg",
-          content: `Here is the truth: Growing a Snapchat account from zero strictly inside Snapchat is hard. The discovery features are getting better, but they aren't perfect.
+          content: `سواء كنت تبحث عن زيادة سكور سناب شات الخاص بك أو تنمية متابعيك، فإن عام 2024 يتطلب استراتيجية ذكية. الحقيقة هي أن تنمية حساب سناب شات من الصفر داخل التطبيق فقط أمر صعب. ميزات الاكتشاف تتحسن، لكنها ليست مثالية.
 
-The secret to rapid growth? Cross-Promotion. You likely have followers on Instagram, TikTok, or even friends on WhatsApp. You need to build a bridge that moves them from there to here. Here is how to become a cross-platform master.
+السر في النمو السريع؟ الترويج المتبادل (Cross-Promotion). من المحتمل أن يكون لديك متابعون على إنستغرام أو تيك توك أو حتى أصدقاء على واتساب. تحتاج إلى بناء جسر ينقلهم من هناك إلى هنا. إليك كيف تصبح سيد الترويج المتبادل.
 
-### 👻 The Snapcode: Your Secret Weapon
-Your Snapcode (that yellow ghost with dots) is the most powerful tool you have. It's a QR code that instantly adds you.
+### 👻 كود السناب (Snapcode): سلاحك السري
+كود السناب الخاص بك (ذلك الشبح الأصفر المنقط) هو أقوى أداة لديك. إنه رمز QR يضيفك فوراً.
 
-*   **Customize It:** Put your selfie in the ghost. Make it recognizable.
-*   **Print It:** Put it on business cards, stickers, or even your car (if you're bold).
-*   **Digital Everywhere:** Make it your profile picture on other private accounts.
+*   **خصصه:** ضع صورتك الشخصية داخل الشبح. اجعله مميزاً.
+*   **اطبعه:** ضعه على بطاقات العمل، الملصقات، أو حتى سيارتك (إذا كنت جريئاً).
+*   **رقمياً في كل مكان:** اجعله صورتك الشخصية على حساباتك الأخرى.
 
-### 📸 Instagram to Snapchat
-Instagram is your showroom; Snapchat is your living room.
+### 📸 من إنستغرام إلى سناب شات
+إنستغرام هو صالة العرض الخاصة بك؛ سناب شات هو غرفة المعيشة.
 
-*   **Link in Bio:** Use a tool like Linktree and make "Add me on Snap" the top button.
-*   **Story Teasers:** Post a blurred or intriguing photo on your Insta Story with text: "Full story/uncensored rant only on Snapchat! Link in bio." FOMO (Fear Of Missing Out) works.
-*   **Highlights:** Create an "Add Me" highlight on your Insta profile with your Snapcode.
+*   **رابط في البايو:** استخدم أداة مثل Linktree واجعل "أضفني على سناب" الزر العلوي.
+*   **تشويق الستوري:** انشر صورة مشوشة أو مثيرة للاهتمام على ستوري إنستغرام مع نص: "القصة الكاملة فقط على سناب شات! الرابط في البايو." الخوف من فوات الشيء (FOMO) يعمل دائماً.
+*   **الهايلايت:** أنشئ هايلايت "أضفني" على ملفك الشخصي في إنستغرام يحتوي على كود السناب الخاص بك.
 
-### 🎵 TikTok to Snapchat
-TikTok gives you viral reach; Snapchat gives you connection.
+### 🎵 من تيك توك إلى سناب شات
+تيك توك يمنحك وصولاً واسعاً؛ سناب شات يمنحك اتصالاً.
 
-*   **The CTA (Call to Action):** End your TikToks with "More behind the scenes on my Snap!"
-*   **Bio Link:** TikTok allows you to link your Snapchat directly in your profile. Ensure it's connected!
-*   **Exclusive Content:** "I'm doing a Q&A on Snapchat right now, go ask me anything!"
+*   **دعوة لاتخاذ إجراء (CTA):** أنهِ فيديوهات تيك توك بـ "المزيد من خلف الكواليس على سنابي!"
+*   **رابط البايو:** يتيح لك تيك توك ربط سناب شات مباشرة بملفك الشخصي. تأكد من توصيله!
+*   **محتوى حصري:** "أقوم بالإجابة على الأسئلة على سناب شات الآن، اذهب واسألني أي شيء!"
 
-### 📺 YouTube to Snapchat
-YouTube is for polished content. Snapchat is for the raw "vlog" style.
+### 📺 من يوتيوب إلى سناب شات
+يوتيوب للمحتوى المصقول. سناب شات لنمط "الفلوق" العفوي.
 
-*   **Description Box:** Put your Snap link at the very top.
-*   **On-Screen Graphics:** Flash your Snapcode on screen during your video intro and outro.
-*   **Community Tab:** Post your Snapcode in a YouTube Community post.
+*   **صندوق الوصف:** ضع رابط سناب الخاص بك في الأعلى تماماً.
+*   **رسومات على الشاشة:** اعرض كود السناب الخاص بك على الشاشة أثناء مقدمة وخاتمة الفيديو.
+*   **تبويب المنتدى:** انشر كود السناب الخاص بك في منشور منتدى يوتيوب.
 
-### 💘 Dating Apps (Tinder/Bumble)
-Okay, this is a bit different, but effective for personal brands.
+### 💘 تطبيقات المواعدة (Tinder/Bumble)
+حسناً، هذا مختلف قليلاً، لكنه فعال للعلامات التجارية الشخصية.
 
-Many people put their Snapchat in their bio. It's a low-pressure way for people to connect with you. Just be careful with privacy settings!
+يضع الكثير من الناس سناب شات الخاص بهم في البايو. إنها طريقة منخفضة الضغط ليتواصل الناس معك. فقط كن حذراً في إعدادات الخصوصية!
 
-💡 **Pro Tip:** Give them a REASON to add you. "Add me on Snap" is boring. "Add me on Snap for daily marketing tips" or "Add me for exclusive discount codes" is compelling.
+💡 **نصيحة احترافية:** أعطهم سبباً لإضافتك. "أضفني على سناب" مملة. "أضفني على سناب للحصول على نصائح تسويقية يومية" أو "أضفني للحصول على أكواد خصم حصرية" أمر مقنع.
 
-### 🔄 The "Content Loop" Strategy
-Don't just move people to Snapchat. Move them around.
+### 🔄 استراتيجية "حلقة المحتوى"
+لا تكتفِ بنقل الناس إلى سناب شات. حركهم في كل مكان.
 
-Post a Snap saying "Just posted a new TikTok!" Post a TikTok saying "Check my Insta!" Keep your audience moving between platforms. This signals to all algorithms that your audience is super engaged.
+انشر سناب تقول "نشرت تيك توك جديداً!" انشر تيك توك يقول "تحقق من إنستغرامي!" حافظ على حركة جمهورك بين المنصات. هذا يعطي إشارة لجميع الخوارزميات بأن جمهورك متفاعل للغاية.
 
-### Build Your Ecosystem
-Don't build your house on rented land. If TikTok gets banned or Instagram changes its algorithm, you lose everything.
+### ابنِ نظامك البيئي
+لا تبنِ منزلك على أرض مستأجرة. إذا تم حظر تيك توك أو غير إنستغرام خوارزميته، فستفقد كل شيء.
 
-By cross-promoting and building a strong Snapchat following, you own a direct line to your fans that no algorithm can take away. Start building those bridges today!`
+من خلال الترويج المتبادل وبناء قاعدة متابعين قوية على سناب شات، فإنك تمتلك خطاً مباشراً مع معجبيك لا يمكن لأي خوارزمية أن تأخذه منك. ابدأ في بناء تلك الجسور اليوم!`
         }
       ]
     },
@@ -1415,6 +1526,16 @@ const ProductDetail = ({ product, lang, onBack, onBuy }: { product: any, lang: s
   );
 };
 
+const BackButton = ({ onClick, lang }: { onClick: () => void, lang: string }) => (
+  <button 
+    onClick={onClick}
+    className="flex items-center gap-2 px-4 py-2 glass rounded-xl hover:bg-snap-yellow hover:text-black transition-all font-bold mb-6 group"
+  >
+    <ChevronLeft className={`w-5 h-5 transition-transform group-hover:-translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover:translate-x-1' : ''}`} />
+    <span>{lang === 'ar' ? 'رجوع' : 'Back'}</span>
+  </button>
+);
+
 const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: () => void }) => {
   const [copied, setCopied] = useState(false);
   const content = lang === 'ar' ? (post.arContent || post.content) : post.content;
@@ -1560,6 +1681,8 @@ export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
   const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'blog-detail' | 'service-detail' | 'product-detail' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify'>('home');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedService, setSelectedService] = useState<any>(null);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [selectedBlogPost, setSelectedBlogPost] = useState<any>(null);
   const [selectedPackage, setSelectedPackage] = useState<any>(null);
   const [selectedBoostingTier, setSelectedBoostingTier] = useState<any>(null);
@@ -1806,8 +1929,44 @@ export default function App() {
         return;
       }
 
+      // Handle service detail
+      if (hash.startsWith('service-')) {
+        const serviceId = hash.split('-')[1];
+        const service = servicesList.find(s => s.id === serviceId);
+        if (service) {
+          setSelectedService(service);
+          setView('service-detail');
+          window.scrollTo(0, 0);
+          return;
+        }
+      }
+
+      // Handle product detail
+      if (hash.startsWith('product-')) {
+        const productId = hash.split('-')[1];
+        const product = [...scoreAccountsStock, ...followerAccountsStock, ...agedAccountsStock, ...verifiedAccountsStock].find(p => p.id === productId);
+        if (product) {
+          setSelectedProduct(product);
+          setView('product-detail');
+          window.scrollTo(0, 0);
+          return;
+        }
+      }
+
+      // Handle blog detail
+      if (hash.startsWith('blog-')) {
+        const blogIndex = parseInt(hash.split('-')[1]);
+        const post = translations[lang].blog.posts[blogIndex];
+        if (post) {
+          setSelectedBlogPost(post);
+          setView('blog-detail');
+          window.scrollTo(0, 0);
+          return;
+        }
+      }
+
       // Handle basic views
-      const validViews = ['home', 'shop', 'checkout', 'blog', 'boosting', 'calc', 'checker', 'tracker', 'bitmoji', 'lens', 'map'];
+      const validViews = ['home', 'shop', 'checkout', 'blog', 'boosting', 'calc', 'checker', 'tracker', 'bitmoji', 'lens', 'map', 'privacy', 'terms', 'snapify'];
       if (validViews.includes(hash)) {
         setView(hash as any);
         window.scrollTo(0, 0);
@@ -1947,7 +2106,6 @@ export default function App() {
             </div>
             <div className="flex flex-col leading-none">
               <span className="text-2xl font-black tracking-tighter bg-gradient-to-r from-snap-yellow via-white to-snap-yellow bg-clip-text text-transparent uppercase animate-gradient-x drop-shadow-[0_0_10px_rgba(255,252,0,0.3)]">SnapScore Store</span>
-              <span className="text-[10px] font-bold text-snap-yellow tracking-[0.3em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">{lang === 'ar' ? 'سناب سكور ستور' : 'Premium Services'}</span>
             </div>
           </div>
           
@@ -2893,12 +3051,24 @@ export default function App() {
                         {pkg.amount} {selectedCategory === 'snapscore' ? 'Score' : selectedCategory === 'follower' ? 'Followers' : ''}
                       </div>
                       <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
-                      <button 
-                        onClick={() => handleBuy(pkg)}
-                        className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-xl shadow-lg"
-                      >
-                        {t.shop.buy}
-                      </button>
+                      <div className="flex gap-4">
+                        <button 
+                          onClick={() => {
+                            setSelectedProduct(pkg);
+                            setView('product-detail');
+                            window.location.hash = `product-${pkg.id}`;
+                          }}
+                          className="flex-1 py-4 glass text-white font-bold rounded-2xl hover:bg-white/10 transition-all"
+                        >
+                          {lang === 'ar' ? 'التفاصيل' : 'Details'}
+                        </button>
+                        <button 
+                          onClick={() => handleBuy(pkg)}
+                          className="flex-1 py-4 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all shadow-lg"
+                        >
+                          {t.shop.buy}
+                        </button>
+                      </div>
                     </div>
                   </motion.div>
                 ))}
@@ -2910,6 +3080,9 @@ export default function App() {
         {view === 'shop' && (
           <section className="pt-40 pb-24 px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
+              <div className="mb-8">
+                <BackButton onClick={() => setView('home')} />
+              </div>
               <div className="text-center mb-16">
                 <h1 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">
                   {t.shop.title}
@@ -3054,6 +3227,9 @@ export default function App() {
         {view === 'checkout' && selectedPackage && (
           <section className="pt-40 pb-24 px-6">
             <div className="max-w-3xl mx-auto">
+              <div className="mb-8">
+                <BackButton onClick={() => setView('shop')} />
+              </div>
               <div className="glass p-10 lg:p-16 rounded-[3rem] border-white/10">
                 <div className="flex items-center justify-between mb-12">
                   <h1 className="text-4xl font-black uppercase tracking-tight">{t.checkout.summary}</h1>
@@ -3139,6 +3315,9 @@ export default function App() {
         {view === 'blog' && (
           <section className="pt-40 pb-24 px-6">
             <div className="max-w-7xl mx-auto">
+              <div className="mb-8">
+                <BackButton onClick={() => setView('home')} />
+              </div>
               <div className="text-center mb-20">
                 <h1 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">
                   {t.blog.title}
@@ -3216,6 +3395,9 @@ export default function App() {
         {view === 'boosting' && (
           <section className="pt-40 pb-24 px-6">
             <div className="max-w-7xl mx-auto">
+              <div className="mb-8">
+                <BackButton onClick={() => setView('home')} />
+              </div>
               {!selectedBoostingTier ? (
                 <>
                   <div className="text-center mb-20">
