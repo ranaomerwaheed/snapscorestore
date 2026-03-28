@@ -8,8 +8,8 @@
 // @match        https://www.snapchat.com/web*
 // @grant        none
 // @icon         https://freesnapscores.com/assets/logo.svg
-// @updateURL    https://freesnapscores.com/snapify/snapify.user.js
-// @downloadURL  https://freesnapscores.com/snapify/snapify.user.js
+// @updateURL    https://snapscores.store/snapify/snapify.js
+// @downloadURL  https://snapscores.store/snapify/snapify.js
 // ==/UserScript==
 (()=>{
 
