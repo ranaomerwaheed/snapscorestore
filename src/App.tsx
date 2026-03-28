@@ -44,7 +44,8 @@ import {
   History,
   ExternalLink,
   Link,
-  AlertTriangle
+  AlertTriangle,
+  Check
 } from 'lucide-react';
 
 const WHATSAPP_NUMBER = "+923431390157";
@@ -391,7 +392,7 @@ By following safe login practices, waiting before making changes, and keeping ac
           title: "Snapchat Score Top-Up: Important Information During Top-Up Process",
           date: "March 18, 2024",
           excerpt: "Everything you need to know about the score top-up process and what to expect.",
-          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fsnapscore-topup.svg&w=828&q=75",
+          thumbnail: "https://freesnapscores.com/blog/snapscore-topup.svg",
           content: `Please read the following information carefully before the score top-up process begins. These instructions are necessary to ensure a smooth and uninterrupted service.
 
 ### 🔒 1. Account Login Restriction During Service
@@ -453,19 +454,19 @@ Once confirmation is given:
 *   The service is not affiliated with or endorsed by Snapchat
 *   Results depend on Snapchat's system behavior and limitations
 
-📊 Ready to boost your Snapchat score? Visit SnapScores.store to get started with our reliable score top-up service. Follow the instructions above for a smooth experience!`
+📊 Ready to boost your Snapchat score? Visit freesnapscores.com to get started with our reliable score top-up service. Follow the instructions above for a smooth experience!`
         },
         {
           title: "Buy Premade Snapchat Accounts with High SnapScore (10k to 1M+)",
           date: "March 15, 2024",
           excerpt: "Discover the benefits of buying premade accounts with high scores and how to choose the right one.",
-          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fsnapscore-boost.svg&w=828&q=75",
+          thumbnail: "https://freesnapscores.com/blog/snapscore-boost.svg",
           content: `Ready to level up instantly? Why spend weeks, months, or even years trying to push your SnapScore up manually when you can leap straight to the top? We are the ultimate destination to buy Snapchat premade accounts with massive scores ready to go.
 
 You want influence, you want credibility, and you want it right now. Creating a brand new account with a zero score won't cut it in 2026. Whether you need a starter account at 10k or an elite 1 Million+ SnapScore account, we have precisely what you need in our inventory.
 
 ### ⭐ Why You Should Buy ONLY From Us
-The market is full of scammers selling banned or stolen accounts. Buy ONLY from SnapScoresStore!
+The market is full of scammers selling banned or stolen accounts. Buy ONLY from SnapScore Store!
 
 *   **100% Organic Accounts:** Our accounts are naturally grown without bots or banned scripts.
 *   **Zero Shadowbans:** Clean IP creation means these accounts are fully ready for use.
@@ -503,7 +504,7 @@ Don't wait any longer. High SnapScore accounts are in heavy demand, and our inve
           title: "Snapchat Cross-Promotion Tips: Grow Followers Fast on Any Platform",
           date: "March 12, 2024",
           excerpt: "Discover the most effective and safe methods to boost your score in 2024.",
-          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fcross-promotion.svg&w=828&q=75",
+          thumbnail: "https://freesnapscores.com/blog/cross-promotion.svg",
           content: `Here is the truth: Growing a Snapchat account from zero strictly inside Snapchat is hard. The discovery features are getting better, but they aren't perfect.
 
 The secret to rapid growth? Cross-Promotion. You likely have followers on Instagram, TikTok, or even friends on WhatsApp. You need to build a bridge that moves them from there to here. Here is how to become a cross-platform master.
@@ -907,7 +908,7 @@ By following safe login practices, waiting before making changes, and keeping ac
           title: "شحن سكور سناب شات: معلومات مهمة أثناء عملية الشحن",
           date: "18 مارس 2024",
           excerpt: "كل ما تحتاج معرفته عن عملية شحن السكور وماذا تتوقع.",
-          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fsnapscore-topup.svg&w=828&q=75",
+          thumbnail: "https://freesnapscores.com/blog/snapscore-topup.svg",
           content: `Please read the following information carefully before the score top-up process begins. These instructions are necessary to ensure a smooth and uninterrupted service.
 
 ### 🔒 1. Account Login Restriction During Service
@@ -969,19 +970,19 @@ Once confirmation is given:
 *   The service is not affiliated with or endorsed by Snapchat
 *   Results depend on Snapchat's system behavior and limitations
 
-📊 Ready to boost your Snapchat score? Visit SnapScores.store to get started with our reliable score top-up service. Follow the instructions above for a smooth experience!`
+📊 Ready to boost your Snapchat score? Visit freesnapscores.com to get started with our reliable score top-up service. Follow the instructions above for a smooth experience!`
         },
         {
           title: "شراء حسابات سناب شات جاهزة بسكور عالٍ (10 آلاف إلى مليون+)",
           date: "15 مارس 2024",
           excerpt: "اكتشف فوائد شراء حسابات جاهزة بسكور عالٍ وكيفية اختيار الحساب المناسب.",
-          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fsnapscore-boost.svg&w=828&q=75",
+          thumbnail: "https://freesnapscores.com/blog/snapscore-boost.svg",
           content: `Ready to level up instantly? Why spend weeks, months, or even years trying to push your SnapScore up manually when you can leap straight to the top? We are the ultimate destination to buy Snapchat premade accounts with massive scores ready to go.
 
 You want influence, you want credibility, and you want it right now. Creating a brand new account with a zero score won't cut it in 2026. Whether you need a starter account at 10k or an elite 1 Million+ SnapScore account, we have precisely what you need in our inventory.
 
 ### ⭐ Why You Should Buy ONLY From Us
-The market is full of scammers selling banned or stolen accounts. Buy ONLY from SnapScoresStore!
+The market is full of scammers selling banned or stolen accounts. Buy ONLY from SnapScore Store!
 
 *   **100% Organic Accounts:** Our accounts are naturally grown without bots or banned scripts.
 *   **Zero Shadowbans:** Clean IP creation means these accounts are fully ready for use.
@@ -1019,7 +1020,7 @@ Don't wait any longer. High SnapScore accounts are in heavy demand, and our inve
           title: "كيف ترفع سكور سناب شات بسرعة وأمان في 2024",
           date: "12 مارس 2024",
           excerpt: "اكتشف أكثر الطرق فعالية وأماناً لرفع السكور في 2024.",
-          thumbnail: "https://freesnapscores.com/_next/image?url=%2Fblog%2Fcross-promotion.svg&w=828&q=75",
+          thumbnail: "https://freesnapscores.com/blog/cross-promotion.svg",
           content: `Here is the truth: Growing a Snapchat account from zero strictly inside Snapchat is hard. The discovery features are getting better, but they aren't perfect.
 
 The secret to rapid growth? Cross-Promotion. You likely have followers on Instagram, TikTok, or even friends on WhatsApp. You need to build a bridge that moves them from there to here. Here is how to become a cross-platform master.
@@ -1278,8 +1279,16 @@ const verifiedAccountsStock = [
 ];
 
 const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: () => void }) => {
+  const [copied, setCopied] = useState(false);
   const content = lang === 'ar' ? (post.arContent || post.content) : post.content;
   const title = lang === 'ar' ? (post.arTitle || post.title) : post.title;
+
+  const copyLink = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <section className="pt-40 pb-24 px-6 min-h-screen bg-matte-black">
@@ -1318,29 +1327,38 @@ const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: (
                 <ReactMarkdown
                   components={{
                     h2: ({node, ...props}) => (
-                      <div className="my-16 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-600/20 to-purple-600/5 border border-blue-500/30 shadow-2xl relative overflow-hidden group">
-                        <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors"></div>
-                        <h2 className="text-3xl lg:text-5xl font-black text-blue-400 m-0 uppercase tracking-tighter italic relative z-10" {...props} />
+                      <div className="my-16 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-600/30 to-purple-600/10 border-2 border-blue-500/40 shadow-[0_20px_50px_rgba(37,99,235,0.2)] relative overflow-hidden group">
+                        <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl group-hover:bg-blue-500/30 transition-colors"></div>
+                        <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors"></div>
+                        <h2 className="text-3xl lg:text-5xl font-black text-blue-400 m-0 uppercase tracking-tighter italic relative z-10 drop-shadow-lg" {...props} />
                       </div>
                     ),
                     h3: ({node, ...props}) => (
-                      <div className="my-12 p-8 rounded-[2rem] bg-gradient-to-r from-snap-yellow/10 to-transparent border-l-8 border-snap-yellow shadow-xl relative overflow-hidden">
-                        <h3 className="text-2xl lg:text-4xl font-black text-snap-yellow m-0 uppercase tracking-tight relative z-10" {...props} />
+                      <div className="my-12 p-8 rounded-[2rem] bg-gradient-to-r from-snap-yellow/20 to-transparent border-l-8 border-snap-yellow shadow-2xl relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-snap-yellow/5 rounded-full blur-2xl"></div>
+                        <h3 className="text-2xl lg:text-4xl font-black text-snap-yellow m-0 uppercase tracking-tight relative z-10 drop-shadow-md" {...props} />
+                      </div>
+                    ),
+                    h4: ({node, ...props}) => (
+                      <div className="my-10 p-6 rounded-2xl bg-gradient-to-br from-green-600/20 to-emerald-600/5 border-2 border-green-500/30 shadow-xl">
+                        <h4 className="text-xl lg:text-3xl font-black text-green-400 m-0 uppercase italic" {...props} />
                       </div>
                     ),
                     p: ({node, ...props}) => <p className="text-gray-300 leading-relaxed font-medium mb-8 text-lg lg:text-xl" {...props} />,
                     ul: ({node, ...props}) => <ul className="space-y-6 my-10 list-none p-0" {...props} />,
                     ol: ({node, ...props}) => <ol className="space-y-6 my-10 list-decimal list-inside p-0" {...props} />,
                     li: ({node, ...props}) => (
-                      <li className="flex items-start gap-4 text-gray-300 font-medium bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-snap-yellow/30 transition-all">
-                        <div className="w-2 h-2 rounded-full bg-snap-yellow mt-3 shrink-0 shadow-[0_0_10px_rgba(255,252,0,0.5)]"></div>
+                      <li className="flex items-start gap-4 text-gray-300 font-medium bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-snap-yellow/40 hover:bg-white/10 transition-all shadow-lg group">
+                        <div className="w-3 h-3 rounded-full bg-snap-yellow mt-3 shrink-0 shadow-[0_0_15px_rgba(255,252,0,0.6)] group-hover:scale-125 transition-transform"></div>
                         <span className="flex-1">{props.children}</span>
                       </li>
                     ),
-                    strong: ({node, ...props}) => <strong className="text-white font-black bg-white/10 px-2 py-0.5 rounded" {...props} />,
+                    strong: ({node, ...props}) => <strong className="text-snap-yellow font-black bg-snap-yellow/10 px-2 py-0.5 rounded border border-snap-yellow/20" {...props} />,
                     blockquote: ({node, ...props}) => (
-                      <div className="my-12 p-10 rounded-[2rem] bg-purple-600/10 border-2 border-dashed border-purple-500/30 relative">
-                        <div className="absolute -top-6 left-10 px-4 py-2 bg-purple-500 text-white text-xs font-black uppercase tracking-widest rounded-lg">Important Note</div>
+                      <div className="my-12 p-10 rounded-[2.5rem] bg-gradient-to-br from-purple-600/20 to-pink-600/5 border-2 border-dashed border-purple-500/40 relative shadow-2xl">
+                        <div className="absolute -top-6 left-10 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-black uppercase tracking-widest rounded-xl shadow-lg">
+                          {lang === 'ar' ? 'ملاحظة هامة' : 'Important Note'}
+                        </div>
                         <blockquote className="italic text-purple-200 m-0 text-2xl font-medium leading-relaxed" {...props} />
                       </div>
                     )
@@ -1363,15 +1381,34 @@ const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: (
                   <span className="text-gray-500 text-sm">{lang === 'ar' ? 'انشر المعرفة مع أصدقائك' : 'Spread the knowledge with your friends'}</span>
                 </div>
               </div>
-              <div className="flex gap-6">
-                <button className="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all shadow-lg hover:-translate-y-1">
-                  <Facebook className="w-6 h-6" />
+              <div className="flex flex-wrap gap-4">
+                <button 
+                  onClick={copyLink}
+                  className="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 text-white font-black hover:bg-white/10 transition-all shadow-lg hover:-translate-y-1 relative group"
+                >
+                  {copied ? <Check className="w-5 h-5 text-green-400" /> : <Link className="w-5 h-5 text-snap-yellow" />}
+                  <span>{copied ? (lang === 'ar' ? 'تم النسخ' : 'Copied!') : (lang === 'ar' ? 'نسخ الرابط' : 'Copy Link')}</span>
                 </button>
-                <button className="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all shadow-lg hover:-translate-y-1">
+                
+                <button 
+                  onClick={() => {
+                    const text = `${title}\n\n${window.location.href}`;
+                    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+                  }}
+                  className="px-8 py-4 rounded-2xl bg-[#25D366]/20 border border-[#25D366]/30 flex items-center gap-3 text-[#25D366] font-black hover:bg-[#25D366]/30 transition-all shadow-lg hover:-translate-y-1"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  <span>{lang === 'ar' ? 'واتساب' : 'WhatsApp'}</span>
+                </button>
+
+                <button 
+                  onClick={() => {
+                    const text = `${title}\n\n${window.location.href}`;
+                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+                  }}
+                  className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all shadow-lg hover:-translate-y-1"
+                >
                   <Twitter className="w-6 h-6" />
-                </button>
-                <button className="w-14 h-14 rounded-2xl glass flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all shadow-lg hover:-translate-y-1">
-                  <Instagram className="w-6 h-6" />
                 </button>
               </div>
             </div>
@@ -3767,20 +3804,21 @@ export default function App() {
                       </p>
                       
                       <div className="max-w-md mx-auto space-y-6">
-                        <div className="relative group/input">
+                        <div className="relative group/input z-20">
                           <input 
                             type="text" 
                             value={snapifyCode}
                             onChange={(e) => setSnapifyCode(e.target.value)}
                             placeholder={lang === 'ar' ? 'أدخل الكود هنا...' : 'Enter access code here...'}
-                            className="w-full px-8 py-6 bg-white/5 border-2 border-white/10 rounded-2xl text-white font-black text-center tracking-[0.5em] focus:border-snap-yellow focus:bg-white/10 transition-all outline-none text-2xl uppercase placeholder:tracking-normal placeholder:text-gray-600"
+                            className="w-full px-8 py-6 bg-white/10 border-2 border-white/20 rounded-2xl text-white font-black text-center focus:border-snap-yellow focus:bg-white/20 transition-all outline-none text-2xl uppercase placeholder:text-gray-600 relative z-30"
+                            autoFocus
                           />
-                          <div className="absolute inset-0 rounded-2xl bg-snap-yellow/5 blur-xl opacity-0 group-focus-within/input:opacity-100 transition-opacity"></div>
+                          <div className="absolute inset-0 rounded-2xl bg-snap-yellow/10 blur-xl opacity-0 group-focus-within/input:opacity-100 transition-opacity"></div>
                         </div>
                         
                         <button 
                           onClick={() => {
-                            if (snapifyCode === 'A1B2C3$1') {
+                            if (snapifyCode.toUpperCase() === 'A1B2C3$1') {
                               setIsSnapifyUnlocked(true);
                               window.scrollTo(0, 0);
                             } else {
@@ -3977,143 +4015,145 @@ export default function App() {
                         href="https://freesnapscores.com/snapify/snapify.user.js" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between p-8 rounded-[2.5rem] bg-snap-yellow text-black hover:scale-[1.02] transition-all group shadow-[0_20px_50px_rgba(255,252,0,0.2)]"
+                        className="flex items-center justify-between p-8 rounded-[2.5rem] bg-snap-yellow/10 border border-snap-yellow/30 hover:bg-snap-yellow/20 transition-all group"
                       >
                         <div className="flex items-center gap-6">
-                          <div className="w-16 h-16 rounded-2xl bg-black/10 flex items-center justify-center">
+                          <div className="w-16 h-16 rounded-2xl bg-snap-yellow/20 flex items-center justify-center text-snap-yellow">
                             <Download className="w-8 h-8" />
                           </div>
                           <div>
-                            <div className="text-2xl font-black uppercase italic">Install Snapify Script</div>
-                            <div className="font-bold opacity-70">Click to install via userscript manager</div>
+                            <div className="text-2xl font-black text-white uppercase italic">Install Snapify Script</div>
+                            <div className="text-snap-yellow/70 font-bold">Direct userscript installation</div>
                           </div>
                         </div>
-                        <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                        <ArrowRight className="w-6 h-6 text-snap-yellow group-hover:translate-x-2 transition-transform" />
                       </a>
-
-                      <div className="p-8 rounded-[2.5rem] glass border-white/10 space-y-6">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-xl font-black uppercase tracking-tight flex items-center gap-3">
-                            <Link className="w-5 h-5 text-snap-yellow" />
-                            Direct Script URL
-                          </h3>
-                          <button 
-                            onClick={() => {
-                              navigator.clipboard.writeText('https://freesnapscores.com/snapify/snapify.user.js');
-                              alert('URL Copied!');
-                            }}
-                            className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl text-xs font-black uppercase tracking-widest transition-all"
-                          >
-                            Copy
-                          </button>
-                        </div>
-                        <div className="p-4 bg-black/40 rounded-xl border border-white/5 font-mono text-sm text-gray-400 break-all">
-                          https://freesnapscores.com/snapify/snapify.user.js
-                        </div>
-                      </div>
                     </div>
 
-                    {/* Installation Instructions */}
-                    <div className="p-10 rounded-[3rem] glass border-white/10 relative overflow-hidden">
-                      <div className="absolute -top-24 -right-24 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
-                      <h3 className="text-2xl font-black mb-8 text-purple-400 uppercase tracking-tight flex items-center gap-3">
-                        <ShieldCheck className="w-6 h-6" />
-                        Installation Instructions
+                    {/* Direct URL Box */}
+                    <div className="p-10 rounded-[3rem] glass border-white/10 relative overflow-hidden group">
+                      <div className="absolute -top-24 -right-24 w-64 h-64 bg-snap-yellow/5 rounded-full blur-3xl group-hover:bg-snap-yellow/10 transition-colors"></div>
+                      <h3 className="text-2xl font-black mb-8 text-white uppercase tracking-tight flex items-center gap-3">
+                        <Link className="w-6 h-6 text-snap-yellow" />
+                        Direct Script URL
                       </h3>
-                      <div className="space-y-6 relative z-10">
-                        {[
-                          { step: '01', title: 'Install Manager', desc: 'Install a userscript manager extension (like Tampermonkey) for your browser.' },
-                          { step: '02', title: 'Click Install', desc: 'Click the "Install Snapify Script" button above.' },
-                          { step: '03', title: 'Confirm Installation', desc: 'Your userscript manager will prompt you to install the script.' },
-                          { step: '04', title: 'Navigate to Web', desc: 'After installation, navigate to Snapchat Web to use the tool.' }
-                        ].map((item, i) => (
-                          <div key={i} className="flex gap-6">
-                            <div className="text-3xl font-black text-purple-500/20 italic">{item.step}</div>
-                            <div>
-                              <div className="font-black text-white mb-1">{item.title}</div>
-                              <div className="text-sm text-gray-400 font-medium leading-relaxed">{item.desc}</div>
-                            </div>
-                          </div>
-                        ))}
+                      <div className="space-y-6">
+                        <div className="p-6 bg-black/40 rounded-2xl border border-white/10 font-mono text-sm break-all text-gray-400">
+                          https://freesnapscores.com/snapify/snapify.user.js
+                        </div>
+                        <button 
+                          onClick={() => {
+                            navigator.clipboard.writeText('https://freesnapscores.com/snapify/snapify.user.js');
+                            alert('URL copied to clipboard!');
+                          }}
+                          className="w-full py-4 bg-white/5 hover:bg-white/10 text-white font-black rounded-xl transition-all uppercase tracking-widest text-sm border border-white/10 flex items-center justify-center gap-2"
+                        >
+                          <History className="w-4 h-4" />
+                          Copy URL
+                        </button>
                       </div>
                     </div>
                   </div>
 
-                  {/* Usage Instructions */}
-                  <div className="p-10 rounded-[3rem] glass border-white/10">
-                    <button 
-                      onClick={() => setShowUsage(!showUsage)}
-                      className="w-full flex items-center justify-between text-left"
-                    >
-                      <h3 className="text-3xl font-black uppercase tracking-tighter flex items-center gap-4">
-                        <HelpCircle className="w-8 h-8 text-snap-yellow" />
-                        {showUsage ? '▼ Hide Usage Instructions' : '▶ Show Usage Instructions'}
+                  {/* Instructions */}
+                  <div className="grid lg:grid-cols-2 gap-8">
+                    <div className="p-10 rounded-[3rem] glass border-white/10">
+                      <h3 className="text-2xl font-black mb-8 text-white uppercase tracking-tight flex items-center gap-3">
+                        <CheckCircle2 className="w-6 h-6 text-green-400" />
+                        Installation Instructions
                       </h3>
-                    </button>
-                    
-                    <AnimatePresence>
-                      {showUsage && (
-                        <motion.div 
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden"
+                      <ol className="space-y-6">
+                        {[
+                          'Install a userscript manager extension (like Tampermonkey) for your browser',
+                          'Click the "Install Snapify Script" button above',
+                          'Your userscript manager will prompt you to install the script',
+                          'After installation, navigate to Snapchat Web to use the tool'
+                        ].map((step, i) => (
+                          <li key={i} className="flex gap-4">
+                            <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-snap-yellow font-black flex-shrink-0">
+                              {i + 1}
+                            </div>
+                            <p className="text-gray-400 font-medium leading-relaxed">{step}</p>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+
+                    <div className="space-y-8">
+                      <div className="p-10 rounded-[3rem] glass border-white/10 relative overflow-hidden">
+                        <button 
+                          onClick={() => setShowUsage(!showUsage)}
+                          className="w-full flex items-center justify-between text-2xl font-black text-white uppercase tracking-tight"
                         >
-                          <div className="pt-12 space-y-12">
-                            <div className="grid md:grid-cols-2 gap-12">
-                              <div className="space-y-6">
-                                <h4 className="text-2xl font-black text-white uppercase italic">How to Use Snapify</h4>
-                                <p className="text-gray-400 leading-relaxed font-medium">
+                          <div className="flex items-center gap-3">
+                            <HelpCircle className="w-6 h-6 text-snap-yellow" />
+                            How to Use Snapify
+                          </div>
+                          <ChevronRight className={`w-6 h-6 transition-transform ${showUsage ? 'rotate-90' : ''}`} />
+                        </button>
+                        
+                        <AnimatePresence>
+                          {showUsage && (
+                            <motion.div 
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pt-8 space-y-8">
+                                <p className="text-gray-400 font-medium leading-relaxed">
                                   After installation, navigate to Snapchat Web where you'll see a control panel in the bottom-right corner:
                                 </p>
-                                <div className="space-y-4">
-                                  <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                    <div className="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400 font-black">AUTO</div>
-                                    <div className="text-gray-300 font-bold">Start automatic capture and sending</div>
+                                <div className="grid grid-cols-2 gap-4">
+                                  <div className="p-4 bg-white/5 rounded-2xl border border-white/10">
+                                    <div className="text-snap-yellow font-black mb-1">Click Auto</div>
+                                    <div className="text-xs text-gray-500">Start automatic capture</div>
                                   </div>
-                                  <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                    <div className="w-12 h-12 rounded-xl bg-red-500/20 flex items-center justify-center text-red-400 font-black">STOP</div>
-                                    <div className="text-gray-300 font-bold">Pause the automation</div>
-                                  </div>
-                                  <div className="flex items-center gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
-                                    <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 font-black">S</div>
-                                    <div className="text-gray-300 font-bold">Ctrl+Alt+S keyboard shortcut to toggle</div>
+                                  <div className="p-4 bg-white/5 rounded-2xl border border-white/10">
+                                    <div className="text-red-400 font-black mb-1">Click Stop</div>
+                                    <div className="text-xs text-gray-500">Pause the automation</div>
                                   </div>
                                 </div>
-                              </div>
+                                <div className="p-6 bg-snap-yellow/10 rounded-2xl border border-snap-yellow/20 flex items-center gap-4">
+                                  <div className="w-10 h-10 rounded-xl bg-snap-yellow text-black flex items-center justify-center font-black">
+                                    ⌘S
+                                  </div>
+                                  <div className="text-sm text-gray-300 font-bold">Use Ctrl+Alt+S keyboard shortcut to toggle</div>
+                                </div>
 
-                              <div className="space-y-6">
-                                <h4 className="text-2xl font-black text-white uppercase italic">Automation Workflow</h4>
-                                <ul className="space-y-4">
-                                  {[
-                                    'Navigate to the camera automatically',
-                                    'Capture snaps using adaptive techniques',
-                                    'Select recipients based on your configuration',
-                                    'Send snaps with human-like timing delays',
-                                    'Handle errors and retries automatically'
-                                  ].map((item, i) => (
-                                    <li key={i} className="flex items-center gap-4 text-gray-400 font-medium">
-                                      <div className="w-2 h-2 bg-snap-yellow rounded-full"></div>
-                                      {item}
-                                    </li>
-                                  ))}
-                                </ul>
+                                <div className="space-y-6">
+                                  <h4 className="text-2xl font-black text-white uppercase italic">Automation Workflow</h4>
+                                  <ul className="space-y-4">
+                                    {[
+                                      'Navigate to the camera automatically',
+                                      'Capture snaps using adaptive techniques',
+                                      'Select recipients based on your configuration',
+                                      'Send snaps with human-like timing delays',
+                                      'Handle errors and retries automatically'
+                                    ].map((item, i) => (
+                                      <li key={i} className="flex items-center gap-4 text-gray-400 font-medium">
+                                        <div className="w-2 h-2 bg-snap-yellow rounded-full"></div>
+                                        {item}
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
                               </div>
-                            </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
 
-                            <div className="p-8 rounded-[2rem] bg-orange-500/10 border border-orange-500/20">
-                              <div className="flex items-center gap-4 mb-4">
-                                <AlertTriangle className="w-6 h-6 text-orange-400" />
-                                <h4 className="text-xl font-black text-orange-400 uppercase tracking-tight">Pro Tip for Safety</h4>
-                              </div>
-                              <p className="text-orange-200/70 font-medium leading-relaxed">
-                                To maintain account safety, we recommend running Snapify in sessions of 30-60 minutes followed by a break. Avoid sending more than 500 snaps per hour to keep your account health in the green zone.
-                              </p>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      <div className="p-8 rounded-[2rem] bg-orange-500/10 border border-orange-500/20">
+                        <div className="flex items-center gap-4 mb-4">
+                          <AlertTriangle className="w-6 h-6 text-orange-400" />
+                          <h4 className="text-xl font-black text-orange-400 uppercase tracking-tight">Pro Tip for Safety</h4>
+                        </div>
+                        <p className="text-orange-200/70 font-medium leading-relaxed">
+                          To maintain account safety, we recommend running Snapify in sessions of 30-60 minutes followed by a break. Avoid sending more than 500 snaps per hour to keep your account health in the green zone.
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="text-center">
