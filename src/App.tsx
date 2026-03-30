@@ -145,6 +145,30 @@ const translations = {
         }
       ]
     },
+    tools_ui: {
+      bitmoji: {
+        title: "منشئ صور بيتموجي",
+        subtitle: "صف شخصيتك المثالية ودع الذكاء الاصطناعي ينشئها",
+        placeholder: "مثال: شاب رائع يرتدي نظارات شمسية، هودي أزرق، وشعر أشقر",
+        button: "إنشاء الصورة",
+        result: "صورتك المخصصة"
+      },
+      lens: {
+        title: "محاكي عدسات الذكاء الاصطناعي",
+        subtitle: "ارفع صورة وطبق عدسات سناب شات الشهيرة",
+        upload: "رفع صورة",
+        type: "اختر نوع العدسة",
+        button: "تطبيق العدسة",
+        result: "تم تطبيق العدسة"
+      },
+      map: {
+        title: "مكتشف مواقع خريطة سناب",
+        subtitle: "استكشف المواقع الشهيرة على خريطة سناب في أي مكان في العالم",
+        placeholder: "أدخل اسم المدينة أو المكان",
+        button: "البحث عن المواقع",
+        result: "المواقع الشهيرة"
+      }
+    },
     catalog: {
       title: "Available Accounts",
       subtitle: "Ready-to-use accounts with high scores and history",
@@ -606,7 +630,69 @@ By cross-promoting and building a strong Snapchat following, you own a direct li
         },
         {
           title: "4. Refund Policy",
-          content: "Due to the nature of digital services, all sales are final. Refunds are    checkout: {
+          content: "Due to the nature of digital services, all sales are final. Refunds are only issued if we are unable to complete the service."
+        }
+      ]
+    }
+  },
+  ar: {
+    nav: {
+      home: "الرئيسية",
+      services: "الخدمات",
+      catalog: "الكتالوج",
+      how: "كيف يعمل",
+      faq: "الأسئلة الشائعة",
+      blog: "المدونة",
+      contact: "اتصل بنا",
+      tools: "الأدوات",
+      shop: "تسوق الآن",
+      lang: "English",
+      toolItems: [
+        { id: 'calc', title: "حاسبة سكور سناب شات", ar: "سناب شات سكور حاسبة" },
+        { id: 'checker', title: "فاحص العمر والموثوقية", ar: "فاحص عمر الحساب" },
+        { id: 'tracker', title: "مخطط أهداف السكور", ar: "مخطط أهداف السكور" },
+        { id: 'bitmoji', title: "منشئ صور بيتموجي", ar: "منشئ صور بيتموجي" },
+        { id: 'lens', title: "محاكي عدسات الذكاء الاصطناعي", ar: "محاكي عدسات الذكاء الاصطناعي" },
+        { id: 'map', title: "مكتشف مواقع خريطة سناب", ar: "مكتشف مواقع خريطة سناب" },
+        { id: 'snapify', title: "سناب فاي برو", ar: "سناب فاي برو", isPro: true }
+      ],
+      serviceItems: [
+        { id: 'boosting', title: "زيادة السكور", ar: "زيادة السكور" },
+        { id: 'followers', title: "زيادة المتابعين", ar: "زيادة المتابعين" },
+        { id: 'views', title: "مشاهدات الستوري", ar: "مشاهدات الستوري" },
+        { id: 'lens', title: "إنشاء عدسات", ar: "إنشاء عدسات" },
+        { id: 'badge', title: "توثيق الحساب", ar: "توثيق الحساب" }
+      ],
+      catalogItems: [
+        { id: 'score', title: "حسابات سكور", ar: "حسابات سكور" },
+        { id: 'followers', title: "حسابات متابعين", ar: "حسابات متابعين" },
+        { id: 'age', title: "حسابات قديمة", ar: "حسابات قديمة" },
+        { id: 'verified', title: "حسابات موثقة", ar: "حسابات موثقة" }
+      ]
+    },
+    hero: {
+      badge: "موثوق من قبل 10,000+ عميل",
+      title: "عزز حضورك على سناب شات فوراً",
+      titleHighlight: "",
+      subtitle: "",
+      desc: "زد سكور سناب شات الخاص بك بأمان، واحصل على حسابات قديمة، ونمِ متابعيك مع المزود الأكثر ثقة في العالم.",
+      cta: "عرض الكتالوج",
+      secondary: "خدماتنا",
+      scoreLabel: "السكور الحالي",
+      targetLabel: "الهدف",
+      protection: "ضمان أمان الحساب بنسبة 100%"
+    },
+    shop: {
+      title: "الكتالوج المميز",
+      subtitle: "اختر الباقة المثالية لاحتياجاتك",
+      scoreAccounts: "حسابات سكور",
+      followerAccounts: "حسابات متابعين",
+      servicesTab: "خدمات النمو",
+      buy: "اطلب عبر واتساب",
+      order: "اطلب الآن",
+      price: "السعر"
+    },
+    checkout: {
       summary: "ملخص الطلب",
       package: "الباقة المختارة",
       price: "السعر الإجمالي",
@@ -929,11 +1015,6 @@ By cross-promoting and building a strong Snapchat following, you own a direct li
 لا تنتظر أكثر من ذلك. حسابات السكور العالي مطلوبة بشدة، ومخزوننا يتحدث يوميًا. عندما تريد الأفضل والأكثر أمانًا والأسهل وصولاً، اشترِ منا فقط.
 
 🚀 توقف عن الانتظار! توجه إلى صفحة خدماتنا الآن لتصفح مخزون الحسابات الجاهزة الحالي لدينا، أو استخدم أدواتنا لتعزيز سكورك الحالي.`
-        }
-      ]
-    }, من خطر الحظر الدائم.
-
-باتباع ممارسات تسجيل الدخول الآمن، والانتظار قبل إجراء التغييرات، والحفاظ على نشاط محدود، يمكن للمستخدمين تقليل خطر فقدان الوصول إلى حساب سناب شات الخاص بهم بشكل كبير.`
         },
         {
           title: "شحن سكور سناب شات: معلومات مهمة أثناء عملية الشحن",
@@ -1046,42 +1127,6 @@ By cross-promoting and building a strong Snapchat following, you own a direct li
 لا تنتظر أكثر من ذلك. حسابات السكور العالي مطلوبة بشدة، ومخزوننا يتحدث يوميًا. عندما تريد الأفضل والأكثر أمانًا والأسهل وصولاً، اشترِ منا فقط.
 
 🚀 توقف عن الانتظار! توجه إلى صفحة خدماتنا الآن لتصفح مخزون الحسابات الجاهزة الحالي لدينا، أو استخدم أدواتنا لتعزيز سكورك الحالي.`
-        }
-      ]at score increases gradually, not instantly.
-*   Score updates may take time to reflect
-*   Temporary pauses are normal during processing
-*   Checking the account repeatedly can disrupt the process
-Patience during the service period is required.
-
-### 📬 5. Communication & Confirmation Rule
-The buyer should only log back into the account after receiving confirmation that the score top-up is complete.
-
-**✅ Important Reminders:**
-*   Do not assume completion without confirmation
-*   Early login may cancel the remaining process
-*   Follow seller instructions strictly
-
-### ⚖️ 6. Responsibility for Instructions
-If the buyer does not follow the provided instructions:
-
-**🚫 Consequences of Non-Compliance:**
-*   Any delay or interruption will not be the seller's responsibility
-*   The service may not be repeated
-*   The order may be considered completed as-is
-These rules exist only to ensure successful delivery.
-
-### ✅ 7. After Completion
-Once confirmation is given:
-*   The buyer may log in and use the account normally
-*   The score top-up service is considered finished
-*   No further action is required unless stated
-
-### Important Disclaimer
-*   This is a third-party score top-up service
-*   The service is not affiliated with or endorsed by Snapchat
-*   Results depend on Snapchat's system behavior and limitations
-
-📊 Ready to boost your Snapchat score? Visit freesnapscores.com to get started with our reliable score top-up service. Follow the instructions above for a smooth experience!`
         },
         {
           title: "شراء حسابات سناب شات جاهزة بسكور عالٍ (10 آلاف إلى مليون+)",
@@ -1410,7 +1455,7 @@ const ServiceDetail = ({ service, lang, onBack, onOrder }: { service: any, lang:
 
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             <div className="w-24 h-24 rounded-3xl bg-snap-yellow/20 flex items-center justify-center text-snap-yellow shrink-0 shadow-inner">
-              {React.cloneElement(service.icon as React.ReactElement, { className: "w-12 h-12" })}
+              {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-12 h-12" })}
             </div>
             <div className="flex-1">
               <h1 className="text-4xl lg:text-6xl font-black mb-6 italic text-white uppercase tracking-tighter">
@@ -1679,7 +1724,7 @@ const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: (
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
-  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'blog-detail' | 'service-detail' | 'product-detail' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify'>('home');
+  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'blog_detail' | 'service_detail' | 'product_detail' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify'>('home');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedService, setSelectedService] = useState<any>(null);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
@@ -1935,7 +1980,7 @@ export default function App() {
         const service = servicesList.find(s => s.id === serviceId);
         if (service) {
           setSelectedService(service);
-          setView('service-detail');
+          setView('service_detail');
           window.scrollTo(0, 0);
           return;
         }
@@ -1947,7 +1992,7 @@ export default function App() {
         const product = [...scoreAccountsStock, ...followerAccountsStock, ...agedAccountsStock, ...verifiedAccountsStock].find(p => p.id === productId);
         if (product) {
           setSelectedProduct(product);
-          setView('product-detail');
+          setView('product_detail');
           window.scrollTo(0, 0);
           return;
         }
@@ -1959,7 +2004,7 @@ export default function App() {
         const post = translations[lang].blog.posts[blogIndex];
         if (post) {
           setSelectedBlogPost(post);
-          setView('blog-detail');
+          setView('blog_detail');
           window.scrollTo(0, 0);
           return;
         }
@@ -3002,6 +3047,30 @@ export default function App() {
           />
         )}
 
+        {view === 'service_detail' && selectedService && (
+          <ServiceDetail 
+            service={selectedService} 
+            lang={lang} 
+            onBack={() => setView('home')} 
+            onOrder={(s) => {
+              if (s.id === 's_boost') {
+                setView('boosting');
+              } else {
+                openWhatsApp(lang === 'ar' ? `أريد طلب خدمة: ${s.title}` : `I want to order service: ${s.title}`);
+              }
+            }} 
+          />
+        )}
+
+        {view === 'product_detail' && selectedProduct && (
+          <ProductDetail 
+            product={selectedProduct} 
+            lang={lang} 
+            onBack={() => setView('home')} 
+            onBuy={(p) => handleBuy(p)} 
+          />
+        )}
+
         {view === 'category_detail' && selectedCategory && (
           <section className="pt-40 pb-24 px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
@@ -3055,7 +3124,7 @@ export default function App() {
                         <button 
                           onClick={() => {
                             setSelectedProduct(pkg);
-                            setView('product-detail');
+                            setView('product_detail');
                             window.location.hash = `product-${pkg.id}`;
                           }}
                           className="flex-1 py-4 glass text-white font-bold rounded-2xl hover:bg-white/10 transition-all"
@@ -3081,7 +3150,7 @@ export default function App() {
           <section className="pt-40 pb-24 px-6 relative z-10">
             <div className="max-w-7xl mx-auto">
               <div className="mb-8">
-                <BackButton onClick={() => setView('home')} />
+                <BackButton onClick={() => setView('home')} lang={lang} />
               </div>
               <div className="text-center mb-16">
                 <h1 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">
@@ -3228,7 +3297,7 @@ export default function App() {
           <section className="pt-40 pb-24 px-6">
             <div className="max-w-3xl mx-auto">
               <div className="mb-8">
-                <BackButton onClick={() => setView('shop')} />
+                <BackButton onClick={() => setView('shop')} lang={lang} />
               </div>
               <div className="glass p-10 lg:p-16 rounded-[3rem] border-white/10">
                 <div className="flex items-center justify-between mb-12">
@@ -3316,7 +3385,7 @@ export default function App() {
           <section className="pt-40 pb-24 px-6">
             <div className="max-w-7xl mx-auto">
               <div className="mb-8">
-                <BackButton onClick={() => setView('home')} />
+                <BackButton onClick={() => setView('home')} lang={lang} />
               </div>
               <div className="text-center mb-20">
                 <h1 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">
@@ -3396,7 +3465,7 @@ export default function App() {
           <section className="pt-40 pb-24 px-6">
             <div className="max-w-7xl mx-auto">
               <div className="mb-8">
-                <BackButton onClick={() => setView('home')} />
+                <BackButton onClick={() => setView('home')} lang={lang} />
               </div>
               {!selectedBoostingTier ? (
                 <>
