@@ -3101,26 +3101,33 @@ export default function App() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${
-                      selectedCategory === 'snapscore' ? 'bg-blue-600/10 border-blue-500/20 hover:border-blue-500/50' : 
-                      selectedCategory === 'follower' ? 'bg-purple-600/10 border-purple-500/20 hover:border-purple-500/50' : 
-                      selectedCategory === 'aged' ? 'bg-orange-600/10 border-orange-500/20 hover:border-orange-500/50' :
-                      'bg-green-600/10 border-green-500/20 hover:border-green-500/50'
+                    className={`p-10 rounded-[3rem] border-2 transition-all group relative overflow-hidden ${
+                      selectedCategory === 'snapscore' ? 'bg-gradient-to-br from-blue-900/50 to-blue-600/10 border-blue-500/30 hover:border-blue-400/60' : 
+                      selectedCategory === 'follower' ? 'bg-gradient-to-br from-purple-900/50 to-purple-600/10 border-purple-500/30 hover:border-purple-400/60' : 
+                      selectedCategory === 'aged' ? 'bg-gradient-to-br from-orange-900/50 to-orange-600/10 border-orange-500/30 hover:border-orange-400/60' :
+                      'bg-gradient-to-br from-green-900/50 to-green-600/10 border-green-500/30 hover:border-green-400/60'
                     }`}
                   >
-                    <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
-                      selectedCategory === 'snapscore' ? 'bg-blue-500/10' : 
-                      selectedCategory === 'follower' ? 'bg-purple-500/10' : 
-                      selectedCategory === 'aged' ? 'bg-orange-500/10' :
-                      'bg-green-500/10'
+                    <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:opacity-70 transition-colors opacity-30 ${
+                      selectedCategory === 'snapscore' ? 'bg-blue-500' : 
+                      selectedCategory === 'follower' ? 'bg-purple-500' : 
+                      selectedCategory === 'aged' ? 'bg-orange-500' :
+                      'bg-green-500'
                     }`}></div>
                     <div className="relative z-10">
                       <div className="text-xs font-black text-snap-yellow mb-4 tracking-[0.3em] uppercase">{pkg.desc[lang]}</div>
-                      <div className="text-5xl font-black mb-6 group-hover:text-snap-yellow transition-colors tracking-tighter">
+                      <div className="text-5xl font-black mb-4 group-hover:text-snap-yellow transition-colors tracking-tighter">
                         {pkg.amount} {selectedCategory === 'snapscore' ? 'Score' : selectedCategory === 'follower' ? 'Followers' : ''}
                       </div>
-                      <div className="text-3xl font-bold text-white/90 mb-10">{pkg.price}</div>
-                      <div className="flex gap-4">
+                      <div className="text-3xl font-bold text-white/90 mb-4">{pkg.price}</div>
+                      
+                      {/* URL hint */}
+                      <div className="flex items-center gap-2 text-xs text-gray-600 font-mono mb-8">
+                        <Link className="w-3 h-3" />
+                        <span>#product-{pkg.id}</span>
+                      </div>
+
+                      <div className="flex gap-3">
                         <button 
                           onClick={() => {
                             setSelectedProduct(pkg);
@@ -3136,6 +3143,22 @@ export default function App() {
                           className="flex-1 py-4 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all shadow-lg"
                         >
                           {t.shop.buy}
+                        </button>
+                        <button
+                          onClick={() => {
+                            const link = `${window.location.origin}${window.location.pathname}#product-${pkg.id}`;
+                            if (navigator.share) {
+                              navigator.share({ title: pkg.desc[lang], url: link });
+                            } else {
+                              navigator.clipboard.writeText(link).then(() => {
+                                alert(lang === 'ar' ? 'تم نسخ الرابط!' : 'Link copied!');
+                              });
+                            }
+                          }}
+                          className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex items-center justify-center text-gray-400 hover:text-white flex-shrink-0"
+                          title={lang === 'ar' ? 'مشاركة' : 'Share'}
+                        >
+                          <Share2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
@@ -3239,53 +3262,131 @@ export default function App() {
                     <h2 className="text-4xl font-black uppercase tracking-tight">{t.shop.servicesTab}</h2>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {servicesList.map((service, i) => (
-                      <motion.div
-                        key={service.id}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className={`p-10 rounded-[3rem] border transition-all group relative overflow-hidden ${
-                          i % 4 === 0 ? 'bg-blue-600/10 border-blue-500/20 hover:border-blue-500/50' : 
-                          i % 4 === 1 ? 'bg-purple-600/10 border-purple-500/20 hover:border-purple-500/50' : 
-                          i % 4 === 2 ? 'bg-orange-600/10 border-orange-500/20 hover:border-orange-500/50' :
-                          'bg-green-600/10 border-green-500/20 hover:border-green-500/50'
-                        }`}
-                      >
-                        <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
-                          i % 4 === 0 ? 'bg-blue-500/10' : 
-                          i % 4 === 1 ? 'bg-purple-500/10' : 
-                          i % 4 === 2 ? 'bg-orange-500/10' :
-                          'bg-green-500/10'
-                        }`}></div>
-                        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${
-                          i % 4 === 0 ? 'bg-blue-500/10 text-blue-400' : 
-                          i % 4 === 1 ? 'bg-purple-500/10 text-purple-400' : 
-                          i % 4 === 2 ? 'bg-orange-500/10 text-orange-400' :
-                          'bg-green-500/10 text-green-400'
-                        }`}>
-                          {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-8 h-8" })}
-                        </div>
-                        <h3 className="text-3xl font-black mb-4 group-hover:text-snap-yellow transition-colors">{service.title}</h3>
-                        <p className="text-gray-400 mb-8 leading-relaxed">{service.desc[lang]}</p>
-                        <div className="text-2xl font-bold text-white mb-10">{service.price}</div>
-                        <button 
-                          onClick={() => {
-                            if (service.id === 's_boost') {
-                              setView('boosting');
-                              window.scrollTo(0, 0);
-                            } else {
-                              openWhatsApp(lang === 'ar' ? `أريد طلب خدمة: ${service.title}` : `I want to order service: ${service.title}`);
-                            }
-                          }}
-                          className="w-full py-5 bg-white/5 border border-white/10 rounded-2xl font-black hover:bg-snap-yellow hover:text-black transition-all flex items-center justify-center gap-3 text-lg relative z-10"
+                    {servicesList.map((service, i) => {
+                      const svcColors = [
+                        { bg: 'bg-gradient-to-br from-blue-900/50 to-blue-600/10', border: 'border-blue-500/30 hover:border-blue-400/60', icon: 'bg-blue-500/15 text-blue-400', glow: 'bg-blue-500/15', tbl: 'border-blue-500/20 bg-blue-500/5', hdr: 'text-blue-300' },
+                        { bg: 'bg-gradient-to-br from-purple-900/50 to-purple-600/10', border: 'border-purple-500/30 hover:border-purple-400/60', icon: 'bg-purple-500/15 text-purple-400', glow: 'bg-purple-500/15', tbl: 'border-purple-500/20 bg-purple-500/5', hdr: 'text-purple-300' },
+                        { bg: 'bg-gradient-to-br from-orange-900/50 to-orange-600/10', border: 'border-orange-500/30 hover:border-orange-400/60', icon: 'bg-orange-500/15 text-orange-400', glow: 'bg-orange-500/15', tbl: 'border-orange-500/20 bg-orange-500/5', hdr: 'text-orange-300' },
+                        { bg: 'bg-gradient-to-br from-green-900/50 to-green-600/10', border: 'border-green-500/30 hover:border-green-400/60', icon: 'bg-green-500/15 text-green-400', glow: 'bg-green-500/15', tbl: 'border-green-500/20 bg-green-500/5', hdr: 'text-green-300' },
+                        { bg: 'bg-gradient-to-br from-pink-900/50 to-pink-600/10', border: 'border-pink-500/30 hover:border-pink-400/60', icon: 'bg-pink-500/15 text-pink-400', glow: 'bg-pink-500/15', tbl: 'border-pink-500/20 bg-pink-500/5', hdr: 'text-pink-300' },
+                      ];
+                      const sc = svcColors[i % svcColors.length];
+
+                      // Build small pricing table per service
+                      const svcTiers: {label: string, price: string}[] = 
+                        service.id === 's_boost' ? [
+                          { label: '5K Score', price: '$10' },
+                          { label: '20K Score', price: '$35' },
+                          { label: '100K Score', price: '$150' },
+                          { label: '1M Score', price: '$1200' },
+                        ] :
+                        service.id === 's_followers' ? [
+                          { label: '500 Followers', price: '$20' },
+                          { label: '1K Followers', price: '$35' },
+                          { label: '5K Followers', price: '$150' },
+                          { label: '10K Followers', price: '$280' },
+                        ] :
+                        service.id === 's_views' ? [
+                          { label: '1K Views', price: '$15' },
+                          { label: '5K Views', price: '$60' },
+                          { label: '10K Views', price: '$110' },
+                          { label: '50K Views', price: '$480' },
+                        ] : [];
+
+                      return (
+                        <motion.div
+                          key={service.id}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.1 }}
+                          className={`p-8 rounded-[3rem] border-2 transition-all group relative overflow-hidden ${sc.bg} ${sc.border}`}
                         >
-                          <WhatsAppIcon className="w-6 h-6" />
-                          {t.shop.order}
-                        </button>
-                      </motion.div>
-                    ))}
+                          <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-40 group-hover:opacity-70 transition-colors ${sc.glow}`}></div>
+                          <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform ${sc.icon}`}>
+                            {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-8 h-8" })}
+                          </div>
+                          <h3 className="text-2xl font-black mb-3 group-hover:text-snap-yellow transition-colors relative z-10">{service.title}</h3>
+                          <p className="text-gray-400 mb-4 leading-relaxed text-sm relative z-10">{service.desc[lang]}</p>
+                          
+                          {/* Pricing Mini Table */}
+                          {svcTiers.length > 0 && (
+                            <div className={`rounded-2xl border overflow-hidden mb-6 relative z-10 ${sc.tbl}`}>
+                              <div className={`px-4 py-2 text-xs font-black uppercase tracking-widest ${sc.hdr}`}>
+                                {lang === 'ar' ? 'الأسعار' : 'Pricing'}
+                              </div>
+                              <table className="w-full text-sm">
+                                <tbody>
+                                  {svcTiers.map((tier, ti) => (
+                                    <tr key={ti} className="border-t border-white/5">
+                                      <td className="px-4 py-2 text-gray-400 font-medium">{tier.label}</td>
+                                      <td className="px-4 py-2 text-right font-black text-snap-yellow">{tier.price}</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          )}
+                          
+                          {svcTiers.length === 0 && (
+                            <div className="text-2xl font-bold text-white mb-6 relative z-10">{service.price}</div>
+                          )}
+                          
+                          {/* Service Info Badges */}
+                          <div className="flex gap-2 mb-6 flex-wrap relative z-10">
+                            <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-gray-400">
+                              ⏱ {service.deliveryTime}
+                            </span>
+                            <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-gray-400">
+                              🛡 {service.guarantee}
+                            </span>
+                          </div>
+
+                          <div className="flex gap-3 relative z-10">
+                            <button 
+                              onClick={() => {
+                                if (service.id === 's_boost') {
+                                  setView('boosting');
+                                  window.location.hash = 'boosting';
+                                  window.scrollTo(0, 0);
+                                } else {
+                                  setSelectedService(service);
+                                  setView('service_detail');
+                                  window.location.hash = `service-${service.id}`;
+                                  window.scrollTo(0, 0);
+                                }
+                              }}
+                              className="flex-1 py-4 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all flex items-center justify-center gap-2 text-sm"
+                            >
+                              <WhatsAppIcon className="w-5 h-5" />
+                              {t.shop.order}
+                            </button>
+                            <button
+                              onClick={() => {
+                                const link = `${window.location.origin}${window.location.pathname}#service-${service.id}`;
+                                if (navigator.share) {
+                                  navigator.share({ title: service.title, url: link });
+                                } else {
+                                  navigator.clipboard.writeText(link).then(() => {
+                                    alert(lang === 'ar' ? 'تم نسخ الرابط!' : 'Link copied!');
+                                  });
+                                }
+                              }}
+                              className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex items-center justify-center text-gray-400 hover:text-white flex-shrink-0"
+                              title={lang === 'ar' ? 'مشاركة الرابط' : 'Share Link'}
+                            >
+                              <Share2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                          
+                          {/* URL hint */}
+                          <div className="mt-4 flex items-center gap-2 text-xs text-gray-700 font-mono relative z-10">
+                            <Link className="w-3 h-3" />
+                            <span>#service-{service.id}</span>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -3396,67 +3497,116 @@ export default function App() {
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {t.blog.posts.map((post, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className={`rounded-[2.5rem] overflow-hidden border transition-all group relative ${
-                      i % 4 === 0 ? 'bg-blue-600/5 border-blue-500/10 hover:border-blue-500/30' : 
-                      i % 4 === 1 ? 'bg-purple-600/5 border-purple-500/10 hover:border-purple-500/30' : 
-                      i % 4 === 2 ? 'bg-orange-600/5 border-orange-500/10 hover:border-orange-500/30' :
-                      'bg-green-600/5 border-green-500/10 hover:border-green-500/30'
-                    }`}
-                  >
-                    <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
-                      i % 4 === 0 ? 'bg-blue-500/10' : 
-                      i % 4 === 1 ? 'bg-purple-500/10' : 
-                      i % 4 === 2 ? 'bg-orange-500/10' :
-                      'bg-green-500/10'
-                    }`}></div>
-                    <div 
-                      className="aspect-video overflow-hidden cursor-pointer"
-                      onClick={() => {
-                        setSelectedBlogPost(post);
-                        setView('blog_detail');
-                        window.scrollTo(0, 0);
-                      }}
+                {t.blog.posts.map((post, i) => {
+                  const blogColors = [
+                    { bg: 'bg-gradient-to-br from-blue-900/60 to-blue-600/20', border: 'border-blue-500/40 hover:border-blue-400/70', glow: 'bg-blue-500/20', badge: 'bg-blue-500/20 text-blue-300 border-blue-500/30', icon: 'text-blue-400', tag: 'bg-blue-600' },
+                    { bg: 'bg-gradient-to-br from-purple-900/60 to-purple-600/20', border: 'border-purple-500/40 hover:border-purple-400/70', glow: 'bg-purple-500/20', badge: 'bg-purple-500/20 text-purple-300 border-purple-500/30', icon: 'text-purple-400', tag: 'bg-purple-600' },
+                    { bg: 'bg-gradient-to-br from-orange-900/60 to-orange-600/20', border: 'border-orange-500/40 hover:border-orange-400/70', glow: 'bg-orange-500/20', badge: 'bg-orange-500/20 text-orange-300 border-orange-500/30', icon: 'text-orange-400', tag: 'bg-orange-600' },
+                    { bg: 'bg-gradient-to-br from-green-900/60 to-green-600/20', border: 'border-green-500/40 hover:border-green-400/70', glow: 'bg-green-500/20', badge: 'bg-green-500/20 text-green-300 border-green-500/30', icon: 'text-green-400', tag: 'bg-green-600' },
+                    { bg: 'bg-gradient-to-br from-pink-900/60 to-pink-600/20', border: 'border-pink-500/40 hover:border-pink-400/70', glow: 'bg-pink-500/20', badge: 'bg-pink-500/20 text-pink-300 border-pink-500/30', icon: 'text-pink-400', tag: 'bg-pink-600' },
+                    { bg: 'bg-gradient-to-br from-cyan-900/60 to-cyan-600/20', border: 'border-cyan-500/40 hover:border-cyan-400/70', glow: 'bg-cyan-500/20', badge: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30', icon: 'text-cyan-400', tag: 'bg-cyan-600' },
+                  ];
+                  const color = blogColors[i % blogColors.length];
+                  const blogLink = `${window.location.origin}${window.location.pathname}#blog-${i}`;
+
+                  return (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      className={`rounded-[2.5rem] overflow-hidden border-2 transition-all group relative shadow-2xl ${color.bg} ${color.border}`}
                     >
-                      <img 
-                        src={post.thumbnail || `https://picsum.photos/seed/blog-page-${i}/600/400`} 
-                        alt={post.title} 
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                    <div className="p-8">
-                      <div className="text-xs font-bold text-snap-yellow uppercase tracking-widest mb-4">{post.date}</div>
-                      <h3 
-                        className="text-2xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors cursor-pointer"
+                      {/* Glow blob */}
+                      <div className={`absolute -top-10 -right-10 w-40 h-40 rounded-full blur-3xl opacity-40 group-hover:opacity-70 transition-all duration-700 ${color.glow}`}></div>
+                      <div className={`absolute -bottom-10 -left-10 w-32 h-32 rounded-full blur-3xl opacity-20 group-hover:opacity-50 transition-all duration-700 ${color.glow}`}></div>
+                      
+                      {/* Blog Number Badge */}
+                      <div className={`absolute top-5 left-5 z-20 w-10 h-10 rounded-full ${color.tag} flex items-center justify-center text-white font-black text-sm shadow-lg`}>
+                        {i + 1}
+                      </div>
+
+                      <div 
+                        className="aspect-video overflow-hidden cursor-pointer relative"
                         onClick={() => {
                           setSelectedBlogPost(post);
                           setView('blog_detail');
+                          window.location.hash = `blog-${i}`;
                           window.scrollTo(0, 0);
                         }}
                       >
-                        {post.title}
-                      </h3>
-                      <p className="text-gray-400 mb-8 leading-relaxed">{post.excerpt}</p>
-                      <button 
-                        onClick={() => {
-                          setSelectedBlogPost(post);
-                          setView('blog_detail');
-                          window.scrollTo(0, 0);
-                        }}
-                        className="text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn"
-                      >
-                        {t.blog.readMore}
-                        <ChevronRight className={`w-4 h-4 transition-transform group-hover/btn:translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover/btn:-translate-x-1' : ''}`} />
-                      </button>
-                    </div>
-                  </motion.div>
-                ))}
+                        <img 
+                          src={`https://picsum.photos/seed/blog-post-${i+10}/600/400`}
+                          alt={post.title} 
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-75"
+                          referrerPolicy="no-referrer"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                      </div>
+
+                      <div className="p-8 relative z-10">
+                        <div className={`inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border ${color.badge}`}>
+                          {post.date}
+                        </div>
+                        <h3 
+                          className="text-xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors cursor-pointer line-clamp-3"
+                          onClick={() => {
+                            setSelectedBlogPost(post);
+                            setView('blog_detail');
+                            window.location.hash = `blog-${i}`;
+                            window.scrollTo(0, 0);
+                          }}
+                        >
+                          {post.title}
+                        </h3>
+                        <p className="text-gray-400 mb-8 leading-relaxed text-sm line-clamp-2">{post.excerpt || (lang === 'ar' ? post.arExcerpt : post.excerpt)}</p>
+                        
+                        <div className="flex items-center justify-between gap-3">
+                          <button 
+                            onClick={() => {
+                              setSelectedBlogPost(post);
+                              setView('blog_detail');
+                              window.location.hash = `blog-${i}`;
+                              window.scrollTo(0, 0);
+                            }}
+                            className={`text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn ${color.icon}`}
+                          >
+                            {t.blog.readMore}
+                            <ChevronRight className={`w-4 h-4 transition-transform group-hover/btn:translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover/btn:-translate-x-1' : ''}`} />
+                          </button>
+                          
+                          {/* Share Button */}
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              const link = `${window.location.origin}${window.location.pathname}#blog-${i}`;
+                              if (navigator.share) {
+                                navigator.share({ title: post.title, url: link });
+                              } else {
+                                navigator.clipboard.writeText(link).then(() => {
+                                  alert(lang === 'ar' ? 'تم نسخ الرابط!' : 'Link copied!');
+                                });
+                              }
+                            }}
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-xs font-bold text-gray-400 hover:text-white"
+                            title={lang === 'ar' ? 'مشاركة الرابط' : 'Share Link'}
+                          >
+                            <Share2 className="w-3.5 h-3.5" />
+                            {lang === 'ar' ? 'شارك' : 'Share'}
+                          </button>
+                        </div>
+
+                        {/* Direct Link */}
+                        <div className="mt-4 pt-4 border-t border-white/10">
+                          <div className="flex items-center gap-2 text-xs text-gray-600 font-mono truncate">
+                            <Link className="w-3 h-3 flex-shrink-0" />
+                            <span className="truncate">#blog-{i}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -4698,6 +4848,3 @@ export default function App() {
     </div>
   );
 }
-
-
-
