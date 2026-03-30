@@ -2323,11 +2323,83 @@ export default function App() {
 
   return (
     <div className={`min-h-screen bg-matte-black selection:bg-snap-yellow selection:text-black overflow-x-hidden font-${lang === 'ar' ? 'cairo' : 'sans'} relative`}>
-      {/* Background Mesh */}
-      <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(at_0%_0%,hsla(59,100%,50%,0.15)_0,transparent_50%)]"></div>
-        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(at_100%_100%,hsla(59,100%,50%,0.15)_0,transparent_50%)]"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,252,0,0.08)_0%,transparent_70%)]"></div>
+      {/* Snapchat-themed Animated Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Base dark gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0d0d1a] to-[#0a0a0a]"></div>
+        
+        {/* Animated Snap Yellow orbs */}
+        <motion.div
+          animate={{ scale: [1, 1.3, 1], opacity: [0.12, 0.22, 0.12], x: [0, 40, 0], y: [0, -30, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(255,252,0,0.35) 0%, transparent 70%)' }}
+        />
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.18, 0.08], x: [0, -50, 0], y: [0, 40, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+          className="absolute bottom-[-10%] right-[-5%] w-[700px] h-[700px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(255,180,0,0.3) 0%, transparent 70%)' }}
+        />
+        <motion.div
+          animate={{ scale: [1, 1.4, 1], opacity: [0.06, 0.14, 0.06] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
+          className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[500px] h-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(255,252,0,0.15) 0%, transparent 70%)' }}
+        />
+
+        {/* Floating Ghost Silhouettes (Snapchat ghosts) */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{
+              y: [0, -80, 0],
+              x: [0, i % 2 === 0 ? 30 : -30, 0],
+              opacity: [0.03, 0.07, 0.03],
+              rotate: [0, i % 2 === 0 ? 15 : -15, 0],
+            }}
+            transition={{ duration: 8 + i * 2, repeat: Infinity, ease: 'easeInOut', delay: i * 1.5 }}
+            className="absolute text-snap-yellow select-none"
+            style={{
+              left: `${10 + i * 15}%`,
+              top: `${15 + (i % 3) * 25}%`,
+              fontSize: `${80 + i * 20}px`,
+              filter: 'blur(1px)',
+            }}
+          >
+            👻
+          </motion.div>
+        ))}
+
+        {/* Floating score numbers */}
+        {['5K', '100K', '1M', '500K', '50K', '2M'].map((num, i) => (
+          <motion.div
+            key={num}
+            animate={{
+              y: [0, -120, 0],
+              opacity: [0, 0.06, 0],
+            }}
+            transition={{ duration: 6 + i * 1.5, repeat: Infinity, ease: 'easeInOut', delay: i * 2 }}
+            className="absolute font-black text-snap-yellow/10 select-none pointer-events-none"
+            style={{
+              left: `${5 + i * 16}%`,
+              bottom: `${10 + (i % 3) * 20}%`,
+              fontSize: `${40 + i * 10}px`,
+            }}
+          >
+            {num}
+          </motion.div>
+        ))}
+
+        {/* Grid lines */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: 'linear-gradient(rgba(255,252,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,252,0,0.5) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }}></div>
+
+        {/* Top and bottom gradient overlays */}
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#0a0a0a] to-transparent"></div>
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0a0a0a] to-transparent"></div>
       </div>
 
       {/* Header */}
@@ -2360,26 +2432,25 @@ export default function App() {
                 {t.nav.catalog}
                 <ChevronRight className="w-4 h-4 rotate-90" />
               </button>
-              <div className="absolute top-full left-0 w-64 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-snap-yellow/20 to-orange-500/10 rounded-3xl pointer-events-none"></div>
-                {t.nav.catalogItems.map((item: any) => (
+              <div className="absolute top-full left-0 w-64 bg-black/90 backdrop-blur-2xl border border-snap-yellow/20 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-snap-yellow/10 to-orange-500/5 rounded-3xl pointer-events-none"></div>
+                {[
+                  { id: 'snapscore', label: lang === 'ar' ? 'حسابات سكور' : 'Score Accounts', color: 'hover:bg-blue-500' },
+                  { id: 'follower', label: lang === 'ar' ? 'حسابات متابعين' : 'Follower Accounts', color: 'hover:bg-purple-500' },
+                  { id: 'aged', label: lang === 'ar' ? 'حسابات قديمة' : 'Aged Accounts', color: 'hover:bg-orange-500' },
+                  { id: 'verified', label: lang === 'ar' ? 'حسابات موثقة' : 'Verified Accounts', color: 'hover:bg-green-500' },
+                ].map((item) => (
                   <button
                     key={item.id}
                     onClick={() => {
-                      if (item.id === 'score' || item.id === 'age') {
-                        setView('shop');
-                        setShopTab('score');
-                      } else if (item.id === 'followers') {
-                        setView('shop');
-                        setShopTab('followers');
-                      } else {
-                        setView('shop');
-                        setShopTab('services');
-                      }
+                      setSelectedCategory(item.id);
+                      setView('category_detail');
+                      window.location.hash = `catalog-${item.id}`;
+                      window.scrollTo(0, 0);
                     }}
-                    className="w-full text-left px-4 py-3 rounded-2xl hover:bg-snap-yellow hover:text-black transition-all text-xs font-black uppercase tracking-wider relative z-10"
+                    className={`w-full text-left px-4 py-3 rounded-2xl ${item.color} hover:text-white transition-all text-xs font-black uppercase tracking-wider relative z-10`}
                   >
-                    {item.title}
+                    {item.label}
                   </button>
                 ))}
               </div>
@@ -2391,25 +2462,29 @@ export default function App() {
                 {t.nav.services}
                 <ChevronRight className="w-4 h-4 rotate-90" />
               </button>
-              <div className="absolute top-full left-0 w-64 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-cyan-500/10 rounded-3xl pointer-events-none"></div>
-                {t.nav.serviceItems.map((item: any) => (
+              <div className="absolute top-full left-0 w-72 bg-black/90 backdrop-blur-2xl border border-blue-500/20 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/5 rounded-3xl pointer-events-none"></div>
+                {[
+                  { id: 's_boost', label: lang === 'ar' ? 'زيادة السكور' : 'Score Boosting', color: 'hover:bg-yellow-500 hover:text-black', icon: '⚡' },
+                  { id: 's_followers', label: lang === 'ar' ? 'زيادة المتابعين' : 'Follower Increase', color: 'hover:bg-purple-500', icon: '👥' },
+                  { id: 's_views', label: lang === 'ar' ? 'مشاهدات الستوري' : 'Stories & Spotlight View', color: 'hover:bg-blue-500', icon: '👁' },
+                  { id: 's_lens', label: lang === 'ar' ? 'إنشاء عدسات' : 'Create Lens', color: 'hover:bg-cyan-500', icon: '🎭' },
+                  { id: 's_badge', label: lang === 'ar' ? 'توثيق الحساب' : 'Verified Badge', color: 'hover:bg-green-500', icon: '✅' },
+                ].map((item) => (
                   <button
                     key={item.id}
                     onClick={() => {
-                      if (item.id === 'boosting') {
-                        setView('boosting');
-                      } else if (item.id === 'followers') {
-                        setView('shop');
-                        setShopTab('followers');
-                      } else {
-                        setView('shop');
-                        setShopTab('services');
+                      const svc = servicesList.find(s => s.id === item.id);
+                      if (svc) {
+                        setSelectedService(svc);
+                        setView('service_detail');
+                        window.location.hash = `service-${item.id}`;
+                        window.scrollTo(0, 0);
                       }
                     }}
-                    className="w-full text-left px-4 py-3 rounded-2xl hover:bg-blue-500 hover:text-white transition-all text-xs font-black uppercase tracking-wider relative z-10"
+                    className={`w-full text-left px-4 py-3 rounded-2xl ${item.color} transition-all text-xs font-black uppercase tracking-wider relative z-10 flex items-center gap-2`}
                   >
-                    {item.title}
+                    <span>{item.icon}</span>{item.label}
                   </button>
                 ))}
               </div>
@@ -2421,24 +2496,34 @@ export default function App() {
                 {t.nav.tools}
                 <ChevronRight className="w-4 h-4 rotate-90" />
               </button>
-              <div className="absolute top-full left-0 w-64 bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/10 rounded-3xl pointer-events-none"></div>
-                {t.nav.toolItems.map((item: any) => (
+              <div className="absolute top-full left-0 w-72 bg-black/90 backdrop-blur-2xl border border-purple-500/20 rounded-3xl p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/5 rounded-3xl pointer-events-none"></div>
+                {[
+                  { id: 'calc', label: lang === 'ar' ? 'حاسبة السكور' : 'Score Calculator', color: 'hover:bg-blue-500', icon: '🧮' },
+                  { id: 'checker', label: lang === 'ar' ? 'فاحص عمر الحساب' : 'Account Checker', color: 'hover:bg-purple-500', icon: '🔍' },
+                  { id: 'tracker', label: lang === 'ar' ? 'مخطط أهداف السكور' : 'Score Tracker', color: 'hover:bg-orange-500', icon: '📊' },
+                  { id: 'bitmoji', label: lang === 'ar' ? 'منشئ بيتموجي' : 'Bitmoji Creator', color: 'hover:bg-green-500', icon: '🎨' },
+                  { id: 'lens', label: lang === 'ar' ? 'محاكي العدسات' : 'AI Lens Simulator', color: 'hover:bg-pink-500', icon: '🎭' },
+                  { id: 'map', label: lang === 'ar' ? 'مكتشف المواقع' : 'Snap Map Finder', color: 'hover:bg-cyan-500', icon: '🗺️' },
+                  { id: 'snapify', label: 'Snapify Pro ⭐', color: 'hover:bg-snap-yellow hover:text-black', icon: '🚀' },
+                ].map((item) => (
                   <button
                     key={item.id}
                     onClick={() => {
                       setView(item.id as any);
                       setToolResult(null);
+                      window.location.hash = `tool-${item.id}`;
+                      window.scrollTo(0, 0);
                     }}
-                    className="w-full text-left px-4 py-3 rounded-2xl hover:bg-purple-500 hover:text-white transition-all text-xs font-black uppercase tracking-wider relative z-10"
+                    className={`w-full text-left px-4 py-3 rounded-2xl ${item.color} transition-all text-xs font-black uppercase tracking-wider relative z-10 flex items-center gap-2`}
                   >
-                    {item.title}
+                    <span>{item.icon}</span>{item.label}
                   </button>
                 ))}
               </div>
             </div>
 
-            <button onClick={() => setView('blog')} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
+            <button onClick={() => { setView('blog'); window.location.hash = 'blog'; window.scrollTo(0,0); }} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
           </div>
 
           <div className="flex items-center gap-4">
@@ -2483,26 +2568,24 @@ export default function App() {
                 <div className="space-y-4">
                   <div className={`text-xs font-black text-snap-yellow uppercase tracking-widest ${lang === 'ar' ? 'text-right' : 'text-left'}`}>{t.nav.catalog}</div>
                   <div className={`flex flex-col gap-3 ${lang === 'ar' ? 'pr-4 border-r' : 'pl-4 border-l'} border-white/10`}>
-                    {t.nav.catalogItems.map((item: any) => (
+                    {[
+                      { id: 'snapscore', label: lang === 'ar' ? 'حسابات سكور' : 'Score Accounts' },
+                      { id: 'follower', label: lang === 'ar' ? 'حسابات متابعين' : 'Follower Accounts' },
+                      { id: 'aged', label: lang === 'ar' ? 'حسابات قديمة' : 'Aged Accounts' },
+                      { id: 'verified', label: lang === 'ar' ? 'حسابات موثقة' : 'Verified Accounts' },
+                    ].map((item) => (
                       <button
                         key={item.id}
                         onClick={() => {
-                          if (item.id === 'score' || item.id === 'age') {
-                            setView('shop');
-                            setShopTab('score');
-                          } else if (item.id === 'followers') {
-                            setView('shop');
-                            setShopTab('followers');
-                          } else {
-                            setView('shop');
-                            setShopTab('services');
-                          }
+                          setSelectedCategory(item.id);
+                          setView('category_detail');
+                          window.location.hash = `catalog-${item.id}`;
+                          window.scrollTo(0, 0);
                           setIsMenuOpen(false);
                         }}
-                        className="text-right hover:text-snap-yellow transition-colors"
-                        style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
+                        className="hover:text-snap-yellow transition-colors text-left"
                       >
-                        {item.title}
+                        {item.label}
                       </button>
                     ))}
                   </div>
@@ -2511,25 +2594,28 @@ export default function App() {
                 <div className="space-y-4">
                   <div className={`text-xs font-black text-snap-yellow uppercase tracking-widest ${lang === 'ar' ? 'text-right' : 'text-left'}`}>{t.nav.services}</div>
                   <div className={`flex flex-col gap-3 ${lang === 'ar' ? 'pr-4 border-r' : 'pl-4 border-l'} border-white/10`}>
-                    {t.nav.serviceItems.map((item: any) => (
+                    {[
+                      { id: 's_boost', label: lang === 'ar' ? '⚡ زيادة السكور' : '⚡ Score Boosting' },
+                      { id: 's_followers', label: lang === 'ar' ? '👥 زيادة المتابعين' : '👥 Follower Increase' },
+                      { id: 's_views', label: lang === 'ar' ? '👁 مشاهدات الستوري' : '👁 Stories & Spotlight' },
+                      { id: 's_lens', label: lang === 'ar' ? '🎭 إنشاء عدسات' : '🎭 Create Lens' },
+                      { id: 's_badge', label: lang === 'ar' ? '✅ توثيق الحساب' : '✅ Verified Badge' },
+                    ].map((item) => (
                       <button
                         key={item.id}
                         onClick={() => {
-                          if (item.id === 'boosting') {
-                            setView('boosting');
-                          } else if (item.id === 'followers') {
-                            setView('shop');
-                            setShopTab('followers');
-                          } else {
-                            setView('shop');
-                            setShopTab('services');
+                          const svc = servicesList.find(s => s.id === item.id);
+                          if (svc) {
+                            setSelectedService(svc);
+                            setView('service_detail');
+                            window.location.hash = `service-${item.id}`;
+                            window.scrollTo(0, 0);
                           }
                           setIsMenuOpen(false);
                         }}
-                        className="text-right hover:text-snap-yellow transition-colors"
-                        style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
+                        className="hover:text-snap-yellow transition-colors text-left"
                       >
-                        {item.title}
+                        {item.label}
                       </button>
                     ))}
                   </div>
@@ -2538,19 +2624,27 @@ export default function App() {
                 <div className="space-y-4">
                   <div className={`text-xs font-black text-snap-yellow uppercase tracking-widest ${lang === 'ar' ? 'text-right' : 'text-left'}`}>{t.nav.tools}</div>
                   <div className={`flex flex-col gap-3 ${lang === 'ar' ? 'pr-4 border-r' : 'pl-4 border-l'} border-white/10`}>
-                    {t.nav.toolItems.map((item: any) => (
+                    {[
+                      { id: 'calc', label: '🧮 Score Calculator' },
+                      { id: 'checker', label: '🔍 Account Checker' },
+                      { id: 'tracker', label: '📊 Score Tracker' },
+                      { id: 'bitmoji', label: '🎨 Bitmoji Creator' },
+                      { id: 'lens', label: '🎭 AI Lens Simulator' },
+                      { id: 'map', label: '🗺️ Snap Map Finder' },
+                      { id: 'snapify', label: '🚀 Snapify Pro ⭐' },
+                    ].map((item) => (
                       <button
                         key={item.id}
-                        onClick={() => handleToolClick(item.id, item.isPro)}
-                        className={`hover:text-snap-yellow transition-colors flex items-center gap-2 ${lang === 'ar' ? 'flex-row-reverse justify-start' : 'justify-start'}`}
-                        style={{ textAlign: lang === 'ar' ? 'right' : 'left' }}
+                        onClick={() => {
+                          setView(item.id as any);
+                          setToolResult(null);
+                          window.location.hash = `tool-${item.id}`;
+                          window.scrollTo(0, 0);
+                          setIsMenuOpen(false);
+                        }}
+                        className="hover:text-snap-yellow transition-colors text-left"
                       >
-                        {item.title}
-                        {item.isPro ? (
-                          <span className="text-[8px] bg-snap-yellow text-black px-1.5 py-0.5 rounded-md font-black">PRO</span>
-                        ) : (
-                          <span className="text-[8px] bg-green-500/20 text-green-400 px-1.5 py-0.5 rounded-md border border-green-500/30 font-black">FREE</span>
-                        )}
+                        {item.label}
                       </button>
                     ))}
                   </div>
@@ -3713,122 +3807,175 @@ export default function App() {
           <section className="pt-40 pb-24 px-6">
             <div className="max-w-7xl mx-auto">
               <div className="mb-8">
-                <BackButton onClick={() => setView('home')} lang={lang} />
+                <BackButton onClick={() => { setView('home'); window.location.hash = ''; }} lang={lang} />
               </div>
-              <div className="text-center mb-20">
-                <h1 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter">
+              <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-20">
+                <motion.div
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="inline-block px-6 py-2 rounded-full bg-snap-yellow/10 border border-snap-yellow/30 text-snap-yellow text-xs font-black uppercase tracking-widest mb-6"
+                >
+                  📝 {lang === 'ar' ? 'مقالات حصرية' : 'Exclusive Articles'}
+                </motion.div>
+                <h1 className="text-5xl lg:text-7xl font-black mb-6 uppercase tracking-tighter bg-gradient-to-r from-white via-snap-yellow to-white bg-clip-text text-transparent">
                   {t.blog.title}
                 </h1>
-                <p className="text-xl text-gray-400 font-medium">{t.blog.subtitle}</p>
-                <div className="w-32 h-1.5 bg-snap-yellow mx-auto rounded-full mt-8"></div>
-              </div>
+                <p className="text-xl text-gray-400 font-medium mb-2">{t.blog.subtitle}</p>
+                <p className="text-sm text-gray-600">{lang === 'ar' ? 'كل مقال له رابط خاص للمشاركة 🔗' : 'Every blog has its own unique shareable link 🔗'}</p>
+                <div className="w-32 h-1.5 bg-snap-yellow mx-auto rounded-full mt-6"></div>
+              </motion.div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {t.blog.posts.map((post, i) => {
-                  const blogColors = [
-                    { bg: 'bg-gradient-to-br from-blue-900/60 to-blue-600/20', border: 'border-blue-500/40 hover:border-blue-400/70', glow: 'bg-blue-500/20', badge: 'bg-blue-500/20 text-blue-300 border-blue-500/30', icon: 'text-blue-400', tag: 'bg-blue-600' },
-                    { bg: 'bg-gradient-to-br from-purple-900/60 to-purple-600/20', border: 'border-purple-500/40 hover:border-purple-400/70', glow: 'bg-purple-500/20', badge: 'bg-purple-500/20 text-purple-300 border-purple-500/30', icon: 'text-purple-400', tag: 'bg-purple-600' },
-                    { bg: 'bg-gradient-to-br from-orange-900/60 to-orange-600/20', border: 'border-orange-500/40 hover:border-orange-400/70', glow: 'bg-orange-500/20', badge: 'bg-orange-500/20 text-orange-300 border-orange-500/30', icon: 'text-orange-400', tag: 'bg-orange-600' },
-                    { bg: 'bg-gradient-to-br from-green-900/60 to-green-600/20', border: 'border-green-500/40 hover:border-green-400/70', glow: 'bg-green-500/20', badge: 'bg-green-500/20 text-green-300 border-green-500/30', icon: 'text-green-400', tag: 'bg-green-600' },
-                    { bg: 'bg-gradient-to-br from-pink-900/60 to-pink-600/20', border: 'border-pink-500/40 hover:border-pink-400/70', glow: 'bg-pink-500/20', badge: 'bg-pink-500/20 text-pink-300 border-pink-500/30', icon: 'text-pink-400', tag: 'bg-pink-600' },
-                    { bg: 'bg-gradient-to-br from-cyan-900/60 to-cyan-600/20', border: 'border-cyan-500/40 hover:border-cyan-400/70', glow: 'bg-cyan-500/20', badge: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30', icon: 'text-cyan-400', tag: 'bg-cyan-600' },
+                {t.blog.posts.map((post: any, i: number) => {
+                  const palettes = [
+                    { from: '#1e3a5f', to: '#0d1b2a', accent: '#60a5fa', border: 'rgba(96,165,250,0.5)', glow: 'rgba(96,165,250,0.3)', tag: '#3b82f6', btn: '#2563eb' },
+                    { from: '#3b1f5e', to: '#1a0d2e', accent: '#c084fc', border: 'rgba(192,132,252,0.5)', glow: 'rgba(192,132,252,0.3)', tag: '#9333ea', btn: '#7c3aed' },
+                    { from: '#5e2d0d', to: '#2e1505', accent: '#fb923c', border: 'rgba(251,146,60,0.5)', glow: 'rgba(251,146,60,0.3)', tag: '#ea580c', btn: '#c2410c' },
+                    { from: '#0d3d1f', to: '#051a0d', accent: '#4ade80', border: 'rgba(74,222,128,0.5)', glow: 'rgba(74,222,128,0.3)', tag: '#16a34a', btn: '#15803d' },
+                    { from: '#5e1637', to: '#2e0a1c', accent: '#f472b6', border: 'rgba(244,114,182,0.5)', glow: 'rgba(244,114,182,0.3)', tag: '#db2777', btn: '#be185d' },
+                    { from: '#0c3d4d', to: '#061e27', accent: '#22d3ee', border: 'rgba(34,211,238,0.5)', glow: 'rgba(34,211,238,0.3)', tag: '#0891b2', btn: '#0e7490' },
                   ];
-                  const color = blogColors[i % blogColors.length];
-                  const blogLink = `${window.location.origin}${window.location.pathname}#blog-${i}`;
+                  const p = palettes[i % palettes.length];
+                  const blogHash = `blog-${i}`;
+                  const blogLink = `${window.location.origin}${window.location.pathname}#${blogHash}`;
 
                   return (
                     <motion.div
                       key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className={`rounded-[2.5rem] overflow-hidden border-2 transition-all group relative shadow-2xl ${color.bg} ${color.border}`}
+                      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ delay: i * 0.12, type: 'spring', stiffness: 100 }}
+                      whileHover={{ y: -8, scale: 1.02 }}
+                      className="rounded-[2.5rem] overflow-hidden relative group cursor-pointer"
+                      style={{
+                        background: `linear-gradient(135deg, ${p.from} 0%, ${p.to} 100%)`,
+                        border: `2px solid ${p.border}`,
+                        boxShadow: `0 0 40px ${p.glow}, 0 20px 60px rgba(0,0,0,0.5)`,
+                      }}
                     >
-                      {/* Glow blob */}
-                      <div className={`absolute -top-10 -right-10 w-40 h-40 rounded-full blur-3xl opacity-40 group-hover:opacity-70 transition-all duration-700 ${color.glow}`}></div>
-                      <div className={`absolute -bottom-10 -left-10 w-32 h-32 rounded-full blur-3xl opacity-20 group-hover:opacity-50 transition-all duration-700 ${color.glow}`}></div>
-                      
-                      {/* Blog Number Badge */}
-                      <div className={`absolute top-5 left-5 z-20 w-10 h-10 rounded-full ${color.tag} flex items-center justify-center text-white font-black text-sm shadow-lg`}>
-                        {i + 1}
-                      </div>
+                      {/* Animated glow pulse */}
+                      <motion.div
+                        animate={{ opacity: [0.3, 0.7, 0.3], scale: [1, 1.1, 1] }}
+                        transition={{ duration: 3 + i * 0.5, repeat: Infinity, ease: 'easeInOut' }}
+                        className="absolute -top-10 -right-10 w-40 h-40 rounded-full blur-3xl pointer-events-none"
+                        style={{ background: p.glow }}
+                      />
+                      <motion.div
+                        animate={{ opacity: [0.2, 0.5, 0.2] }}
+                        transition={{ duration: 4 + i * 0.3, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                        className="absolute -bottom-8 -left-8 w-32 h-32 rounded-full blur-3xl pointer-events-none"
+                        style={{ background: p.glow }}
+                      />
 
-                      <div 
-                        className="aspect-video overflow-hidden cursor-pointer relative"
+                      {/* Number badge */}
+                      <motion.div
+                        animate={{ rotate: [0, 5, 0, -5, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, delay: i * 0.5 }}
+                        className="absolute top-5 left-5 z-20 w-11 h-11 rounded-full flex items-center justify-center text-white font-black text-base shadow-lg"
+                        style={{ background: p.tag }}
+                      >
+                        {i + 1}
+                      </motion.div>
+
+                      {/* Thumbnail */}
+                      <div
+                        className="aspect-video overflow-hidden relative"
                         onClick={() => {
-                          setSelectedBlogPost(post);
+                          setSelectedBlogPost({ ...post, _index: i });
                           setView('blog_detail');
-                          window.location.hash = `blog-${i}`;
+                          window.location.hash = blogHash;
                           window.scrollTo(0, 0);
                         }}
                       >
-                        <img 
-                          src={`https://picsum.photos/seed/blog-post-${i+10}/600/400`}
-                          alt={post.title} 
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 brightness-75"
-                          referrerPolicy="no-referrer"
+                        <motion.img
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.6 }}
+                          src={`https://picsum.photos/seed/blog${i}snap/600/400`}
+                          alt={post.title}
+                          className="w-full h-full object-cover brightness-60"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${p.to}dd 0%, transparent 60%)` }}></div>
+                        {/* Play overlay */}
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          whileHover={{ opacity: 1 }}
+                          className="absolute inset-0 flex items-center justify-center"
+                        >
+                          <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/30">
+                            <ChevronRight className="w-7 h-7 text-white ml-1" />
+                          </div>
+                        </motion.div>
                       </div>
 
-                      <div className="p-8 relative z-10">
-                        <div className={`inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full border ${color.badge}`}>
-                          {post.date}
-                        </div>
-                        <h3 
-                          className="text-xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors cursor-pointer line-clamp-3"
+                      {/* Content */}
+                      <div className="p-7 relative z-10">
+                        <motion.div
+                          animate={{ borderColor: [p.border, p.accent, p.border] }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                          className="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1.5 rounded-full border"
+                          style={{ color: p.accent, borderColor: p.border, background: `${p.glow.replace('0.3', '0.1')}` }}
+                        >
+                          📅 {post.date}
+                        </motion.div>
+
+                        <h3
+                          className="text-lg font-black mb-3 leading-snug line-clamp-2 transition-colors duration-300"
+                          style={{ color: 'white' }}
+                          onMouseEnter={e => (e.currentTarget.style.color = p.accent)}
+                          onMouseLeave={e => (e.currentTarget.style.color = 'white')}
                           onClick={() => {
-                            setSelectedBlogPost(post);
+                            setSelectedBlogPost({ ...post, _index: i });
                             setView('blog_detail');
-                            window.location.hash = `blog-${i}`;
+                            window.location.hash = blogHash;
                             window.scrollTo(0, 0);
                           }}
                         >
                           {post.title}
                         </h3>
-                        <p className="text-gray-400 mb-8 leading-relaxed text-sm line-clamp-2">{post.excerpt || (lang === 'ar' ? post.arExcerpt : post.excerpt)}</p>
-                        
+                        <p className="text-gray-400 mb-6 text-sm leading-relaxed line-clamp-2">
+                          {post.excerpt || post.arExcerpt || ''}
+                        </p>
+
                         <div className="flex items-center justify-between gap-3">
-                          <button 
+                          <motion.button
+                            whileHover={{ x: 4 }}
                             onClick={() => {
-                              setSelectedBlogPost(post);
+                              setSelectedBlogPost({ ...post, _index: i });
                               setView('blog_detail');
-                              window.location.hash = `blog-${i}`;
+                              window.location.hash = blogHash;
                               window.scrollTo(0, 0);
                             }}
-                            className={`text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn ${color.icon}`}
+                            className="text-sm font-black uppercase tracking-widest flex items-center gap-2"
+                            style={{ color: p.accent }}
                           >
                             {t.blog.readMore}
-                            <ChevronRight className={`w-4 h-4 transition-transform group-hover/btn:translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover/btn:-translate-x-1' : ''}`} />
-                          </button>
-                          
-                          {/* Share Button */}
+                            <ChevronRight className="w-4 h-4" />
+                          </motion.button>
+
+                          {/* Share / Copy Link */}
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              const link = `${window.location.origin}${window.location.pathname}#blog-${i}`;
                               if (navigator.share) {
-                                navigator.share({ title: post.title, url: link });
+                                navigator.share({ title: post.title, url: blogLink });
                               } else {
-                                navigator.clipboard.writeText(link).then(() => {
-                                  alert(lang === 'ar' ? 'تم نسخ الرابط!' : 'Link copied!');
-                                });
+                                navigator.clipboard.writeText(blogLink).then(() =>
+                                  alert(lang === 'ar' ? '✅ تم نسخ رابط المقال!' : '✅ Blog link copied!')
+                                );
                               }
                             }}
-                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-xs font-bold text-gray-400 hover:text-white"
-                            title={lang === 'ar' ? 'مشاركة الرابط' : 'Share Link'}
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all"
+                            style={{ background: `${p.glow.replace('0.3','0.15')}`, border: `1px solid ${p.border}`, color: p.accent }}
                           >
                             <Share2 className="w-3.5 h-3.5" />
                             {lang === 'ar' ? 'شارك' : 'Share'}
                           </button>
                         </div>
 
-                        {/* Direct Link */}
-                        <div className="mt-4 pt-4 border-t border-white/10">
-                          <div className="flex items-center gap-2 text-xs text-gray-600 font-mono truncate">
-                            <Link className="w-3 h-3 flex-shrink-0" />
-                            <span className="truncate">#blog-{i}</span>
-                          </div>
+                        {/* Hash URL */}
+                        <div className="mt-4 pt-3 border-t flex items-center gap-2" style={{ borderColor: `${p.border.replace('0.5','0.2')}` }}>
+                          <Link className="w-3 h-3 flex-shrink-0" style={{ color: p.accent + '80' }} />
+                          <code className="text-xs truncate" style={{ color: p.accent + '60' }}>#{blogHash}</code>
                         </div>
                       </div>
                     </motion.div>
