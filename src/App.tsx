@@ -1434,134 +1434,308 @@ const verifiedAccountsStock = [
   { id: 'vpublic', amount: 'Public Profile', price: '$50', desc: { en: 'Verified public profile status', ar: 'حالة ملف تعريف عام موثقة' } },
 ];
 
-const ServiceDetail = ({ service, lang, onBack, onOrder }: { service: any, lang: string, onBack: () => void, onOrder: (s: any) => void }) => {
+const ServiceDetail = ({ service, lang, onBack, onOrder, openWhatsApp }: { service: any, lang: string, onBack: () => void, onOrder: (s: any) => void, openWhatsApp: (msg: string) => void }) => {
+  const [copiedLink, setCopiedLink] = useState(false);
   const title = lang === 'ar' ? (service.arTitle || service.title) : service.title;
   const desc = lang === 'ar' ? (service.desc.ar || service.desc.en) : service.desc.en;
+  const isScoreBoost = service.id === 's_boost';
+
+  const boostTiers = [
+    { id: 'b5k', amount: '5,000', price: '$10', time: '1-2 hrs' },
+    { id: 'b10k', amount: '10,000', price: '$18', time: '2-4 hrs' },
+    { id: 'b20k', amount: '20,000', price: '$35', time: '4-6 hrs' },
+    { id: 'b50k', amount: '50,000', price: '$80', time: '6-12 hrs' },
+    { id: 'b100k', amount: '100,000', price: '$150', time: '12-24 hrs' },
+    { id: 'b200k', amount: '200,000', price: '$280', time: '24-48 hrs' },
+    { id: 'b300k', amount: '300,000', price: '$400', time: '2-3 days' },
+    { id: 'b500k', amount: '500,000', price: '$650', time: '3-5 days' },
+    { id: 'b700k', amount: '700,000', price: '$850', time: '5-7 days' },
+    { id: 'b1m', amount: '1,000,000', price: '$1200', time: '7-10 days' },
+  ];
+
+  const followerTiers = [
+    { id: 'f500', amount: '500', price: '$20', time: '1-2 hrs' },
+    { id: 'f1k', amount: '1,000', price: '$35', time: '2-4 hrs' },
+    { id: 'f5k', amount: '5,000', price: '$150', time: '6-12 hrs' },
+    { id: 'f10k', amount: '10,000', price: '$280', time: '12-24 hrs' },
+  ];
+
+  const viewTiers = [
+    { id: 'v1k', amount: '1,000', price: '$15', time: '1-2 hrs' },
+    { id: 'v5k', amount: '5,000', price: '$60', time: '2-4 hrs' },
+    { id: 'v10k', amount: '10,000', price: '$110', time: '4-8 hrs' },
+    { id: 'v50k', amount: '50,000', price: '$480', time: '12-24 hrs' },
+  ];
+
+  const tiers = isScoreBoost ? boostTiers : service.id === 's_followers' ? followerTiers : service.id === 's_views' ? viewTiers : [];
+
+  const shareLink = (tierId?: string) => {
+    const hash = tierId ? `service-${service.id}-tier-${tierId}` : `service-${service.id}`;
+    const link = `${window.location.origin}${window.location.pathname}#${hash}`;
+    if (navigator.share) {
+      navigator.share({ title, url: link });
+    } else {
+      navigator.clipboard.writeText(link).then(() => {
+        setCopiedLink(true);
+        setTimeout(() => setCopiedLink(false), 2000);
+      });
+    }
+  };
+
+  const svcColors: Record<string, string> = {
+    's_boost': 'from-yellow-900/60 to-yellow-600/10 border-yellow-500/40',
+    's_followers': 'from-purple-900/60 to-purple-600/10 border-purple-500/40',
+    's_views': 'from-blue-900/60 to-blue-600/10 border-blue-500/40',
+    's_lens': 'from-cyan-900/60 to-cyan-600/10 border-cyan-500/40',
+    's_badge': 'from-green-900/60 to-green-600/10 border-green-500/40',
+  };
+  const colorClass = svcColors[service.id] || 'from-gray-900/60 to-gray-600/10 border-gray-500/40';
 
   return (
     <section className="pt-40 pb-24 px-6 min-h-screen bg-matte-black">
-      <div className="max-w-4xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass rounded-[3rem] border-white/10 overflow-hidden shadow-2xl p-8 lg:p-16"
+      <div className="max-w-5xl mx-auto">
+        {/* Header Card */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+          className={`bg-gradient-to-br ${colorClass} border-2 rounded-[3rem] overflow-hidden shadow-2xl p-8 lg:p-14 mb-10 relative`}
         >
-          <button 
-            onClick={onBack}
-            className="mb-12 w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all shadow-lg"
-          >
-            <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
-          </button>
+          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl opacity-20 bg-snap-yellow"></div>
 
-          <div className="flex flex-col lg:flex-row gap-12 items-start">
-            <div className="w-24 h-24 rounded-3xl bg-snap-yellow/20 flex items-center justify-center text-snap-yellow shrink-0 shadow-inner">
+          <div className="flex items-center gap-4 mb-10">
+            <button onClick={onBack} className="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all shadow-lg flex-shrink-0">
+              <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+            </button>
+            <button onClick={() => shareLink()} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-bold text-gray-400 hover:text-white transition-all">
+              {copiedLink ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Share2 className="w-3.5 h-3.5" />}
+              {copiedLink ? (lang === 'ar' ? 'تم النسخ!' : 'Copied!') : (lang === 'ar' ? 'نسخ الرابط' : 'Copy Link')}
+            </button>
+            <div className="text-xs font-mono text-gray-600 truncate hidden sm:block">#{`service-${service.id}`}</div>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-10 items-start">
+            <div className="w-24 h-24 rounded-3xl bg-snap-yellow/20 border-2 border-snap-yellow/30 flex items-center justify-center text-snap-yellow shrink-0 shadow-inner">
               {React.cloneElement(service.icon as React.ReactElement<any>, { className: "w-12 h-12" })}
             </div>
             <div className="flex-1">
-              <h1 className="text-4xl lg:text-6xl font-black mb-6 italic text-white uppercase tracking-tighter">
-                {title}
-              </h1>
-              <div className="flex flex-wrap gap-4 mb-10">
-                <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-                  <CreditCard className="w-5 h-5 text-snap-yellow" />
-                  <span className="font-bold text-white">{service.price}</span>
-                </div>
-                <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-                  <RefreshCcw className="w-5 h-5 text-snap-yellow" />
-                  <span className="font-bold text-white">{service.deliveryTime}</span>
-                </div>
-                <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3">
-                  <ShieldCheck className="w-5 h-5 text-snap-yellow" />
-                  <span className="font-bold text-white">{service.guarantee}</span>
-                </div>
+              <h1 className="text-4xl lg:text-6xl font-black mb-4 text-white uppercase tracking-tighter">{title}</h1>
+              <div className="flex flex-wrap gap-3 mb-6">
+                <span className="px-4 py-2 rounded-xl bg-snap-yellow/10 border border-snap-yellow/30 text-snap-yellow font-bold text-sm">💰 {service.price}</span>
+                <span className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 font-bold text-sm">⏱ {service.deliveryTime}</span>
+                <span className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 font-bold text-sm">🛡 {service.guarantee}</span>
+                {isScoreBoost
+                  ? <span className="px-4 py-2 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 font-bold text-sm">🔑 {lang === 'ar' ? 'كلمة المرور مطلوبة' : 'Password Required'}</span>
+                  : <span className="px-4 py-2 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 font-bold text-sm">✅ {lang === 'ar' ? 'لا كلمة مرور' : 'No Password Needed'}</span>
+                }
               </div>
-              <p className="text-xl text-gray-300 leading-relaxed mb-12 font-medium">
-                {desc}
-              </p>
-              <button 
-                onClick={() => onOrder(service)}
-                className="w-full lg:w-auto px-12 py-6 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_10px_40px_rgba(255,252,0,0.3)] flex items-center justify-center gap-3 text-xl"
-              >
-                <ShoppingBag className="w-6 h-6" />
-                {lang === 'ar' ? 'اطلب الآن عبر واتساب' : 'Order via WhatsApp'}
-              </button>
+              <p className="text-lg text-gray-300 leading-relaxed font-medium">{desc}</p>
             </div>
           </div>
         </motion.div>
+
+        {/* Tiers Section (if applicable) */}
+        {tiers.length > 0 && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+            <h2 className="text-3xl font-black mb-8 uppercase tracking-tight">
+              {lang === 'ar' ? '🎯 اختر الباقة' : '🎯 Choose Package'} <span className="text-snap-yellow">{lang === 'ar' ? '— كل باقة لها رابط خاص' : '— Each Has Its Own Link'}</span>
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+              {tiers.map((tier, i) => {
+                const tierColors = ['from-blue-900/50 to-blue-600/10 border-blue-500/30','from-purple-900/50 to-purple-600/10 border-purple-500/30','from-orange-900/50 to-orange-600/10 border-orange-500/30','from-green-900/50 to-green-600/10 border-green-500/30','from-pink-900/50 to-pink-600/10 border-pink-500/30','from-cyan-900/50 to-cyan-600/10 border-cyan-500/30'];
+                const tc = tierColors[i % tierColors.length];
+                const tierHash = `service-${service.id}-tier-${tier.id}`;
+                return (
+                  <motion.div key={tier.id} initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: i * 0.05 }}
+                    className={`p-6 rounded-[2rem] bg-gradient-to-br ${tc} border-2 hover:scale-105 transition-all group relative overflow-hidden`}
+                  >
+                    <div className="absolute -top-8 -right-8 w-20 h-20 rounded-full blur-2xl opacity-30 bg-snap-yellow group-hover:opacity-50 transition-opacity"></div>
+                    <div className="relative z-10">
+                      <div className="text-4xl font-black mb-1 group-hover:text-snap-yellow transition-colors">{tier.amount}</div>
+                      <div className="text-xs text-gray-500 font-bold uppercase tracking-widest mb-4">
+                        {isScoreBoost ? 'Score' : service.id === 's_followers' ? 'Followers' : 'Views'}
+                      </div>
+                      <div className="text-2xl font-bold text-snap-yellow mb-2">{tier.price}</div>
+                      <div className="text-xs text-gray-500 mb-5">⏱ {tier.time}</div>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => {
+                            if (isScoreBoost) {
+                              openWhatsApp(`I want to order Score Boost: ${tier.amount} Score — Price: ${tier.price}`);
+                            } else {
+                              openWhatsApp(`I want to order ${service.title}: ${tier.amount} — Price: ${tier.price}`);
+                            }
+                          }}
+                          className="flex-1 py-3 bg-snap-yellow text-black font-black rounded-xl hover:scale-105 transition-all text-sm flex items-center justify-center gap-1"
+                        >
+                          <ShoppingBag className="w-4 h-4" />
+                          {lang === 'ar' ? 'اطلب' : 'Order'}
+                        </button>
+                        <button
+                          onClick={() => {
+                            const link = `${window.location.origin}${window.location.pathname}#${tierHash}`;
+                            navigator.clipboard.writeText(link).then(() => alert(lang === 'ar' ? 'تم نسخ رابط الباقة!' : 'Tier link copied!'));
+                          }}
+                          className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all"
+                          title="Copy link"
+                        >
+                          <Link className="w-4 h-4" />
+                        </button>
+                      </div>
+                      <div className="mt-3 text-xs text-gray-700 font-mono truncate">#{tierHash}</div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+
+        {/* No-tier services — direct order */}
+        {tiers.length === 0 && (
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+            className="glass p-10 rounded-[3rem] border-white/10"
+          >
+            <p className="text-gray-400 mb-8 leading-relaxed text-lg">{lang === 'ar' ? 'تواصل معنا عبر واتساب للحصول على عرض مخصص.' : 'Contact us via WhatsApp for a custom quote.'}</p>
+            <button
+              onClick={() => onOrder(service)}
+              className="w-full py-6 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_10px_40px_rgba(255,252,0,0.3)] flex items-center justify-center gap-3 text-xl"
+            >
+              <ShoppingBag className="w-6 h-6" />
+              {lang === 'ar' ? 'تواصل عبر واتساب' : 'Contact via WhatsApp'}
+            </button>
+          </motion.div>
+        )}
+
+        {/* Password notice for score boost */}
+        {isScoreBoost && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}
+            className="mt-6 p-6 rounded-2xl bg-red-500/5 border border-red-500/20 flex gap-4"
+          >
+            <Lock className="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <div className="font-black text-red-400 mb-1">{lang === 'ar' ? 'تنبيه: كلمة المرور مطلوبة' : 'Note: Password Required'}</div>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                {lang === 'ar'
+                  ? 'خدمة رفع السكور تتطلب وصولاً مؤقتاً للحساب. بياناتك مشفرة وآمنة. غيّر كلمة مرورك بعد اكتمال الخدمة.'
+                  : 'Score boosting requires temporary account access. Your credentials are encrypted and safe. Change your password after service completion.'}
+              </p>
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );
 };
 
 const ProductDetail = ({ product, lang, onBack, onBuy }: { product: any, lang: string, onBack: () => void, onBuy: (p: any) => void }) => {
-  const desc = lang === 'ar' ? (product.desc.ar || product.desc.en) : product.desc.en;
+  const [copiedLink, setCopiedLink] = useState(false);
+  const desc = lang === 'ar' ? (product.desc?.ar || product.desc?.en || '') : (product.desc?.en || '');
+  const isScoreAccount = product.type === 'Score Account';
+  const isFollowerAccount = product.type === 'Follower Account';
+
+  const shareThisLink = () => {
+    const link = `${window.location.origin}${window.location.pathname}#product-${product.id}`;
+    if (navigator.share) {
+      navigator.share({ title: `${product.type} ${product.amount}`, url: link });
+    } else {
+      navigator.clipboard.writeText(link).then(() => {
+        setCopiedLink(true);
+        setTimeout(() => setCopiedLink(false), 2500);
+      });
+    }
+  };
+
+  const productColors: Record<string, string> = {
+    'Score Account': 'from-blue-900/60 to-blue-600/10 border-blue-500/40 text-blue-400',
+    'Follower Account': 'from-purple-900/60 to-purple-600/10 border-purple-500/40 text-purple-400',
+    'default': 'from-orange-900/60 to-orange-600/10 border-orange-500/40 text-orange-400',
+  };
+  const colorStr = productColors[product.type] || productColors['default'];
+  const accentColor = isScoreAccount ? 'blue' : isFollowerAccount ? 'purple' : 'orange';
 
   return (
     <section className="pt-40 pb-24 px-6 min-h-screen bg-matte-black">
-      <div className="max-w-4xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass rounded-[3rem] border-white/10 overflow-hidden shadow-2xl p-8 lg:p-16"
+      <div className="max-w-5xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+          className={`bg-gradient-to-br ${colorStr.split(' text-')[0]} border-2 rounded-[3rem] overflow-hidden shadow-2xl p-8 lg:p-14 relative`}
         >
-          <button 
-            onClick={onBack}
-            className="mb-12 w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all shadow-lg"
-          >
-            <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
-          </button>
+          <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl opacity-10 bg-snap-yellow"></div>
+
+          {/* Top bar */}
+          <div className="flex items-center gap-4 mb-10 flex-wrap">
+            <button onClick={onBack} className="w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all shadow-lg flex-shrink-0">
+              <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+            </button>
+            <button onClick={shareThisLink} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-bold text-gray-400 hover:text-white transition-all">
+              {copiedLink ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Share2 className="w-3.5 h-3.5" />}
+              {copiedLink ? (lang === 'ar' ? 'تم النسخ!' : 'Copied!') : (lang === 'ar' ? 'نسخ الرابط' : 'Copy Link')}
+            </button>
+            <code className="text-xs text-gray-600 font-mono hidden sm:block">#product-{product.id}</code>
+          </div>
 
           <div className="flex flex-col lg:flex-row gap-12 items-start">
-            <div className="w-full lg:w-1/2 aspect-square rounded-[2.5rem] bg-gradient-to-br from-snap-yellow/20 to-transparent border-2 border-snap-yellow/30 flex items-center justify-center relative overflow-hidden group">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,252,0,0.1)_0%,transparent_70%)] group-hover:scale-150 transition-transform duration-1000"></div>
-              <div className="text-center relative z-10">
-                <div className="text-7xl lg:text-9xl font-black text-snap-yellow mb-4 drop-shadow-[0_0_30px_rgba(255,252,0,0.5)]">
+            {/* Visual */}
+            <div className={`w-full lg:w-80 aspect-square rounded-[2.5rem] bg-gradient-to-br from-${accentColor}-600/20 to-transparent border-2 border-${accentColor}-500/30 flex items-center justify-center relative overflow-hidden group flex-shrink-0`}>
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,252,0,0.08)_0%,transparent_70%)] group-hover:scale-150 transition-transform duration-1000"></div>
+              <div className="text-center relative z-10 px-4">
+                <div className="text-6xl lg:text-7xl font-black text-snap-yellow mb-3 drop-shadow-[0_0_30px_rgba(255,252,0,0.4)]">
                   {product.amount}
                 </div>
-                <div className="text-xl lg:text-2xl font-black text-white uppercase tracking-widest opacity-60">
-                  {product.type === 'Score Account' ? (lang === 'ar' ? 'سكور' : 'Score') : (lang === 'ar' ? 'متابع' : 'Followers')}
+                <div className="text-lg font-black text-white uppercase tracking-widest opacity-60">
+                  {isScoreAccount ? (lang === 'ar' ? 'سكور' : 'Score') : isFollowerAccount ? (lang === 'ar' ? 'متابع' : 'Followers') : product.amount}
                 </div>
+                <div className="mt-4 px-4 py-2 rounded-full bg-snap-yellow text-black text-sm font-black">{product.price}</div>
               </div>
             </div>
-            
+
             <div className="flex-1 w-full">
-              <h1 className="text-4xl lg:text-6xl font-black mb-8 italic text-white uppercase tracking-tighter">
-                {product.type} {product.amount}
+              <h1 className="text-3xl lg:text-5xl font-black mb-6 text-white uppercase tracking-tighter">
+                {product.type} — {product.amount}
               </h1>
               
-              <div className="grid grid-cols-2 gap-4 mb-10">
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                  <span className="block text-gray-500 text-xs uppercase font-black mb-2">{lang === 'ar' ? 'السعر' : 'Price'}</span>
+              {/* Stats grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+                <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <span className="block text-gray-500 text-xs uppercase font-black mb-1">{lang === 'ar' ? 'السعر' : 'Price'}</span>
                   <span className="text-2xl font-black text-snap-yellow">{product.price}</span>
                 </div>
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                  <span className="block text-gray-500 text-xs uppercase font-black mb-2">{lang === 'ar' ? 'وقت التسليم' : 'Delivery'}</span>
-                  <span className="text-2xl font-black text-white">{product.deliveryTime}</span>
+                <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <span className="block text-gray-500 text-xs uppercase font-black mb-1">{lang === 'ar' ? 'التسليم' : 'Delivery'}</span>
+                  <span className="text-xl font-black text-white">{product.deliveryTime || '1-24 hrs'}</span>
                 </div>
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                  <span className="block text-gray-500 text-xs uppercase font-black mb-2">{lang === 'ar' ? 'سنة الإنشاء' : 'Account Age'}</span>
-                  <span className="text-2xl font-black text-white">{product.age}</span>
+                <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <span className="block text-gray-500 text-xs uppercase font-black mb-1">{lang === 'ar' ? 'سنة الإنشاء' : 'Account Age'}</span>
+                  <span className="text-xl font-black text-white">{product.age || '2020+'}</span>
                 </div>
-                <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                  <span className="block text-gray-500 text-xs uppercase font-black mb-2">
-                    {product.type === 'Score Account' ? (lang === 'ar' ? 'المتابعين' : 'Followers') : (lang === 'ar' ? 'السكور' : 'Score')}
-                  </span>
-                  <span className="text-2xl font-black text-white">
-                    {product.type === 'Score Account' ? product.followers : product.score}
-                  </span>
+                {(isScoreAccount || isFollowerAccount) && (
+                  <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                    <span className="block text-gray-500 text-xs uppercase font-black mb-1">
+                      {isScoreAccount ? (lang === 'ar' ? 'المتابعون' : 'Followers') : (lang === 'ar' ? 'السكور' : 'Score')}
+                    </span>
+                    <span className="text-xl font-black text-white">{isScoreAccount ? product.followers : product.score}</span>
+                  </div>
+                )}
+                <div className="p-5 rounded-2xl bg-green-500/10 border border-green-500/20 col-span-2 sm:col-span-1">
+                  <span className="block text-gray-500 text-xs uppercase font-black mb-1">{lang === 'ar' ? 'كلمة المرور' : 'Password'}</span>
+                  <span className="text-sm font-black text-green-400">✅ {lang === 'ar' ? 'غير مطلوبة' : 'NOT Required'}</span>
                 </div>
               </div>
 
-              <p className="text-xl text-gray-300 leading-relaxed mb-12 font-medium">
-                {desc}
-              </p>
+              <p className="text-lg text-gray-300 leading-relaxed mb-10 font-medium">{desc}</p>
 
-              <button 
-                onClick={() => onBuy(product)}
+              {/* No password notice */}
+              <div className="p-5 rounded-2xl bg-green-500/5 border border-green-500/20 flex gap-3 mb-8">
+                <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <p className="text-sm text-gray-400">
+                  {lang === 'ar'
+                    ? 'هذا المنتج لا يتطلب كلمة مرور. فقط أرسل اسم مستخدم سناب شات الخاص بك وسنتولى الباقي.'
+                    : 'This product does NOT require a password. Just send your Snapchat username and we handle the rest.'}
+                </p>
+              </div>
+
+              <button onClick={() => onBuy(product)}
                 className="w-full px-12 py-6 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_10px_40px_rgba(255,252,0,0.3)] flex items-center justify-center gap-3 text-xl"
               >
                 <ShoppingBag className="w-6 h-6" />
-                {lang === 'ar' ? 'اشترِ الآن' : 'Buy Now'}
+                {lang === 'ar' ? 'اشترِ الآن عبر واتساب' : 'Buy Now via WhatsApp'}
               </button>
             </div>
           </div>
@@ -1974,21 +2148,24 @@ export default function App() {
         return;
       }
 
-      // Handle service detail
+      // Handle service detail — e.g. #service-s_boost
       if (hash.startsWith('service-')) {
-        const serviceId = hash.split('-')[1];
+        const rest = hash.slice('service-'.length); // e.g. "s_boost" or "s_boost-tier-b10k"
+        const parts = rest.split('-tier-');
+        const serviceId = parts[0];
+        const tierId = parts[1] || null;
         const service = servicesList.find(s => s.id === serviceId);
         if (service) {
-          setSelectedService(service);
+          setSelectedService({ ...service, _tierId: tierId });
           setView('service_detail');
           window.scrollTo(0, 0);
           return;
         }
       }
 
-      // Handle product detail
+      // Handle product detail — e.g. #product-sa10k
       if (hash.startsWith('product-')) {
-        const productId = hash.split('-')[1];
+        const productId = hash.slice('product-'.length);
         const product = [...scoreAccountsStock, ...followerAccountsStock, ...agedAccountsStock, ...verifiedAccountsStock].find(p => p.id === productId);
         if (product) {
           setSelectedProduct(product);
@@ -1998,13 +2175,34 @@ export default function App() {
         }
       }
 
-      // Handle blog detail
+      // Handle catalog category — e.g. #catalog-snapscore
+      if (hash.startsWith('catalog-')) {
+        const catId = hash.slice('catalog-'.length);
+        setSelectedCategory(catId);
+        setView('category_detail');
+        window.scrollTo(0, 0);
+        return;
+      }
+
+      // Handle blog detail — e.g. #blog-0
       if (hash.startsWith('blog-')) {
         const blogIndex = parseInt(hash.split('-')[1]);
         const post = translations[lang].blog.posts[blogIndex];
         if (post) {
-          setSelectedBlogPost(post);
+          setSelectedBlogPost({ ...post, _index: blogIndex });
           setView('blog_detail');
+          window.scrollTo(0, 0);
+          return;
+        }
+      }
+
+      // Handle tool direct links — e.g. #tool-calc
+      if (hash.startsWith('tool-')) {
+        const toolId = hash.slice('tool-'.length);
+        const validTools = ['calc', 'checker', 'tracker', 'bitmoji', 'lens', 'map', 'snapify'];
+        if (validTools.includes(toolId)) {
+          setView(toolId as any);
+          setToolResult(null);
           window.scrollTo(0, 0);
           return;
         }
@@ -2022,7 +2220,6 @@ export default function App() {
       const homeAnchors = ['services', 'catalog', 'how', 'faq', 'contact'];
       if (homeAnchors.includes(hash)) {
         setView('home');
-        // Browser will handle scrolling to anchor if element exists
         return;
       }
 
@@ -2725,67 +2922,83 @@ export default function App() {
               <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tight">
                 {lang === 'ar' ? 'أدواتنا' : 'Our'} <span className="text-snap-yellow">{lang === 'ar' ? 'المجانية' : 'Tools'}</span>
               </h2>
+              <p className="text-gray-400 font-medium mb-4">{lang === 'ar' ? 'كل أداة لها رابط خاص بها للمشاركة' : 'Every tool has its own shareable link'}</p>
               <div className="w-32 h-1.5 bg-snap-yellow mx-auto rounded-full"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {t.nav.toolItems.map((tool: any, i: number) => (
-                <motion.div
-                  key={tool.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  onClick={() => handleToolClick(tool.id, tool.isPro)}
-                  className={`p-10 rounded-[3rem] border transition-all group cursor-pointer relative overflow-hidden ${
-                    i % 4 === 0 ? 'bg-blue-600/10 border-blue-500/20 hover:border-blue-500/50' : 
-                    i % 4 === 1 ? 'bg-purple-600/10 border-purple-500/20 hover:border-purple-500/50' : 
-                    i % 4 === 2 ? 'bg-orange-600/10 border-orange-500/20 hover:border-orange-500/50' :
-                    'bg-green-600/10 border-green-500/20 hover:border-green-500/50'
-                  }`}
-                >
-                  {tool.isPro ? (
-                    <div className="absolute top-6 right-6 px-3 py-1 bg-snap-yellow text-black text-[10px] font-black rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(255,252,0,0.5)] z-20">
-                      PRO
+              {t.nav.toolItems.map((tool: any, i: number) => {
+                const toolColorMap = [
+                  { bg: 'bg-gradient-to-br from-blue-900/60 to-blue-600/15', border: 'border-blue-500/30 hover:border-blue-400/60', icon: 'bg-blue-500/15 text-blue-400', glow: 'bg-blue-500', badge: 'bg-blue-600' },
+                  { bg: 'bg-gradient-to-br from-purple-900/60 to-purple-600/15', border: 'border-purple-500/30 hover:border-purple-400/60', icon: 'bg-purple-500/15 text-purple-400', glow: 'bg-purple-500', badge: 'bg-purple-600' },
+                  { bg: 'bg-gradient-to-br from-orange-900/60 to-orange-600/15', border: 'border-orange-500/30 hover:border-orange-400/60', icon: 'bg-orange-500/15 text-orange-400', glow: 'bg-orange-500', badge: 'bg-orange-600' },
+                  { bg: 'bg-gradient-to-br from-green-900/60 to-green-600/15', border: 'border-green-500/30 hover:border-green-400/60', icon: 'bg-green-500/15 text-green-400', glow: 'bg-green-500', badge: 'bg-green-600' },
+                  { bg: 'bg-gradient-to-br from-pink-900/60 to-pink-600/15', border: 'border-pink-500/30 hover:border-pink-400/60', icon: 'bg-pink-500/15 text-pink-400', glow: 'bg-pink-500', badge: 'bg-pink-600' },
+                  { bg: 'bg-gradient-to-br from-cyan-900/60 to-cyan-600/15', border: 'border-cyan-500/30 hover:border-cyan-400/60', icon: 'bg-cyan-500/15 text-cyan-400', glow: 'bg-cyan-500', badge: 'bg-cyan-600' },
+                  { bg: 'bg-gradient-to-br from-yellow-900/60 to-yellow-600/15', border: 'border-yellow-500/30 hover:border-yellow-400/60', icon: 'bg-yellow-500/15 text-yellow-400', glow: 'bg-yellow-500', badge: 'bg-yellow-600' },
+                ];
+                const tc = toolColorMap[i % toolColorMap.length];
+                const toolHash = `tool-${tool.id}`;
+
+                return (
+                  <motion.div
+                    key={tool.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className={`p-8 rounded-[3rem] border-2 transition-all group cursor-pointer relative overflow-hidden ${tc.bg} ${tc.border}`}
+                  >
+                    {tool.isPro ? (
+                      <div className="absolute top-5 right-5 px-3 py-1 bg-snap-yellow text-black text-[10px] font-black rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(255,252,0,0.5)] z-20">PRO</div>
+                    ) : (
+                      <div className="absolute top-5 right-5 px-3 py-1 bg-green-500/20 text-green-400 text-[10px] font-black rounded-full border border-green-500/30 uppercase tracking-widest z-20">FREE</div>
+                    )}
+                    <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-all ${tc.glow}`}></div>
+                    <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform ${tc.icon}`}>
+                      {tool.id === 'calc' ? <Calculator className="w-8 h-8" /> : 
+                       tool.id === 'checker' ? <ShieldCheck className="w-8 h-8" /> : 
+                       tool.id === 'tracker' ? <TrendingUp className="w-8 h-8" /> : 
+                       tool.id === 'bitmoji' ? <User className="w-8 h-8" /> : 
+                       tool.id === 'lens' ? <Zap className="w-8 h-8" /> : 
+                       tool.id === 'map' ? <MapPin className="w-8 h-8" /> :
+                       <InfinityIcon className="w-8 h-8" />}
                     </div>
-                  ) : (
-                    <div className="absolute top-6 right-6 px-3 py-1 bg-green-500/20 text-green-400 text-[10px] font-black rounded-full border border-green-500/30 uppercase tracking-widest z-20">
-                      FREE
+                    <h3 className="text-2xl font-black mb-3 group-hover:text-snap-yellow transition-colors">{lang === 'ar' ? tool.ar : tool.title}</h3>
+                    <p className="text-gray-400 leading-relaxed mb-6 text-sm">
+                      {tool.isPro 
+                        ? (lang === 'ar' ? 'أدوات احترافية حصرية لمشتركي سناب فاي برو.' : 'Exclusive professional tools for Snapify Pro subscribers.')
+                        : (lang === 'ar' ? 'استخدم أداتنا المجانية لتحسين تجربتك على سناب شات.' : 'Use our free tool to enhance your Snapchat experience.')
+                      }
+                    </p>
+
+                    <div className="flex items-center gap-3 mb-4">
+                      <button
+                        onClick={() => {
+                          handleToolClick(tool.id, tool.isPro);
+                          window.location.hash = toolHash;
+                        }}
+                        className="flex-1 py-3 bg-snap-yellow text-black font-black rounded-xl hover:scale-105 transition-all text-sm flex items-center justify-center gap-2"
+                      >
+                        <Zap className="w-4 h-4" />
+                        {lang === 'ar' ? 'جرب الآن' : 'Try Now'}
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const link = `${window.location.origin}${window.location.pathname}#${toolHash}`;
+                          navigator.clipboard.writeText(link).then(() => alert(lang === 'ar' ? 'تم نسخ رابط الأداة!' : 'Tool link copied!'));
+                        }}
+                        className="w-11 h-11 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all"
+                      >
+                        <Link className="w-4 h-4" />
+                      </button>
                     </div>
-                  )}
-                  <div className={`absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl group-hover:bg-white/10 transition-colors ${
-                    i % 4 === 0 ? 'bg-blue-500/10' : 
-                    i % 4 === 1 ? 'bg-purple-500/10' : 
-                    i % 4 === 2 ? 'bg-orange-500/10' :
-                    'bg-green-500/10'
-                  }`}></div>
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${
-                    i % 4 === 0 ? 'bg-blue-500/10 text-blue-400' : 
-                    i % 4 === 1 ? 'bg-purple-500/10 text-purple-400' : 
-                    i % 4 === 2 ? 'bg-orange-500/10 text-orange-400' :
-                    'bg-green-500/10 text-green-400'
-                  }`}>
-                    {tool.id === 'calc' ? <Calculator className="w-8 h-8" /> : 
-                     tool.id === 'checker' ? <ShieldCheck className="w-8 h-8" /> : 
-                     tool.id === 'tracker' ? <TrendingUp className="w-8 h-8" /> : 
-                     tool.id === 'bitmoji' ? <User className="w-8 h-8" /> : 
-                     tool.id === 'lens' ? <Zap className="w-8 h-8" /> : 
-                     tool.id === 'map' ? <MapPin className="w-8 h-8" /> :
-                     <InfinityIcon className="w-8 h-8" />}
-                  </div>
-                  <h3 className="text-2xl font-black mb-4 group-hover:text-snap-yellow transition-colors">{lang === 'ar' ? tool.ar : tool.title}</h3>
-                  <p className="text-gray-400 leading-relaxed mb-8">
-                    {tool.isPro ? 
-                      (lang === 'ar' ? 'أدوات احترافية حصرية لمشتركي سناب فاي برو.' : 'Exclusive professional tools for Snapify Pro subscribers.') :
-                      (lang === 'ar' ? 'استخدم أداتنا المجانية لتحسين تجربتك على سناب شات.' : 'Use our free tool to enhance your Snapchat experience.')
-                    }
-                  </p>
-                  <div className="flex items-center gap-2 text-snap-yellow font-bold uppercase tracking-widest text-xs">
-                    {lang === 'ar' ? 'جرب الآن' : 'Try Now'}
-                    <ChevronRight className={`w-4 h-4 ${lang === 'ar' ? 'rotate-180' : ''}`} />
-                  </div>
-                </motion.div>
-              ))}
+
+                    <div className="text-xs text-gray-700 font-mono">#{toolHash}</div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -3052,12 +3265,9 @@ export default function App() {
             service={selectedService} 
             lang={lang} 
             onBack={() => setView('home')} 
+            openWhatsApp={openWhatsApp}
             onOrder={(s) => {
-              if (s.id === 's_boost') {
-                setView('boosting');
-              } else {
-                openWhatsApp(lang === 'ar' ? `أريد طلب خدمة: ${s.title}` : `I want to order service: ${s.title}`);
-              }
+              openWhatsApp(lang === 'ar' ? `أريد طلب خدمة: ${s.title}` : `I want to order service: ${s.title}`);
             }} 
           />
         )}
@@ -3420,10 +3630,7 @@ export default function App() {
                       <span className="text-2xl font-black text-white">{selectedPackage.price}</span>
                     </div>
                     <div className="pt-6 border-t border-white/5">
-                      <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">{lang === 'ar' ? 'تفاصيل المنتج' : 'Product Details'}</h3>
-                      <p className="text-sm text-gray-400 leading-relaxed">
-                        {t.checkout.productDetails}
-                      </p>
+                      <p className="text-sm text-gray-400 leading-relaxed">{t.checkout.productDetails}</p>
                     </div>
                   </div>
                 </div>
@@ -3440,29 +3647,49 @@ export default function App() {
                       placeholder="@username" 
                     />
                   </div>
-                  <div className="p-8 rounded-2xl bg-purple-600/5 border border-purple-500/20">
-                    <label className="block text-sm font-bold text-purple-400 uppercase tracking-widest mb-3">{t.checkout.password}</label>
-                    <input 
-                      type="password" 
-                      value={checkoutData.password}
-                      onChange={(e) => setCheckoutData({...checkoutData, password: e.target.value})}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors text-lg" 
-                      placeholder="••••••••" 
-                    />
-                  </div>
 
-                  <div className="p-6 rounded-2xl bg-snap-yellow/5 border border-snap-yellow/20 flex gap-4 items-start">
-                    <Lock className="w-6 h-6 text-snap-yellow flex-shrink-0 mt-1" />
-                    <p className="text-sm text-gray-400 leading-relaxed italic">
-                      {t.checkout.notice}
-                    </p>
-                  </div>
-
-
+                  {/* Password — only required for score accounts */}
+                  {selectedPackage.type === 'Score Account' ? (
+                    <div className="p-8 rounded-2xl bg-red-600/5 border border-red-500/20">
+                      <label className="block text-sm font-bold text-red-400 uppercase tracking-widest mb-3">
+                        🔑 {t.checkout.password}
+                      </label>
+                      <input 
+                        type="password" 
+                        value={checkoutData.password}
+                        onChange={(e) => setCheckoutData({...checkoutData, password: e.target.value})}
+                        className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors text-lg" 
+                        placeholder="••••••••" 
+                      />
+                      <p className="text-xs text-red-400/70 mt-2">{t.checkout.notice}</p>
+                    </div>
+                  ) : (
+                    <div className="p-6 rounded-2xl bg-green-500/5 border border-green-500/20 flex gap-4 items-start">
+                      <CheckCircle2 className="w-6 h-6 text-green-400 flex-shrink-0 mt-0.5" />
+                      <p className="text-sm text-gray-400 leading-relaxed">
+                        {lang === 'ar'
+                          ? '✅ هذا المنتج لا يتطلب كلمة مرور. فقط أرسل اسم مستخدم سناب شات الخاص بك.'
+                          : '✅ This product does NOT require a password. Just send your Snapchat username.'}
+                      </p>
+                    </div>
+                  )}
 
                   <button 
-                    onClick={handleCheckout}
-                    disabled={isProcessing || !checkoutData.username || !checkoutData.password}
+                    onClick={() => {
+                      setIsProcessing(true);
+                      setTimeout(() => {
+                        const needsPass = selectedPackage.type === 'Score Account';
+                        const message = needsPass
+                          ? `New Order!\nPackage: ${selectedPackage.amount} ${selectedPackage.type}\nUsername: ${checkoutData.username}\nPassword: ${checkoutData.password}\nPrice: ${selectedPackage.price}`
+                          : `New Order!\nPackage: ${selectedPackage.amount} ${selectedPackage.type}\nUsername: ${checkoutData.username}\nPrice: ${selectedPackage.price}`;
+                        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+                        setIsProcessing(false);
+                        setView('home');
+                        setSelectedPackage(null);
+                        setCheckoutData({ username: '', password: '' });
+                      }, 2000);
+                    }}
+                    disabled={isProcessing || !checkoutData.username || (selectedPackage.type === 'Score Account' && !checkoutData.password)}
                     className="w-full py-6 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_10px_40px_rgba(255,252,0,0.3)] disabled:opacity-50 disabled:hover:scale-100 text-xl flex items-center justify-center gap-4"
                   >
                     {isProcessing ? (
@@ -3472,7 +3699,7 @@ export default function App() {
                       </>
                     ) : (
                       <>
-                        <CreditCard className="w-6 h-6" />
+                        <WhatsAppIcon className="w-6 h-6" />
                         {t.checkout.button}
                       </>
                     )}
