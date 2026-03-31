@@ -1759,137 +1759,157 @@ const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: (
   const [copied, setCopied] = useState(false);
   const content = lang === 'ar' ? (post.arContent || post.content) : post.content;
   const title = lang === 'ar' ? (post.arTitle || post.title) : post.title;
+  const blogIndex = post._index ?? 0;
+
+  // Rich color palettes per blog index
+  const palettes = [
+    { hero: 'from-indigo-900 via-purple-900 to-indigo-950', accent: '#818cf8', accentDark: '#4f46e5', h2bg: 'from-indigo-900/60 to-purple-800/20', h2border: 'border-indigo-500/50', h2text: 'text-indigo-300', h3border: '#818cf8', blockBg: 'from-indigo-900/40 to-purple-900/20', blockBorder: 'border-indigo-500/40' },
+    { hero: 'from-fuchsia-900 via-pink-900 to-fuchsia-950', accent: '#e879f9', accentDark: '#c026d3', h2bg: 'from-fuchsia-900/60 to-pink-800/20', h2border: 'border-fuchsia-500/50', h2text: 'text-fuchsia-300', h3border: '#e879f9', blockBg: 'from-fuchsia-900/40 to-pink-900/20', blockBorder: 'border-fuchsia-500/40' },
+    { hero: 'from-orange-900 via-amber-900 to-orange-950', accent: '#fb923c', accentDark: '#ea580c', h2bg: 'from-orange-900/60 to-amber-800/20', h2border: 'border-orange-500/50', h2text: 'text-orange-300', h3border: '#fb923c', blockBg: 'from-orange-900/40 to-amber-900/20', blockBorder: 'border-orange-500/40' },
+    { hero: 'from-emerald-900 via-green-900 to-emerald-950', accent: '#4ade80', accentDark: '#16a34a', h2bg: 'from-emerald-900/60 to-green-800/20', h2border: 'border-emerald-500/50', h2text: 'text-emerald-300', h3border: '#4ade80', blockBg: 'from-emerald-900/40 to-green-900/20', blockBorder: 'border-emerald-500/40' },
+    { hero: 'from-rose-900 via-pink-900 to-rose-950', accent: '#fb7185', accentDark: '#e11d48', h2bg: 'from-rose-900/60 to-pink-800/20', h2border: 'border-rose-500/50', h2text: 'text-rose-300', h3border: '#fb7185', blockBg: 'from-rose-900/40 to-pink-900/20', blockBorder: 'border-rose-500/40' },
+    { hero: 'from-sky-900 via-cyan-900 to-sky-950', accent: '#38bdf8', accentDark: '#0284c7', h2bg: 'from-sky-900/60 to-cyan-800/20', h2border: 'border-sky-500/50', h2text: 'text-sky-300', h3border: '#38bdf8', blockBg: 'from-sky-900/40 to-cyan-900/20', blockBorder: 'border-sky-500/40' },
+  ];
+  const p = palettes[blogIndex % palettes.length];
 
   const copyLink = () => {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url);
+    navigator.clipboard.writeText(window.location.href);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setTimeout(() => setCopied(false), 2500);
   };
 
   return (
-    <section className="pt-40 pb-24 px-6 min-h-screen bg-matte-black">
+    <section className="pt-28 pb-24 px-4 lg:px-6 min-h-screen" style={{ background: '#070710' }}>
       <div className="max-w-4xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass rounded-[3rem] border-white/10 overflow-hidden shadow-2xl"
-        >
-          <div className="relative h-[300px] lg:h-[500px]">
-            <img 
-              src={post.thumbnail || `https://picsum.photos/seed/blog-${post.title}/1200/800`} 
-              alt={title} 
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+
+          {/* Hero banner */}
+          <div className={`relative h-[260px] lg:h-[420px] rounded-[2.5rem] overflow-hidden mb-0 bg-gradient-to-br ${p.hero}`}>
+            <img
+              src={`https://picsum.photos/seed/snpblog${blogIndex}hd/1200/600`}
+              alt={title}
+              className="w-full h-full object-cover opacity-30 mix-blend-luminosity"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-matte-black via-matte-black/20 to-transparent"></div>
-            <button 
+            {/* Animated glow overlay */}
+            <motion.div
+              animate={{ opacity: [0.4, 0.7, 0.4] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="absolute inset-0"
+              style={{ background: `radial-gradient(ellipse at 50% 60%, ${p.accentDark}55 0%, transparent 70%)` }}
+            />
+            {/* Back button */}
+            <button
               onClick={onBack}
-              className="absolute top-8 left-8 w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-snap-yellow hover:text-black transition-all z-20 shadow-lg"
+              className="absolute top-6 left-6 z-20 flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-sm font-bold hover:bg-black/60 transition-all"
             >
-              <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
+              <ChevronLeft className="w-4 h-4" />
+              {lang === 'ar' ? 'رجوع' : 'Back'}
             </button>
-          </div>
-
-          <div className="p-8 lg:p-16 -mt-20 relative z-10">
-            <div className="inline-block px-6 py-3 rounded-2xl bg-snap-yellow text-black font-black text-sm uppercase tracking-widest mb-8 shadow-[0_10px_30px_rgba(255,252,0,0.3)]">
-              {post.date}
-            </div>
-            <h1 className="text-4xl lg:text-7xl font-black mb-12 leading-tight tracking-tighter italic text-white uppercase">
-              {title}
-            </h1>
-            
-            <div className="prose prose-invert prose-snap max-w-none">
-              <div className={`text-gray-300 leading-relaxed text-xl space-y-10 markdown-body ${lang === 'ar' ? 'text-right' : 'text-left'}`} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-                <ReactMarkdown
-                  components={{
-                    h2: ({node, ...props}) => (
-                      <div className="my-16 p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-600/30 to-purple-600/10 border-2 border-blue-500/40 shadow-[0_20px_50px_rgba(37,99,235,0.2)] relative overflow-hidden group">
-                        <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl group-hover:bg-blue-500/30 transition-colors"></div>
-                        <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl group-hover:bg-purple-500/20 transition-colors"></div>
-                        <h2 className="text-3xl lg:text-5xl font-black text-blue-400 m-0 uppercase tracking-tighter italic relative z-10 drop-shadow-lg" {...props} />
-                      </div>
-                    ),
-                    h3: ({node, ...props}) => (
-                      <div className="my-12 p-8 rounded-[2rem] bg-gradient-to-r from-snap-yellow/20 to-transparent border-l-8 border-snap-yellow shadow-2xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-snap-yellow/5 rounded-full blur-2xl"></div>
-                        <h3 className="text-2xl lg:text-4xl font-black text-snap-yellow m-0 uppercase tracking-tight relative z-10 drop-shadow-md" {...props} />
-                      </div>
-                    ),
-                    h4: ({node, ...props}) => (
-                      <div className="my-10 p-6 rounded-2xl bg-gradient-to-br from-green-600/20 to-emerald-600/5 border-2 border-green-500/30 shadow-xl">
-                        <h4 className="text-xl lg:text-3xl font-black text-green-400 m-0 uppercase italic" {...props} />
-                      </div>
-                    ),
-                    p: ({node, ...props}) => <p className="text-gray-300 leading-relaxed font-medium mb-8 text-lg lg:text-xl" {...props} />,
-                    ul: ({node, ...props}) => <ul className="space-y-6 my-10 list-none p-0" {...props} />,
-                    ol: ({node, ...props}) => <ol className="space-y-6 my-10 list-decimal list-inside p-0" {...props} />,
-                    li: ({node, ...props}) => (
-                      <li className="flex items-start gap-4 text-gray-300 font-medium bg-white/5 p-6 rounded-2xl border border-white/10 hover:border-snap-yellow/40 hover:bg-white/10 transition-all shadow-lg group">
-                        <div className="w-3 h-3 rounded-full bg-snap-yellow mt-3 shrink-0 shadow-[0_0_15px_rgba(255,252,0,0.6)] group-hover:scale-125 transition-transform"></div>
-                        <span className="flex-1">{props.children}</span>
-                      </li>
-                    ),
-                    strong: ({node, ...props}) => <strong className="text-snap-yellow font-black bg-snap-yellow/10 px-2 py-0.5 rounded border border-snap-yellow/20" {...props} />,
-                    blockquote: ({node, ...props}) => (
-                      <div className="my-12 p-10 rounded-[2.5rem] bg-gradient-to-br from-purple-600/20 to-pink-600/5 border-2 border-dashed border-purple-500/40 relative shadow-2xl">
-                        <div className="absolute -top-6 left-10 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-sm font-black uppercase tracking-widest rounded-xl shadow-lg">
-                          {lang === 'ar' ? 'ملاحظة هامة' : 'Important Note'}
-                        </div>
-                        <blockquote className="italic text-purple-200 m-0 text-2xl font-medium leading-relaxed" {...props} />
-                      </div>
-                    )
-                  }}
-                >
-                  {content}
-                </ReactMarkdown>
-              </div>
-            </div>
-
-            <div className="mt-20 pt-12 border-t border-white/10 flex flex-col lg:flex-row items-center justify-between gap-10">
-              <div className="flex items-center gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-snap-yellow/20 flex items-center justify-center text-snap-yellow shadow-inner">
-                  <Share2 className="w-8 h-8" />
-                </div>
-                <div>
-                  <span className="block font-black text-white uppercase tracking-widest text-lg">
-                    {lang === 'ar' ? 'شارك هذا المقال' : 'Share this article'}
-                  </span>
-                  <span className="text-gray-500 text-sm">{lang === 'ar' ? 'انشر المعرفة مع أصدقائك' : 'Spread the knowledge with your friends'}</span>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                <button 
-                  onClick={copyLink}
-                  className="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 text-white font-black hover:bg-white/10 transition-all shadow-lg hover:-translate-y-1 relative group"
-                >
-                  {copied ? <Check className="w-5 h-5 text-green-400" /> : <Link className="w-5 h-5 text-snap-yellow" />}
-                  <span>{copied ? (lang === 'ar' ? 'تم النسخ' : 'Copied!') : (lang === 'ar' ? 'نسخ الرابط' : 'Copy Link')}</span>
-                </button>
-                
-                <button 
-                  onClick={() => {
-                    const text = `${title}\n\n${window.location.href}`;
-                    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-                  }}
-                  className="px-8 py-4 rounded-2xl bg-[#25D366]/20 border border-[#25D366]/30 flex items-center gap-3 text-[#25D366] font-black hover:bg-[#25D366]/30 transition-all shadow-lg hover:-translate-y-1"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  <span>{lang === 'ar' ? 'واتساب' : 'WhatsApp'}</span>
-                </button>
-
-                <button 
-                  onClick={() => {
-                    const text = `${title}\n\n${window.location.href}`;
-                    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
-                  }}
-                  className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all shadow-lg hover:-translate-y-1"
-                >
-                  <Twitter className="w-6 h-6" />
-                </button>
-              </div>
+            {/* Date badge */}
+            <div className="absolute top-6 right-6 z-20 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border text-xs font-bold uppercase tracking-widest" style={{ color: p.accent, borderColor: `${p.accent}60` }}>
+              📅 {post.date}
             </div>
           </div>
+
+          {/* Title card */}
+          <div className="relative -mt-12 mx-4 z-10 mb-0">
+            <div className="rounded-[2rem] p-8 lg:p-12" style={{ background: 'rgba(10,10,20,0.95)', border: `2px solid ${p.accent}40`, boxShadow: `0 0 60px ${p.accentDark}30` }}>
+              <motion.div
+                animate={{ borderColor: [p.accent + '40', p.accent + '90', p.accent + '40'] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-5 border"
+                style={{ color: p.accent, background: `${p.accentDark}20`, borderColor: p.accent + '50' }}
+              >
+                ✦ {lang === 'ar' ? 'مقال' : 'Article'} #{blogIndex + 1}
+              </motion.div>
+              <h1 className="text-3xl lg:text-5xl font-black mb-0 leading-tight tracking-tight text-white">
+                {title}
+              </h1>
+            </div>
+          </div>
+
+          {/* Article body */}
+          <div className="mt-6 rounded-[2rem] overflow-hidden" style={{ background: 'rgba(10,10,20,0.9)', border: `1px solid ${p.accent}25` }}>
+            <div className={`p-8 lg:p-14 ${lang === 'ar' ? 'text-right' : 'text-left'}`} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+              <ReactMarkdown
+                components={{
+                  h2: ({ node, ...props }) => (
+                    <div className={`my-10 p-8 rounded-[1.5rem] bg-gradient-to-br ${p.h2bg} border-2 ${p.h2border} relative overflow-hidden`}>
+                      <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-30" style={{ background: p.accentDark }} />
+                      <h2 className={`text-2xl lg:text-4xl font-black m-0 uppercase tracking-tight ${p.h2text} relative z-10`} {...props} />
+                    </div>
+                  ),
+                  h3: ({ node, ...props }) => (
+                    <div className="my-8 flex items-center gap-3">
+                      <div className="w-1.5 h-8 rounded-full flex-shrink-0" style={{ background: p.h3border }} />
+                      <h3 className="text-xl lg:text-3xl font-black m-0 text-white" {...props} />
+                    </div>
+                  ),
+                  h4: ({ node, ...props }) => (
+                    <h4 className="text-lg lg:text-2xl font-black my-6 text-white/90" style={{ color: p.accent }} {...props} />
+                  ),
+                  p: ({ node, ...props }) => (
+                    <p className="text-gray-300 leading-relaxed font-medium mb-6 text-base lg:text-lg" {...props} />
+                  ),
+                  ul: ({ node, ...props }) => <ul className="space-y-3 my-6 list-none p-0" {...props} />,
+                  ol: ({ node, ...props }) => <ol className="space-y-3 my-6 list-decimal list-inside p-0" {...props} />,
+                  li: ({ node, ...props }) => (
+                    <li className="flex items-start gap-3 text-gray-300 font-medium p-4 rounded-xl border border-white/8 bg-white/3 hover:bg-white/6 transition-all">
+                      <div className="w-2.5 h-2.5 rounded-full mt-2 flex-shrink-0 shadow-[0_0_10px_currentColor]" style={{ background: p.accent, color: p.accent }} />
+                      <span className="flex-1">{props.children}</span>
+                    </li>
+                  ),
+                  strong: ({ node, ...props }) => (
+                    <strong className="font-black px-1.5 py-0.5 rounded" style={{ color: p.accent, background: `${p.accentDark}25` }} {...props} />
+                  ),
+                  blockquote: ({ node, ...props }) => (
+                    <div className={`my-8 p-7 rounded-[1.5rem] bg-gradient-to-br ${p.blockBg} border-l-4 ${p.blockBorder} relative`} style={{ borderLeftColor: p.accent }}>
+                      <div className="text-xs font-black uppercase tracking-widest mb-3" style={{ color: p.accent }}>💡 {lang === 'ar' ? 'نقطة مهمة' : 'Key Point'}</div>
+                      <blockquote className="italic text-white/80 m-0 text-lg font-medium leading-relaxed" {...props} />
+                    </div>
+                  ),
+                  code: ({ node, ...props }) => (
+                    <code className="px-2 py-0.5 rounded text-sm font-mono" style={{ background: `${p.accentDark}30`, color: p.accent }} {...props} />
+                  ),
+                }}
+              >
+                {content}
+              </ReactMarkdown>
+            </div>
+          </div>
+
+          {/* Share footer */}
+          <div className="mt-6 rounded-[2rem] p-8 flex flex-col sm:flex-row items-center justify-between gap-6" style={{ background: 'rgba(10,10,20,0.9)', border: `1px solid ${p.accent}25` }}>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: `${p.accentDark}30`, color: p.accent }}>
+                <Share2 className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="font-black text-white text-base">{lang === 'ar' ? 'شارك المقال' : 'Share Article'}</div>
+                <div className="text-xs text-gray-500">{lang === 'ar' ? 'رابط خاص بهذا المقال' : `Direct link: #blog-${blogIndex}`}</div>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <button onClick={copyLink}
+                className="flex items-center gap-2 px-5 py-3 rounded-xl font-black text-sm transition-all"
+                style={{ background: copied ? '#16a34a30' : `${p.accentDark}25`, color: copied ? '#4ade80' : p.accent, border: `1px solid ${copied ? '#4ade8060' : p.accent + '50'}` }}>
+                {copied ? <Check className="w-4 h-4" /> : <Link className="w-4 h-4" />}
+                {copied ? (lang === 'ar' ? 'تم النسخ!' : 'Copied!') : (lang === 'ar' ? 'نسخ الرابط' : 'Copy Link')}
+              </button>
+              <button
+                onClick={() => window.open(`https://wa.me/?text=${encodeURIComponent(title + '\n\n' + window.location.href)}`, '_blank')}
+                className="flex items-center gap-2 px-5 py-3 rounded-xl bg-[#25D366]/15 border border-[#25D366]/30 text-[#25D366] font-black text-sm hover:bg-[#25D366]/25 transition-all">
+                <MessageCircle className="w-4 h-4" />
+                WhatsApp
+              </button>
+              <button
+                onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title + '\n\n' + window.location.href)}`, '_blank')}
+                className="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/25 flex items-center justify-center text-sky-400 hover:bg-sky-500/20 transition-all">
+                <Twitter className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+
         </motion.div>
       </div>
     </section>
@@ -2329,28 +2349,28 @@ export default function App() {
         {/* Base dark/light gradient */}
         <div className={`absolute inset-0 transition-colors duration-700 ${isDark ? 'bg-gradient-to-br from-[#080810] via-[#0d0d1a] to-[#080810]' : 'bg-gradient-to-br from-slate-100 via-yellow-50 to-slate-100'}`}></div>
         
-        {/* Animated Snap Yellow orbs */}
+        {/* Animated Snap Yellow orbs — animated in dark, static in light */}
         <motion.div
-          animate={{ scale: [1, 1.3, 1], opacity: isDark ? [0.15, 0.28, 0.15] : [0.08, 0.15, 0.08], x: [0, 40, 0], y: [0, -30, 0] }}
+          animate={isDark ? { scale: [1, 1.3, 1], opacity: [0.15, 0.28, 0.15], x: [0, 40, 0], y: [0, -30, 0] } : {}}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,220,0,0.4) 0%, transparent 70%)' }}
+          style={{ background: isDark ? 'radial-gradient(circle, rgba(255,220,0,0.4) 0%, transparent 70%)' : 'radial-gradient(circle, rgba(255,200,0,0.1) 0%, transparent 70%)' }}
         />
         <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: isDark ? [0.1, 0.2, 0.1] : [0.06, 0.12, 0.06], x: [0, -50, 0], y: [0, 40, 0] }}
+          animate={isDark ? { scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1], x: [0, -50, 0], y: [0, 40, 0] } : {}}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
           className="absolute bottom-[-10%] right-[-5%] w-[700px] h-[700px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,180,0,0.35) 0%, transparent 70%)' }}
+          style={{ background: isDark ? 'radial-gradient(circle, rgba(255,180,0,0.35) 0%, transparent 70%)' : 'radial-gradient(circle, rgba(255,180,0,0.07) 0%, transparent 70%)' }}
         />
         <motion.div
-          animate={{ scale: [1, 1.4, 1], opacity: isDark ? [0.07, 0.15, 0.07] : [0.04, 0.09, 0.04] }}
+          animate={isDark ? { scale: [1, 1.4, 1], opacity: [0.07, 0.15, 0.07] } : {}}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
           className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,252,0,0.2) 0%, transparent 70%)' }}
+          style={{ background: isDark ? 'radial-gradient(circle, rgba(255,252,0,0.2) 0%, transparent 70%)' : 'none' }}
         />
 
-        {/* Floating Ghost Silhouettes (Snapchat ghosts) */}
-        {[...Array(6)].map((_, i) => (
+        {/* Floating Ghost Silhouettes — Dark mode only */}
+        {isDark && [...Array(6)].map((_, i) => (
           <motion.div
             key={i}
             animate={{
@@ -2372,8 +2392,8 @@ export default function App() {
           </motion.div>
         ))}
 
-        {/* Floating score numbers */}
-        {['5K', '100K', '1M', '500K', '50K', '2M'].map((num, i) => (
+        {/* Floating score numbers — Dark mode only */}
+        {isDark && ['5K', '100K', '1M', '500K', '50K', '2M'].map((num, i) => (
           <motion.div
             key={num}
             animate={{
@@ -2392,11 +2412,21 @@ export default function App() {
           </motion.div>
         ))}
 
-        {/* Grid lines */}
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: 'linear-gradient(rgba(255,252,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,252,0,0.5) 1px, transparent 1px)',
-          backgroundSize: '60px 60px'
-        }}></div>
+        {/* Grid lines — Dark mode only */}
+        {isDark && (
+          <div className="absolute inset-0 opacity-[0.025]" style={{
+            backgroundImage: 'linear-gradient(rgba(255,252,0,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,252,0,0.5) 1px, transparent 1px)',
+            backgroundSize: '60px 60px'
+          }}></div>
+        )}
+
+        {/* Light mode subtle pattern */}
+        {!isDark && (
+          <div className="absolute inset-0 opacity-[0.04]" style={{
+            backgroundImage: 'radial-gradient(circle, #d4a600 1px, transparent 1px)',
+            backgroundSize: '32px 32px'
+          }}></div>
+        )}
 
         {/* Top and bottom gradient overlays */}
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#0a0a0a] to-transparent"></div>
@@ -3366,6 +3396,7 @@ export default function App() {
                 {[
                   { icon: <WhatsAppIcon className="w-8 h-8" />, label: 'WhatsApp Support', value: WHATSAPP_NUMBER, grad: 'from-green-900/50 to-green-600/10', border: 'border-green-500/30 hover:border-green-400/70', action: () => openWhatsApp('Hello, I want to inquire about services') },
                   { icon: <Send className="w-8 h-8" />, label: 'Email Support', value: 'support@snapscore.store', grad: 'from-blue-900/50 to-blue-600/10', border: 'border-blue-500/30 hover:border-blue-400/70', action: () => window.open('mailto:support@snapscore.store') },
+                  { icon: <svg viewBox="0 0 24 24" className="w-8 h-8" fill="currentColor"><path d="M12.206 1c-2.945 0-5.687 1.336-7.512 3.59C2.87 6.844 2.204 9.685 2.796 12.354c.592 2.67 2.282 4.99 4.664 6.428l.48.282-.074.548c-.132.975-.418 1.918-.848 2.793.8-.13 1.587-.387 2.322-.762l.456-.231.491.134c.628.17 1.277.257 1.929.257 2.945 0 5.687-1.336 7.512-3.59 1.824-2.254 2.49-5.095 1.898-7.764-.592-2.67-2.282-4.99-4.664-6.428C15.382 1.47 13.807 1 12.206 1z"/></svg>, label: 'Snapchat', value: '@snapscorestore', grad: 'from-yellow-900/50 to-yellow-600/10', border: 'border-yellow-500/30 hover:border-yellow-400/70', action: () => window.open('https://snapchat.com/add/snapscorestore', '_blank') },
                   { icon: <Instagram className="w-8 h-8" />, label: 'Instagram', value: '@snapscore.store', grad: 'from-pink-900/50 to-pink-600/10', border: 'border-pink-500/30 hover:border-pink-400/70', action: () => {} },
                   { icon: <Twitter className="w-8 h-8" />, label: 'Twitter / X', value: '@SnapScoreStore', grad: 'from-sky-900/50 to-sky-600/10', border: 'border-sky-500/30 hover:border-sky-400/70', action: () => {} },
                 ].map((item, i) => (
