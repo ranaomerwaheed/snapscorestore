@@ -1916,6 +1916,7 @@ export default function App() {
   const [isSnapifyUnlocked, setIsSnapifyUnlocked] = useState(false);
   const [snapifyCode, setSnapifyCode] = useState('');
   const [showUsage, setShowUsage] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   const handleToolClick = (toolId: string, isPro?: boolean) => {
     setView(toolId as any);
@@ -2322,30 +2323,30 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-matte-black selection:bg-snap-yellow selection:text-black overflow-x-hidden font-${lang === 'ar' ? 'cairo' : 'sans'} relative`}>
+    <div className={`min-h-screen selection:bg-snap-yellow selection:text-black overflow-x-hidden font-${lang === 'ar' ? 'cairo' : 'sans'} relative transition-colors duration-700 ${isDark ? 'bg-[#080810] text-white' : 'bg-slate-100 text-gray-900'}`}>
       {/* Snapchat-themed Animated Background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Base dark gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0d0d1a] to-[#0a0a0a]"></div>
+        {/* Base dark/light gradient */}
+        <div className={`absolute inset-0 transition-colors duration-700 ${isDark ? 'bg-gradient-to-br from-[#080810] via-[#0d0d1a] to-[#080810]' : 'bg-gradient-to-br from-slate-100 via-yellow-50 to-slate-100'}`}></div>
         
         {/* Animated Snap Yellow orbs */}
         <motion.div
-          animate={{ scale: [1, 1.3, 1], opacity: [0.12, 0.22, 0.12], x: [0, 40, 0], y: [0, -30, 0] }}
+          animate={{ scale: [1, 1.3, 1], opacity: isDark ? [0.15, 0.28, 0.15] : [0.08, 0.15, 0.08], x: [0, 40, 0], y: [0, -30, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
           className="absolute top-[-10%] left-[-5%] w-[600px] h-[600px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,252,0,0.35) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(circle, rgba(255,220,0,0.4) 0%, transparent 70%)' }}
         />
         <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.08, 0.18, 0.08], x: [0, -50, 0], y: [0, 40, 0] }}
+          animate={{ scale: [1, 1.2, 1], opacity: isDark ? [0.1, 0.2, 0.1] : [0.06, 0.12, 0.06], x: [0, -50, 0], y: [0, 40, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
           className="absolute bottom-[-10%] right-[-5%] w-[700px] h-[700px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,180,0,0.3) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(circle, rgba(255,180,0,0.35) 0%, transparent 70%)' }}
         />
         <motion.div
-          animate={{ scale: [1, 1.4, 1], opacity: [0.06, 0.14, 0.06] }}
+          animate={{ scale: [1, 1.4, 1], opacity: isDark ? [0.07, 0.15, 0.07] : [0.04, 0.09, 0.04] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
           className="absolute top-[40%] left-[50%] -translate-x-1/2 w-[500px] h-[500px] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,252,0,0.15) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(circle, rgba(255,252,0,0.2) 0%, transparent 70%)' }}
         />
 
         {/* Floating Ghost Silhouettes (Snapchat ghosts) */}
@@ -2403,7 +2404,7 @@ export default function App() {
       </div>
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 header-gradient backdrop-blur-3xl shadow-[0_10px_50px_rgba(0,0,0,0.8)]">
+      <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl shadow-[0_10px_50px_rgba(0,0,0,0.6)] transition-colors duration-500 ${isDark ? "bg-black/70 border-b border-white/5" : "bg-white/90 border-b border-gray-200"}`}>
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between relative">
           {/* Header Glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-snap-yellow/60 to-transparent blur-[1px]"></div>
@@ -2526,10 +2527,24 @@ export default function App() {
             <button onClick={() => { setView('blog'); window.location.hash = 'blog'; window.scrollTo(0,0); }} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
+            {/* Dark/Light Toggle */}
+            <button
+              onClick={() => setIsDark(!isDark)}
+              className={`relative w-14 h-7 rounded-full transition-all duration-500 border flex-shrink-0 ${isDark ? 'bg-snap-yellow/20 border-snap-yellow/40' : 'bg-yellow-100 border-yellow-300'}`}
+              title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            >
+              <motion.div
+                animate={{ x: isDark ? 2 : 30 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                className={`absolute top-0.5 w-6 h-6 rounded-full flex items-center justify-center text-xs shadow-lg ${isDark ? 'bg-gray-800' : 'bg-snap-yellow'}`}
+              >
+                {isDark ? '🌙' : '☀️'}
+              </motion.div>
+            </button>
             <button 
               onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-bold text-gray-300 hover:bg-white/10 hover:border-snap-yellow/50 transition-all"
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all border ${isDark ? 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-snap-yellow/50' : 'bg-white border-gray-200 text-gray-600 hover:border-snap-yellow/50 hover:bg-yellow-50'}`}
             >
               <Globe className="w-4 h-4" />
               {t.nav.lang}
@@ -2542,7 +2557,7 @@ export default function App() {
             </button>
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 text-white hover:text-snap-yellow transition-colors"
+              className="md:hidden p-2 hover:text-snap-yellow transition-colors"
             >
               <div className="w-6 h-5 flex flex-col justify-between">
                 <span className={`h-0.5 w-full bg-current transition-all ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
@@ -3144,57 +3159,119 @@ export default function App() {
         </section>
 
         {/* Blog Section */}
-        <section id="blog" className="py-32 px-6 bg-matte-black bg-mesh-2 section-divider">
+        <section id="blog" className="py-32 px-6 relative section-divider">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tight">{t.blog.title}</h2>
-              <p className="text-xl text-gray-400 font-medium">{t.blog.subtitle}</p>
-              <div className="w-32 h-1.5 bg-snap-yellow mx-auto rounded-full mt-8"></div>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-20">
+              <motion.div animate={{ scale: [1, 1.04, 1] }} transition={{ duration: 3, repeat: Infinity }}
+                className="inline-block px-5 py-2 rounded-full bg-snap-yellow/10 border border-snap-yellow/30 text-snap-yellow text-xs font-black uppercase tracking-widest mb-5">
+                📝 {lang === 'ar' ? 'أحدث المقالات' : 'Latest Articles'}
+              </motion.div>
+              <h2 className="text-4xl lg:text-6xl font-black mb-4 uppercase tracking-tight">{t.blog.title}</h2>
+              <p className="text-gray-400 font-medium">{t.blog.subtitle}</p>
+              <div className="w-32 h-1.5 bg-snap-yellow mx-auto rounded-full mt-6"></div>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {t.blog.posts.map((post: any, i: number) => {
+                const palettes = [
+                  { grad: 'linear-gradient(135deg,#1a1060 0%,#0d0830 100%)', accent: '#818cf8', glow: 'rgba(99,102,241,0.5)', border: 'rgba(129,140,248,0.5)', tag: '#4f46e5' },
+                  { grad: 'linear-gradient(135deg,#5b1060 0%,#2d0830 100%)', accent: '#e879f9', glow: 'rgba(217,70,239,0.5)', border: 'rgba(232,121,249,0.5)', tag: '#c026d3' },
+                  { grad: 'linear-gradient(135deg,#7c2000 0%,#3d1000 100%)', accent: '#fb923c', glow: 'rgba(251,146,60,0.5)', border: 'rgba(251,146,60,0.5)', tag: '#ea580c' },
+                  { grad: 'linear-gradient(135deg,#004d20 0%,#002610 100%)', accent: '#4ade80', glow: 'rgba(74,222,128,0.5)', border: 'rgba(74,222,128,0.5)', tag: '#16a34a' },
+                  { grad: 'linear-gradient(135deg,#7c1a3a 0%,#3d0d1d 100%)', accent: '#fb7185', glow: 'rgba(251,113,133,0.5)', border: 'rgba(251,113,133,0.5)', tag: '#e11d48' },
+                  { grad: 'linear-gradient(135deg,#003d5e 0%,#001e2e 100%)', accent: '#38bdf8', glow: 'rgba(56,189,248,0.5)', border: 'rgba(56,189,248,0.5)', tag: '#0284c7' },
+                  { grad: 'linear-gradient(135deg,#604010 0%,#302008 100%)', accent: '#fbbf24', glow: 'rgba(251,191,36,0.5)', border: 'rgba(251,191,36,0.5)', tag: '#d97706' },
+                  { grad: 'linear-gradient(135deg,#1a3060 0%,#0d1830 100%)', accent: '#60a5fa', glow: 'rgba(96,165,250,0.5)', border: 'rgba(96,165,250,0.5)', tag: '#2563eb' },
+                ];
+                const p = palettes[i % palettes.length];
+                const blogHash = `blog-${i}`;
+                const blogLink = `${window.location.origin}${window.location.pathname}#${blogHash}`;
+                const openBlog = () => {
+                  setSelectedBlogPost({ ...post, _index: i });
+                  setView('blog_detail');
+                  window.location.hash = blogHash;
+                  window.scrollTo(0, 0);
+                };
+
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30, scale: 0.93 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    whileHover={{ y: -10, scale: 1.03 }}
+                    transition={{ delay: i * 0.1, type: 'spring', stiffness: 120 }}
+                    className="rounded-[2.5rem] overflow-hidden relative group cursor-pointer"
+                    style={{ background: p.grad, border: `2px solid ${p.border}`, boxShadow: `0 0 30px ${p.glow.replace('0.5','0.2')}, 0 16px 40px rgba(0,0,0,0.5)` }}
+                    onClick={openBlog}
+                  >
+                    {/* Pulsing glow */}
+                    <motion.div animate={{ opacity: [0.3, 0.8, 0.3], scale: [1, 1.15, 1] }}
+                      transition={{ duration: 2.5 + i * 0.4, repeat: Infinity }}
+                      className="absolute -top-8 -right-8 w-36 h-36 rounded-full blur-3xl pointer-events-none"
+                      style={{ background: p.glow }} />
+                    <motion.div animate={{ opacity: [0.2, 0.6, 0.2] }}
+                      transition={{ duration: 3 + i * 0.3, repeat: Infinity, delay: 1.2 }}
+                      className="absolute -bottom-6 -left-6 w-28 h-28 rounded-full blur-3xl pointer-events-none"
+                      style={{ background: p.glow }} />
+
+                    {/* Number + share bar */}
+                    <div className="absolute top-4 left-4 z-20 flex items-center gap-2">
+                      <motion.div animate={{ rotate: [0, 8, 0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, delay: i * 0.5 }}
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-white font-black text-sm shadow-lg" style={{ background: p.tag }}>
+                        {i + 1}
+                      </motion.div>
+                    </div>
+                    <button
+                      className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full flex items-center justify-center transition-all opacity-0 group-hover:opacity-100"
+                      style={{ background: p.glow, border: `1px solid ${p.border}` }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (navigator.share) navigator.share({ title: post.title, url: blogLink });
+                        else navigator.clipboard.writeText(blogLink).then(() => alert(lang === 'ar' ? '✅ تم نسخ الرابط!' : '✅ Link copied!'));
+                      }}
+                    >
+                      <Share2 className="w-4 h-4 text-white" />
+                    </button>
+
+                    {/* Image */}
+                    <div className="aspect-video overflow-hidden relative">
+                      <motion.img whileHover={{ scale: 1.12 }} transition={{ duration: 0.7 }}
+                        src={`https://picsum.photos/seed/snpblog${i}v2/600/400`} alt={post.title}
+                        className="w-full h-full object-cover brightness-50" />
+                      <div className="absolute inset-0" style={{ background: `linear-gradient(to top, ${p.tag}cc 0%, transparent 55%)` }} />
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6 relative z-10">
+                      <motion.div animate={{ borderColor: [p.border, p.accent, p.border] }} transition={{ duration: 2.2, repeat: Infinity }}
+                        className="inline-block text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded-full border"
+                        style={{ color: p.accent, borderColor: p.border, background: `${p.glow.replace('0.5','0.12')}` }}>
+                        📅 {post.date}
+                      </motion.div>
+                      <h3 className="text-base font-black mb-2 leading-snug line-clamp-2 transition-colors duration-300 text-white group-hover:transition-colors"
+                        style={{ '--hover-color': p.accent } as any}
+                        onMouseEnter={e => (e.currentTarget.style.color = p.accent)}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'white')}>
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-400 text-xs leading-relaxed line-clamp-2 mb-4">{post.excerpt || ''}</p>
+                      <div className="flex items-center justify-between">
+                        <motion.span whileHover={{ x: 4 }} className="text-xs font-black uppercase tracking-widest flex items-center gap-1" style={{ color: p.accent }}>
+                          {t.blog.readMore} <ChevronRight className="w-3 h-3" />
+                        </motion.span>
+                        <code className="text-xs opacity-40 font-mono" style={{ color: p.accent }}>#{blogHash}</code>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {t.blog.posts.map((post, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  className={`rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-white/50 transition-all group relative ${
-                    i === 0 ? 'bg-gradient-to-br from-blue-600/20 to-cyan-500/20' : 
-                    i === 1 ? 'bg-gradient-to-br from-purple-600/20 to-pink-500/20' : 
-                    i === 2 ? 'bg-gradient-to-br from-orange-500/20 to-yellow-400/20' :
-                    'bg-gradient-to-br from-green-600/20 to-emerald-500/20'
-                  }`}
-                >
-                  <div className="absolute inset-0 backdrop-blur-xl pointer-events-none"></div>
-                  <div className="relative z-10">
-                    <div className="aspect-video overflow-hidden">
-                      <img 
-                        src={`https://picsum.photos/seed/blog-${i}/600/400`} 
-                        alt={post.title} 
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                    <div className="p-8">
-                      <div className="text-xs font-bold text-snap-yellow uppercase tracking-widest mb-4">{post.date}</div>
-                      <h3 className="text-2xl font-black mb-4 leading-tight group-hover:text-snap-yellow transition-colors">{post.title}</h3>
-                      <p className="text-gray-400 mb-8 leading-relaxed">{post.excerpt}</p>
-                      <button 
-                        onClick={() => {
-                          setSelectedBlogPost(post);
-                          setView('blog_detail');
-                          window.scrollTo(0, 0);
-                        }}
-                        className="text-sm font-black uppercase tracking-widest flex items-center gap-2 group/btn"
-                      >
-                        {t.blog.readMore}
-                        <ChevronRight className={`w-4 h-4 transition-transform group-hover/btn:translate-x-1 ${lang === 'ar' ? 'rotate-180 group-hover/btn:-translate-x-1' : ''}`} />
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="text-center">
+              <motion.button whileHover={{ scale: 1.05 }} onClick={() => { setView('blog'); window.location.hash = 'blog'; window.scrollTo(0,0); }}
+                className="px-10 py-4 bg-snap-yellow text-black font-black rounded-2xl shadow-[0_0_30px_rgba(255,220,0,0.3)] flex items-center gap-3 mx-auto">
+                {lang === 'ar' ? 'عرض جميع المقالات' : 'View All Articles'} <ChevronRight className="w-5 h-5" />
+              </motion.button>
             </div>
           </div>
         </section>
@@ -3263,80 +3340,97 @@ export default function App() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-32 px-6 bg-gradient-to-b from-zinc-900/30 to-matte-black">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-              <div>
-                <h2 className="text-4xl lg:text-6xl font-black mb-8 uppercase tracking-tight">
-                  {lang === 'ar' ? 'تواصل مع' : 'Get in Touch with'} <br />
-                  <span className="text-snap-yellow">{lang === 'ar' ? 'فريق الخبراء' : 'Our Experts'}</span>
-                </h2>
-                <p className="text-xl text-gray-400 mb-10 leading-relaxed">
-                  {lang === 'ar' 
-                    ? 'هل لديك استفسار خاص؟ فريقنا متاح على مدار الساعة لمساعدتك في اختيار الباقة المناسبة وتأمين حسابك.' 
-                    : 'Have a specific question? Our team is available 24/7 to help you choose the right package and secure your account.'}
-                </p>
-                <div className="space-y-6">
-                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-blue-600/10 border border-blue-500/20 group hover:border-blue-500/50 transition-all">
-                    <div className="w-14 h-14 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                      <WhatsAppIcon className="w-8 h-8" />
+        <section id="contact" className="py-32 px-6 relative overflow-hidden section-divider">
+          {/* Animated contact background */}
+          <motion.div animate={{ scale: [1,1.3,1], opacity: [0.05,0.12,0.05] }} transition={{ duration: 6, repeat: Infinity }}
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-3xl pointer-events-none"
+            style={{ background: 'radial-gradient(circle, rgba(255,220,0,0.3) 0%, transparent 70%)' }} />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} className="text-center mb-16">
+              <motion.div animate={{ scale: [1,1.04,1] }} transition={{ duration: 3, repeat: Infinity }}
+                className="inline-block px-5 py-2 rounded-full bg-snap-yellow/10 border border-snap-yellow/30 text-snap-yellow text-xs font-black uppercase tracking-widest mb-5">
+                💬 {lang === 'ar' ? 'تواصل معنا' : 'Get In Touch'}
+              </motion.div>
+              <h2 className="text-4xl lg:text-6xl font-black mb-4 uppercase tracking-tight">
+                {lang === 'ar' ? 'تواصل مع' : 'Contact'} <span className="text-snap-yellow">{lang === 'ar' ? 'فريق الخبراء' : 'Our Experts'}</span>
+              </h2>
+              <p className={`text-xl font-medium ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                {lang === 'ar' ? 'فريقنا متاح 24/7 لمساعدتك' : 'Our team is available 24/7 to help you'}
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              {/* Left — Contact info */}
+              <div className="space-y-5">
+                {[
+                  { icon: <WhatsAppIcon className="w-8 h-8" />, label: 'WhatsApp Support', value: WHATSAPP_NUMBER, grad: 'from-green-900/50 to-green-600/10', border: 'border-green-500/30 hover:border-green-400/70', action: () => openWhatsApp('Hello, I want to inquire about services') },
+                  { icon: <Send className="w-8 h-8" />, label: 'Email Support', value: 'support@snapscore.store', grad: 'from-blue-900/50 to-blue-600/10', border: 'border-blue-500/30 hover:border-blue-400/70', action: () => window.open('mailto:support@snapscore.store') },
+                  { icon: <Instagram className="w-8 h-8" />, label: 'Instagram', value: '@snapscore.store', grad: 'from-pink-900/50 to-pink-600/10', border: 'border-pink-500/30 hover:border-pink-400/70', action: () => {} },
+                  { icon: <Twitter className="w-8 h-8" />, label: 'Twitter / X', value: '@SnapScoreStore', grad: 'from-sky-900/50 to-sky-600/10', border: 'border-sky-500/30 hover:border-sky-400/70', action: () => {} },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    whileHover={{ x: 6, scale: 1.01 }}
+                    transition={{ delay: i * 0.1 }}
+                    onClick={item.action}
+                    className={`flex items-center gap-5 p-6 rounded-2xl bg-gradient-to-br ${item.grad} border ${item.border} transition-all cursor-pointer group`}
+                  >
+                    <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-snap-yellow group-hover:bg-snap-yellow group-hover:text-black transition-all flex-shrink-0">
+                      {item.icon}
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">WhatsApp Support</div>
-                      <div className="text-2xl font-black text-white">{WHATSAPP_NUMBER}</div>
+                      <div className={`text-xs font-bold uppercase tracking-widest mb-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>{item.label}</div>
+                      <div className={`text-lg font-black ${isDark ? 'text-white' : 'text-gray-800'}`}>{item.value}</div>
                     </div>
-                  </div>
-                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-purple-600/10 border border-purple-500/20 group hover:border-purple-500/50 transition-all">
-                    <div className="w-14 h-14 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all">
-                      <Send className="w-8 h-8" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">Email Support</div>
-                      <div className="text-2xl font-black text-white">support@snapscore.store</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-orange-600/10 border border-orange-500/20 group hover:border-orange-500/50 transition-all">
-                    <div className="w-14 h-14 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-all">
-                      <Share2 className="w-8 h-8" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold text-gray-500 uppercase tracking-widest">Social Media</div>
-                      <div className="flex gap-4 mt-2">
-                        <Facebook className="w-6 h-6 hover:text-blue-400 cursor-pointer transition-colors" />
-                        <Twitter className="w-6 h-6 hover:text-blue-400 cursor-pointer transition-colors" />
-                        <Instagram className="w-6 h-6 hover:text-pink-400 cursor-pointer transition-colors" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                    <ChevronRight className="w-5 h-5 text-snap-yellow ml-auto opacity-0 group-hover:opacity-100 transition-all" />
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="glass p-6 lg:p-10 rounded-[2rem] lg:rounded-[3rem] border-white/10">
-                <div className="space-y-6">
+              {/* Right — Contact form */}
+              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
+                className={`p-8 lg:p-10 rounded-[3rem] border transition-colors ${isDark ? 'bg-white/3 border-white/10' : 'bg-white border-gray-200 shadow-xl'}`}
+                style={{ backdropFilter: 'blur(20px)' }}
+              >
+                <h3 className="text-2xl font-black mb-6 uppercase tracking-tight">
+                  {lang === 'ar' ? '📩 أرسل رسالة' : '📩 Send a Message'}
+                </h3>
+                <div className="space-y-5">
+                  {[
+                    { label: lang === 'ar' ? 'الاسم' : 'Your Name', placeholder: lang === 'ar' ? 'أدخل اسمك' : 'Enter your name', type: 'text' },
+                    { label: lang === 'ar' ? 'اسم المستخدم (سناب)' : 'Snapchat Username', placeholder: '@username', type: 'text' },
+                  ].map((field, i) => (
+                    <div key={i}>
+                      <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{field.label}</label>
+                      <input type={field.type} placeholder={field.placeholder}
+                        className={`w-full border rounded-xl px-5 py-3.5 outline-none transition-all font-medium focus:border-snap-yellow focus:ring-2 focus:ring-snap-yellow/20 ${isDark ? 'bg-white/5 border-white/10 text-white placeholder:text-gray-600' : 'bg-gray-50 border-gray-200 text-gray-800 placeholder:text-gray-400'}`} />
+                    </div>
+                  ))}
                   <div>
-                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'الاسم' : 'Name'}</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors text-white placeholder:text-gray-600" placeholder={lang === 'ar' ? 'أدخل اسمك' : 'Your name'} />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'الخدمة المطلوبة' : 'Service Needed'}</label>
-                    <select className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors appearance-none text-white">
-                      <option className="bg-matte-black">{lang === 'ar' ? 'زيادة السكور' : 'Score Boosting'}</option>
-                      <option className="bg-matte-black">{lang === 'ar' ? 'شراء حساب' : 'Buy Account'}</option>
-                      <option className="bg-matte-black">{lang === 'ar' ? 'توثيق الحساب' : 'Verification'}</option>
+                    <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{lang === 'ar' ? 'الخدمة المطلوبة' : 'Service Needed'}</label>
+                    <select className={`w-full border rounded-xl px-5 py-3.5 outline-none transition-all font-medium focus:border-snap-yellow appearance-none ${isDark ? 'bg-white/5 border-white/10 text-white' : 'bg-gray-50 border-gray-200 text-gray-800'}`}>
+                      {['Score Boosting','Buy Score Account','Buy Follower Account','Follower Increase','Create Lens','Verified Badge','Other'].map(o => <option key={o} className={isDark ? 'bg-gray-900' : 'bg-white'}>{o}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">{lang === 'ar' ? 'الرسالة' : 'Message'}</label>
-                    <textarea className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-snap-yellow outline-none transition-colors h-32 text-white placeholder:text-gray-600" placeholder={lang === 'ar' ? 'كيف يمكننا مساعدتك؟' : 'How can we help?'}></textarea>
+                    <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{lang === 'ar' ? 'الرسالة' : 'Message'}</label>
+                    <textarea rows={4} placeholder={lang === 'ar' ? 'كيف يمكننا مساعدتك؟' : 'How can we help you?'}
+                      className={`w-full border rounded-xl px-5 py-3.5 outline-none transition-all font-medium resize-none focus:border-snap-yellow focus:ring-2 focus:ring-snap-yellow/20 ${isDark ? 'bg-white/5 border-white/10 text-white placeholder:text-gray-600' : 'bg-gray-50 border-gray-200 text-gray-800 placeholder:text-gray-400'}`} />
                   </div>
-                  <button 
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => openWhatsApp(lang === 'ar' ? 'أريد استشارة بخصوص خدمات سناب شات' : 'I want a consultation regarding Snapchat services')}
-                    className="w-full py-5 bg-snap-yellow text-black font-black rounded-xl hover:scale-105 transition-transform shadow-lg"
+                    className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl shadow-[0_0_30px_rgba(255,220,0,0.3)] flex items-center justify-center gap-3 text-lg"
                   >
+                    <WhatsAppIcon className="w-6 h-6" />
                     {lang === 'ar' ? 'إرسال عبر واتساب' : 'Send via WhatsApp'}
-                  </button>
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
