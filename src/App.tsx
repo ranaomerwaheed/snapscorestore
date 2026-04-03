@@ -1918,7 +1918,12 @@ const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: (
 
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
-  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'blog_detail' | 'service_detail' | 'product_detail' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify'>('home');
+  const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'blog_detail' | 'service_detail' | 'product_detail' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify' | 'recent_work' | 'loyalty'>('home');
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<{role:'user'|'bot', text:string}[]>([
+    {role:'bot', text:'👋 Hey! I\'m SnapBot. How can I help you today? Ask me about pricing, services, or account safety!'}
+  ]);
+  const [chatInput, setChatInput] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedService, setSelectedService] = useState<any>(null);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
@@ -2230,7 +2235,7 @@ export default function App() {
       }
 
       // Handle basic views
-      const validViews = ['home', 'shop', 'checkout', 'blog', 'boosting', 'calc', 'checker', 'tracker', 'bitmoji', 'lens', 'map', 'privacy', 'terms', 'snapify'];
+      const validViews = ['home', 'shop', 'checkout', 'blog', 'boosting', 'calc', 'checker', 'tracker', 'bitmoji', 'lens', 'map', 'privacy', 'terms', 'snapify', 'recent_work', 'loyalty'];
       if (validViews.includes(hash)) {
         setView(hash as any);
         window.scrollTo(0, 0);
@@ -2570,6 +2575,11 @@ export default function App() {
               </div>
             </div>
 
+            <button onClick={() => { setView('recent_work'); window.location.hash='recent_work'; window.scrollTo(0,0); }} className={`hover:text-snap-yellow transition-colors ${view === 'recent_work' ? 'text-snap-yellow' : ''}`}>{lang==='ar'?'أعمالنا':'Work'}</button>
+            <button onClick={() => { setView('loyalty'); window.location.hash='loyalty'; window.scrollTo(0,0); }} className={`hover:text-snap-yellow transition-colors ${view === 'loyalty' ? 'text-snap-yellow' : ''} relative`}>
+              {lang==='ar'?'الولاء':'Loyalty'}
+              <span className="absolute -top-2 -right-3 text-[8px] bg-snap-yellow text-black px-1 rounded font-black">NEW</span>
+            </button>
             <button onClick={() => { setView('blog'); window.location.hash = 'blog'; window.scrollTo(0,0); }} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
           </div>
 
@@ -3415,6 +3425,102 @@ export default function App() {
                   {lang === 'ar' ? <ChevronLeft className="w-6 h-6" /> : <ChevronRight className="w-6 h-6" />}
                 </button>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════ RECENT WORK PREVIEW ══════════ */}
+        <section className={`py-24 px-6 relative overflow-hidden ${isDark ? 'bg-[#0a0a18]' : 'bg-gray-50'}`}>
+          <div className={`absolute inset-x-0 top-0 h-px ${isDark ? 'bg-gradient-to-r from-transparent via-snap-yellow/30 to-transparent' : 'bg-gradient-to-r from-transparent via-yellow-300/40 to-transparent'}`}/>
+          <div className="max-w-7xl mx-auto">
+            <motion.div initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} className="text-center mb-12">
+              <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4 border ${isDark?'bg-snap-yellow/8 border-snap-yellow/25 text-snap-yellow':'bg-yellow-50 border-yellow-300 text-yellow-700'}`}>
+                📸 {lang==='ar'?'أعمالنا':'Recent Work'}
+              </span>
+              <h2 className={`text-3xl lg:text-5xl font-black uppercase tracking-tight mb-3 ${isDark?'text-white':'text-gray-900'}`}>
+                {lang==='ar'?'نتائج حقيقية':'Real Results'} <span className="text-snap-yellow">{lang==='ar'?'من عملاء حقيقيين':'From Real Clients'}</span>
+              </h2>
+              <p className={`mb-8 ${isDark?'text-gray-500':'text-gray-500'}`}>{lang==='ar'?'شاهد ما حققناه لعملائنا':'See what we\'ve achieved for our clients'}</p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-5 mb-10">
+              {[
+                {name:'Ahmed Al-Harbi',loc:'Riyadh 🇸🇦',after:'1,000,000+',service:'Score Boost',color:'#facc15',stars:5,msg:'Got 1M score in 6 days. 100% legit!'},
+                {name:'Sara Mohammed',loc:'Dubai 🇦🇪',after:'52,400',service:'Follower Account',color:'#a78bfa',stars:5,msg:'Account delivered same day. Very professional!'},
+                {name:'Sultan Al-Kuwari',loc:'Qatar 🇶🇦',after:'518,000',service:'Score Boost 500K',color:'#34d399',stars:5,msg:'Best service in the Gulf. Fast and credible!'},
+              ].map((c,i)=>(
+                <motion.div key={i} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.1}}
+                  whileHover={{y:-5}}
+                  className={`p-6 rounded-2xl border ${isDark?'border-white/8':'border-gray-200 shadow-sm'}`}
+                  style={{background:isDark?'rgba(255,220,0,0.03)':isDark?'#0a0a0a':'white'}}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-black font-black" style={{background:c.color}}>{c.name[0]}</div>
+                    <div>
+                      <div className={`font-black text-sm ${isDark?'text-white':'text-gray-900'}`}>{c.name}</div>
+                      <div className={`text-xs ${isDark?'text-gray-500':'text-gray-400'}`}>{c.loc}</div>
+                    </div>
+                    <div className="ml-auto flex">{[...Array(c.stars)].map((_,si)=><Star key={si} className="w-3 h-3 fill-snap-yellow text-snap-yellow"/>)}</div>
+                  </div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-black px-2 py-1 rounded-full" style={{background:`${c.color}20`,color:c.color}}>{c.service}</span>
+                    <span className="font-black" style={{color:c.color}}>{c.after}</span>
+                  </div>
+                  <p className={`text-sm italic ${isDark?'text-gray-400':'text-gray-600'}`}>"{c.msg}"</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="text-center">
+              <motion.button whileHover={{scale:1.04}} onClick={()=>{setView('recent_work');window.location.hash='recent_work';window.scrollTo(0,0);}}
+                className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl font-black text-sm border transition-all ${isDark?'border-white/10 bg-white/5 text-white hover:bg-snap-yellow hover:text-black hover:border-snap-yellow':'border-gray-200 bg-white text-gray-700 hover:bg-snap-yellow hover:text-black hover:border-snap-yellow'}`}>
+                {lang==='ar'?'عرض جميع النتائج':'View All Results'} <ChevronRight className="w-4 h-4"/>
+              </motion.button>
+            </div>
+          </div>
+        </section>
+
+        {/* ══════════ LOYALTY & AFFILIATE PREVIEW ══════════ */}
+        <section className={`py-24 px-6 relative overflow-hidden ${isDark ? 'bg-[#06060f]' : 'bg-white'}`}>
+          <div className={`absolute inset-x-0 top-0 h-px ${isDark ? 'bg-gradient-to-r from-transparent via-snap-yellow/30 to-transparent' : 'bg-gradient-to-r from-transparent via-yellow-300/40 to-transparent'}`}/>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <motion.div initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}} viewport={{once:true}}>
+                <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-5 border ${isDark?'bg-snap-yellow/8 border-snap-yellow/25 text-snap-yellow':'bg-yellow-50 border-yellow-300 text-yellow-700'}`}>
+                  🎁 {lang==='ar'?'برنامج الولاء':'Loyalty & Affiliate'}
+                </span>
+                <h2 className={`text-3xl lg:text-5xl font-black uppercase tracking-tight mb-4 ${isDark?'text-white':'text-gray-900'}`}>
+                  {lang==='ar'?'اكسب من كل إحالة':'Earn From Every Referral'}
+                </h2>
+                <p className={`text-lg mb-8 leading-relaxed ${isDark?'text-gray-400':'text-gray-600'}`}>
+                  {lang==='ar'
+                    ? 'انضم لبرنامجنا التابع واكسب حتى 20% عمولة على كل طلب يأتي عبر رابطك. العملاء القدامى يحصلون على مكافآت إضافية!'
+                    : 'Join our affiliate program and earn up to 20% commission on every order through your link. Existing clients get extra rewards!'}
+                </p>
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {['🥉 10% Bronze','🥈 15% Silver','🥇 20% Gold'].map((t,i)=>(
+                    <span key={i} className={`px-4 py-2 rounded-xl text-sm font-black border ${isDark?'border-snap-yellow/20 bg-snap-yellow/5 text-snap-yellow':'border-yellow-300 bg-yellow-50 text-yellow-700'}`}>{t}</span>
+                  ))}
+                </div>
+                <motion.button whileHover={{scale:1.04}} onClick={()=>{setView('loyalty');window.location.hash='loyalty';window.scrollTo(0,0);}}
+                  className="px-8 py-4 bg-snap-yellow text-black font-black rounded-xl shadow-[0_8px_30px_rgba(255,220,0,0.3)] inline-flex items-center gap-2">
+                  {lang==='ar'?'انضم للبرنامج':'Join Program'} <ChevronRight className="w-4 h-4"/>
+                </motion.button>
+              </motion.div>
+
+              <motion.div initial={{opacity:0,x:30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} className="grid grid-cols-2 gap-4">
+                {[
+                  {icon:'🔗',title:lang==='ar'?'رابط خاص بك':'Your Unique Link',desc:lang==='ar'?'احصل على رابط إحالة خاص':'Get your personal referral link'},
+                  {icon:'📤',title:lang==='ar'?'شارك مع أصدقائك':'Share With Friends',desc:lang==='ar'?'شارك في قروباتك':'Share in your groups'},
+                  {icon:'💰',title:lang==='ar'?'اكسب عمولة':'Earn Commission',desc:lang==='ar'?'حتى 20% على كل طلب':'Up to 20% per order'},
+                  {icon:'🎁',title:lang==='ar'?'مكافآت شهرية':'Monthly Bonuses',desc:lang==='ar'?'مكافآت إضافية للأفضل':'Extra rewards for top affiliates'},
+                ].map((f,i)=>(
+                  <div key={i} className={`p-5 rounded-2xl border ${isDark?'bg-white/3 border-white/8':'bg-gray-50 border-gray-200'}`}>
+                    <div className="text-2xl mb-2">{f.icon}</div>
+                    <div className={`font-black text-sm mb-1 ${isDark?'text-white':'text-gray-900'}`}>{f.title}</div>
+                    <div className={`text-xs ${isDark?'text-gray-500':'text-gray-500'}`}>{f.desc}</div>
+                  </div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </section>
@@ -5199,7 +5305,402 @@ export default function App() {
             </div>
           </section>
         )}
+
+        {/* ══════════════ RECENT WORK PAGE ══════════════ */}
+        {view === 'recent_work' && (
+          <section className={`pt-36 pb-24 px-6 min-h-screen ${isDark?'bg-[#06060f]':'bg-white'}`}>
+            <div className="max-w-6xl mx-auto">
+              <div className="mb-8"><BackButton onClick={()=>setView('home')} lang={lang}/></div>
+              <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="text-center mb-16">
+                <span className="inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-5 border bg-snap-yellow/10 border-snap-yellow/30 text-snap-yellow">
+                  ✦ {lang==='ar'?'أعمالنا الأخيرة':'Recent Work'}
+                </span>
+                <h1 className={`text-4xl lg:text-6xl font-black uppercase tracking-tight mb-4 ${isDark?'text-white':'text-gray-900'}`}>
+                  {lang==='ar'?'نتائج حقيقية':'Real Results'} <span className="text-snap-yellow">{lang==='ar'?'من عملاء حقيقيين':'From Real Clients'}</span>
+                </h1>
+                <p className={`text-lg ${isDark?'text-gray-400':'text-gray-500'}`}>{lang==='ar'?'شاهد ما أنجزناه لعملائنا':'See what we\'ve achieved for our clients'}</p>
+                <div className="mt-5 w-20 h-1 bg-snap-yellow mx-auto rounded-full"/>
+              </motion.div>
+
+              {/* Stats bar */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+                {[
+                  {val:'10K+', label:lang==='ar'?'عميل راضٍ':'Happy Clients', icon:'😊'},
+                  {val:'50K+', label:lang==='ar'?'طلب مكتمل':'Orders Done', icon:'✅'},
+                  {val:'99%', label:lang==='ar'?'نسبة النجاح':'Success Rate', icon:'🎯'},
+                  {val:'4.9★', label:lang==='ar'?'تقييم العملاء':'Client Rating', icon:'⭐'},
+                ].map((s,i)=>(
+                  <motion.div key={i} initial={{opacity:0,scale:0.9}} animate={{opacity:1,scale:1}} transition={{delay:i*0.1}}
+                    className={`p-5 rounded-2xl text-center border ${isDark?'bg-white/3 border-white/8':'bg-gray-50 border-gray-200'}`}>
+                    <div className="text-2xl mb-1">{s.icon}</div>
+                    <div className="text-2xl font-black text-snap-yellow">{s.val}</div>
+                    <div className={`text-xs font-bold mt-1 ${isDark?'text-gray-500':'text-gray-500'}`}>{s.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Feedback Screenshots Grid */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+                {[
+                  {name:'Ahmed Al-Harbi', loc:'Riyadh, KSA 🇸🇦', service:'1M Score Boost', before:'124K', after:'1,000,000+', stars:5, msg:'Fastest service I have ever seen! Got my 1M score in 6 days. 100% legit!', color:'#facc15', bg:'#1a1400'},
+                  {name:'Sara Mohammed', loc:'Dubai, UAE 🇦🇪', service:'Follower Account 50K', before:'0', after:'52,400', stars:5, msg:'Account delivered same day. Very professional team and fast support!', color:'#a78bfa', bg:'#0d0820'},
+                  {name:'Sultan Al-Kuwari', loc:'Doha, Qatar 🇶🇦', service:'Score Boost 500K', before:'18K', after:'518,000', stars:5, msg:'Best Snapchat service in the Gulf. Credibility and speed!', color:'#34d399', bg:'#001a0d'},
+                  {name:'Layla Hassan', loc:'Kuwait 🇰🇼', service:'Verified Badge', before:'—', after:'✅ Gold Badge', stars:5, msg:'Got my gold badge! The team guided me every step of the way.', color:'#fb923c', bg:'#180900'},
+                  {name:'Omar Farooq', loc:'Manama, Bahrain 🇧🇭', service:'100K Score Account', before:'0', after:'102K score', stars:5, msg:'Super fast delivery, account is clean and ready to use!', color:'#38bdf8', bg:'#001520'},
+                  {name:'Noura Al-Said', loc:'Muscat, Oman 🇴🇲', service:'Follower Increase 20K', before:'1.2K', after:'21.5K', stars:5, msg:'Real followers, no drops! My reach increased 10x. Amazing!', color:'#fb7185', bg:'#150010'},
+                ].map((card,i)=>(
+                  <motion.div key={i}
+                    initial={{opacity:0,y:24}} animate={{opacity:1,y:0}} transition={{delay:i*0.1,type:'spring',stiffness:150}}
+                    whileHover={{y:-6,scale:1.02}}
+                    className="rounded-2xl overflow-hidden relative group"
+                    style={{background:isDark?card.bg:'white', border:`1.5px solid ${card.color}30`, boxShadow:isDark?`0 4px 30px ${card.color}15,0 0 0 1px ${card.color}15 inset`:'0 4px 20px rgba(0,0,0,0.08)'}}>
+                    {isDark && <motion.div animate={{opacity:[0.15,0.4,0.15]}} transition={{duration:3+i*0.4,repeat:Infinity}}
+                      className="absolute -top-4 -right-4 w-20 h-20 rounded-full blur-2xl pointer-events-none" style={{background:card.color}}/>}
+
+                    {/* Header */}
+                    <div className="p-5 border-b" style={{borderColor:`${card.color}20`}}>
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-sm" style={{background:card.color}}>
+                          {card.name[0]}
+                        </div>
+                        <div>
+                          <div className={`font-black text-sm ${isDark?'text-white':'text-gray-900'}`}>{card.name}</div>
+                          <div className={`text-xs ${isDark?'text-gray-500':'text-gray-400'}`}>{card.loc}</div>
+                        </div>
+                        <div className="ml-auto flex">
+                          {[...Array(card.stars)].map((_,si)=><Star key={si} className="w-3 h-3 fill-snap-yellow text-snap-yellow"/>)}
+                        </div>
+                      </div>
+                      <div className="text-xs font-black uppercase tracking-widest px-2 py-1 rounded-full inline-block" style={{background:`${card.color}20`,color:card.color}}>
+                        {card.service}
+                      </div>
+                    </div>
+
+                    {/* Before/After */}
+                    <div className="px-5 py-3 grid grid-cols-2 gap-3 border-b" style={{borderColor:`${card.color}15`}}>
+                      <div className={`p-3 rounded-xl text-center ${isDark?'bg-white/3':'bg-gray-50'}`}>
+                        <div className={`text-xs font-bold mb-1 ${isDark?'text-gray-500':'text-gray-400'}`}>{lang==='ar'?'قبل':'Before'}</div>
+                        <div className={`font-black text-sm ${isDark?'text-gray-300':'text-gray-600'}`}>{card.before}</div>
+                      </div>
+                      <div className="p-3 rounded-xl text-center" style={{background:`${card.color}15`}}>
+                        <div className="text-xs font-bold mb-1" style={{color:card.color}}>{lang==='ar'?'بعد':'After'}</div>
+                        <div className="font-black text-sm" style={{color:card.color}}>{card.after}</div>
+                      </div>
+                    </div>
+
+                    {/* Review */}
+                    <div className="p-5">
+                      <p className={`text-sm leading-relaxed italic ${isDark?'text-gray-400':'text-gray-600'}`}>"{card.msg}"</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="text-center">
+                <motion.button whileHover={{scale:1.04}} onClick={()=>openWhatsApp('Hello! I want to boost my Snapchat.')}
+                  className="px-10 py-4 bg-snap-yellow text-black font-black rounded-2xl shadow-[0_8px_30px_rgba(255,220,0,0.3)] inline-flex items-center gap-3">
+                  <WhatsAppIcon className="w-5 h-5"/>
+                  {lang==='ar'?'اطلب خدمتك الآن':'Order Your Service Now'}
+                </motion.button>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ══════════════ LOYALTY & AFFILIATE PAGE ══════════════ */}
+        {view === 'loyalty' && (
+          <section className={`pt-36 pb-24 px-6 min-h-screen ${isDark?'bg-[#06060f]':'bg-white'}`}>
+            <div className="max-w-5xl mx-auto">
+              <div className="mb-8"><BackButton onClick={()=>setView('home')} lang={lang}/></div>
+              <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="text-center mb-14">
+                <span className="inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-5 border bg-snap-yellow/10 border-snap-yellow/30 text-snap-yellow">
+                  🎁 {lang==='ar'?'برنامج الولاء':'Loyalty & Affiliate'}
+                </span>
+                <h1 className={`text-4xl lg:text-6xl font-black uppercase tracking-tight mb-4 ${isDark?'text-white':'text-gray-900'}`}>
+                  {lang==='ar'?'اكسب مع كل إحالة':'Earn With Every Referral'}
+                </h1>
+                <p className={`text-lg ${isDark?'text-gray-400':'text-gray-500'}`}>{lang==='ar'?'شارك وكسب — كلما أحلت أصدقاء، كسبت أكثر':'Share & earn — the more you refer, the more you earn'}</p>
+              </motion.div>
+
+              {/* Loyalty Tiers */}
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
+                {[
+                  {tier:'Bronze', icon:'🥉', commission:'10%', orders:'1-5', perks:['10% on every referral','WhatsApp priority support','Exclusive deals'], color:'#cd7f32', bg:isDark?'#1a0e00':'#fff8f0'},
+                  {tier:'Silver', icon:'🥈', commission:'15%', orders:'6-20', perks:['15% on every referral','Free score checker tool','Monthly bonus rewards'], color:'#a8a8a8', bg:isDark?'#111114':'#f8f8f8', popular:true},
+                  {tier:'Gold', icon:'🥇', commission:'20%', orders:'21+', perks:['20% on every referral','Dedicated account manager','Priority order processing'], color:'#facc15', bg:isDark?'#1a1400':'#fffbeb'},
+                ].map((t,i)=>(
+                  <motion.div key={i} initial={{opacity:0,y:24}} animate={{opacity:1,y:0}} transition={{delay:i*0.12}}
+                    whileHover={{y:-6}} className="rounded-2xl overflow-hidden relative"
+                    style={{background:t.bg, border:`2px solid ${t.color}${t.popular?'90':'40'}`, boxShadow:t.popular?`0 8px 40px ${t.color}25`:undefined}}>
+                    {t.popular && <div className="absolute top-0 inset-x-0 h-0.5" style={{background:`linear-gradient(90deg,transparent,${t.color},transparent)`}}/>}
+                    {t.popular && <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest text-black" style={{background:t.color}}>Most Popular</div>}
+                    <div className="p-7 text-center">
+                      <div className="text-5xl mb-3">{t.icon}</div>
+                      <h3 className={`text-2xl font-black mb-1 ${isDark?'text-white':'text-gray-900'}`}>{t.tier}</h3>
+                      <div className="text-4xl font-black mb-1" style={{color:t.color}}>{t.commission}</div>
+                      <div className={`text-xs mb-5 ${isDark?'text-gray-500':'text-gray-400'}`}>{lang==='ar'?'عمولة على كل إحالة':'commission per referral'} • {t.orders} {lang==='ar'?'طلبات':'orders'}</div>
+                      <div className="space-y-2 mb-6">
+                        {t.perks.map((p,pi)=>(
+                          <div key={pi} className={`flex items-center gap-2 text-sm ${isDark?'text-gray-300':'text-gray-600'}`}>
+                            <CheckCircle2 className="w-4 h-4 flex-shrink-0" style={{color:t.color}}/>{p}
+                          </div>
+                        ))}
+                      </div>
+                      <button onClick={()=>openWhatsApp(`Hello! I want to join the ${t.tier} affiliate program.`)}
+                        className="w-full py-3 rounded-xl font-black text-sm transition-all hover:scale-105"
+                        style={{background:t.color, color:['Silver'].includes(t.tier)?'#111':'black'}}>
+                        {lang==='ar'?'انضم الآن':'Join Now'}
+                      </button>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* How it works */}
+              <div className={`rounded-2xl p-8 border ${isDark?'bg-white/3 border-white/8':'bg-gray-50 border-gray-200'}`}>
+                <h3 className={`text-2xl font-black mb-6 text-center ${isDark?'text-white':'text-gray-900'}`}>{lang==='ar'?'كيف يعمل البرنامج؟':'How Does It Work?'}</h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  {[
+                    {step:'1', icon:'🔗', title:lang==='ar'?'احصل على رابطك':'Get Your Link', desc:lang==='ar'?'تواصل معنا عبر واتساب للحصول على رابط إحالتك الخاص':'Contact us on WhatsApp to get your unique referral link'},
+                    {step:'2', icon:'📤', title:lang==='ar'?'شارك مع أصدقائك':'Share With Friends', desc:lang==='ar'?'شارك الرابط مع مجموعاتك وأصدقائك الراغبين في الخدمة':'Share the link with your groups and friends interested in the service'},
+                    {step:'3', icon:'💰', title:lang==='ar'?'اكسب عمولتك':'Earn Commission', desc:lang==='ar'?'تلقّ عمولتك فور اكتمال أي طلب عبر رابطك':'Receive your commission instantly when any order completes via your link'},
+                  ].map((s,i)=>(
+                    <div key={i} className="text-center">
+                      <div className="w-14 h-14 bg-snap-yellow rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 shadow-[0_4px_20px_rgba(255,220,0,0.3)]">{s.icon}</div>
+                      <div className="w-7 h-7 bg-snap-yellow/20 border-2 border-snap-yellow/50 rounded-full flex items-center justify-center text-snap-yellow font-black text-sm mx-auto -mt-2 mb-3">{s.step}</div>
+                      <h4 className={`font-black mb-2 ${isDark?'text-white':'text-gray-900'}`}>{s.title}</h4>
+                      <p className={`text-sm leading-relaxed ${isDark?'text-gray-500':'text-gray-500'}`}>{s.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="text-center mt-10">
+                <motion.button whileHover={{scale:1.04}} onClick={()=>openWhatsApp('Hello! I want to join the Loyalty & Affiliate program!')}
+                  className="px-10 py-4 bg-snap-yellow text-black font-black rounded-2xl shadow-[0_8px_30px_rgba(255,220,0,0.3)] inline-flex items-center gap-3">
+                  <WhatsAppIcon className="w-5 h-5"/>
+                  {lang==='ar'?'انضم للبرنامج الآن':'Join The Program Now'}
+                </motion.button>
+              </div>
+            </div>
+          </section>
+        )}
+
       </main>
+
+      {/* ══════════════ AUTHORITY / GLOBAL MAP SECTION ══════════════ */}
+      {view === 'home' && (
+        <section className={`py-24 px-6 relative overflow-hidden ${isDark?'bg-[#06060f]':'bg-gray-50'}`}>
+          <div className={`absolute inset-x-0 top-0 h-px ${isDark?'bg-gradient-to-r from-transparent via-snap-yellow/30 to-transparent':'bg-gradient-to-r from-transparent via-yellow-300/40 to-transparent'}`}/>
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            <motion.div initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} className="text-center mb-12">
+              <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4 border ${isDark?'bg-snap-yellow/8 border-snap-yellow/25 text-snap-yellow':'bg-yellow-50 border-yellow-300 text-yellow-700'}`}>
+                🌍 {lang==='ar'?'حضور عالمي':'Global Presence'}
+              </span>
+              <h2 className={`text-3xl lg:text-5xl font-black uppercase tracking-tight mb-3 ${isDark?'text-white':'text-gray-900'}`}>
+                {lang==='ar'?'نخدم عملاء في كل مكان':'We Serve Clients Everywhere'}
+              </h2>
+              <p className={`${isDark?'text-gray-500':'text-gray-500'}`}>{lang==='ar'?'عملاء نشطون الآن حول العالم':'Active clients right now around the world'}</p>
+            </motion.div>
+
+            {/* SVG World Map with yellow dots */}
+            <motion.div initial={{opacity:0,scale:0.95}} whileInView={{opacity:1,scale:1}} viewport={{once:true}}
+              className={`relative rounded-3xl overflow-hidden mb-10 border ${isDark?'bg-[#0a0a18] border-white/5':'bg-white border-gray-200 shadow-sm'}`}
+              style={{height:'320px'}}>
+
+              {/* Simple SVG world outline */}
+              <svg viewBox="0 0 1000 500" className="w-full h-full opacity-20" style={{color: isDark?'#facc15':'#ca8a04'}}>
+                <path fill="currentColor" d="M150,120 Q180,100 220,110 Q260,120 280,140 Q300,160 290,180 Q280,200 260,210 Q240,220 210,215 Q180,210 160,195 Q140,180 140,160 Q140,140 150,120Z"/>
+                <path fill="currentColor" d="M310,80 Q370,60 430,70 Q490,80 520,100 Q550,120 545,150 Q540,180 510,195 Q480,210 440,215 Q400,220 370,205 Q340,190 325,170 Q310,150 310,120 Q310,100 310,80Z"/>
+                <path fill="currentColor" d="M420,220 Q440,215 460,225 Q480,235 485,255 Q490,275 475,290 Q460,305 435,305 Q410,305 395,290 Q380,275 385,255 Q390,235 420,220Z"/>
+                <path fill="currentColor" d="M530,120 Q570,100 620,105 Q670,110 700,130 Q730,150 725,180 Q720,210 690,225 Q660,240 625,240 Q590,240 565,220 Q540,200 535,175 Q530,150 530,120Z"/>
+                <path fill="currentColor" d="M700,200 Q730,190 760,200 Q790,210 800,235 Q810,260 795,280 Q780,300 750,305 Q720,310 698,295 Q676,280 673,258 Q670,236 700,200Z"/>
+                <path fill="currentColor" d="M760,100 Q800,85 850,90 Q900,95 930,120 Q960,145 955,175 Q950,205 920,220 Q890,235 850,232 Q810,229 785,208 Q760,187 758,160 Q756,133 760,100Z"/>
+                <path fill="currentColor" d="M820,240 Q845,230 870,240 Q895,250 900,270 Q905,290 888,305 Q871,320 845,318 Q819,316 808,300 Q797,284 820,240Z"/>
+              </svg>
+
+              {/* Animated yellow dots for cities */}
+              {[
+                {x:'22%', y:'35%', city:'New York', active:19, delay:0},
+                {x:'38%', y:'25%', city:'London', active:15, delay:0.4},
+                {x:'48%', y:'32%', city:'Riyadh', active:32, delay:0.8},
+                {x:'52%', y:'40%', city:'Dubai', active:18, delay:1.2},
+                {x:'62%', y:'38%', city:'Mumbai', active:11, delay:1.6},
+                {x:'78%', y:'30%', city:'Singapore', active:9, delay:2.0},
+                {x:'30%', y:'55%', city:'São Paulo', active:7, delay:2.4},
+                {x:'88%', y:'58%', city:'Sydney', active:6, delay:2.8},
+              ].map((dot,i)=>(
+                <div key={i} className="absolute" style={{left:dot.x, top:dot.y, transform:'translate(-50%,-50%)'}}>
+                  {/* Pulse rings */}
+                  <motion.div animate={{scale:[1,2.5,1], opacity:[0.6,0,0.6]}}
+                    transition={{duration:2.5, repeat:Infinity, delay:dot.delay, ease:'easeOut'}}
+                    className="absolute inset-0 rounded-full bg-snap-yellow"/>
+                  <motion.div animate={{scale:[1,1.8,1], opacity:[0.8,0.1,0.8]}}
+                    transition={{duration:2.5, repeat:Infinity, delay:dot.delay+0.3, ease:'easeOut'}}
+                    className="absolute inset-0 rounded-full bg-snap-yellow"/>
+                  {/* Core dot */}
+                  <div className="relative w-3 h-3 rounded-full bg-snap-yellow shadow-[0_0_12px_rgba(255,220,0,0.8)] z-10"/>
+                  {/* Label */}
+                  <motion.div animate={{opacity:[0.7,1,0.7]}} transition={{duration:3, repeat:Infinity, delay:dot.delay}}
+                    className="absolute left-5 -top-1 bg-black/80 backdrop-blur-sm px-2 py-0.5 rounded-lg whitespace-nowrap z-20 pointer-events-none">
+                    <span className="text-white text-[10px] font-black">{dot.city}</span>
+                    <span className="text-snap-yellow text-[10px] font-black ml-1">{dot.active}</span>
+                  </motion.div>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Active cities stat cards */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                {city:'Riyadh 🇸🇦', active:32, trend:'+5 today'},
+                {city:'Dubai 🇦🇪', active:18, trend:'+3 today'},
+                {city:'London 🇬🇧', active:15, trend:'+2 today'},
+                {city:'New York 🇺🇸', active:19, trend:'+4 today'},
+              ].map((c,i)=>(
+                <motion.div key={i} initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.1}}
+                  whileHover={{y:-4,scale:1.03}}
+                  className={`p-4 rounded-2xl border text-center relative overflow-hidden ${isDark?'bg-[#0a0a18] border-white/8':'bg-white border-gray-200 shadow-sm'}`}>
+                  {isDark && <motion.div animate={{opacity:[0.1,0.25,0.1]}} transition={{duration:3+i,repeat:Infinity}}
+                    className="absolute inset-0 rounded-2xl" style={{background:'radial-gradient(circle,rgba(255,220,0,0.12) 0%,transparent 70%)'}}/>}
+                  <div className={`text-sm font-black mb-1 ${isDark?'text-white':'text-gray-800'}`}>{c.city}</div>
+                  <div className="text-snap-yellow font-black text-lg">{lang==='ar'?'نشط':'Active'}: {c.active}</div>
+                  <motion.div animate={{opacity:[0.6,1,0.6]}} transition={{duration:2,repeat:Infinity,delay:i*0.4}}
+                    className="text-xs text-green-400 font-bold mt-1 flex items-center justify-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"/>
+                    {c.trend}
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ══════════════ AI CHAT WIDGET ══════════════ */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+        {/* Chat Window */}
+        <AnimatePresence>
+          {isChatOpen && (
+            <motion.div
+              initial={{opacity:0, scale:0.85, y:20}}
+              animate={{opacity:1, scale:1, y:0}}
+              exit={{opacity:0, scale:0.85, y:20}}
+              transition={{type:'spring', stiffness:300, damping:26}}
+              className="w-80 rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)] border"
+              style={{background:isDark?'#0d0d1a':'white', borderColor:isDark?'rgba(255,220,0,0.2)':'#e5e7eb'}}
+            >
+              {/* Chat header */}
+              <div className="px-5 py-4 flex items-center gap-3" style={{background:'linear-gradient(135deg,#1a1200,#0d0d00)'}}>
+                <div className="w-9 h-9 rounded-full bg-snap-yellow flex items-center justify-center text-black font-black text-base shadow-[0_0_15px_rgba(255,220,0,0.4)]">
+                  👻
+                </div>
+                <div>
+                  <div className="text-white font-black text-sm">SnapBot AI</div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"/>
+                    <span className="text-green-400 text-xs font-bold">Online 24/7</span>
+                  </div>
+                </div>
+                <button onClick={()=>setIsChatOpen(false)} className="ml-auto text-gray-400 hover:text-white transition-colors">✕</button>
+              </div>
+
+              {/* Messages */}
+              <div className="h-64 overflow-y-auto p-4 space-y-3" style={{scrollbarWidth:'thin'}}>
+                {chatMessages.map((msg,i)=>(
+                  <motion.div key={i} initial={{opacity:0,y:8}} animate={{opacity:1,y:0}}
+                    className={`flex ${msg.role==='user'?'justify-end':'justify-start'}`}>
+                    <div className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-sm font-medium leading-relaxed ${
+                      msg.role==='user'
+                        ? 'bg-snap-yellow text-black rounded-br-sm'
+                        : isDark ? 'bg-white/8 text-gray-200 rounded-bl-sm' : 'bg-gray-100 text-gray-800 rounded-bl-sm'
+                    }`}>
+                      {msg.text}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Input */}
+              <div className={`px-4 py-3 border-t flex gap-2 ${isDark?'border-white/8':'border-gray-200'}`}>
+                <input
+                  value={chatInput}
+                  onChange={e=>setChatInput(e.target.value)}
+                  onKeyDown={e=>{
+                    if(e.key==='Enter' && chatInput.trim()){
+                      const userMsg = chatInput.trim();
+                      setChatInput('');
+                      setChatMessages(prev=>[...prev,{role:'user',text:userMsg}]);
+                      // Smart bot responses
+                      setTimeout(()=>{
+                        const lower = userMsg.toLowerCase();
+                        let reply = '';
+                        if(lower.includes('price')||lower.includes('cost')||lower.includes('how much')||lower.includes('سعر')||lower.includes('كم'))
+                          reply = '💰 Our prices start from $10 for Score Boost, $45 for Follower Accounts. Check our catalog for full pricing!';
+                        else if(lower.includes('safe')||lower.includes('ban')||lower.includes('امان')||lower.includes('حظر'))
+                          reply = '🛡️ 100% safe! We use human-like methods. 10,000+ happy clients with zero bans. We have a 14-day guarantee!';
+                        else if(lower.includes('time')||lower.includes('fast')||lower.includes('deliver')||lower.includes('وقت')||lower.includes('سرعة'))
+                          reply = '⚡ Super fast! Score boosts: 1-48 hours. Account delivery: 1-24 hours. We are the fastest in the region!';
+                        else if(lower.includes('password')||lower.includes('كلمة المرور'))
+                          reply = '🔑 Only Score Boosting requires your password (temporary access). All other services — NO password needed!';
+                        else if(lower.includes('hello')||lower.includes('hi')||lower.includes('مرحبا')||lower.includes('السلام'))
+                          reply = '👋 Hello! Welcome to SnapScore Store. How can I help you? Ask me about pricing, services, or safety!';
+                        else if(lower.includes('whatsapp')||lower.includes('contact')||lower.includes('واتساب'))
+                          reply = `📱 You can reach us directly on WhatsApp: ${WHATSAPP_NUMBER} — we reply within minutes!`;
+                        else
+                          reply = '🤔 Great question! For detailed info, contact us on WhatsApp for instant support. We\'re always here! 😊';
+                        setChatMessages(prev=>[...prev,{role:'bot',text:reply}]);
+                      }, 800);
+                    }
+                  }}
+                  placeholder={lang==='ar'?'اسأل SnapBot...':'Ask SnapBot...'}
+                  className={`flex-1 text-sm px-3 py-2 rounded-xl outline-none font-medium ${isDark?'bg-white/8 text-white placeholder:text-gray-600 border border-white/8':'bg-gray-100 text-gray-800 placeholder:text-gray-400 border border-gray-200'}`}
+                />
+                <button
+                  onClick={()=>{
+                    if(chatInput.trim()){
+                      const userMsg = chatInput.trim();
+                      setChatInput('');
+                      setChatMessages(prev=>[...prev,{role:'user',text:userMsg}]);
+                      setTimeout(()=>{
+                        setChatMessages(prev=>[...prev,{role:'bot',text:'💬 Got it! For the best answer, contact us on WhatsApp and our team will help you instantly!'}]);
+                      },600);
+                    }
+                  }}
+                  className="w-9 h-9 bg-snap-yellow rounded-xl flex items-center justify-center text-black flex-shrink-0 hover:scale-110 transition-transform shadow-[0_4px_12px_rgba(255,220,0,0.3)]"
+                >
+                  <Send className="w-4 h-4"/>
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Chat Toggle Button */}
+        <motion.button
+          onClick={()=>setIsChatOpen(!isChatOpen)}
+          whileHover={{scale:1.1}}
+          whileTap={{scale:0.95}}
+          animate={!isChatOpen ? {y:[0,-6,0]} : {}}
+          transition={!isChatOpen ? {duration:2, repeat:Infinity, ease:'easeInOut'} : {}}
+          className="w-16 h-16 rounded-full bg-snap-yellow text-black flex items-center justify-center shadow-[0_8px_30px_rgba(255,220,0,0.5)] relative"
+        >
+          <AnimatePresence mode="wait">
+            {isChatOpen
+              ? <motion.span key="x" initial={{rotate:-90,opacity:0}} animate={{rotate:0,opacity:1}} exit={{rotate:90,opacity:0}} className="text-2xl font-black">✕</motion.span>
+              : <motion.span key="ghost" initial={{scale:0}} animate={{scale:1}} exit={{scale:0}} className="text-2xl">👻</motion.span>
+            }
+          </AnimatePresence>
+          {/* Notification dot */}
+          {!isChatOpen && (
+            <motion.div animate={{scale:[1,1.3,1]}} transition={{duration:1.5,repeat:Infinity}}
+              className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-white text-[9px] font-black">
+              1
+            </motion.div>
+          )}
+        </motion.button>
+      </div>
 
       <footer className="footer-gradient pt-32 pb-12 px-6 relative overflow-hidden">
         {/* Footer Background Mesh */}
