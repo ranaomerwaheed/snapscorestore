@@ -1394,19 +1394,19 @@ const faqData = [
 ];
 
 const catalog = [
-  { id: 1, score: "5K+", price: "$15", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
-  { id: 2, score: "10K+", price: "$25", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
-  { id: 3, score: "20K+", price: "$35", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
-  { id: 4, score: "50K+", price: "$55", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
-  { id: 5, score: "100K+", price: "$95", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
-  { id: 6, score: "200K+", price: "$160", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
-  { id: 7, score: "300K+", price: "$220", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
-  { id: 8, score: "500K+", price: "$280", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
-  { id: 9, score: "700K+", price: "$350", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
-  { id: 10, score: "1M+", price: "$450", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
-  { id: 11, score: "2M+", price: "$850", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
-  { id: 12, score: "5M+", price: "$1800", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
-  { id: 13, score: "10M+", price: "$3500", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
+  { id: 1, score: "5K+", price: "$3", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
+  { id: 2, score: "10K+", price: "$5", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
+  { id: 3, score: "20K+", price: "$7", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
+  { id: 4, score: "50K+", price: "$12", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
+  { id: 5, score: "100K+", price: "$15", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
+  { id: 6, score: "200K+", price: "$18", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
+  { id: 7, score: "300K+", price: "$22", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
+  { id: 8, score: "500K+", price: "$28", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
+  { id: 9, score: "700K+", price: "$33", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
+  { id: 10, score: "1M+", price: "$40", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
+  { id: 11, score: "2M+", price: "$75", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
+  { id: 12, score: "5M+", price: "$350", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
+  { id: 13, score: "10M+", price: "$800", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
 ];
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -1441,16 +1441,16 @@ const ServiceDetail = ({ service, lang, onBack, onOrder, openWhatsApp }: { servi
   const isScoreBoost = service.id === 's_boost';
 
   const boostTiers = [
-    { id: 'b5k', amount: '5,000', price: '$10', time: '1-2 hrs' },
-    { id: 'b10k', amount: '10,000', price: '$18', time: '2-4 hrs' },
-    { id: 'b20k', amount: '20,000', price: '$35', time: '4-6 hrs' },
-    { id: 'b50k', amount: '50,000', price: '$80', time: '6-12 hrs' },
-    { id: 'b100k', amount: '100,000', price: '$150', time: '12-24 hrs' },
-    { id: 'b200k', amount: '200,000', price: '$280', time: '24-48 hrs' },
-    { id: 'b300k', amount: '300,000', price: '$400', time: '2-3 days' },
-    { id: 'b500k', amount: '500,000', price: '$650', time: '3-5 days' },
-    { id: 'b700k', amount: '700,000', price: '$850', time: '5-7 days' },
-    { id: 'b1m', amount: '1,000,000', price: '$1200', time: '7-10 days' },
+    { id: 'b5k', amount: '5,000', price: '$3', time: '1-2 hrs' },
+    { id: 'b10k', amount: '10,000', price: '$5', time: '2-4 hrs' },
+    { id: 'b20k', amount: '20,000', price: '$7', time: '4-6 hrs' },
+    { id: 'b50k', amount: '50,000', price: '$12', time: '6-12 hrs' },
+    { id: 'b100k', amount: '100,000', price: '$15', time: '12-24 hrs' },
+    { id: 'b200k', amount: '200,000', price: '$18', time: '24-48 hrs' },
+    { id: 'b300k', amount: '300,000', price: '$22', time: '2-3 days' },
+    { id: 'b500k', amount: '500,000', price: '$30', time: '3-5 days' },
+    { id: 'b700k', amount: '700,000', price: '$35', time: '5-7 days' },
+    { id: 'b1m', amount: '1,000,000', price: '$45', time: '7-10 days' },
   ];
 
   const followerTiers = [
@@ -2594,19 +2594,19 @@ export default function App() {
   };
 
   const scoreAccountsStock = [
-    { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', age: '2023', followers: '100-500', deliveryTime: '1-2 Hours', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
-    { id: 'sa10k', amount: '10,000', price: '$25', type: 'Score Account', age: '2022', followers: '500-1k', deliveryTime: '1-2 Hours', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
-    { id: 'sa20k', amount: '20,000', price: '$35', type: 'Score Account', age: '2021', followers: '1k-2k', deliveryTime: '2-4 Hours', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
-    { id: 'sa50k', amount: '50,000', price: '$55', type: 'Score Account', age: '2020', followers: '2k-5k', deliveryTime: '4-6 Hours', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
-    { id: 'sa100k', amount: '100,000', price: '$95', type: 'Score Account', age: '2019', followers: '5k-10k', deliveryTime: '6-12 Hours', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
-    { id: 'sa200k', amount: '200,000', price: '$160', type: 'Score Account', age: '2018', followers: '10k-20k', deliveryTime: '12-24 Hours', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
-    { id: 'sa300k', amount: '300,000', price: '$220', type: 'Score Account', age: '2017', followers: '20k-30k', deliveryTime: '24-48 Hours', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
-    { id: 'sa500k', amount: '500,000', price: '$280', type: 'Score Account', age: '2016', followers: '30k-50k', deliveryTime: '2-3 Days', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
-    { id: 'sa700k', amount: '700,000', price: '$350', type: 'Score Account', age: '2015', followers: '50k-70k', deliveryTime: '3-5 Days', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
-    { id: 'sa1m', amount: '1,000,000', price: '$450', type: 'Score Account', age: '2014', followers: '100k+', deliveryTime: '5-7 Days', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
-    { id: 'sa2m', amount: '2,000,000', price: '$850', type: 'Score Account', age: '2013', followers: '200k+', deliveryTime: '7-10 Days', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
-    { id: 'sa5m', amount: '5,000,000', price: '$1800', type: 'Score Account', age: '2012', followers: '500k+', deliveryTime: '10-15 Days', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
-    { id: 'sa10m', amount: '10,000,000', price: '$3500', type: 'Score Account', age: '2011', followers: '1M+', deliveryTime: '15-20 Days', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
+    { id: 'sa5k', amount: '5,000', price: '$3', type: 'Score Account', age: '2023', followers: '100-500', deliveryTime: '1-2 Hours', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
+    { id: 'sa10k', amount: '10,000', price: '$5', type: 'Score Account', age: '2022', followers: '500-1k', deliveryTime: '1-2 Hours', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
+    { id: 'sa20k', amount: '20,000', price: '$7', type: 'Score Account', age: '2021', followers: '1k-2k', deliveryTime: '2-4 Hours', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
+    { id: 'sa50k', amount: '50,000', price: '$12', type: 'Score Account', age: '2020', followers: '2k-5k', deliveryTime: '4-6 Hours', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
+    { id: 'sa100k', amount: '100,000', price: '$15', type: 'Score Account', age: '2019', followers: '5k-10k', deliveryTime: '6-12 Hours', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
+    { id: 'sa200k', amount: '200,000', price: '$18', type: 'Score Account', age: '2018', followers: '10k-20k', deliveryTime: '12-24 Hours', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
+    { id: 'sa300k', amount: '300,000', price: '$22', type: 'Score Account', age: '2017', followers: '20k-30k', deliveryTime: '24-48 Hours', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
+    { id: 'sa500k', amount: '500,000', price: '$28', type: 'Score Account', age: '2016', followers: '30k-50k', deliveryTime: '2-3 Days', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'sa700k', amount: '700,000', price: '$33', type: 'Score Account', age: '2015', followers: '50k-70k', deliveryTime: '3-5 Days', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
+    { id: 'sa1m', amount: '1,000,000', price: '$40', type: 'Score Account', age: '2014', followers: '100k+', deliveryTime: '5-7 Days', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
+    { id: 'sa2m', amount: '2,000,000', price: '$70', type: 'Score Account', age: '2013', followers: '200k+', deliveryTime: '7-10 Days', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
+    { id: 'sa5m', amount: '5,000,000', price: '$350', type: 'Score Account', age: '2012', followers: '500k+', deliveryTime: '10-15 Days', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
+    { id: 'sa10m', amount: '10,000,000', price: '$800', type: 'Score Account', age: '2011', followers: '1M+', deliveryTime: '15-20 Days', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
   ];
 
   const followerAccountsStock = [
@@ -2630,16 +2630,16 @@ export default function App() {
   ];
 
   const boostingTiers = [
-    { id: 'b5k', amount: '5,000', price: '$10' },
-    { id: 'b10k', amount: '10,000', price: '$18' },
-    { id: 'b20k', amount: '20,000', price: '$35' },
-    { id: 'b50k', amount: '50,000', price: '$80' },
-    { id: 'b100k', amount: '100,000', price: '$150' },
-    { id: 'b200k', amount: '200,000', price: '$280' },
-    { id: 'b300k', amount: '300,000', price: '$400' },
-    { id: 'b500k', amount: '500,000', price: '$650' },
-    { id: 'b700k', amount: '700,000', price: '$850' },
-    { id: 'b1m', amount: '1,000,000', price: '$1200' },
+    { id: 'b5k', amount: '5,000', price: '$3' },
+    { id: 'b10k', amount: '10,000', price: '$5' },
+    { id: 'b20k', amount: '20,000', price: '$7' },
+    { id: 'b50k', amount: '50,000', price: '$12' },
+    { id: 'b100k', amount: '100,000', price: '$15' },
+    { id: 'b200k', amount: '200,000', price: '$18' },
+    { id: 'b300k', amount: '300,000', price: '$22' },
+    { id: 'b500k', amount: '500,000', price: '$28' },
+    { id: 'b700k', amount: '700,000', price: '$33' },
+    { id: 'b1m', amount: '1,000,000', price: '$40' },
   ];
 
   const handleBuy = (pkg: any) => {
@@ -4368,10 +4368,10 @@ export default function App() {
                       // Build small pricing table per service
                       const svcTiers: {label: string, price: string}[] = 
                         service.id === 's_boost' ? [
-                          { label: '5K Score', price: '$10' },
-                          { label: '20K Score', price: '$35' },
-                          { label: '100K Score', price: '$150' },
-                          { label: '1M Score', price: '$1200' },
+                          { label: '5K Score', price: '$3' },
+                          { label: '20K Score', price: '$10' },
+                          { label: '100K Score', price: '$16' },
+                          { label: '1M Score', price: '$60' },
                         ] :
                         service.id === 's_followers' ? [
                           { label: '500 Followers', price: '$20' },
@@ -6264,19 +6264,19 @@ export default function App() {
             
             <div className="flex flex-col gap-6">
               <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="https://facebook.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="https://x.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="https://instagram.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="https://youtube.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Youtube className="w-5 h-5" />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="https://linkdin.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>
