@@ -1916,6 +1916,287 @@ const BlogDetail = ({ post, lang, onBack }: { post: any, lang: string, onBack: (
   );
 };
 
+/* ════════════════════════════════════════════════════════
+   LIVE QUEUE TICKER — Stock market style scrolling bar
+════════════════════════════════════════════════════════ */
+const LiveQueueTicker = ({ isDark, lang }: { isDark: boolean; lang: string }) => {
+  const [boosts, setBoosts] = useState(1402);
+  const [totalPts, setTotalPts] = useState(14.8);
+  const [load, setLoad] = useState(64);
+  const [nextSlot, setNextSlot] = useState(134); // seconds
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setBoosts(b => b + Math.floor(Math.random() * 3));
+      setTotalPts(p => Math.round((p + 0.1) * 10) / 10);
+      setLoad(l => Math.max(55, Math.min(82, l + (Math.random() > 0.5 ? 1 : -1))));
+      setNextSlot(s => s > 0 ? s - 1 : 180);
+    }, 1500);
+    return () => clearInterval(t);
+  }, []);
+
+  const mins = Math.floor(nextSlot / 60);
+  const secs = nextSlot % 60;
+
+  const items = [
+    { icon: '⚡', label: lang === 'ar' ? 'عمليات نشطة' : 'ACTIVE BOOSTS', value: boosts.toLocaleString(), color: '#facc15' },
+    { icon: '📈', label: lang === 'ar' ? 'نقاط اليوم' : "TODAY'S TOTAL", value: `${totalPts}M PTS`, color: '#4ade80' },
+    { icon: '💻', label: lang === 'ar' ? 'حمل النظام' : 'SYSTEM LOAD', value: `${load}%`, color: '#60a5fa' },
+    { icon: '⏱', label: lang === 'ar' ? 'الفترة القادمة' : 'NEXT SLOT', value: `${mins}m ${secs.toString().padStart(2,'0')}s`, color: '#fb923c' },
+    { icon: '🌍', label: lang === 'ar' ? 'مستخدم نشط' : 'ACTIVE USERS', value: '2,841', color: '#a78bfa' },
+    { icon: '✅', label: lang === 'ar' ? 'أكمل اليوم' : 'COMPLETED TODAY', value: '384', color: '#34d399' },
+  ];
+
+  return (
+    <div className="fixed top-[72px] left-0 right-0 z-40 overflow-hidden"
+      style={{ background: isDark ? 'linear-gradient(90deg,#0a0800,#1a1200,#0a0800)' : 'linear-gradient(90deg,#1a1200,#2a1f00,#1a1200)', borderBottom: '1px solid rgba(255,220,0,0.25)' }}>
+      <div className="flex items-center">
+        {/* Fixed label */}
+        <div className="flex-shrink-0 flex items-center gap-2 px-4 py-2 border-r border-snap-yellow/25" style={{ background: 'rgba(255,220,0,0.12)' }}>
+          <motion.div animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1, repeat: Infinity }}
+            className="w-2 h-2 rounded-full bg-green-400" />
+          <span className="text-snap-yellow font-black text-[10px] uppercase tracking-[0.2em] whitespace-nowrap">LIVE</span>
+        </div>
+
+        {/* Scrolling ticker */}
+        <div className="flex-1 overflow-hidden relative">
+          <motion.div
+            animate={{ x: ['0%', '-50%'] }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+            className="flex gap-0 whitespace-nowrap"
+          >
+            {[...items, ...items].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 px-6 py-2 border-r border-white/5">
+                <span className="text-xs">{item.icon}</span>
+                <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">{item.label}:</span>
+                <span className="text-[11px] font-black" style={{ color: item.color }}>{item.value}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ════════════════════════════════════════════════════════
+   BAN-SHIELD STATUS BAR — Below hero section
+════════════════════════════════════════════════════════ */
+const BanShieldBar = ({ isDark, lang }: { isDark: boolean; lang: string }) => {
+  const [syncTime, setSyncTime] = useState(12);
+  const [protectedPct, setProtectedPct] = useState(100);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setSyncTime(s => s >= 60 ? 0 : s + 1);
+      setProtectedPct(p => p < 100 ? p + 1 : 100);
+    }, 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  const items = [
+    { icon: '🛡️', text: lang === 'ar' ? `الحماية: ${protectedPct}%` : `BAN-SHIELD: ${protectedPct}% ACTIVE` },
+    { icon: '🔒', text: lang === 'ar' ? 'جلسة مشفرة' : 'SESSION: ENCRYPTED' },
+    { icon: '📡', text: lang === 'ar' ? 'خوادم متصلة: 4,129' : 'SECURE TUNNELS: 4,129' },
+    { icon: '⚙️', text: lang === 'ar' ? `آخر تحديث: ${syncTime} ثانية` : `LAST SYNC: ${syncTime}s AGO` },
+    { icon: '✅', text: lang === 'ar' ? 'جميع الأنظمة تعمل' : 'ALL SYSTEMS OPERATIONAL' },
+  ];
+
+  return (
+    <div className="overflow-hidden py-2"
+      style={{ background: isDark ? 'linear-gradient(90deg,#001a08,#002810,#001a08)' : 'linear-gradient(90deg,#f0fdf4,#dcfce7,#f0fdf4)', borderBottom: '1px solid rgba(52,211,153,0.25)', borderTop: '1px solid rgba(52,211,153,0.1)' }}>
+      <div className="flex items-center gap-0">
+        <div className="flex-shrink-0 px-4 py-1 border-r border-green-500/25 flex items-center gap-2" style={{ background: 'rgba(52,211,153,0.1)' }}>
+          <motion.div animate={{ scale: [1, 1.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }}
+            className="w-2 h-2 rounded-full bg-green-400" />
+          <span className="text-green-400 font-black text-[9px] uppercase tracking-[0.2em] whitespace-nowrap">SHIELD</span>
+        </div>
+        <div className="flex-1 overflow-hidden">
+          <motion.div animate={{ x: ['0%', '-50%'] }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            className="flex whitespace-nowrap">
+            {[...items, ...items].map((item, i) => (
+              <div key={i} className="flex items-center gap-2 px-5 py-1 border-r border-green-500/10">
+                <span className="text-xs">{item.icon}</span>
+                <span className="text-[10px] font-bold text-green-400">{item.text}</span>
+                <span className="text-green-600/40 text-[10px]">|</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ════════════════════════════════════════════════════════
+   HEARTBEAT MONITOR — Footer system uptime
+════════════════════════════════════════════════════════ */
+const HeartbeatMonitor = () => {
+  const [points, setPoints] = useState<number[]>([60,62,58,65,63,70,68,72,69,75,71,74,68,73,70,77,74,79,76,80]);
+  const [uptime] = useState('99.98%');
+  const [tunnels, setTunnels] = useState(4129);
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setPoints(prev => {
+        const next = [...prev.slice(1), 55 + Math.random() * 35];
+        return next;
+      });
+      setTunnels(t => t + Math.floor(Math.random() * 5 - 2));
+    }, 800);
+    return () => clearInterval(t);
+  }, []);
+
+  const maxPt = Math.max(...points);
+  const minPt = Math.min(...points);
+  const range = maxPt - minPt || 1;
+  const H = 48, W = 280;
+  const pts = points.map((p, i) => `${(i / (points.length - 1)) * W},${H - ((p - minPt) / range) * (H - 8)}`).join(' ');
+
+  return (
+    <div className="mt-12 pt-8 border-t border-white/5">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-2xl"
+        style={{ background: 'rgba(0,0,0,0.4)', border: '1px solid rgba(255,220,0,0.08)' }}>
+
+        {/* Left — Engine info */}
+        <div className="flex items-center gap-4">
+          <div className="w-10 h-10 rounded-xl bg-snap-yellow/10 border border-snap-yellow/20 flex items-center justify-center">
+            <Zap className="w-5 h-5 text-snap-yellow" />
+          </div>
+          <div>
+            <div className="text-white font-black text-sm">Snapify-Core v6.1</div>
+            <div className="text-gray-600 text-xs">Distributed Processing Engine</div>
+          </div>
+        </div>
+
+        {/* Center — Heartbeat SVG */}
+        <div className="flex flex-col items-center gap-1">
+          <div className="text-[9px] text-gray-600 uppercase tracking-widest font-bold mb-1">System Heartbeat</div>
+          <svg width={W} height={H} className="overflow-visible">
+            <defs>
+              <linearGradient id="hbGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#facc15" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#facc15" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            {/* Fill */}
+            <motion.polyline
+              points={`0,${H} ${pts} ${W},${H}`}
+              fill="url(#hbGrad)" stroke="none"
+            />
+            {/* Line */}
+            <motion.polyline
+              points={pts}
+              fill="none" stroke="#facc15" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+              style={{ filter: 'drop-shadow(0 0 4px rgba(255,220,0,0.6))' }}
+            />
+            {/* Live dot */}
+            <motion.circle
+              cx={(points.length - 1) / (points.length - 1) * W}
+              cy={H - ((points[points.length - 1] - minPt) / range) * (H - 8)}
+              r="3" fill="#facc15"
+              animate={{ opacity: [1, 0, 1] }} transition={{ duration: 0.8, repeat: Infinity }}
+            />
+          </svg>
+        </div>
+
+        {/* Right — Stats */}
+        <div className="flex gap-6">
+          {[
+            { label: 'Uptime', value: uptime, color: '#4ade80' },
+            { label: 'Active Tunnels', value: tunnels.toLocaleString(), color: '#60a5fa' },
+            { label: 'Response', value: '< 1ms', color: '#a78bfa' },
+          ].map((s, i) => (
+            <div key={i} className="text-center">
+              <motion.div animate={{ opacity: [0.7, 1, 0.7] }} transition={{ duration: 2 + i * 0.5, repeat: Infinity }}
+                className="text-sm font-black" style={{ color: s.color }}>{s.value}</motion.div>
+              <div className="text-[9px] text-gray-600 uppercase tracking-wider">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ════════════════════════════════════════════════════════
+   ORDER CONSOLE — Ghost Login system console animation
+════════════════════════════════════════════════════════ */
+const OrderConsole = ({ amount, isDark }: { amount: string; isDark: boolean }) => {
+  const [lines, setLines] = useState<{ text: string; color: string; done: boolean }[]>([]);
+  const [phase, setPhase] = useState(0);
+
+  const script = [
+    { text: '> Initializing Secure Session...', color: '#60a5fa', delay: 0 },
+    { text: '> Connecting to Processing Network...', color: '#60a5fa', delay: 600 },
+    { text: '  ✓ Network Connected [Latency: 4ms]', color: '#4ade80', delay: 1200 },
+    { text: '> Validating Account Credentials...', color: '#facc15', delay: 1800 },
+    { text: '  ✓ Credentials Verified [Encrypted]', color: '#4ade80', delay: 2400 },
+    { text: `> Starting Score Injection [+${amount}]...`, color: '#facc15', delay: 3000 },
+    { text: '  ⚡ Processing Batch #1... [+5,000]', color: '#fb923c', delay: 3600 },
+    { text: '  ⚡ Processing Batch #2... [+10,000]', color: '#fb923c', delay: 4200 },
+    { text: '  ⚡ Processing Batch #3... [+10,000]', color: '#fb923c', delay: 4800 },
+    { text: '> Running Safety Verification...', color: '#a78bfa', delay: 5400 },
+    { text: '  ✓ Account Status: SAFE [No Flags]', color: '#4ade80', delay: 6000 },
+    { text: '  ✓ Session Burned [Data Cleared]', color: '#4ade80', delay: 6600 },
+    { text: '> Order Status: COMPLETE ✓', color: '#facc15', delay: 7200 },
+  ];
+
+  useEffect(() => {
+    setLines([]);
+    setPhase(0);
+    script.forEach((line, i) => {
+      setTimeout(() => {
+        setLines(prev => [...prev, { text: line.text, color: line.color, done: true }]);
+        setPhase(i);
+      }, line.delay);
+    });
+  }, [amount]);
+
+  return (
+    <div className="rounded-2xl overflow-hidden border border-green-500/20" style={{ background: '#050d05', fontFamily: 'monospace' }}>
+      {/* Title bar */}
+      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-green-500/15" style={{ background: '#081008' }}>
+        <div className="w-3 h-3 rounded-full bg-red-500/60" />
+        <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+        <div className="w-3 h-3 rounded-full bg-green-500/60" />
+        <span className="text-green-500/50 text-[10px] ml-3 font-bold uppercase tracking-widest">SnapScore Engine — Order Console</span>
+        <motion.div animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1, repeat: Infinity }}
+          className="ml-auto flex items-center gap-1.5">
+          <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
+          <span className="text-green-400 text-[10px] font-bold">LIVE</span>
+        </motion.div>
+      </div>
+
+      {/* Console body */}
+      <div className="p-4 h-52 overflow-y-auto space-y-1" style={{ scrollbarWidth: 'thin', scrollbarColor: '#1a3a1a transparent' }}>
+        {lines.map((line, i) => (
+          <motion.div key={i} initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }}
+            className="text-[11px] leading-relaxed font-mono" style={{ color: line.color }}>
+            {line.text}
+          </motion.div>
+        ))}
+        {/* Cursor blink */}
+        <motion.div animate={{ opacity: [1, 0, 1] }} transition={{ duration: 0.7, repeat: Infinity }}
+          className="text-green-400 text-[11px]">▋</motion.div>
+      </div>
+
+      {/* Progress bar */}
+      <div className="px-4 pb-3">
+        <div className="flex items-center justify-between text-[10px] text-green-600 mb-1">
+          <span>Processing...</span>
+          <span>{Math.min(100, Math.round((phase / (script.length - 1)) * 100))}%</span>
+        </div>
+        <div className="h-1 bg-green-900/40 rounded-full overflow-hidden">
+          <motion.div className="h-full bg-green-400 rounded-full"
+            animate={{ width: `${Math.min(100, Math.round((phase / (script.length - 1)) * 100))}%` }}
+            transition={{ duration: 0.5 }} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
   const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'blog_detail' | 'service_detail' | 'product_detail' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify' | 'recent_work' | 'loyalty'>('home');
@@ -2743,8 +3024,11 @@ export default function App() {
       <main>
         {view === 'home' && (
           <>
+            {/* ═══ LIVE QUEUE TICKER ═══ */}
+            <LiveQueueTicker isDark={isDark} lang={lang} />
+
             {/* Hero Section */}
-        <section className={`relative pt-40 pb-24 px-6 overflow-hidden section-divider ${isDark?"bg-[#06060f]":"bg-white"}`}>
+        <section className={`relative pt-36 pb-24 px-6 overflow-hidden section-divider ${isDark?"bg-[#06060f]":"bg-white"}`}>
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(255,252,0,0.05)_0%,transparent_70%)] pointer-events-none"></div>
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
             {/* Text Side */}
@@ -2850,7 +3134,8 @@ export default function App() {
           </div>
         </section>
 
-
+        {/* ═══ BAN-SHIELD STATUS BAR ═══ */}
+        <BanShieldBar isDark={isDark} lang={lang} />
 
         {/* Stats Section */}
         <section className={`py-20 px-6 relative overflow-hidden section-divider ${isDark?"bg-[#0a0a18] border-y border-white/5":"bg-snap-yellow/5 border-y border-yellow-200"}`}>
@@ -4320,6 +4605,32 @@ export default function App() {
                             : 'Your data is encrypted and used only for the boosting process. Your order will be sent via WhatsApp.'}
                         </p>
                       </div>
+
+                      {/* Security Trust Badges */}
+                      <div className="grid grid-cols-3 gap-3">
+                        {[
+                          { icon: '🔐', title: 'One-Time Session', desc: lang === 'ar' ? 'تُحذف البيانات فور الانتهاء' : 'Data burned after completion' },
+                          { icon: '🌐', title: 'Residential IPs', desc: lang === 'ar' ? 'من: KSA, UAE, USA' : 'From: KSA, UAE, USA' },
+                          { icon: '📱', title: 'Real Devices', desc: lang === 'ar' ? 'iPhone & Samsung' : 'iPhone & Samsung' },
+                        ].map((b, bi) => (
+                          <div key={bi} className="p-3 rounded-xl bg-white/3 border border-white/8 text-center">
+                            <div className="text-lg mb-1">{b.icon}</div>
+                            <div className="text-[10px] font-black text-white">{b.title}</div>
+                            <div className="text-[9px] text-gray-600 mt-0.5">{b.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Live Order Console — shows after form fill */}
+                      {checkoutData.username && checkoutData.password && (
+                        <motion.div initial={{opacity:0,y:12}} animate={{opacity:1,y:0}}>
+                          <div className="text-xs font-black text-green-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                            <motion.div animate={{opacity:[1,0,1]}} transition={{duration:0.8,repeat:Infinity}} className="w-2 h-2 rounded-full bg-green-400"/>
+                            {lang === 'ar' ? 'معاينة النظام' : 'System Preview'}
+                          </div>
+                          <OrderConsole amount={selectedBoostingTier.amount} isDark={true} />
+                        </motion.div>
+                      )}
 
                       <button 
                         onClick={() => {
@@ -5821,6 +6132,10 @@ export default function App() {
             </div>
             </div>
           </div>
+
+          {/* ═══ SYSTEM HEARTBEAT MONITOR ═══ */}
+          <HeartbeatMonitor />
+
         </div>
       </footer>
 
