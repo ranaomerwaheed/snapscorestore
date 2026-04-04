@@ -2197,6 +2197,229 @@ const OrderConsole = ({ amount, isDark }: { amount: string; isDark: boolean }) =
   );
 };
 
+/* ════════════════════════════════════════════════════════
+   GLOBAL PRESENCE SECTION — With live geolocation detection
+════════════════════════════════════════════════════════ */
+const GlobalPresenceSection = ({ isDark, lang }: { isDark: boolean; lang: string }) => {
+  const [userLocation, setUserLocation] = useState<{city:string;country:string;flag:string;ip:string;active:number}|null>(null);
+  const [locLoading, setLocLoading] = useState(true);
+  const [cityActive, setCityActive] = useState<Record<string,number>>({
+    'New York':19,'London':15,'Riyadh':32,'Dubai':18,'Mumbai':11,'Singapore':9,'São Paulo':7,'Sydney':6,'Cairo':8,'Doha':12,'Kuwait City':10,'Manama':5
+  });
+
+  useEffect(()=>{
+    // Fetch IP-based geolocation (free, no key needed)
+    fetch('https://ipapi.co/json/')
+      .then(r=>r.json())
+      .then(data=>{
+        const countryFlags: Record<string,string> = {
+          'SA':'🇸🇦','AE':'🇦🇪','GB':'🇬🇧','US':'🇺🇸','KW':'🇰🇼','QA':'🇶🇦','BH':'🇧🇭','OM':'🇴🇲','EG':'🇪🇬','IN':'🇮🇳','SG':'🇸🇬','AU':'🇦🇺','BR':'🇧🇷','DE':'🇩🇪','FR':'🇫🇷','TR':'🇹🇷','PK':'🇵🇰',
+        };
+        const flag = countryFlags[data.country_code] || '🌍';
+        const active = Math.floor(Math.random()*15)+3;
+        setUserLocation({city:data.city||'Your City', country:data.country_name||'Your Country', flag, ip:data.ip||'—', active});
+        setLocLoading(false);
+      })
+      .catch(()=>{
+        setUserLocation({city:'Your City', country:'Your Country', flag:'🌍', ip:'—', active:7});
+        setLocLoading(false);
+      });
+  },[]);
+
+  // Randomly bump city counts
+  useEffect(()=>{
+    const t = setInterval(()=>{
+      setCityActive(prev=>{
+        const keys = Object.keys(prev);
+        const k = keys[Math.floor(Math.random()*keys.length)];
+        return {...prev, [k]: prev[k] + (Math.random()>0.4?1:0)};
+      });
+    }, 3000);
+    return ()=>clearInterval(t);
+  },[]);
+
+  const mapDots = [
+    {x:'22%',y:'38%',city:'New York',delay:0},
+    {x:'38%',y:'26%',city:'London',delay:0.4},
+    {x:'50%',y:'36%',city:'Riyadh',delay:0.8},
+    {x:'53%',y:'43%',city:'Dubai',delay:1.2},
+    {x:'61%',y:'40%',city:'Mumbai',delay:1.6},
+    {x:'52%',y:'30%',city:'Cairo',delay:2.0},
+    {x:'79%',y:'34%',city:'Singapore',delay:2.4},
+    {x:'30%',y:'58%',city:'São Paulo',delay:2.8},
+    {x:'89%',y:'62%',city:'Sydney',delay:3.2},
+    {x:'54%',y:'38%',city:'Doha',delay:0.6},
+    {x:'52%',y:'35%',city:'Kuwait City',delay:1.0},
+  ];
+
+  const statCities = [
+    {city:'Riyadh',flag:'🇸🇦',key:'Riyadh'},
+    {city:'Dubai',flag:'🇦🇪',key:'Dubai'},
+    {city:'London',flag:'🇬🇧',key:'London'},
+    {city:'New York',flag:'🇺🇸',key:'New York'},
+    {city:'Cairo',flag:'🇪🇬',key:'Cairo'},
+    {city:'Doha',flag:'🇶🇦',key:'Doha'},
+  ];
+
+  return (
+    <section className={`py-24 px-6 relative overflow-hidden ${isDark?'bg-[#06060f]':'bg-gray-50'}`}>
+      <div className={`absolute inset-x-0 top-0 h-px ${isDark?'bg-gradient-to-r from-transparent via-snap-yellow/30 to-transparent':'bg-gradient-to-r from-transparent via-yellow-300/50 to-transparent'}`}/>
+
+      {isDark && (
+        <motion.div animate={{opacity:[0.04,0.09,0.04],scale:[1,1.2,1]}} transition={{duration:8,repeat:Infinity}}
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] rounded-full blur-3xl pointer-events-none"
+          style={{background:'radial-gradient(ellipse,rgba(255,220,0,0.15) 0%,transparent 70%)'}}/>
+      )}
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} className="text-center mb-12">
+          <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4 border ${isDark?'bg-snap-yellow/8 border-snap-yellow/25 text-snap-yellow':'bg-yellow-50 border-yellow-300 text-yellow-700'}`}>
+            🌍 {lang==='ar'?'حضور عالمي':'Global Presence'}
+          </span>
+          <h2 className={`text-3xl lg:text-5xl font-black uppercase tracking-tight mb-3 ${isDark?'text-white':'text-gray-900'}`}>
+            {lang==='ar'?'نخدم عملاء في كل مكان':'We Serve Clients Everywhere'}
+          </h2>
+          <p className={`${isDark?'text-gray-500':'text-gray-500'}`}>
+            {lang==='ar'?'عملاء نشطون الآن حول العالم — بما فيهم أنت':'Active clients right now around the world — including you'}
+          </p>
+        </motion.div>
+
+        {/* YOUR LOCATION CARD */}
+        <motion.div initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={{once:true}}
+          className={`rounded-2xl p-5 mb-8 border relative overflow-hidden ${isDark?'bg-[#0d1a00] border-green-500/30':'bg-green-50 border-green-300'}`}>
+          <motion.div animate={{opacity:[0.1,0.25,0.1]}} transition={{duration:3,repeat:Infinity}}
+            className="absolute inset-0 pointer-events-none"
+            style={{background:'radial-gradient(ellipse at 20% 50%,rgba(74,222,128,0.15) 0%,transparent 70%)'}}/>
+          <div className="flex items-center gap-4 relative z-10">
+            <motion.div animate={{scale:[1,1.15,1]}} transition={{duration:2,repeat:Infinity}}
+              className="w-3 h-3 rounded-full bg-green-400 flex-shrink-0 shadow-[0_0_10px_rgba(74,222,128,0.8)]"/>
+            <div className="flex-1">
+              {locLoading ? (
+                <div className="flex items-center gap-2">
+                  <motion.div animate={{rotate:360}} transition={{duration:1,repeat:Infinity,ease:'linear'}}>
+                    <RefreshCcw className="w-4 h-4 text-green-400"/>
+                  </motion.div>
+                  <span className={`text-sm font-bold ${isDark?'text-gray-400':'text-gray-500'}`}>
+                    {lang==='ar'?'جاري تحديد موقعك...':'Detecting your location...'}
+                  </span>
+                </div>
+              ) : userLocation ? (
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="text-xl">{userLocation.flag}</span>
+                  <div>
+                    <span className={`font-black text-base ${isDark?'text-white':'text-gray-900'}`}>
+                      {lang==='ar'?'موقعك الحالي:':'Your location:'} {userLocation.city}, {userLocation.country}
+                    </span>
+                    <div className="flex items-center gap-3 mt-0.5">
+                      <span className="text-green-400 text-xs font-bold">
+                        ● {lang==='ar'?'نشط الآن في منطقتك:':'Active in your area:'} {userLocation.active} {lang==='ar'?'عميل':'clients'}
+                      </span>
+                      <span className={`text-xs ${isDark?'text-gray-600':'text-gray-400'}`}>IP: {userLocation.ip}</span>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+            <div className={`text-xs font-black px-3 py-1.5 rounded-full ${isDark?'bg-green-500/15 text-green-400 border border-green-500/25':'bg-green-100 text-green-700 border border-green-300'}`}>
+              {lang==='ar'?'✓ خدمة متاحة في منطقتك':'✓ Service available near you'}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* SVG World Map */}
+        <motion.div initial={{opacity:0,scale:0.97}} whileInView={{opacity:1,scale:1}} viewport={{once:true}}
+          className={`relative rounded-3xl overflow-hidden mb-8 border ${isDark?'bg-[#0a0a18] border-white/5':'bg-white border-gray-200 shadow-sm'}`}
+          style={{height:'300px'}}>
+
+          {/* World map SVG — proper continents */}
+          <svg viewBox="0 0 1000 500" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="mapGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor={isDark?'#facc15':'#ca8a04'} stopOpacity="0.18"/>
+                <stop offset="100%" stopColor={isDark?'#facc15':'#ca8a04'} stopOpacity="0.06"/>
+              </linearGradient>
+            </defs>
+            {/* North America */}
+            <path fill="url(#mapGrad)" stroke={isDark?'rgba(255,220,0,0.15)':'rgba(202,138,4,0.2)'} strokeWidth="1"
+              d="M80,80 L200,60 L240,80 L250,120 L230,160 L210,200 L190,230 L160,250 L140,280 L120,300 L100,290 L80,260 L60,220 L50,180 L55,140 L70,110 Z"/>
+            {/* South America */}
+            <path fill="url(#mapGrad)" stroke={isDark?'rgba(255,220,0,0.15)':'rgba(202,138,4,0.2)'} strokeWidth="1"
+              d="M160,300 L200,290 L230,310 L240,350 L235,390 L220,420 L200,440 L175,430 L155,410 L145,370 L148,340 Z"/>
+            {/* Europe */}
+            <path fill="url(#mapGrad)" stroke={isDark?'rgba(255,220,0,0.15)':'rgba(202,138,4,0.2)'} strokeWidth="1"
+              d="M360,60 L420,50 L450,70 L460,100 L440,130 L410,140 L380,130 L360,110 L350,85 Z"/>
+            {/* Africa */}
+            <path fill="url(#mapGrad)" stroke={isDark?'rgba(255,220,0,0.15)':'rgba(202,138,4,0.2)'} strokeWidth="1"
+              d="M380,155 L440,145 L470,165 L480,210 L475,260 L460,310 L440,350 L415,370 L390,360 L368,330 L355,280 L355,230 L362,190 Z"/>
+            {/* Middle East */}
+            <path fill="url(#mapGrad)" stroke={isDark?'rgba(255,220,0,0.15)':'rgba(202,138,4,0.2)'} strokeWidth="1"
+              d="M455,120 L510,110 L540,125 L545,155 L525,175 L500,180 L470,170 L450,150 Z"/>
+            {/* Asia */}
+            <path fill="url(#mapGrad)" stroke={isDark?'rgba(255,220,0,0.15)':'rgba(202,138,4,0.2)'} strokeWidth="1"
+              d="M520,60 L700,50 L780,80 L810,130 L800,180 L760,200 L700,210 L640,200 L580,190 L540,160 L520,130 Z"/>
+            {/* South/SE Asia */}
+            <path fill="url(#mapGrad)" stroke={isDark?'rgba(255,220,0,0.15)':'rgba(202,138,4,0.2)'} strokeWidth="1"
+              d="M600,200 L680,195 L720,215 L715,245 L695,260 L665,258 L635,240 L615,220 Z"/>
+            {/* Australia */}
+            <path fill="url(#mapGrad)" stroke={isDark?'rgba(255,220,0,0.15)':'rgba(202,138,4,0.2)'} strokeWidth="1"
+              d="M730,290 L820,280 L860,300 L870,340 L850,370 L810,385 L770,380 L740,360 L720,330 L720,305 Z"/>
+          </svg>
+
+          {/* City dots */}
+          {mapDots.map((dot,i)=>(
+            <div key={i} className="absolute" style={{left:dot.x,top:dot.y,transform:'translate(-50%,-50%)',zIndex:10}}>
+              <motion.div animate={{scale:[1,3,1],opacity:[0.7,0,0.7]}} transition={{duration:2.5,repeat:Infinity,delay:dot.delay,ease:'easeOut'}}
+                className="absolute inset-0 rounded-full bg-snap-yellow w-3 h-3"/>
+              <motion.div animate={{scale:[1,2,1],opacity:[0.9,0.1,0.9]}} transition={{duration:2.5,repeat:Infinity,delay:dot.delay+0.3,ease:'easeOut'}}
+                className="absolute inset-0 rounded-full bg-snap-yellow w-3 h-3"/>
+              <div className="relative w-3 h-3 rounded-full bg-snap-yellow shadow-[0_0_14px_rgba(255,220,0,0.9)]"/>
+              <motion.div animate={{opacity:[0,1,1,0]}} transition={{duration:4,repeat:Infinity,delay:dot.delay+1}}
+                className="absolute left-4 -top-1 bg-black/85 backdrop-blur-sm px-2 py-0.5 rounded-lg whitespace-nowrap pointer-events-none">
+                <span className="text-white text-[10px] font-black">{dot.city} </span>
+                <motion.span animate={{opacity:[0.6,1,0.6]}} transition={{duration:1.5,repeat:Infinity}}
+                  className="text-snap-yellow text-[10px] font-black">{cityActive[dot.city]||8}</motion.span>
+              </motion.div>
+            </div>
+          ))}
+
+          {/* USER location dot (special — blinking star) */}
+          {userLocation && (
+            <div className="absolute" style={{left:'50%',top:'35%',transform:'translate(-50%,-50%)',zIndex:20}}>
+              <motion.div animate={{scale:[1,4,1],opacity:[0.8,0,0.8]}} transition={{duration:2,repeat:Infinity,ease:'easeOut'}}
+                className="absolute inset-0 w-4 h-4 rounded-full bg-green-400"/>
+              <div className="relative w-4 h-4 rounded-full bg-green-400 shadow-[0_0_18px_rgba(74,222,128,1)] border-2 border-white/50"/>
+              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-green-500 text-black px-2 py-0.5 rounded text-[9px] font-black whitespace-nowrap">
+                {lang==='ar'?'أنت هنا ✓':'You ✓'}
+              </div>
+            </div>
+          )}
+        </motion.div>
+
+        {/* City stat cards */}
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+          {statCities.map((c,i)=>(
+            <motion.div key={i} initial={{opacity:0,y:12}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.07}}
+              whileHover={{y:-4,scale:1.04}}
+              className={`p-4 rounded-2xl border text-center relative overflow-hidden cursor-default ${isDark?'bg-[#0a0a18] border-white/8':'bg-white border-gray-200 shadow-sm'}`}>
+              {isDark && <motion.div animate={{opacity:[0.08,0.2,0.08]}} transition={{duration:3+i*0.5,repeat:Infinity}}
+                className="absolute inset-0" style={{background:'radial-gradient(circle,rgba(255,220,0,0.15) 0%,transparent 70%)'}}/>}
+              <div className="text-2xl mb-1 relative z-10">{c.flag}</div>
+              <div className={`text-xs font-black mb-1 relative z-10 ${isDark?'text-gray-300':'text-gray-700'}`}>{c.city}</div>
+              <motion.div animate={{opacity:[0.7,1,0.7]}} transition={{duration:2+i*0.3,repeat:Infinity}}
+                className="text-snap-yellow font-black text-base relative z-10">{cityActive[c.key]||8}</motion.div>
+              <div className="text-[9px] text-green-400 font-bold flex items-center justify-center gap-1 relative z-10 mt-0.5">
+                <motion.div animate={{opacity:[1,0,1]}} transition={{duration:1.5,repeat:Infinity,delay:i*0.3}} className="w-1.5 h-1.5 rounded-full bg-green-400"/>
+                {lang==='ar'?'نشط':'active'}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default function App() {
   const [lang, setLang] = useState<'en' | 'ar'>('en');
   const [view, setView] = useState<'home' | 'shop' | 'checkout' | 'blog' | 'blog_detail' | 'service_detail' | 'product_detail' | 'boosting' | 'calc' | 'checker' | 'tracker' | 'bitmoji' | 'lens' | 'map' | 'privacy' | 'terms' | 'category_detail' | 'snapify' | 'recent_work' | 'loyalty'>('home');
@@ -4550,114 +4773,146 @@ export default function App() {
                   </div>
                 </>
               ) : (
-                <div className="max-w-3xl mx-auto">
-                  <div className="glass p-10 lg:p-16 rounded-[3rem] border-white/10">
-                    <div className="flex items-center justify-between mb-12">
-                      <h1 className="text-4xl font-black uppercase tracking-tight">{lang === 'ar' ? 'تفاصيل الحساب' : 'Account Details'}</h1>
-                      <button onClick={() => setSelectedBoostingTier(null)} className="text-gray-500 hover:text-white transition-colors">
-                        <ChevronLeft className={`w-6 h-6 ${lang === 'ar' ? 'rotate-180' : ''}`} />
-                      </button>
+                <div className="max-w-2xl mx-auto">
+                  <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}}
+                    className="rounded-3xl overflow-hidden border border-snap-yellow/20 shadow-[0_0_60px_rgba(255,220,0,0.08)]"
+                    style={{background:isDark?'linear-gradient(135deg,#0d0d00,#1a1400)':'white'}}>
+
+                    {/* Header */}
+                    <div className="px-8 pt-8 pb-6 border-b border-snap-yellow/10">
+                      <div className="flex items-center justify-between mb-6">
+                        <button onClick={()=>setSelectedBoostingTier(null)} className={`flex items-center gap-2 text-sm font-bold transition-colors ${isDark?'text-gray-400 hover:text-white':'text-gray-500 hover:text-gray-900'}`}>
+                          <ChevronLeft className="w-4 h-4"/> {lang==='ar'?'تغيير الباقة':'Change Package'}
+                        </button>
+                        <div className="px-3 py-1 rounded-full bg-snap-yellow/15 border border-snap-yellow/30 text-snap-yellow text-xs font-black">
+                          🔐 {lang==='ar'?'آمن ومشفر':'Secure & Encrypted'}
+                        </div>
+                      </div>
+
+                      {/* Selected tier display */}
+                      <div className="flex items-center gap-5">
+                        <div className="w-16 h-16 rounded-2xl bg-snap-yellow/15 border-2 border-snap-yellow/30 flex flex-col items-center justify-center flex-shrink-0">
+                          <Zap className="w-7 h-7 text-snap-yellow"/>
+                        </div>
+                        <div>
+                          <div className={`text-xs font-bold uppercase tracking-widest mb-1 ${isDark?'text-gray-500':'text-gray-400'}`}>{lang==='ar'?'الباقة المختارة':'Selected Package'}</div>
+                          <div className="text-2xl font-black text-snap-yellow">{selectedBoostingTier.amount} <span className={`text-base ${isDark?'text-gray-400':'text-gray-500'}`}>Score</span></div>
+                          <div className={`font-black text-lg ${isDark?'text-white':'text-gray-800'}`}>{selectedBoostingTier.price}</div>
+                        </div>
+                        <div className="ml-auto text-right hidden sm:block">
+                          <div className={`text-xs ${isDark?'text-gray-600':'text-gray-400'}`}>{lang==='ar'?'وقت التسليم':'Delivery Time'}</div>
+                          <div className="text-snap-yellow font-black text-sm">{selectedBoostingTier.time||'1-48 hrs'}</div>
+                        </div>
+                      </div>
                     </div>
 
-                    <div className="space-y-8">
-                      <div className="p-8 rounded-2xl bg-snap-yellow/10 border border-snap-yellow/30 relative overflow-hidden group">
-                        <div className="absolute -top-10 -right-10 w-32 h-32 bg-snap-yellow/10 rounded-full blur-3xl group-hover:bg-snap-yellow/20 transition-colors"></div>
-                        <div className="relative z-10">
-                          <div className="flex justify-between items-center mb-4">
-                            <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'الباقة المختارة' : 'Selected Tier'}</span>
-                            <span className="text-snap-yellow font-black text-xl">{selectedBoostingTier.amount} Score</span>
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <span className="text-gray-400 font-bold uppercase tracking-widest text-xs">{lang === 'ar' ? 'السعر' : 'Price'}</span>
-                            <span className="text-white font-black text-xl">{selectedBoostingTier.price}</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="space-y-6">
-                        <div className="p-8 rounded-2xl bg-blue-600/5 border border-blue-500/20">
-                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-blue-400 mb-3 ml-2">{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</label>
-                          <input 
-                            type="email"
-                            value={checkoutData.username}
-                            onChange={(e) => setCheckoutData({...checkoutData, username: e.target.value})}
-                            placeholder="email@example.com"
-                            className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow focus:ring-1 focus:ring-snap-yellow outline-none transition-all font-bold"
-                          />
-                        </div>
-                        <div className="p-8 rounded-2xl bg-purple-600/5 border border-purple-500/20">
-                          <label className="block text-xs font-black uppercase tracking-[0.2em] text-purple-400 mb-3 ml-2">{lang === 'ar' ? 'كلمة المرور' : 'Password'}</label>
-                          <input 
-                            type="password"
-                            value={checkoutData.password}
-                            onChange={(e) => setCheckoutData({...checkoutData, password: e.target.value})}
-                            placeholder="••••••••"
-                            className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 focus:border-snap-yellow focus:ring-1 focus:ring-snap-yellow outline-none transition-all font-bold"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="p-6 rounded-2xl bg-snap-yellow/5 border border-snap-yellow/20 flex gap-4">
-                        <ShieldCheck className="w-6 h-6 text-snap-yellow flex-shrink-0" />
-                        <p className="text-xs text-gray-400 leading-relaxed font-medium">
-                          {lang === 'ar' 
-                            ? 'بياناتك مشفرة وتستخدم فقط لعملية الرفع. سيتم إرسال طلبك عبر الواتساب.' 
-                            : 'Your data is encrypted and used only for the boosting process. Your order will be sent via WhatsApp.'}
+                    {/* Form body */}
+                    <div className="p-8 space-y-5">
+                      {/* Why we need credentials */}
+                      <div className={`p-4 rounded-2xl border flex gap-3 ${isDark?'bg-blue-500/5 border-blue-500/15':'bg-blue-50 border-blue-200'}`}>
+                        <ShieldCheck className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5"/>
+                        <p className={`text-xs leading-relaxed ${isDark?'text-gray-400':'text-gray-600'}`}>
+                          {lang==='ar'
+                            ? '🔐 نحتاج بيانات الدخول لتوصيل النقاط لحسابك. بياناتك مشفرة ومحذوفة تلقائيًا فور انتهاء الخدمة. يُنصح بتغيير كلمة المرور بعد الانتهاء.'
+                            : '🔐 We need your credentials to deliver the score directly to your account. Data is encrypted and auto-deleted after service completion. We recommend changing your password afterward.'}
                         </p>
                       </div>
 
-                      {/* Security Trust Badges */}
+                      {/* Snapchat Username */}
+                      <div>
+                        <label className={`flex items-center gap-2 text-xs font-black uppercase tracking-widest mb-2 ${isDark?'text-blue-400':'text-blue-600'}`}>
+                          <User className="w-3.5 h-3.5"/>
+                          {lang==='ar'?'اسم مستخدم سناب شات (اليوزر)':'Snapchat Username'}
+                          <span className="text-red-400 ml-1">*</span>
+                        </label>
+                        <div className="relative">
+                          <span className={`absolute left-4 top-1/2 -translate-y-1/2 font-black ${isDark?'text-gray-500':'text-gray-400'}`}>@</span>
+                          <input
+                            type="text"
+                            value={checkoutData.username}
+                            onChange={(e)=>setCheckoutData({...checkoutData, username:e.target.value})}
+                            placeholder={lang==='ar'?'yourusername':'yourusername'}
+                            className={`w-full pl-8 pr-4 py-4 rounded-2xl border outline-none transition-all font-bold text-base ${isDark?'bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-blue-400 focus:bg-blue-500/5':'bg-gray-50 border-gray-200 text-gray-800 placeholder:text-gray-400 focus:border-blue-400 focus:bg-blue-50'}`}
+                          />
+                        </div>
+                        <p className={`text-xs mt-1.5 ${isDark?'text-gray-600':'text-gray-400'}`}>{lang==='ar'?'مثال: @snapchat أو snap-user123':'Example: @snapchat or snap-user123'}</p>
+                      </div>
+
+                      {/* Password */}
+                      <div>
+                        <label className={`flex items-center gap-2 text-xs font-black uppercase tracking-widest mb-2 ${isDark?'text-red-400':'text-red-600'}`}>
+                          <Lock className="w-3.5 h-3.5"/>
+                          {lang==='ar'?'كلمة مرور سناب شات':'Snapchat Password'}
+                          <span className="text-red-400 ml-1">*</span>
+                          <span className={`ml-auto text-[10px] font-bold px-2 py-0.5 rounded-full ${isDark?'bg-red-500/10 text-red-400 border border-red-500/20':'bg-red-50 text-red-600 border border-red-200'}`}>
+                            {lang==='ar'?'مطلوب لرفع السكور':'Required for Score Boost'}
+                          </span>
+                        </label>
+                        <input
+                          type="password"
+                          value={checkoutData.password}
+                          onChange={(e)=>setCheckoutData({...checkoutData, password:e.target.value})}
+                          placeholder="••••••••••••"
+                          className={`w-full px-4 py-4 rounded-2xl border outline-none transition-all font-bold text-base tracking-widest ${isDark?'bg-white/5 border-white/10 text-white placeholder:text-gray-600 focus:border-red-400 focus:bg-red-500/5':'bg-gray-50 border-gray-200 text-gray-800 placeholder:text-gray-400 focus:border-red-400 focus:bg-red-50'}`}
+                        />
+                        <p className={`text-xs mt-1.5 ${isDark?'text-gray-600':'text-gray-400'}`}>{lang==='ar'?'كلمة المرور مطلوبة لتوصيل النقاط للحساب مباشرة':'Password required to deliver score directly to account'}</p>
+                      </div>
+
+                      {/* Security badges */}
                       <div className="grid grid-cols-3 gap-3">
                         {[
-                          { icon: '🔐', title: 'One-Time Session', desc: lang === 'ar' ? 'تُحذف البيانات فور الانتهاء' : 'Data burned after completion' },
-                          { icon: '🌐', title: 'Residential IPs', desc: lang === 'ar' ? 'من: KSA, UAE, USA' : 'From: KSA, UAE, USA' },
-                          { icon: '📱', title: 'Real Devices', desc: lang === 'ar' ? 'iPhone & Samsung' : 'iPhone & Samsung' },
-                        ].map((b, bi) => (
-                          <div key={bi} className="p-3 rounded-xl bg-white/3 border border-white/8 text-center">
-                            <div className="text-lg mb-1">{b.icon}</div>
-                            <div className="text-[10px] font-black text-white">{b.title}</div>
-                            <div className="text-[9px] text-gray-600 mt-0.5">{b.desc}</div>
+                          {icon:'🔐',title:lang==='ar'?'جلسة مؤقتة':'One-Time Session',desc:lang==='ar'?'تُحذف البيانات تلقائياً':'Data auto-deleted'},
+                          {icon:'🌐',title:lang==='ar'?'IPs حقيقية':'Residential IPs',desc:lang==='ar'?'KSA, UAE, USA':'KSA, UAE, USA'},
+                          {icon:'📱',title:lang==='ar'?'أجهزة حقيقية':'Real Devices',desc:'iPhone & Samsung'},
+                        ].map((b,bi)=>(
+                          <div key={bi} className={`p-3 rounded-xl text-center border ${isDark?'bg-white/3 border-white/8':'bg-gray-50 border-gray-200'}`}>
+                            <div className="text-xl mb-1">{b.icon}</div>
+                            <div className={`text-[10px] font-black ${isDark?'text-white':'text-gray-800'}`}>{b.title}</div>
+                            <div className={`text-[9px] mt-0.5 ${isDark?'text-gray-600':'text-gray-500'}`}>{b.desc}</div>
                           </div>
                         ))}
                       </div>
 
-                      {/* Live Order Console — shows after form fill */}
-                      {checkoutData.username && checkoutData.password && (
-                        <motion.div initial={{opacity:0,y:12}} animate={{opacity:1,y:0}}>
-                          <div className="text-xs font-black text-green-400 uppercase tracking-widest mb-2 flex items-center gap-2">
-                            <motion.div animate={{opacity:[1,0,1]}} transition={{duration:0.8,repeat:Infinity}} className="w-2 h-2 rounded-full bg-green-400"/>
-                            {lang === 'ar' ? 'معاينة النظام' : 'System Preview'}
-                          </div>
-                          <OrderConsole amount={selectedBoostingTier.amount} isDark={true} />
-                        </motion.div>
-                      )}
+                      {/* Live Order Console — shows after credentials entered */}
+                      <AnimatePresence>
+                        {checkoutData.username && checkoutData.password && (
+                          <motion.div initial={{opacity:0,y:12,height:0}} animate={{opacity:1,y:0,height:'auto'}} exit={{opacity:0,y:-8,height:0}}>
+                            <div className={`text-xs font-black uppercase tracking-widest mb-2 flex items-center gap-2 ${isDark?'text-green-400':'text-green-600'}`}>
+                              <motion.div animate={{opacity:[1,0,1]}} transition={{duration:0.8,repeat:Infinity}} className="w-2 h-2 rounded-full bg-green-400"/>
+                              {lang==='ar'?'معاينة نظام المعالجة':'Processing System Preview'}
+                            </div>
+                            <OrderConsole amount={selectedBoostingTier.amount} isDark={true}/>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
 
-                      <button 
-                        onClick={() => {
+                      {/* Submit */}
+                      <motion.button
+                        whileHover={checkoutData.username&&checkoutData.password?{scale:1.02}:{}}
+                        whileTap={checkoutData.username&&checkoutData.password?{scale:0.98}:{}}
+                        onClick={()=>{
                           setIsProcessing(true);
-                          setTimeout(() => {
-                            const message = `New Score Boosting Order!\nTier: ${selectedBoostingTier.amount} Score\nEmail: ${checkoutData.username}\nPassword: ${checkoutData.password}\nPrice: ${selectedBoostingTier.price}`;
-                            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+                          setTimeout(()=>{
+                            const msg=`New Score Boosting Order!\nPackage: ${selectedBoostingTier.amount} Score\nPrice: ${selectedBoostingTier.price}\nUsername: @${checkoutData.username}\nPassword: ${checkoutData.password}`;
+                            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
                             setIsProcessing(false);
                           }, 1500);
                         }}
                         disabled={isProcessing || !checkoutData.username || !checkoutData.password}
-                        className="w-full py-6 bg-snap-yellow text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_10px_40px_rgba(255,252,0,0.3)] disabled:opacity-50 disabled:hover:scale-100 text-xl flex items-center justify-center gap-4"
+                        className="w-full py-5 bg-snap-yellow text-black font-black rounded-2xl text-lg flex items-center justify-center gap-3 shadow-[0_8px_40px_rgba(255,220,0,0.3)] disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                       >
                         {isProcessing ? (
-                          <>
-                            <RefreshCcw className="w-6 h-6 animate-spin" />
-                            {lang === 'ar' ? 'جاري المعالجة...' : 'Processing...'}
-                          </>
+                          <><RefreshCcw className="w-5 h-5 animate-spin"/> {lang==='ar'?'جاري الإرسال...':'Sending...'}</>
                         ) : (
-                          <>
-                            <WhatsAppIcon className="w-6 h-6" />
-                            {lang === 'ar' ? 'إرسال الطلب عبر واتساب' : 'Send Order via WhatsApp'}
-                          </>
+                          <><WhatsAppIcon className="w-6 h-6"/> {lang==='ar'?'إرسال الطلب عبر واتساب':'Send Order via WhatsApp'}</>
                         )}
-                      </button>
+                      </motion.button>
+
+                      {!checkoutData.username && (
+                        <p className="text-center text-xs text-gray-600">{lang==='ar'?'أدخل اسم المستخدم وكلمة المرور للمتابعة':'Enter username and password to continue'}</p>
+                      )}
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               )}
             </div>
@@ -5801,92 +6056,7 @@ export default function App() {
 
       {/* ══════════════ AUTHORITY / GLOBAL MAP SECTION ══════════════ */}
       {view === 'home' && (
-        <section className={`py-24 px-6 relative overflow-hidden ${isDark?'bg-[#06060f]':'bg-gray-50'}`}>
-          <div className={`absolute inset-x-0 top-0 h-px ${isDark?'bg-gradient-to-r from-transparent via-snap-yellow/30 to-transparent':'bg-gradient-to-r from-transparent via-yellow-300/40 to-transparent'}`}/>
-
-          <div className="max-w-7xl mx-auto relative z-10">
-            <motion.div initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} className="text-center mb-12">
-              <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4 border ${isDark?'bg-snap-yellow/8 border-snap-yellow/25 text-snap-yellow':'bg-yellow-50 border-yellow-300 text-yellow-700'}`}>
-                🌍 {lang==='ar'?'حضور عالمي':'Global Presence'}
-              </span>
-              <h2 className={`text-3xl lg:text-5xl font-black uppercase tracking-tight mb-3 ${isDark?'text-white':'text-gray-900'}`}>
-                {lang==='ar'?'نخدم عملاء في كل مكان':'We Serve Clients Everywhere'}
-              </h2>
-              <p className={`${isDark?'text-gray-500':'text-gray-500'}`}>{lang==='ar'?'عملاء نشطون الآن حول العالم':'Active clients right now around the world'}</p>
-            </motion.div>
-
-            {/* SVG World Map with yellow dots */}
-            <motion.div initial={{opacity:0,scale:0.95}} whileInView={{opacity:1,scale:1}} viewport={{once:true}}
-              className={`relative rounded-3xl overflow-hidden mb-10 border ${isDark?'bg-[#0a0a18] border-white/5':'bg-white border-gray-200 shadow-sm'}`}
-              style={{height:'320px'}}>
-
-              {/* Simple SVG world outline */}
-              <svg viewBox="0 0 1000 500" className="w-full h-full opacity-20" style={{color: isDark?'#facc15':'#ca8a04'}}>
-                <path fill="currentColor" d="M150,120 Q180,100 220,110 Q260,120 280,140 Q300,160 290,180 Q280,200 260,210 Q240,220 210,215 Q180,210 160,195 Q140,180 140,160 Q140,140 150,120Z"/>
-                <path fill="currentColor" d="M310,80 Q370,60 430,70 Q490,80 520,100 Q550,120 545,150 Q540,180 510,195 Q480,210 440,215 Q400,220 370,205 Q340,190 325,170 Q310,150 310,120 Q310,100 310,80Z"/>
-                <path fill="currentColor" d="M420,220 Q440,215 460,225 Q480,235 485,255 Q490,275 475,290 Q460,305 435,305 Q410,305 395,290 Q380,275 385,255 Q390,235 420,220Z"/>
-                <path fill="currentColor" d="M530,120 Q570,100 620,105 Q670,110 700,130 Q730,150 725,180 Q720,210 690,225 Q660,240 625,240 Q590,240 565,220 Q540,200 535,175 Q530,150 530,120Z"/>
-                <path fill="currentColor" d="M700,200 Q730,190 760,200 Q790,210 800,235 Q810,260 795,280 Q780,300 750,305 Q720,310 698,295 Q676,280 673,258 Q670,236 700,200Z"/>
-                <path fill="currentColor" d="M760,100 Q800,85 850,90 Q900,95 930,120 Q960,145 955,175 Q950,205 920,220 Q890,235 850,232 Q810,229 785,208 Q760,187 758,160 Q756,133 760,100Z"/>
-                <path fill="currentColor" d="M820,240 Q845,230 870,240 Q895,250 900,270 Q905,290 888,305 Q871,320 845,318 Q819,316 808,300 Q797,284 820,240Z"/>
-              </svg>
-
-              {/* Animated yellow dots for cities */}
-              {[
-                {x:'22%', y:'35%', city:'New York', active:19, delay:0},
-                {x:'38%', y:'25%', city:'London', active:15, delay:0.4},
-                {x:'48%', y:'32%', city:'Riyadh', active:32, delay:0.8},
-                {x:'52%', y:'40%', city:'Dubai', active:18, delay:1.2},
-                {x:'62%', y:'38%', city:'Mumbai', active:11, delay:1.6},
-                {x:'78%', y:'30%', city:'Singapore', active:9, delay:2.0},
-                {x:'30%', y:'55%', city:'São Paulo', active:7, delay:2.4},
-                {x:'88%', y:'58%', city:'Sydney', active:6, delay:2.8},
-              ].map((dot,i)=>(
-                <div key={i} className="absolute" style={{left:dot.x, top:dot.y, transform:'translate(-50%,-50%)'}}>
-                  {/* Pulse rings */}
-                  <motion.div animate={{scale:[1,2.5,1], opacity:[0.6,0,0.6]}}
-                    transition={{duration:2.5, repeat:Infinity, delay:dot.delay, ease:'easeOut'}}
-                    className="absolute inset-0 rounded-full bg-snap-yellow"/>
-                  <motion.div animate={{scale:[1,1.8,1], opacity:[0.8,0.1,0.8]}}
-                    transition={{duration:2.5, repeat:Infinity, delay:dot.delay+0.3, ease:'easeOut'}}
-                    className="absolute inset-0 rounded-full bg-snap-yellow"/>
-                  {/* Core dot */}
-                  <div className="relative w-3 h-3 rounded-full bg-snap-yellow shadow-[0_0_12px_rgba(255,220,0,0.8)] z-10"/>
-                  {/* Label */}
-                  <motion.div animate={{opacity:[0.7,1,0.7]}} transition={{duration:3, repeat:Infinity, delay:dot.delay}}
-                    className="absolute left-5 -top-1 bg-black/80 backdrop-blur-sm px-2 py-0.5 rounded-lg whitespace-nowrap z-20 pointer-events-none">
-                    <span className="text-white text-[10px] font-black">{dot.city}</span>
-                    <span className="text-snap-yellow text-[10px] font-black ml-1">{dot.active}</span>
-                  </motion.div>
-                </div>
-              ))}
-            </motion.div>
-
-            {/* Active cities stat cards */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                {city:'Riyadh 🇸🇦', active:32, trend:'+5 today'},
-                {city:'Dubai 🇦🇪', active:18, trend:'+3 today'},
-                {city:'London 🇬🇧', active:15, trend:'+2 today'},
-                {city:'New York 🇺🇸', active:19, trend:'+4 today'},
-              ].map((c,i)=>(
-                <motion.div key={i} initial={{opacity:0,y:16}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:i*0.1}}
-                  whileHover={{y:-4,scale:1.03}}
-                  className={`p-4 rounded-2xl border text-center relative overflow-hidden ${isDark?'bg-[#0a0a18] border-white/8':'bg-white border-gray-200 shadow-sm'}`}>
-                  {isDark && <motion.div animate={{opacity:[0.1,0.25,0.1]}} transition={{duration:3+i,repeat:Infinity}}
-                    className="absolute inset-0 rounded-2xl" style={{background:'radial-gradient(circle,rgba(255,220,0,0.12) 0%,transparent 70%)'}}/>}
-                  <div className={`text-sm font-black mb-1 ${isDark?'text-white':'text-gray-800'}`}>{c.city}</div>
-                  <div className="text-snap-yellow font-black text-lg">{lang==='ar'?'نشط':'Active'}: {c.active}</div>
-                  <motion.div animate={{opacity:[0.6,1,0.6]}} transition={{duration:2,repeat:Infinity,delay:i*0.4}}
-                    className="text-xs text-green-400 font-bold mt-1 flex items-center justify-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"/>
-                    {c.trend}
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <GlobalPresenceSection isDark={isDark} lang={lang} />
       )}
 
       {/* ══════════════ AI CHAT WIDGET ══════════════ */}
