@@ -1394,19 +1394,19 @@ const faqData = [
 ];
 
 const catalog = [
-  { id: 1, score: "5K+", price: "$3", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
-  { id: 2, score: "10K+", price: "$5", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
-  { id: 3, score: "20K+", price: "$7", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
-  { id: 4, score: "50K+", price: "$12", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
-  { id: 5, score: "100K+", price: "$15", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
-  { id: 6, score: "200K+", price: "$18", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
-  { id: 7, score: "300K+", price: "$22", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
-  { id: 8, score: "500K+", price: "$28", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
-  { id: 9, score: "700K+", price: "$33", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
-  { id: 10, score: "1M+", price: "$40", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
-  { id: 11, score: "2M+", price: "$75", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
-  { id: 12, score: "5M+", price: "$350", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
-  { id: 13, score: "10M+", price: "$800", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
+  { id: 1, score: "5K+", price: "$15", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
+  { id: 2, score: "10K+", price: "$25", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
+  { id: 3, score: "20K+", price: "$35", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
+  { id: 4, score: "50K+", price: "$55", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
+  { id: 5, score: "100K+", price: "$95", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
+  { id: 6, score: "200K+", price: "$160", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
+  { id: 7, score: "300K+", price: "$220", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
+  { id: 8, score: "500K+", price: "$280", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
+  { id: 9, score: "700K+", price: "$350", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
+  { id: 10, score: "1M+", price: "$450", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
+  { id: 11, score: "2M+", price: "$850", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
+  { id: 12, score: "5M+", price: "$1800", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
+  { id: 13, score: "10M+", price: "$3500", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
 ];
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -1441,16 +1441,16 @@ const ServiceDetail = ({ service, lang, onBack, onOrder, openWhatsApp }: { servi
   const isScoreBoost = service.id === 's_boost';
 
   const boostTiers = [
-    { id: 'b5k', amount: '5,000', price: '$3', time: '1-2 hrs' },
-    { id: 'b10k', amount: '10,000', price: '$5', time: '2-4 hrs' },
-    { id: 'b20k', amount: '20,000', price: '$7', time: '4-6 hrs' },
-    { id: 'b50k', amount: '50,000', price: '$12', time: '6-12 hrs' },
-    { id: 'b100k', amount: '100,000', price: '$15', time: '12-24 hrs' },
-    { id: 'b200k', amount: '200,000', price: '$18', time: '24-48 hrs' },
-    { id: 'b300k', amount: '300,000', price: '$22', time: '2-3 days' },
-    { id: 'b500k', amount: '500,000', price: '$30', time: '3-5 days' },
-    { id: 'b700k', amount: '700,000', price: '$35', time: '5-7 days' },
-    { id: 'b1m', amount: '1,000,000', price: '$45', time: '7-10 days' },
+    { id: 'b5k', amount: '5,000', price: '$10', time: '1-2 hrs' },
+    { id: 'b10k', amount: '10,000', price: '$18', time: '2-4 hrs' },
+    { id: 'b20k', amount: '20,000', price: '$35', time: '4-6 hrs' },
+    { id: 'b50k', amount: '50,000', price: '$80', time: '6-12 hrs' },
+    { id: 'b100k', amount: '100,000', price: '$150', time: '12-24 hrs' },
+    { id: 'b200k', amount: '200,000', price: '$280', time: '24-48 hrs' },
+    { id: 'b300k', amount: '300,000', price: '$400', time: '2-3 days' },
+    { id: 'b500k', amount: '500,000', price: '$650', time: '3-5 days' },
+    { id: 'b700k', amount: '700,000', price: '$850', time: '5-7 days' },
+    { id: 'b1m', amount: '1,000,000', price: '$1200', time: '7-10 days' },
   ];
 
   const followerTiers = [
@@ -2446,6 +2446,10 @@ export default function App() {
   const [snapifyCode, setSnapifyCode] = useState('');
   const [showUsage, setShowUsage] = useState(false);
   const [isDark, setIsDark] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSellerModal, setShowSellerModal] = useState(false);
+  const [loginData, setLoginData] = useState({email:'', password:''});
+  const [sellerData, setSellerData] = useState({name:'', whatsapp:'', country:'', referrals:''});
 
   const handleToolClick = (toolId: string, isPro?: boolean) => {
     setView(toolId as any);
@@ -2594,19 +2598,19 @@ export default function App() {
   };
 
   const scoreAccountsStock = [
-    { id: 'sa5k', amount: '5,000', price: '$3', type: 'Score Account', age: '2023', followers: '100-500', deliveryTime: '1-2 Hours', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
-    { id: 'sa10k', amount: '10,000', price: '$5', type: 'Score Account', age: '2022', followers: '500-1k', deliveryTime: '1-2 Hours', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
-    { id: 'sa20k', amount: '20,000', price: '$7', type: 'Score Account', age: '2021', followers: '1k-2k', deliveryTime: '2-4 Hours', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
-    { id: 'sa50k', amount: '50,000', price: '$12', type: 'Score Account', age: '2020', followers: '2k-5k', deliveryTime: '4-6 Hours', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
-    { id: 'sa100k', amount: '100,000', price: '$15', type: 'Score Account', age: '2019', followers: '5k-10k', deliveryTime: '6-12 Hours', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
-    { id: 'sa200k', amount: '200,000', price: '$18', type: 'Score Account', age: '2018', followers: '10k-20k', deliveryTime: '12-24 Hours', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
-    { id: 'sa300k', amount: '300,000', price: '$22', type: 'Score Account', age: '2017', followers: '20k-30k', deliveryTime: '24-48 Hours', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
-    { id: 'sa500k', amount: '500,000', price: '$28', type: 'Score Account', age: '2016', followers: '30k-50k', deliveryTime: '2-3 Days', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
-    { id: 'sa700k', amount: '700,000', price: '$33', type: 'Score Account', age: '2015', followers: '50k-70k', deliveryTime: '3-5 Days', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
-    { id: 'sa1m', amount: '1,000,000', price: '$40', type: 'Score Account', age: '2014', followers: '100k+', deliveryTime: '5-7 Days', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
-    { id: 'sa2m', amount: '2,000,000', price: '$70', type: 'Score Account', age: '2013', followers: '200k+', deliveryTime: '7-10 Days', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
-    { id: 'sa5m', amount: '5,000,000', price: '$350', type: 'Score Account', age: '2012', followers: '500k+', deliveryTime: '10-15 Days', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
-    { id: 'sa10m', amount: '10,000,000', price: '$800', type: 'Score Account', age: '2011', followers: '1M+', deliveryTime: '15-20 Days', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
+    { id: 'sa5k', amount: '5,000', price: '$15', type: 'Score Account', age: '2023', followers: '100-500', deliveryTime: '1-2 Hours', desc: { en: 'Starter Score Account', ar: 'حساب سكور بداية' } },
+    { id: 'sa10k', amount: '10,000', price: '$25', type: 'Score Account', age: '2022', followers: '500-1k', deliveryTime: '1-2 Hours', desc: { en: 'Aged Score Account', ar: 'حساب سكور قديم' } },
+    { id: 'sa20k', amount: '20,000', price: '$35', type: 'Score Account', age: '2021', followers: '1k-2k', deliveryTime: '2-4 Hours', desc: { en: 'Growth Score Account', ar: 'حساب سكور نمو' } },
+    { id: 'sa50k', amount: '50,000', price: '$55', type: 'Score Account', age: '2020', followers: '2k-5k', deliveryTime: '4-6 Hours', desc: { en: 'Popular Score Tier', ar: 'فئة سكور شائعة' } },
+    { id: 'sa100k', amount: '100,000', price: '$95', type: 'Score Account', age: '2019', followers: '5k-10k', deliveryTime: '6-12 Hours', desc: { en: 'Influencer Ready', ar: 'جاهز للمؤثرين' } },
+    { id: 'sa200k', amount: '200,000', price: '$160', type: 'Score Account', age: '2018', followers: '10k-20k', deliveryTime: '12-24 Hours', desc: { en: 'Pro Status', ar: 'مستوى المحترفين' } },
+    { id: 'sa300k', amount: '300,000', price: '$220', type: 'Score Account', age: '2017', followers: '20k-30k', deliveryTime: '24-48 Hours', desc: { en: 'Expert Status', ar: 'مستوى الخبراء' } },
+    { id: 'sa500k', amount: '500,000', price: '$280', type: 'Score Account', age: '2016', followers: '30k-50k', deliveryTime: '2-3 Days', desc: { en: 'Elite Presence', ar: 'حضور النخبة' } },
+    { id: 'sa700k', amount: '700,000', price: '$350', type: 'Score Account', age: '2015', followers: '50k-70k', deliveryTime: '3-5 Days', desc: { en: 'Ultimate Presence', ar: 'حضور أقصى' } },
+    { id: 'sa1m', amount: '1,000,000', price: '$450', type: 'Score Account', age: '2014', followers: '100k+', deliveryTime: '5-7 Days', desc: { en: 'Legendary Status', ar: 'حالة أسطورية' } },
+    { id: 'sa2m', amount: '2,000,000', price: '$850', type: 'Score Account', age: '2013', followers: '200k+', deliveryTime: '7-10 Days', desc: { en: 'Double Millionaire', ar: 'مليونير مزدوج' } },
+    { id: 'sa5m', amount: '5,000,000', price: '$1800', type: 'Score Account', age: '2012', followers: '500k+', deliveryTime: '10-15 Days', desc: { en: 'Mega Authority', ar: 'سلطة ضخمة' } },
+    { id: 'sa10m', amount: '10,000,000', price: '$3500', type: 'Score Account', age: '2011', followers: '1M+', deliveryTime: '15-20 Days', desc: { en: 'Ultimate Authority', ar: 'السلطة القصوى' } },
   ];
 
   const followerAccountsStock = [
@@ -2630,16 +2634,16 @@ export default function App() {
   ];
 
   const boostingTiers = [
-    { id: 'b5k', amount: '5,000', price: '$3' },
-    { id: 'b10k', amount: '10,000', price: '$5' },
-    { id: 'b20k', amount: '20,000', price: '$7' },
-    { id: 'b50k', amount: '50,000', price: '$12' },
-    { id: 'b100k', amount: '100,000', price: '$15' },
-    { id: 'b200k', amount: '200,000', price: '$18' },
-    { id: 'b300k', amount: '300,000', price: '$22' },
-    { id: 'b500k', amount: '500,000', price: '$28' },
-    { id: 'b700k', amount: '700,000', price: '$33' },
-    { id: 'b1m', amount: '1,000,000', price: '$40' },
+    { id: 'b5k', amount: '5,000', price: '$10' },
+    { id: 'b10k', amount: '10,000', price: '$18' },
+    { id: 'b20k', amount: '20,000', price: '$35' },
+    { id: 'b50k', amount: '50,000', price: '$80' },
+    { id: 'b100k', amount: '100,000', price: '$150' },
+    { id: 'b200k', amount: '200,000', price: '$280' },
+    { id: 'b300k', amount: '300,000', price: '$400' },
+    { id: 'b500k', amount: '500,000', price: '$650' },
+    { id: 'b700k', amount: '700,000', price: '$850' },
+    { id: 'b1m', amount: '1,000,000', price: '$1200' },
   ];
 
   const handleBuy = (pkg: any) => {
@@ -3079,7 +3083,6 @@ export default function App() {
               </div>
             </div>
 
-            <button onClick={() => { setView('recent_work'); window.location.hash='recent_work'; window.scrollTo(0,0); }} className={`hover:text-snap-yellow transition-colors ${view === 'recent_work' ? 'text-snap-yellow' : ''}`}>{lang==='ar'?'أعمالنا':'Work'}</button>
             <button onClick={() => { setView('loyalty'); window.location.hash='loyalty'; window.scrollTo(0,0); }} className={`hover:text-snap-yellow transition-colors ${view === 'loyalty' ? 'text-snap-yellow' : ''} relative`}>
               {lang==='ar'?'الولاء':'Loyalty'}
               <span className="absolute -top-2 -right-3 text-[8px] bg-snap-yellow text-black px-1 rounded font-black">NEW</span>
@@ -3087,42 +3090,44 @@ export default function App() {
             <button onClick={() => { setView('blog'); window.location.hash = 'blog'; window.scrollTo(0,0); }} className={`hover:text-snap-yellow transition-colors ${view === 'blog' ? 'text-snap-yellow' : ''}`}>{t.nav.blog}</button>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             {/* Dark/Light Toggle */}
-            <button
-              onClick={() => setIsDark(!isDark)}
-              className={`relative w-14 h-7 rounded-full transition-all duration-500 border flex-shrink-0 ${isDark ? 'bg-snap-yellow/20 border-snap-yellow/40' : 'bg-yellow-100 border-yellow-300'}`}
-              title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            >
-              <motion.div
-                animate={{ x: isDark ? 2 : 30 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                className={`absolute top-0.5 w-6 h-6 rounded-full flex items-center justify-center text-xs shadow-lg ${isDark ? 'bg-gray-800' : 'bg-snap-yellow'}`}
-              >
+            <button onClick={() => setIsDark(!isDark)}
+              className={`relative w-13 h-7 rounded-full transition-all duration-500 border flex-shrink-0 ${isDark ? 'bg-snap-yellow/20 border-snap-yellow/40' : 'bg-yellow-100 border-yellow-300'}`}
+              style={{width:'52px'}}
+              title={isDark ? 'Light Mode' : 'Dark Mode'}>
+              <motion.div animate={{ x: isDark ? 2 : 27 }} transition={{ type:'spring', stiffness:400, damping:25 }}
+                className={`absolute top-0.5 w-6 h-6 rounded-full flex items-center justify-center text-xs shadow-lg ${isDark ? 'bg-gray-800' : 'bg-snap-yellow'}`}>
                 {isDark ? '🌙' : '☀️'}
               </motion.div>
             </button>
-            <button 
-              onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all border ${isDark ? 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10 hover:border-snap-yellow/50' : 'bg-white border-gray-200 text-gray-600 hover:border-snap-yellow/50 hover:bg-yellow-50'}`}
-            >
-              <Globe className="w-4 h-4" />
-              {t.nav.lang}
+
+            {/* Lang toggle */}
+            <button onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold transition-all border ${isDark ? 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'}`}>
+              <Globe className="w-3.5 h-3.5" />{t.nav.lang}
             </button>
-            <button 
-              onClick={() => openWhatsApp(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات سناب بوست' : 'Hello, I want to inquire about Snap Boost services')}
-              className="hidden sm:flex px-6 py-2.5 bg-snap-yellow text-black font-black rounded-full hover:scale-105 transition-all duration-300 text-sm shadow-[0_0_20px_rgba(255,252,0,0.3)]"
-            >
-              {t.nav.contact}
+
+            {/* Login Button */}
+            <button onClick={() => setShowLogin(true)}
+              className={`hidden sm:flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black border transition-all ${isDark ? 'border-white/15 bg-white/5 text-white hover:bg-white/10 hover:border-white/30' : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'}`}>
+              <User className="w-3.5 h-3.5"/>
+              {lang==='ar'?'تسجيل الدخول':'Login'}
             </button>
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 hover:text-snap-yellow transition-colors"
-            >
+
+            {/* Become a Seller */}
+            <motion.button whileHover={{scale:1.05}} whileTap={{scale:0.97}}
+              onClick={() => setShowSellerModal(true)}
+              className="hidden sm:flex items-center gap-2 px-5 py-2 rounded-full text-xs font-black bg-snap-yellow text-black shadow-[0_0_16px_rgba(255,220,0,0.35)] hover:shadow-[0_0_24px_rgba(255,220,0,0.5)] transition-all">
+              ⭐ {lang==='ar'?'كن بائعاً':'Become a Seller'}
+            </motion.button>
+
+            {/* Mobile menu */}
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 hover:text-snap-yellow transition-colors">
               <div className="w-6 h-5 flex flex-col justify-between">
-                <span className={`h-0.5 w-full bg-current transition-all ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                <span className={`h-0.5 w-full bg-current transition-all ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`h-0.5 w-full bg-current transition-all ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                <span className={`h-0.5 w-full bg-current transition-all ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}/>
+                <span className={`h-0.5 w-full bg-current transition-all ${isMenuOpen ? 'opacity-0' : ''}`}/>
+                <span className={`h-0.5 w-full bg-current transition-all ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}/>
               </div>
             </button>
           </div>
@@ -3395,7 +3400,7 @@ export default function App() {
         </section>
 
         {/* Why Choose Us Grid */}
-        <section id="services" className={`py-32 px-6 relative section-divider ${isDark?"bg-[#0a0a18]":"bg-white"}`}>
+        <section id="services" className={`py-32 px-6 relative section-divider ${isDark?"bg-[#080814]":"bg-gray-50"}`}>
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tight">{t.why.title}</h2>
@@ -3589,7 +3594,7 @@ export default function App() {
         </section>
 
         {/* Tools Section */}
-        <section id="tools" className={`py-32 px-6 relative section-divider ${isDark?"bg-[#0a0a18]":"bg-gray-50"}`}>
+        <section id="tools" className={`py-32 px-6 relative section-divider ${isDark?"bg-[#06060f]":"bg-white"}`}>
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tight">
@@ -3677,7 +3682,7 @@ export default function App() {
         </section>
 
         {/* FAQ Section */}
-        <section id="faq" className={`py-32 px-6 relative section-divider ${isDark?"bg-[#0a0a18]":"bg-gray-50"}`}>
+        <section id="faq" className={`py-32 px-6 relative section-divider ${isDark?"bg-[#080814]":"bg-gray-50"}`}>
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-20">
               <h2 className="text-4xl lg:text-6xl font-black mb-6 uppercase tracking-tight">{t.faq.title}</h2>
@@ -4034,7 +4039,7 @@ export default function App() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-32 px-6 relative overflow-hidden section-divider">
+        <section id="contact" className={`py-32 px-6 relative overflow-hidden section-divider ${isDark?"bg-[#06060f]":"bg-white"}`}>
           {/* Animated contact background */}
           <motion.div animate={{ scale: [1,1.3,1], opacity: [0.05,0.12,0.05] }} transition={{ duration: 6, repeat: Infinity }}
             className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full blur-3xl pointer-events-none"
@@ -4368,10 +4373,10 @@ export default function App() {
                       // Build small pricing table per service
                       const svcTiers: {label: string, price: string}[] = 
                         service.id === 's_boost' ? [
-                          { label: '5K Score', price: '$3' },
-                          { label: '20K Score', price: '$10' },
-                          { label: '100K Score', price: '$16' },
-                          { label: '1M Score', price: '$60' },
+                          { label: '5K Score', price: '$10' },
+                          { label: '20K Score', price: '$35' },
+                          { label: '100K Score', price: '$150' },
+                          { label: '1M Score', price: '$1200' },
                         ] :
                         service.id === 's_followers' ? [
                           { label: '500 Followers', price: '$20' },
@@ -5877,94 +5882,154 @@ export default function App() {
           <section className={`pt-36 pb-24 px-6 min-h-screen ${isDark?'bg-[#06060f]':'bg-white'}`}>
             <div className="max-w-6xl mx-auto">
               <div className="mb-8"><BackButton onClick={()=>setView('home')} lang={lang}/></div>
-              <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="text-center mb-16">
+              <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="text-center mb-14">
                 <span className="inline-block px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-5 border bg-snap-yellow/10 border-snap-yellow/30 text-snap-yellow">
-                  ✦ {lang==='ar'?'أعمالنا الأخيرة':'Recent Work'}
+                  📸 {lang==='ar'?'أعمالنا':'Recent Work'}
                 </span>
                 <h1 className={`text-4xl lg:text-6xl font-black uppercase tracking-tight mb-4 ${isDark?'text-white':'text-gray-900'}`}>
                   {lang==='ar'?'نتائج حقيقية':'Real Results'} <span className="text-snap-yellow">{lang==='ar'?'من عملاء حقيقيين':'From Real Clients'}</span>
                 </h1>
-                <p className={`text-lg ${isDark?'text-gray-400':'text-gray-500'}`}>{lang==='ar'?'شاهد ما أنجزناه لعملائنا':'See what we\'ve achieved for our clients'}</p>
+                <p className={`text-lg ${isDark?'text-gray-400':'text-gray-500'}`}>{lang==='ar'?'لقطات شاشة حقيقية من عملائنا':'Real screenshots shared by our clients'}</p>
                 <div className="mt-5 w-20 h-1 bg-snap-yellow mx-auto rounded-full"/>
               </motion.div>
 
-              {/* Stats bar */}
+              {/* Stats */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
                 {[
-                  {val:'10K+', label:lang==='ar'?'عميل راضٍ':'Happy Clients', icon:'😊'},
-                  {val:'50K+', label:lang==='ar'?'طلب مكتمل':'Orders Done', icon:'✅'},
-                  {val:'99%', label:lang==='ar'?'نسبة النجاح':'Success Rate', icon:'🎯'},
-                  {val:'4.9★', label:lang==='ar'?'تقييم العملاء':'Client Rating', icon:'⭐'},
+                  {val:'10K+',label:lang==='ar'?'عميل راضٍ':'Happy Clients',icon:'😊',color:'#facc15'},
+                  {val:'50K+',label:lang==='ar'?'طلب مكتمل':'Orders Done',icon:'✅',color:'#4ade80'},
+                  {val:'99%',label:lang==='ar'?'نسبة النجاح':'Success Rate',icon:'🎯',color:'#60a5fa'},
+                  {val:'4.9★',label:lang==='ar'?'تقييم العملاء':'Client Rating',icon:'⭐',color:'#fb923c'},
                 ].map((s,i)=>(
                   <motion.div key={i} initial={{opacity:0,scale:0.9}} animate={{opacity:1,scale:1}} transition={{delay:i*0.1}}
-                    className={`p-5 rounded-2xl text-center border ${isDark?'bg-white/3 border-white/8':'bg-gray-50 border-gray-200'}`}>
-                    <div className="text-2xl mb-1">{s.icon}</div>
-                    <div className="text-2xl font-black text-snap-yellow">{s.val}</div>
-                    <div className={`text-xs font-bold mt-1 ${isDark?'text-gray-500':'text-gray-500'}`}>{s.label}</div>
+                    whileHover={{y:-4,scale:1.03}}
+                    className={`p-5 rounded-2xl text-center border relative overflow-hidden ${isDark?'bg-white/3 border-white/8':'bg-gray-50 border-gray-200'}`}>
+                    {isDark && <motion.div animate={{opacity:[0.1,0.25,0.1]}} transition={{duration:3+i,repeat:Infinity}}
+                      className="absolute inset-0" style={{background:`radial-gradient(circle,${s.color}25 0%,transparent 70%)`}}/>}
+                    <div className="text-2xl mb-1 relative z-10">{s.icon}</div>
+                    <div className="text-2xl font-black relative z-10" style={{color:s.color}}>{s.val}</div>
+                    <div className={`text-xs font-bold mt-1 relative z-10 ${isDark?'text-gray-500':'text-gray-500'}`}>{s.label}</div>
                   </motion.div>
                 ))}
               </div>
 
-              {/* Feedback Screenshots Grid */}
+              {/* SNAPCHAT SCREENSHOT MOCKUPS */}
+              <h2 className={`text-2xl font-black mb-6 uppercase tracking-tight ${isDark?'text-white':'text-gray-900'}`}>
+                📱 {lang==='ar'?'لقطات شاشة من سناب شات':'Snapchat Score Screenshots'}
+              </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
                 {[
-                  {name:'Ahmed Al-Harbi', loc:'Riyadh, KSA 🇸🇦', service:'1M Score Boost', before:'124K', after:'1,000,000+', stars:5, msg:'Fastest service I have ever seen! Got my 1M score in 6 days. 100% legit!', color:'#facc15', bg:'#1a1400'},
-                  {name:'Sara Mohammed', loc:'Dubai, UAE 🇦🇪', service:'Follower Account 50K', before:'0', after:'52,400', stars:5, msg:'Account delivered same day. Very professional team and fast support!', color:'#a78bfa', bg:'#0d0820'},
-                  {name:'Sultan Al-Kuwari', loc:'Doha, Qatar 🇶🇦', service:'Score Boost 500K', before:'18K', after:'518,000', stars:5, msg:'Best Snapchat service in the Gulf. Credibility and speed!', color:'#34d399', bg:'#001a0d'},
-                  {name:'Layla Hassan', loc:'Kuwait 🇰🇼', service:'Verified Badge', before:'—', after:'✅ Gold Badge', stars:5, msg:'Got my gold badge! The team guided me every step of the way.', color:'#fb923c', bg:'#180900'},
-                  {name:'Omar Farooq', loc:'Manama, Bahrain 🇧🇭', service:'100K Score Account', before:'0', after:'102K score', stars:5, msg:'Super fast delivery, account is clean and ready to use!', color:'#38bdf8', bg:'#001520'},
-                  {name:'Noura Al-Said', loc:'Muscat, Oman 🇴🇲', service:'Follower Increase 20K', before:'1.2K', after:'21.5K', stars:5, msg:'Real followers, no drops! My reach increased 10x. Amazing!', color:'#fb7185', bg:'#150010'},
-                ].map((card,i)=>(
+                  {user:'ahmed_ksa98', score:'1,024,850', prevScore:'124K', country:'🇸🇦 Riyadh', color:'#facc15', date:'2 days ago', service:'Score Boost 1M'},
+                  {user:'sara.dubai', score:'512,340', prevScore:'18K', country:'🇦🇪 Dubai', color:'#a78bfa', date:'3 days ago', service:'Score Boost 500K'},
+                  {user:'sultan_q8', score:'318,900', prevScore:'12K', country:'🇰🇼 Kuwait', color:'#34d399', date:'1 day ago', service:'Score Boost 300K'},
+                  {user:'noura_oman', score:'102,400', prevScore:'4.2K', country:'🇴🇲 Muscat', color:'#fb923c', date:'5 hrs ago', service:'Score Boost 100K'},
+                  {user:'omar_bhr', score:'203,600', prevScore:'8K', country:'🇧🇭 Manama', color:'#38bdf8', date:'1 day ago', service:'Score Boost 200K'},
+                  {user:'layla_doha', score:'55,200', prevScore:'0', country:'🇶🇦 Doha', color:'#fb7185', date:'6 hrs ago', service:'Follower Account 50K'},
+                ].map((sc,i)=>(
                   <motion.div key={i}
-                    initial={{opacity:0,y:24}} animate={{opacity:1,y:0}} transition={{delay:i*0.1,type:'spring',stiffness:150}}
-                    whileHover={{y:-6,scale:1.02}}
-                    className="rounded-2xl overflow-hidden relative group"
-                    style={{background:isDark?card.bg:'white', border:`1.5px solid ${card.color}30`, boxShadow:isDark?`0 4px 30px ${card.color}15,0 0 0 1px ${card.color}15 inset`:'0 4px 20px rgba(0,0,0,0.08)'}}>
-                    {isDark && <motion.div animate={{opacity:[0.15,0.4,0.15]}} transition={{duration:3+i*0.4,repeat:Infinity}}
-                      className="absolute -top-4 -right-4 w-20 h-20 rounded-full blur-2xl pointer-events-none" style={{background:card.color}}/>}
+                    initial={{opacity:0,y:24,scale:0.95}} animate={{opacity:1,y:0,scale:1}}
+                    transition={{delay:i*0.1,type:'spring',stiffness:160}}
+                    whileHover={{y:-8,scale:1.02}}
+                    className="relative group">
+                    {/* Phone frame */}
+                    <div className={`rounded-[2rem] overflow-hidden relative border-[3px] shadow-2xl ${isDark?'border-gray-700':'border-gray-300'}`}
+                      style={{background:isDark?'#1c1c1e':'#f2f2f7'}}>
 
-                    {/* Header */}
-                    <div className="p-5 border-b" style={{borderColor:`${card.color}20`}}>
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-sm" style={{background:card.color}}>
-                          {card.name[0]}
+                      {/* Snapchat top bar */}
+                      <div className="flex items-center justify-between px-4 py-3" style={{background:isDark?'#0a0a0a':'#fff'}}>
+                        <div className="flex items-center gap-2">
+                          <div className="w-7 h-7 rounded-full bg-snap-yellow flex items-center justify-center text-black text-xs font-black">👻</div>
+                          <span className={`text-sm font-black ${isDark?'text-white':'text-gray-900'}`}>Snapchat</span>
                         </div>
-                        <div>
-                          <div className={`font-black text-sm ${isDark?'text-white':'text-gray-900'}`}>{card.name}</div>
-                          <div className={`text-xs ${isDark?'text-gray-500':'text-gray-400'}`}>{card.loc}</div>
-                        </div>
-                        <div className="ml-auto flex">
-                          {[...Array(card.stars)].map((_,si)=><Star key={si} className="w-3 h-3 fill-snap-yellow text-snap-yellow"/>)}
+                        <div className="flex items-center gap-1">
+                          <div className="w-4 h-4 text-gray-400">📶</div>
+                          <div className="text-gray-400 text-xs">100%</div>
                         </div>
                       </div>
-                      <div className="text-xs font-black uppercase tracking-widest px-2 py-1 rounded-full inline-block" style={{background:`${card.color}20`,color:card.color}}>
-                        {card.service}
+
+                      {/* Profile section */}
+                      <div className="px-4 py-5" style={{background:isDark?'#1c1c1e':'#f9f9f9'}}>
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-14 h-14 rounded-full flex items-center justify-center text-white font-black text-lg shadow-lg" style={{background:`linear-gradient(135deg,${sc.color},${sc.color}88)`}}>
+                            {sc.user[0].toUpperCase()}
+                          </div>
+                          <div>
+                            <div className={`font-black text-sm ${isDark?'text-white':'text-gray-900'}`}>{sc.user}</div>
+                            <div className="text-gray-500 text-xs">{sc.country}</div>
+                          </div>
+                          <div className="ml-auto">
+                            <div className="text-[10px] text-gray-500 text-right">{sc.date}</div>
+                          </div>
+                        </div>
+
+                        {/* Score display — main element */}
+                        <div className="rounded-2xl p-4 mb-3" style={{background:isDark?'rgba(255,255,255,0.05)':'rgba(0,0,0,0.04)', border:`1px solid ${sc.color}30`}}>
+                          <div className="text-xs text-gray-500 font-bold uppercase tracking-widest mb-1">Snap Score</div>
+                          <div className="flex items-end gap-3">
+                            <div className="text-4xl font-black" style={{color:sc.color, textShadow:`0 0 20px ${sc.color}60`}}>{sc.score}</div>
+                            {isDark && <motion.div animate={{opacity:[0.5,1,0.5]}} transition={{duration:2,repeat:Infinity}}
+                              className="text-green-400 text-xs font-black mb-1">▲ BOOSTED</motion.div>}
+                          </div>
+                          <div className={`text-xs mt-1 ${isDark?'text-gray-600':'text-gray-400'}`}>
+                            {lang==='ar'?'كان قبل':'Was'}: {sc.prevScore} → {lang==='ar'?'الآن':'Now'}: <span style={{color:sc.color}}>{sc.score}</span>
+                          </div>
+                        </div>
+
+                        {/* Service badge */}
+                        <div className="flex items-center justify-between">
+                          <span className="text-[10px] font-black px-2.5 py-1 rounded-full" style={{background:`${sc.color}18`,color:sc.color}}>
+                            ✓ {sc.service}
+                          </span>
+                          <div className="flex">
+                            {[...Array(5)].map((_,si)=><Star key={si} className="w-3 h-3 fill-snap-yellow text-snap-yellow"/>)}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* SnapScore Store watermark */}
+                      <div className="px-4 py-2.5 flex items-center justify-between" style={{background:isDark?'rgba(255,220,0,0.06)':'rgba(255,220,0,0.08)', borderTop:`1px solid ${sc.color}20`}}>
+                        <span className="text-[9px] text-gray-600 font-bold">📸 Submitted via SnapScore Store</span>
+                        <span className="text-[9px] font-black" style={{color:sc.color}}>VERIFIED ✓</span>
                       </div>
                     </div>
 
-                    {/* Before/After */}
-                    <div className="px-5 py-3 grid grid-cols-2 gap-3 border-b" style={{borderColor:`${card.color}15`}}>
-                      <div className={`p-3 rounded-xl text-center ${isDark?'bg-white/3':'bg-gray-50'}`}>
-                        <div className={`text-xs font-bold mb-1 ${isDark?'text-gray-500':'text-gray-400'}`}>{lang==='ar'?'قبل':'Before'}</div>
-                        <div className={`font-black text-sm ${isDark?'text-gray-300':'text-gray-600'}`}>{card.before}</div>
-                      </div>
-                      <div className="p-3 rounded-xl text-center" style={{background:`${card.color}15`}}>
-                        <div className="text-xs font-bold mb-1" style={{color:card.color}}>{lang==='ar'?'بعد':'After'}</div>
-                        <div className="font-black text-sm" style={{color:card.color}}>{card.after}</div>
-                      </div>
-                    </div>
+                    {/* Glow shadow */}
+                    {isDark && <div className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-30 transition-opacity duration-500 blur-xl -z-10" style={{background:sc.color}}/>}
+                  </motion.div>
+                ))}
+              </div>
 
-                    {/* Review */}
-                    <div className="p-5">
-                      <p className={`text-sm leading-relaxed italic ${isDark?'text-gray-400':'text-gray-600'}`}>"{card.msg}"</p>
+              {/* Client reviews */}
+              <h2 className={`text-2xl font-black mb-6 uppercase tracking-tight ${isDark?'text-white':'text-gray-900'}`}>
+                💬 {lang==='ar'?'تعليقات العملاء':'Client Reviews'}
+              </h2>
+              <div className="grid md:grid-cols-2 gap-5 mb-14">
+                {[
+                  {name:'Ahmed Al-Harbi',loc:'Riyadh 🇸🇦',msg:'Fastest service I have ever seen! Got my 1M score in 6 days. 100% legit!',color:'#facc15',service:'1M Score Boost'},
+                  {name:'Sara Mohammed',loc:'Dubai 🇦🇪',msg:'Account delivered same day. Very professional team and fast support on WhatsApp!',color:'#a78bfa',service:'50K Follower Account'},
+                  {name:'Sultan Al-Kuwari',loc:'Qatar 🇶🇦',msg:'Best Snapchat service in the Gulf. No ban, no issues, everything smooth.',color:'#34d399',service:'500K Score Boost'},
+                  {name:'Noura Al-Said',loc:'Oman 🇴🇲',msg:'My followers doubled! The team is so supportive and always responds quickly.',color:'#fb923c',service:'Follower Increase 20K'},
+                ].map((r,i)=>(
+                  <motion.div key={i} initial={{opacity:0,x:i%2===0?-20:20}} animate={{opacity:1,x:0}} transition={{delay:i*0.1}}
+                    whileHover={{y:-4}}
+                    className={`p-6 rounded-2xl border ${isDark?'border-white/8':'border-gray-200 shadow-sm'}`}
+                    style={{background:isDark?`${r.color}06`:'white'}}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center text-black font-black text-sm" style={{background:r.color}}>{r.name[0]}</div>
+                      <div>
+                        <div className={`font-black text-sm ${isDark?'text-white':'text-gray-900'}`}>{r.name}</div>
+                        <div className={`text-xs ${isDark?'text-gray-500':'text-gray-400'}`}>{r.loc} • {r.service}</div>
+                      </div>
+                      <div className="ml-auto flex">{[...Array(5)].map((_,si)=><Star key={si} className="w-3 h-3 fill-snap-yellow text-snap-yellow"/>)}</div>
                     </div>
+                    <p className={`text-sm italic leading-relaxed ${isDark?'text-gray-400':'text-gray-600'}`}>"{r.msg}"</p>
                   </motion.div>
                 ))}
               </div>
 
               <div className="text-center">
-                <motion.button whileHover={{scale:1.04}} onClick={()=>openWhatsApp('Hello! I want to boost my Snapchat.')}
-                  className="px-10 py-4 bg-snap-yellow text-black font-black rounded-2xl shadow-[0_8px_30px_rgba(255,220,0,0.3)] inline-flex items-center gap-3">
+                <motion.button whileHover={{scale:1.04}} whileTap={{scale:0.97}} onClick={()=>openWhatsApp('Hello! I want to order a Snapchat service.')}
+                  className="px-10 py-4 bg-snap-yellow text-black font-black rounded-2xl shadow-[0_8px_30px_rgba(255,220,0,0.3)] inline-flex items-center gap-3 text-base">
                   <WhatsAppIcon className="w-5 h-5"/>
                   {lang==='ar'?'اطلب خدمتك الآن':'Order Your Service Now'}
                 </motion.button>
@@ -6183,6 +6248,141 @@ export default function App() {
         </motion.button>
       </div>
 
+      {/* ══════════════ LOGIN MODAL ══════════════ */}
+      <AnimatePresence>
+        {showLogin && (
+          <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4"
+            style={{background:'rgba(0,0,0,0.85)', backdropFilter:'blur(12px)'}}
+            onClick={(e)=>{ if(e.target===e.currentTarget) setShowLogin(false); }}>
+            <motion.div initial={{scale:0.88,y:30,opacity:0}} animate={{scale:1,y:0,opacity:1}} exit={{scale:0.88,y:20,opacity:0}}
+              transition={{type:'spring',stiffness:300,damping:28}}
+              className="w-full max-w-sm rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.8)]"
+              style={{background:'linear-gradient(145deg,#0e0e00,#1a1800)', border:'1.5px solid rgba(255,220,0,0.2)'}}>
+
+              {/* Header */}
+              <div className="px-7 pt-7 pb-5 border-b border-snap-yellow/10">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-10 h-10 rounded-2xl bg-snap-yellow/15 border border-snap-yellow/30 flex items-center justify-center text-xl">👻</div>
+                  <button onClick={()=>setShowLogin(false)} className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all text-sm">✕</button>
+                </div>
+                <h2 className="text-xl font-black text-white">{lang==='ar'?'تسجيل الدخول':'Sign In'}</h2>
+                <p className="text-gray-500 text-xs mt-1">{lang==='ar'?'مرحباً بك في سناب سكور ستور':'Welcome back to SnapScore Store'}</p>
+              </div>
+
+              {/* Form */}
+              <div className="p-7 space-y-4">
+                <div>
+                  <label className="text-xs font-black text-gray-400 uppercase tracking-widest block mb-2">{lang==='ar'?'البريد الإلكتروني':'Email'}</label>
+                  <input type="email" value={loginData.email} onChange={e=>setLoginData({...loginData,email:e.target.value})}
+                    placeholder="you@email.com"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-snap-yellow/50 focus:bg-white/8 transition-all placeholder:text-gray-700 font-medium"/>
+                </div>
+                <div>
+                  <label className="text-xs font-black text-gray-400 uppercase tracking-widest block mb-2">{lang==='ar'?'كلمة المرور':'Password'}</label>
+                  <input type="password" value={loginData.password} onChange={e=>setLoginData({...loginData,password:e.target.value})}
+                    placeholder="••••••••"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-snap-yellow/50 focus:bg-white/8 transition-all placeholder:text-gray-700 tracking-widest font-medium"/>
+                </div>
+                <div className="flex justify-end">
+                  <button className="text-xs text-snap-yellow/70 hover:text-snap-yellow transition-colors font-bold">
+                    {lang==='ar'?'نسيت كلمة المرور؟':'Forgot password?'}
+                  </button>
+                </div>
+                <motion.button whileHover={{scale:1.02}} whileTap={{scale:0.97}}
+                  onClick={()=>{
+                    if(loginData.email && loginData.password){
+                      openWhatsApp(`Hello! I want to login to my SnapScore Store account. Email: ${loginData.email}`);
+                      setShowLogin(false);
+                    }
+                  }}
+                  className="w-full py-3.5 bg-snap-yellow text-black font-black rounded-xl text-sm shadow-[0_4px_20px_rgba(255,220,0,0.3)] hover:shadow-[0_4px_30px_rgba(255,220,0,0.5)] transition-all">
+                  {lang==='ar'?'تسجيل الدخول':'Sign In'}
+                </motion.button>
+
+                <div className="text-center pt-2">
+                  <span className="text-gray-600 text-xs">{lang==='ar'?'ليس لديك حساب؟':'No account yet?'} </span>
+                  <button onClick={()=>{setShowLogin(false); setShowSellerModal(true);}} className="text-snap-yellow text-xs font-black hover:underline">
+                    {lang==='ar'?'كن بائعاً':'Become a Seller'}
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ══════════════ BECOME A SELLER MODAL ══════════════ */}
+      <AnimatePresence>
+        {showSellerModal && (
+          <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 overflow-y-auto"
+            style={{background:'rgba(0,0,0,0.88)', backdropFilter:'blur(14px)'}}
+            onClick={(e)=>{ if(e.target===e.currentTarget) setShowSellerModal(false); }}>
+            <motion.div initial={{scale:0.88,y:30,opacity:0}} animate={{scale:1,y:0,opacity:1}} exit={{scale:0.88,y:20,opacity:0}}
+              transition={{type:'spring',stiffness:280,damping:26}}
+              className="w-full max-w-md rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.8)] my-8"
+              style={{background:'linear-gradient(145deg,#0a1400,#172500)', border:'1.5px solid rgba(74,222,128,0.25)'}}>
+
+              {/* Header */}
+              <div className="px-7 pt-7 pb-5 border-b border-green-500/15">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="px-3 py-1 rounded-full text-xs font-black bg-green-500/15 text-green-400 border border-green-500/25">⭐ AFFILIATE PROGRAM</div>
+                  <button onClick={()=>setShowSellerModal(false)} className="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all text-sm">✕</button>
+                </div>
+                <h2 className="text-2xl font-black text-white mb-1">{lang==='ar'?'كن بائعاً معنا':'Become a Seller'}</h2>
+                <p className="text-gray-500 text-sm">{lang==='ar'?'اكسب حتى 20% عمولة على كل طلب':'Earn up to 20% commission on every order'}</p>
+              </div>
+
+              {/* Commission tiers */}
+              <div className="px-7 py-5 grid grid-cols-3 gap-3 border-b border-green-500/10">
+                {[
+                  {icon:'🥉',tier:'Bronze',pct:'10%',color:'#cd7f32'},
+                  {icon:'🥈',tier:'Silver',pct:'15%',color:'#a8a8a8'},
+                  {icon:'🥇',tier:'Gold',pct:'20%',color:'#facc15'},
+                ].map((t,i)=>(
+                  <div key={i} className="rounded-2xl p-3 text-center border" style={{background:`${t.color}10`, borderColor:`${t.color}25`}}>
+                    <div className="text-2xl">{t.icon}</div>
+                    <div className="text-xs font-black mt-1" style={{color:t.color}}>{t.pct}</div>
+                    <div className="text-[9px] text-gray-600 font-bold">{t.tier}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Form */}
+              <div className="p-7 space-y-4">
+                {[
+                  {key:'name', label:lang==='ar'?'اسمك الكامل':'Full Name', placeholder:lang==='ar'?'أدخل اسمك':'Your name', type:'text'},
+                  {key:'whatsapp', label:'WhatsApp', placeholder:'+966xxxxxxxxx', type:'tel'},
+                  {key:'country', label:lang==='ar'?'البلد':'Country', placeholder:lang==='ar'?'السعودية، الإمارات...':'Saudi Arabia, UAE...', type:'text'},
+                  {key:'referrals', label:lang==='ar'?'كم تعتقد ستُحيل شهرياً؟':'Est. monthly referrals?', placeholder:'5-10', type:'text'},
+                ].map((f)=>(
+                  <div key={f.key}>
+                    <label className="text-xs font-black text-gray-400 uppercase tracking-widest block mb-1.5">{f.label}</label>
+                    <input type={f.type} placeholder={f.placeholder}
+                      value={(sellerData as any)[f.key]} onChange={e=>setSellerData({...sellerData,[f.key]:e.target.value})}
+                      className="w-full bg-white/5 border border-white/8 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-green-400/40 transition-all placeholder:text-gray-700 font-medium"/>
+                  </div>
+                ))}
+
+                <motion.button whileHover={{scale:1.02}} whileTap={{scale:0.97}}
+                  onClick={()=>{
+                    const msg = `🎁 New Seller Application!\nName: ${sellerData.name}\nWhatsApp: ${sellerData.whatsapp}\nCountry: ${sellerData.country}\nEst. Referrals/month: ${sellerData.referrals}`;
+                    openWhatsApp(msg);
+                    setShowSellerModal(false);
+                    setSellerData({name:'',whatsapp:'',country:'',referrals:''});
+                  }}
+                  className="w-full py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-black font-black rounded-xl text-sm shadow-[0_4px_20px_rgba(74,222,128,0.3)] hover:shadow-[0_4px_30px_rgba(74,222,128,0.5)] transition-all flex items-center justify-center gap-2">
+                  <WhatsAppIcon className="w-5 h-5"/>
+                  {lang==='ar'?'أرسل طلب الانضمام':'Apply via WhatsApp'}
+                </motion.button>
+                <p className="text-center text-xs text-gray-600">{lang==='ar'?'سيرد عليك فريقنا خلال ساعة':'Our team replies within 1 hour'}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <footer className="footer-gradient pt-32 pb-12 px-6 relative overflow-hidden">
         {/* Footer Background Mesh */}
         <div className="absolute inset-0 opacity-10 pointer-events-none"></div>
@@ -6264,19 +6464,19 @@ export default function App() {
             
             <div className="flex flex-col gap-6">
               <div className="flex gap-4">
-                <a href="https://facebook.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Facebook className="w-5 h-5" />
                 </a>
-                <a href="https://x.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a href="https://instagram.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="https://youtube.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Youtube className="w-5 h-5" />
                 </a>
-                <a href="https://linkdin.com/snapscorestore" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
+                <a href="#" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-snap-yellow hover:text-black transition-all">
                   <Linkedin className="w-5 h-5" />
                 </a>
               </div>
