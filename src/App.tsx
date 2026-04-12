@@ -2867,9 +2867,10 @@ export default function App() {
   }, [lang]);
 
   useEffect(() => {
+    // Slow counter — only updates every 3 seconds to prevent screen blink
     const interval = setInterval(() => {
-      setScore(prev => prev + Math.floor(Math.random() * 50) + 10);
-    }, 100);
+      setScore(prev => prev + Math.floor(Math.random() * 500) + 100);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -3158,10 +3159,12 @@ export default function App() {
               </motion.div>
             </button>
 
-            {/* Lang toggle - hidden on xs */}
+            {/* Lang toggle - show on all sizes */}
             <button onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
-              className={`hidden sm:flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold transition-all border flex-shrink-0 ${isDark ? 'bg-white/5 border-white/10 text-gray-300' : 'bg-white border-gray-200 text-gray-600'}`}>
-              <Globe className="w-3 h-3" />{t.nav.lang}
+              className={`flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-full text-xs font-bold transition-all border flex-shrink-0 ${isDark ? 'bg-white/5 border-white/10 text-gray-300' : 'bg-white border-gray-200 text-gray-600'}`}>
+              <Globe className="w-3 h-3" />
+              <span className="hidden xs:inline">{t.nav.lang}</span>
+              <span className="xs:hidden">{lang === 'en' ? 'ع' : 'EN'}</span>
             </button>
 
             {/* Login - hidden on mobile */}
@@ -3191,139 +3194,151 @@ export default function App() {
             </button>
           </div>
         </nav>
-
-        {/* Mobile Full-Screen Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <>
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="md:hidden fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
-                onClick={() => setIsMenuOpen(false)}
-              />
-              {/* Slide Panel */}
-              <motion.div
-                initial={{ x: '100%' }}
-                animate={{ x: 0 }}
-                exit={{ x: '100%' }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                className="md:hidden fixed top-0 right-0 bottom-0 z-50 w-[85vw] max-w-sm overflow-y-auto"
-                style={{ background: isDark ? 'linear-gradient(160deg,#0a0a14,#111108)' : 'white', borderLeft: isDark ? '1px solid rgba(255,220,0,0.1)' : '1px solid #e5e7eb' }}
-              >
-                {/* Panel Header */}
-                <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: isDark ? 'rgba(255,255,255,0.06)' : '#f3f4f6' }}>
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-snap-yellow rounded-xl flex items-center justify-center text-black text-base">👻</div>
-                    <span className={`font-black text-sm ${isDark ? 'text-white' : 'text-gray-900'}`}>SnapScore Store</span>
-                  </div>
-                  <button onClick={() => setIsMenuOpen(false)}
-                    className={`w-9 h-9 rounded-xl flex items-center justify-center text-lg font-bold transition-all ${isDark ? 'bg-white/8 text-gray-400 hover:bg-white/15 hover:text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}>
-                    ✕
-                  </button>
-                </div>
-
-                {/* User quick actions */}
-                <div className="px-5 py-4 grid grid-cols-2 gap-3 border-b" style={{ borderColor: isDark ? 'rgba(255,255,255,0.06)' : '#f3f4f6' }}>
-                  <button onClick={() => { setShowLogin(true); setIsMenuOpen(false); }}
-                    className={`py-3 rounded-2xl flex items-center justify-center gap-2 text-sm font-black border transition-all ${isDark ? 'border-white/10 bg-white/5 text-white active:bg-white/10' : 'border-gray-200 bg-gray-50 text-gray-700 active:bg-gray-100'}`}>
-                    <User className="w-4 h-4" />{lang === 'ar' ? 'دخول' : 'Login'}
-                  </button>
-                  <button onClick={() => { setShowSellerModal(true); setIsMenuOpen(false); }}
-                    className="py-3 rounded-2xl flex items-center justify-center gap-2 text-sm font-black bg-snap-yellow text-black active:opacity-80 transition-all shadow-[0_4px_14px_rgba(255,220,0,0.35)]">
-                    ⭐ {lang === 'ar' ? 'بائع' : 'Seller'}
-                  </button>
-                </div>
-
-                {/* Nav Links */}
-                <div className="px-4 py-3 space-y-1">
-
-                  {/* Home */}
-                  <MobileNavBtn icon="🏠" label={lang === 'ar' ? 'الرئيسية' : 'Home'} isDark={isDark} onClick={() => { setView('home'); setIsMenuOpen(false); window.scrollTo(0,0); }} active={view==='home'} />
-
-                  {/* Catalog section */}
-                  <MobileMenuSection title={lang === 'ar' ? '🛒 الكتالوج' : '🛒 Catalog'} isDark={isDark}>
-                    {[
-                      { id:'snapscore', icon:'⭐', label: lang==='ar'?'حسابات سكور':'Score Accounts' },
-                      { id:'follower', icon:'👥', label: lang==='ar'?'حسابات متابعين':'Follower Accounts' },
-                      { id:'aged', icon:'📅', label: lang==='ar'?'حسابات قديمة':'Aged Accounts' },
-                      { id:'verified', icon:'✅', label: lang==='ar'?'حسابات موثقة':'Verified Accounts' },
-                    ].map(item => (
-                      <MobileSubBtn key={item.id} icon={item.icon} label={item.label} isDark={isDark}
-                        onClick={() => { setSelectedCategory(item.id); setView('category_detail'); window.location.hash=`catalog-${item.id}`; window.scrollTo(0,0); setIsMenuOpen(false); }} />
-                    ))}
-                  </MobileMenuSection>
-
-                  {/* Services section */}
-                  <MobileMenuSection title={lang==='ar'?'⚡ الخدمات':'⚡ Services'} isDark={isDark}>
-                    {[
-                      { id:'s_boost', icon:'⚡', label: lang==='ar'?'زيادة السكور':'Score Boosting' },
-                      { id:'s_followers', icon:'👥', label: lang==='ar'?'زيادة المتابعين':'Follower Increase' },
-                      { id:'s_views', icon:'👁', label: lang==='ar'?'مشاهدات الستوري':'Stories & Spotlight' },
-                      { id:'s_lens', icon:'🎭', label: lang==='ar'?'إنشاء عدسات':'Create Lens' },
-                      { id:'s_badge', icon:'✅', label: lang==='ar'?'توثيق الحساب':'Verified Badge' },
-                    ].map(item => (
-                      <MobileSubBtn key={item.id} icon={item.icon} label={item.label} isDark={isDark}
-                        onClick={() => {
-                          const svc = servicesList.find(s => s.id === item.id);
-                          if (svc) { setSelectedService(svc); setView('service_detail'); window.location.hash=`service-${item.id}`; window.scrollTo(0,0); }
-                          setIsMenuOpen(false);
-                        }} />
-                    ))}
-                  </MobileMenuSection>
-
-                  {/* Tools section */}
-                  <MobileMenuSection title={lang==='ar'?'🛠 الأدوات':'🛠 Tools'} isDark={isDark}>
-                    {[
-                      { id:'calc', icon:'🧮', label:'Score Calculator' },
-                      { id:'checker', icon:'🔍', label:'Account Checker' },
-                      { id:'tracker', icon:'📊', label:'Score Tracker' },
-                      { id:'bitmoji', icon:'🎨', label:'Bitmoji Creator' },
-                      { id:'lens', icon:'🎭', label:'AI Lens Simulator' },
-                      { id:'map', icon:'🗺️', label:'Snap Map Finder' },
-                      { id:'snapify', icon:'🚀', label:'Snapify Pro ⭐' },
-                    ].map(item => (
-                      <MobileSubBtn key={item.id} icon={item.icon} label={item.label} isDark={isDark}
-                        onClick={() => { setView(item.id as any); setToolResult(null); window.location.hash=`tool-${item.id}`; window.scrollTo(0,0); setIsMenuOpen(false); }} />
-                    ))}
-                  </MobileMenuSection>
-
-                  {/* Other nav items */}
-                  <div className="pt-2 space-y-1">
-                    <MobileNavBtn icon="📝" label={t.nav.blog} isDark={isDark} onClick={() => { setView('blog'); window.location.hash='blog'; window.scrollTo(0,0); setIsMenuOpen(false); }} active={view==='blog'} />
-                    <MobileNavBtn icon="🎁" label={lang==='ar'?'برنامج الولاء':'Loyalty'} isDark={isDark} onClick={() => { setView('loyalty'); window.location.hash='loyalty'; window.scrollTo(0,0); setIsMenuOpen(false); }} active={view==='loyalty'} badge="NEW" />
-                    <MobileNavBtn icon="❓" label={t.nav.faq} isDark={isDark} onClick={() => { setView('home'); setIsMenuOpen(false); setTimeout(()=>document.getElementById('faq')?.scrollIntoView({behavior:'smooth'}),100); }} />
-                  </div>
-                </div>
-
-                {/* Bottom CTA */}
-                <div className="px-5 py-5 mt-2 border-t" style={{ borderColor: isDark ? 'rgba(255,255,255,0.06)' : '#f3f4f6' }}>
-                  {/* Theme + Lang row */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <button onClick={() => setIsDark(!isDark)}
-                      className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-black border transition-all ${isDark ? 'bg-white/5 border-white/10 text-gray-300' : 'bg-gray-50 border-gray-200 text-gray-600'}`}>
-                      {isDark ? '🌙 Dark' : '☀️ Light'}
-                    </button>
-                    <button onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
-                      className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-black border transition-all ${isDark ? 'bg-white/5 border-white/10 text-gray-300' : 'bg-gray-50 border-gray-200 text-gray-600'}`}>
-                      <Globe className="w-3.5 h-3.5" />{t.nav.lang}
-                    </button>
-                  </div>
-                  {/* WhatsApp CTA */}
-                  <button onClick={() => { setIsMenuOpen(false); openWhatsApp(lang==='ar'?'مرحباً، أريد الاستفسار عن خدمات سناب شات':'Hello, I want to inquire about Snapchat services!'); }}
-                    className="w-full py-4 rounded-2xl bg-[#25D366] text-white font-black text-sm flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(37,211,102,0.35)] active:opacity-80 transition-all">
-                    <WhatsAppIcon className="w-5 h-5" />
-                    {lang==='ar'?'تواصل عبر واتساب':'Chat on WhatsApp'}
-                  </button>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
       </header>
+
+      {/* ══════════════ MOBILE SLIDE MENU — outside header to prevent clipping ══════════════ */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18 }}
+              className="fixed inset-0 z-[90] bg-black/65 backdrop-blur-sm"
+              style={{ touchAction: 'none' }}
+              onClick={() => setIsMenuOpen(false)}
+            />
+            {/* Slide Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 320, damping: 32 }}
+              className="fixed top-0 right-0 bottom-0 z-[100] w-[82vw] max-w-xs overflow-y-auto"
+              style={{
+                background: isDark ? 'linear-gradient(160deg,#0b0b15 0%,#111108 100%)' : '#ffffff',
+                borderLeft: isDark ? '1px solid rgba(255,220,0,0.12)' : '1px solid #e5e7eb',
+                boxShadow: '-20px 0 60px rgba(0,0,0,0.6)',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {/* Panel Header */}
+              <div className="flex items-center justify-between px-5 py-4 sticky top-0 z-10"
+                style={{ background: isDark ? 'rgba(11,11,21,0.97)' : 'rgba(255,255,255,0.97)', borderBottom: isDark ? '1px solid rgba(255,255,255,0.06)' : '1px solid #f3f4f6', backdropFilter: 'blur(12px)' }}>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-snap-yellow rounded-xl flex items-center justify-center text-black font-black text-sm shadow-[0_0_12px_rgba(255,220,0,0.4)]">👻</div>
+                  <span className={`font-black text-sm tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>SnapScore</span>
+                </div>
+                <button onClick={() => setIsMenuOpen(false)}
+                  className={`w-9 h-9 rounded-xl flex items-center justify-center font-black text-lg transition-all active:scale-90 ${isDark ? 'bg-white/8 text-gray-300 hover:bg-white/15 hover:text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'}`}>
+                  ✕
+                </button>
+              </div>
+
+              {/* User quick actions */}
+              <div className="px-4 pt-4 pb-3 grid grid-cols-2 gap-2.5 border-b"
+                style={{ borderColor: isDark ? 'rgba(255,255,255,0.06)' : '#f3f4f6' }}>
+                <button onClick={() => { setShowLogin(true); setIsMenuOpen(false); }}
+                  className={`py-3 rounded-2xl flex items-center justify-center gap-2 text-sm font-black border active:scale-95 transition-all ${isDark ? 'border-white/10 bg-white/5 text-white' : 'border-gray-200 bg-gray-50 text-gray-700'}`}>
+                  <User className="w-4 h-4" />
+                  {lang === 'ar' ? 'دخول' : 'Login'}
+                </button>
+                <button onClick={() => { setShowSellerModal(true); setIsMenuOpen(false); }}
+                  className="py-3 rounded-2xl flex items-center justify-center gap-2 text-sm font-black bg-snap-yellow text-black active:scale-95 transition-all shadow-[0_4px_14px_rgba(255,220,0,0.35)]">
+                  ⭐ {lang === 'ar' ? 'بائع' : 'Seller'}
+                </button>
+              </div>
+
+              {/* Nav Items */}
+              <div className="px-3 py-3 space-y-1">
+                {/* Home */}
+                <MobileNavBtn icon="🏠" label={lang === 'ar' ? 'الرئيسية' : 'Home'} isDark={isDark}
+                  onClick={() => { setView('home'); setIsMenuOpen(false); window.scrollTo(0, 0); }} active={view === 'home'} />
+
+                {/* Catalog */}
+                <MobileMenuSection title={lang === 'ar' ? '🛒 الكتالوج' : '🛒 Catalog'} isDark={isDark}>
+                  {[
+                    { id: 'snapscore', icon: '⭐', label: lang === 'ar' ? 'حسابات سكور' : 'Score Accounts' },
+                    { id: 'follower', icon: '👥', label: lang === 'ar' ? 'حسابات متابعين' : 'Follower Accounts' },
+                    { id: 'aged', icon: '📅', label: lang === 'ar' ? 'حسابات قديمة' : 'Aged Accounts' },
+                    { id: 'verified', icon: '✅', label: lang === 'ar' ? 'حسابات موثقة' : 'Verified Accounts' },
+                  ].map(item => (
+                    <MobileSubBtn key={item.id} icon={item.icon} label={item.label} isDark={isDark}
+                      onClick={() => { setSelectedCategory(item.id); setView('category_detail'); window.location.hash = `catalog-${item.id}`; window.scrollTo(0, 0); setIsMenuOpen(false); }} />
+                  ))}
+                </MobileMenuSection>
+
+                {/* Services */}
+                <MobileMenuSection title={lang === 'ar' ? '⚡ الخدمات' : '⚡ Services'} isDark={isDark}>
+                  {[
+                    { id: 's_boost', icon: '⚡', label: lang === 'ar' ? 'زيادة السكور' : 'Score Boosting' },
+                    { id: 's_followers', icon: '👥', label: lang === 'ar' ? 'زيادة المتابعين' : 'Follower Increase' },
+                    { id: 's_views', icon: '👁', label: lang === 'ar' ? 'مشاهدات الستوري' : 'Stories & Spotlight' },
+                    { id: 's_lens', icon: '🎭', label: lang === 'ar' ? 'إنشاء عدسات' : 'Create Lens' },
+                    { id: 's_badge', icon: '✅', label: lang === 'ar' ? 'توثيق الحساب' : 'Verified Badge' },
+                  ].map(item => (
+                    <MobileSubBtn key={item.id} icon={item.icon} label={item.label} isDark={isDark}
+                      onClick={() => {
+                        const svc = servicesList.find(s => s.id === item.id);
+                        if (svc) { setSelectedService(svc); setView('service_detail'); window.location.hash = `service-${item.id}`; window.scrollTo(0, 0); }
+                        setIsMenuOpen(false);
+                      }} />
+                  ))}
+                </MobileMenuSection>
+
+                {/* Tools */}
+                <MobileMenuSection title={lang === 'ar' ? '🛠 الأدوات' : '🛠 Tools'} isDark={isDark}>
+                  {[
+                    { id: 'calc', icon: '🧮', label: 'Score Calculator' },
+                    { id: 'checker', icon: '🔍', label: 'Account Checker' },
+                    { id: 'tracker', icon: '📊', label: 'Score Tracker' },
+                    { id: 'bitmoji', icon: '🎨', label: 'Bitmoji Creator' },
+                    { id: 'lens', icon: '🎭', label: 'AI Lens Simulator' },
+                    { id: 'map', icon: '🗺️', label: 'Snap Map Finder' },
+                    { id: 'snapify', icon: '🚀', label: 'Snapify Pro ⭐' },
+                  ].map(item => (
+                    <MobileSubBtn key={item.id} icon={item.icon} label={item.label} isDark={isDark}
+                      onClick={() => { setView(item.id as any); setToolResult(null); window.location.hash = `tool-${item.id}`; window.scrollTo(0, 0); setIsMenuOpen(false); }} />
+                  ))}
+                </MobileMenuSection>
+
+                <div className="pt-1 space-y-1">
+                  <MobileNavBtn icon="📝" label={t.nav.blog} isDark={isDark}
+                    onClick={() => { setView('blog'); window.location.hash = 'blog'; window.scrollTo(0, 0); setIsMenuOpen(false); }} active={view === 'blog'} />
+                  <MobileNavBtn icon="🎁" label={lang === 'ar' ? 'برنامج الولاء' : 'Loyalty'} isDark={isDark}
+                    onClick={() => { setView('loyalty'); window.location.hash = 'loyalty'; window.scrollTo(0, 0); setIsMenuOpen(false); }} active={view === 'loyalty'} badge="NEW" />
+                  <MobileNavBtn icon="❓" label={t.nav.faq} isDark={isDark}
+                    onClick={() => { setView('home'); setIsMenuOpen(false); setTimeout(() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }), 150); }} />
+                </div>
+              </div>
+
+              {/* Bottom bar */}
+              <div className="px-4 pt-3 pb-6 border-t space-y-3"
+                style={{ borderColor: isDark ? 'rgba(255,255,255,0.06)' : '#f3f4f6' }}>
+                {/* Theme + Lang */}
+                <div className="grid grid-cols-2 gap-2">
+                  <button onClick={() => setIsDark(!isDark)}
+                    className={`py-3 rounded-xl flex items-center justify-center gap-2 text-xs font-black border active:scale-95 transition-all ${isDark ? 'bg-white/5 border-white/10 text-gray-300' : 'bg-gray-50 border-gray-200 text-gray-600'}`}>
+                    {isDark ? '🌙 Dark' : '☀️ Light'}
+                  </button>
+                  <button onClick={() => setLang(lang === 'en' ? 'ar' : 'en')}
+                    className={`py-3 rounded-xl flex items-center justify-center gap-2 text-xs font-black border active:scale-95 transition-all ${isDark ? 'bg-white/5 border-white/10 text-gray-300' : 'bg-gray-50 border-gray-200 text-gray-600'}`}>
+                    <Globe className="w-3.5 h-3.5" />{t.nav.lang}
+                  </button>
+                </div>
+                {/* WhatsApp */}
+                <button onClick={() => { setIsMenuOpen(false); openWhatsApp(lang === 'ar' ? 'مرحباً، أريد الاستفسار عن خدمات سناب شات' : 'Hello, I want to inquire about Snapchat services!'); }}
+                  className="w-full py-4 rounded-2xl bg-[#25D366] text-white font-black text-sm flex items-center justify-center gap-2 shadow-[0_6px_20px_rgba(37,211,102,0.3)] active:opacity-80 transition-all">
+                  <WhatsAppIcon className="w-5 h-5" />
+                  {lang === 'ar' ? 'تواصل عبر واتساب' : 'Chat on WhatsApp'}
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       <main>
         {view === 'home' && (
@@ -3386,7 +3401,7 @@ export default function App() {
               transition={{ duration: 1 }}
               className={`relative flex justify-center ${lang === 'ar' ? 'lg:justify-start' : 'lg:justify-end'}`}
             >
-              <div className="relative w-64 h-[500px] bg-zinc-900 rounded-[3rem] border-8 border-zinc-800 shadow-2xl overflow-hidden">
+              <div className="relative w-56 sm:w-64 h-[440px] sm:h-[500px] bg-zinc-900 rounded-[3rem] border-8 border-zinc-800 shadow-2xl overflow-hidden">
                 {/* Phone Screen */}
                 <div className="absolute inset-0 bg-gradient-to-b from-snap-yellow/20 to-black p-6 flex flex-col items-center justify-center text-center">
                   <div className="w-20 h-20 bg-snap-yellow rounded-2xl mb-6 flex items-center justify-center shadow-lg">
@@ -3397,40 +3412,41 @@ export default function App() {
                     {score.toLocaleString()}
                   </div>
                   <div className="mt-8 w-full space-y-3">
+                    {/* CSS-only progress bar — no JS re-render */}
                     <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                      <motion.div 
-                        animate={{ width: ["0%", "100%"] }}
-                        transition={{ duration: 2, repeat: 1000000, repeatType: "loop" }}
-                        className="h-full bg-snap-yellow"
-                      />
+                      <div className="h-full bg-snap-yellow rounded-full" style={{
+                        width: '75%',
+                        animation: 'progressPulse 3s ease-in-out infinite'
+                      }} />
                     </div>
                     <div className="text-[10px] text-gray-500">Boosting in progress...</div>
+                    <style>{`
+                      @keyframes progressPulse {
+                        0%,100% { width: 60%; opacity: 0.8; }
+                        50% { width: 85%; opacity: 1; }
+                      }
+                    `}</style>
                   </div>
                 </div>
               </div>
-              
-              {/* Decorative Particles */}
-              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%]">
-                {[...Array(20)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    animate={{
-                      y: [0, -100, 0],
-                      x: [0, Math.random() * 100 - 50, 0],
-                      opacity: [0, 1, 0],
-                      scale: [0, 1, 0]
-                    }}
-                    transition={{
-                      duration: Math.random() * 3 + 2,
-                      repeat: 1000000,
-                      repeatType: "loop",
-                      delay: Math.random() * 2
-                    }}
-                    className="absolute w-2 h-2 bg-gold-accent rounded-full blur-[1px]"
-                    style={{
-                      top: `${Math.random() * 100}%`,
-                      left: `${Math.random() * 100}%`
-                    }}
+
+              {/* Static decorative dots — no random Math.random in render */}
+              <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] pointer-events-none">
+                {[
+                  {top:'10%',left:'20%',delay:0,dur:3},
+                  {top:'25%',left:'80%',delay:0.5,dur:4},
+                  {top:'60%',left:'15%',delay:1,dur:3.5},
+                  {top:'75%',left:'70%',delay:1.5,dur:5},
+                  {top:'40%',left:'90%',delay:0.8,dur:3.2},
+                  {top:'85%',left:'40%',delay:2,dur:4.5},
+                  {top:'15%',left:'55%',delay:0.3,dur:3.8},
+                  {top:'50%',left:'5%',delay:1.8,dur:4},
+                ].map((p, i) => (
+                  <motion.div key={i}
+                    animate={{ y: [0, -60, 0], opacity: [0, 0.7, 0], scale: [0.5, 1, 0.5] }}
+                    transition={{ duration: p.dur, repeat: Infinity, delay: p.delay, ease: 'easeInOut' }}
+                    className="absolute w-2 h-2 bg-snap-yellow rounded-full"
+                    style={{ top: p.top, left: p.left }}
                   />
                 ))}
               </div>
