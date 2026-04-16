@@ -522,4 +522,337 @@
       </div>
       <div class="form-group">
         <label>Followers</label>
-        <in
+        <input type="number" id="accFollowers" placeholder="e.g. 4500">
+      </div>
+      <div class="form-group">
+        <label>Account Age</label>
+        <input type="text" id="accAge" placeholder="e.g. 3 years">
+      </div>
+    </div>
+    <div class="form-grid" style="margin-top:18px;">
+      <div class="form-group">
+        <label>Price (PKR / USD)</label>
+        <input type="text" id="accPrice" placeholder="e.g. PKR 2,500">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: PAYMENT METHOD -->
+  <div class="card">
+    <div class="card-title"><i class="fas fa-credit-card"></i> Select Payment Method</div>
+    <div class="payment-grid">
+      <div>
+        <input type="radio" name="payMethod" id="pay_easypaisa" value="Easypaisa" class="payment-option">
+        <label for="pay_easypaisa" class="payment-label">
+          <span class="checkmark"><i class="fas fa-check"></i></span>
+          <img src="https://i.postimg.cc/Xq7F4x0b/Easypaisa.png" alt="Easypaisa" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span>Easypaisa</span>
+        </label>
+      </div>
+      <div>
+        <input type="radio" name="payMethod" id="pay_jazzcash" value="JazzCash" class="payment-option">
+        <label for="pay_jazzcash" class="payment-label">
+          <span class="checkmark"><i class="fas fa-check"></i></span>
+          <img src="https://i.postimg.cc/QMdrgTsM/Jazzcash.png" alt="JazzCash" onerror="this.style.display='none'">
+          <span>JazzCash</span>
+        </label>
+      </div>
+      <div>
+        <input type="radio" name="payMethod" id="pay_binance" value="Binance" class="payment-option">
+        <label for="pay_binance" class="payment-label">
+          <span class="checkmark"><i class="fas fa-check"></i></span>
+          <img src="https://i.postimg.cc/520HPpBc/binance.png" alt="Binance" onerror="this.style.display='none'">
+          <span>Binance</span>
+        </label>
+      </div>
+      <div>
+        <input type="radio" name="payMethod" id="pay_bank" value="Bank Transfer" class="payment-option">
+        <label for="pay_bank" class="payment-label">
+          <span class="checkmark"><i class="fas fa-check"></i></span>
+          <i class="fas fa-building pay-icon"></i>
+          <span>Bank</span>
+        </label>
+      </div>
+      <div>
+        <input type="radio" name="payMethod" id="pay_other" value="Other" class="payment-option">
+        <label for="pay_other" class="payment-label">
+          <span class="checkmark"><i class="fas fa-check"></i></span>
+          <i class="fas fa-wallet pay-icon"></i>
+          <span>Other</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: PROOF UPLOAD -->
+  <div class="card">
+    <div class="card-title"><i class="fas fa-image"></i> Proof of Payment / Account Screenshot</div>
+    <div class="file-drop" id="fileDrop">
+      <input type="file" id="proofFile" accept="image/*" onchange="previewFile(event)">
+      <i class="fas fa-cloud-upload-alt"></i>
+      <p><strong>Click to upload</strong> or drag & drop</p>
+      <p style="font-size:0.72rem; margin-top:4px;">PNG, JPG, WEBP — Max 10MB</p>
+      <img id="filePreview" alt="Preview">
+    </div>
+  </div>
+
+  <!-- GENERATE -->
+  <button class="generate-btn" onclick="generateInvoice()">
+    <i class="fas fa-bolt"></i> Generate Invoice
+  </button>
+</div>
+
+<!-- ========== INVOICE OVERLAY ========== -->
+<div class="invoice-overlay" id="invoiceOverlay">
+  <div class="invoice-actions">
+    <button class="action-btn btn-pdf" onclick="downloadPDF()"><i class="fas fa-file-pdf"></i> Download PDF</button>
+    <button class="action-btn btn-png" onclick="downloadPNG()"><i class="fas fa-image"></i> Download PNG</button>
+    <button class="action-btn btn-close" onclick="closeInvoice()"><i class="fas fa-times"></i> Close</button>
+  </div>
+
+  <div id="invoiceDoc">
+    <!-- Header -->
+    <div class="inv-header">
+      <div class="inv-logo">
+        <img src="https://freesnapscores.com/assets/logo.svg" alt="SnapScoreStore">
+        <p>freesnapscores.com</p>
+      </div>
+      <div class="inv-title-block">
+        <h2>INVOICE</h2>
+        <div class="inv-num" id="invNumber">INV-000000</div>
+        <div class="inv-date" id="invDate">—</div>
+      </div>
+    </div>
+    <div class="inv-gold-bar"></div>
+
+    <div class="inv-body">
+      <!-- Client + Payment -->
+      <div class="inv-two-col">
+        <div>
+          <div class="inv-section-label">Bill To</div>
+          <div class="inv-client-name" id="inv_clientName">—</div>
+          <div class="inv-client-sub" id="inv_whatsapp">—</div>
+          <div class="inv-client-sub" id="inv_clientEmail">—</div>
+        </div>
+        <div>
+          <div class="inv-section-label">Payment Method</div>
+          <div class="inv-payment-block" id="inv_payment">—</div>
+        </div>
+      </div>
+
+      <!-- Account info table -->
+      <table class="inv-table">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Details</th>
+            <th>Field</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label-cell">Snap Score</td>
+            <td class="val-cell" id="inv_score">—</td>
+            <td class="label-cell">Followers</td>
+            <td class="val-cell" id="inv_followers">—</td>
+          </tr>
+          <tr>
+            <td class="label-cell">Account Age</td>
+            <td class="val-cell" id="inv_age">—</td>
+            <td class="label-cell">Price</td>
+            <td class="val-cell" id="inv_price_table">—</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Credentials -->
+      <div class="credentials-box">
+        <h4><i class="fas fa-key" style="margin-right:6px;color:#FFD700"></i>Account Credentials</h4>
+        <div class="cred-row"><span class="cred-key">Username</span><span class="cred-val" id="inv_username">—</span></div>
+        <div class="cred-row"><span class="cred-key">Password</span><span class="cred-val" id="inv_password">—</span></div>
+        <div class="cred-row"><span class="cred-key">Account Email</span><span class="cred-val" id="inv_accEmail">—</span></div>
+        <div class="cred-row"><span class="cred-key">Email Password</span><span class="cred-val" id="inv_emailPass">—</span></div>
+      </div>
+
+      <!-- Total -->
+      <div class="inv-total-row">
+        <div class="inv-total-box">
+          <div class="total-label">Total Amount</div>
+          <div class="total-amount" id="inv_totalAmount">—</div>
+        </div>
+      </div>
+
+      <!-- Proof -->
+      <div class="inv-proof" id="inv_proofWrap" style="display:none;">
+        <div class="inv-section-label">Proof of Payment</div>
+        <img id="inv_proofImg" src="" alt="Proof">
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="inv-footer">
+      <div>
+        <p style="color:rgba(255,255,255,0.6); font-size:0.75rem; margin-bottom:3px;">SnapScoreStore</p>
+        <p>Thank you for your purchase! This is your official receipt.</p>
+      </div>
+      <span class="paid-stamp">✓ PAID SECURELY</span>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // PASTE from clipboard
+  async function pasteField(id) {
+    try {
+      const text = await navigator.clipboard.readText();
+      document.getElementById(id).value = text;
+      showToast('📋 Pasted!');
+    } catch (e) {
+      showToast('⚠️ Clipboard access denied');
+    }
+  }
+
+  // File preview
+  function previewFile(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      const preview = document.getElementById('filePreview');
+      preview.src = e.target.result;
+      preview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // Payment logos for invoice
+  const payLogos = {
+    'Easypaisa': 'https://i.postimg.cc/Xq7F4x0b/Easypaisa.png',
+    'JazzCash': 'https://i.postimg.cc/QMdrgTsM/Jazzcash.png',
+    'Binance': 'https://i.postimg.cc/520HPpBc/binance.png',
+    'Bank Transfer': null,
+    'Other': null
+  };
+  const payIcons = {
+    'Bank Transfer': '<i class="fas fa-building" style="font-size:1.4rem;color:#FFD700"></i>',
+    'Other': '<i class="fas fa-wallet" style="font-size:1.4rem;color:#FFD700"></i>'
+  };
+
+  function generateInvoice() {
+    // Collect values
+    const clientName = document.getElementById('clientName').value.trim() || '—';
+    const whatsapp = document.getElementById('whatsapp').value.trim() || '—';
+    const clientEmail = document.getElementById('clientEmail').value.trim() || '—';
+    const username = document.getElementById('accUsername').value.trim() || '—';
+    const password = document.getElementById('accPassword').value.trim() || '—';
+    const accEmail = document.getElementById('accEmail').value.trim() || '—';
+    const emailPass = document.getElementById('emailPassword').value.trim() || '—';
+    const score = document.getElementById('accScore').value.trim() || '—';
+    const followers = document.getElementById('accFollowers').value.trim() || '—';
+    const age = document.getElementById('accAge').value.trim() || '—';
+    const price = document.getElementById('accPrice').value.trim() || '—';
+    const selectedPay = document.querySelector('input[name="payMethod"]:checked');
+
+    // Date & Time
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    const invNum = 'SSS-' + now.getFullYear() + String(now.getMonth()+1).padStart(2,'0') + String(now.getDate()).padStart(2,'0') + '-' + Math.floor(1000+Math.random()*9000);
+
+    // Fill invoice
+    document.getElementById('invNumber').textContent = invNum;
+    document.getElementById('invDate').textContent = dateStr + '  •  ' + timeStr;
+    document.getElementById('inv_clientName').textContent = clientName;
+    document.getElementById('inv_whatsapp').innerHTML = '<i class="fab fa-whatsapp" style="color:#25D366;margin-right:5px"></i>' + whatsapp;
+    document.getElementById('inv_clientEmail').innerHTML = '<i class="fas fa-envelope" style="color:#aaa;margin-right:5px"></i>' + clientEmail;
+    document.getElementById('inv_username').textContent = username;
+    document.getElementById('inv_password').textContent = password;
+    document.getElementById('inv_accEmail').textContent = accEmail;
+    document.getElementById('inv_emailPass').textContent = emailPass;
+    document.getElementById('inv_score').textContent = score !== '—' ? Number(score).toLocaleString() : '—';
+    document.getElementById('inv_followers').textContent = followers !== '—' ? Number(followers).toLocaleString() : '—';
+    document.getElementById('inv_age').textContent = age;
+    document.getElementById('inv_price_table').textContent = price;
+    document.getElementById('inv_totalAmount').textContent = price;
+
+    // Payment
+    const payEl = document.getElementById('inv_payment');
+    if (selectedPay) {
+      const pm = selectedPay.value;
+      const logoUrl = payLogos[pm];
+      if (logoUrl) {
+        payEl.innerHTML = `<img src="${logoUrl}" alt="${pm}" style="height:32px;object-fit:contain"><span class="pay-name">${pm}</span>`;
+      } else {
+        payEl.innerHTML = (payIcons[pm] || '') + `<span class="pay-name" style="margin-left:8px">${pm}</span>`;
+      }
+    } else {
+      payEl.textContent = 'Not selected';
+    }
+
+    // Proof
+    const proofImg = document.getElementById('filePreview');
+    if (proofImg.src && proofImg.style.display !== 'none') {
+      document.getElementById('inv_proofImg').src = proofImg.src;
+      document.getElementById('inv_proofWrap').style.display = 'block';
+    } else {
+      document.getElementById('inv_proofWrap').style.display = 'none';
+    }
+
+    document.getElementById('invoiceOverlay').classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeInvoice() {
+    document.getElementById('invoiceOverlay').classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+
+  async function downloadPNG() {
+    showToast('⏳ Generating PNG...');
+    try {
+      const canvas = await html2canvas(document.getElementById('invoiceDoc'), {
+        scale: 2, useCORS: true, backgroundColor: '#fff', logging: false
+      });
+      const link = document.createElement('a');
+      link.download = 'SnapScoreStore_Invoice.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      showToast('✅ PNG Downloaded!');
+    } catch(e) { showToast('❌ PNG export failed'); }
+  }
+
+  async function downloadPDF() {
+    showToast('⏳ Generating PDF...');
+    try {
+      const { jsPDF } = window.jspdf;
+      const canvas = await html2canvas(document.getElementById('invoiceDoc'), {
+        scale: 2, useCORS: true, backgroundColor: '#fff', logging: false
+      });
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('SnapScoreStore_Invoice.pdf');
+      showToast('✅ PDF Downloaded!');
+    } catch(e) { showToast('❌ PDF export failed'); }
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2600);
+  }
+
+  // Close overlay on background click
+  document.getElementById('invoiceOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeInvoice();
+  });
+</script>
+</body>
+</html>
