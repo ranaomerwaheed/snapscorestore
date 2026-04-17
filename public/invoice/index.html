@@ -92,7 +92,7 @@ select option{background:#1a1a1a;}
 .fslot p{font-size:.72rem;color:var(--dim);}
 .fslot strong{color:var(--gold);}
 .slotlbl{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-family:'Orbitron',monospace;}
-.sprev{max-width:100%;max-height:100px;border-radius:8px;object-fit:cover;border:1px solid var(--border);display:none;margin-top:6px;}
+.sprev{max-width:100%;max-height:180px;width:auto;height:auto;border-radius:8px;object-fit:contain;image-rendering:auto;border:1.5px solid var(--gold);display:none;margin-top:8px;box-shadow:0 2px 12px rgba(255,215,0,0.18);}
 
 /* ── GENERATE ── */
 .genbtn{width:100%;background:linear-gradient(135deg,#FFD700 0%,#FFA500 50%,#FF6B00 100%);border:none;outline:none;color:#000;font-family:'Orbitron',monospace;font-size:.92rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase;padding:18px;border-radius:14px;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 8px 32px rgba(255,165,0,.38);transition:all .3s;margin-top:6px;}
@@ -114,7 +114,7 @@ select option{background:#1a1a1a;}
 .abtn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.4);}
 
 /* ── INVOICE DOCUMENT ── */
-#invDoc{width:794px;max-width:100%;margin:0 auto;background:#fff;border-radius:5px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.65);position:relative;font-family:'Inter',sans-serif;color:#1a1a1a;}
+#invDoc{width:794px;max-width:100%;margin:0 auto;background:#fff;border-radius:5px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.65);position:relative;font-family:'Inter',sans-serif;color:#1a1a1a;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;}
 #invDoc::after{content:'PAID SECURELY';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-35deg);font-family:'Orbitron',monospace;font-size:4.2rem;font-weight:900;color:rgba(0,165,0,.065);white-space:nowrap;pointer-events:none;letter-spacing:.1em;z-index:50;border:8px solid rgba(0,165,0,.05);padding:10px 28px;border-radius:10px;}
 
 .invhdr{background:linear-gradient(135deg,#080808 0%,#161616 60%,#222 100%);padding:26px 36px 22px;display:flex;justify-content:space-between;align-items:flex-start;}
@@ -161,10 +161,28 @@ select option{background:#1a1a1a;}
 .totlbl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.48);}
 .totamt{font-family:'Orbitron',monospace;font-size:1.65rem;font-weight:900;background:linear-gradient(135deg,#FFD700,#FF8C00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-top:3px;}
 
-/* Proof */
+/* Proof – FHD display */
 .iproof{margin-bottom:18px;}
-.iproofimgs{display:flex;gap:10px;flex-wrap:wrap;margin-top:7px;}
-.iproofimgs img{max-width:48%;max-height:155px;border-radius:7px;border:1px solid #eee;object-fit:contain;}
+.iproofimgs{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
+.iproofimgs img{
+  flex:1 1 45%;
+  max-width:49%;
+  width:auto;
+  height:auto;
+  max-height:280px;
+  border-radius:8px;
+  border:1.5px solid #e0e0e0;
+  object-fit:contain;
+  image-rendering:-webkit-optimize-contrast;
+  image-rendering:crisp-edges;
+  box-shadow:0 2px 12px rgba(0,0,0,.1);
+  background:#f9f9f9;
+}
+/* During export: remove height cap so full res shows */
+#invDoc.exporting .iproofimgs img{
+  max-height:none !important;
+  max-width:49% !important;
+}
 
 /* Footer */
 .invftr{background:linear-gradient(135deg,#080808,#1a1a1a);padding:17px 36px;display:flex;justify-content:space-between;align-items:center;}
@@ -523,13 +541,29 @@ async function pf(id){
   }catch(e){ toast('⚠️ Allow clipboard in browser settings'); }
 }
 
-/* ─────────────── PROOF ─────────────── */
+/* ─────────────── PROOF (FHD native resolution) ─────────────── */
+// Store original file reference so we can re-read at full res for export
+const proofFiles={};
 function handleProof(e,s){
   const f=e.target.files[0]; if(!f) return;
+  proofFiles[s]=f;
+  // Use FileReader for preview AND export — always dataURL for cross-origin safety
   const r=new FileReader();
   r.onload=ev=>{
     const img=document.getElementById('proof'+s);
-    img.src=ev.target.result; img.style.display='block';
+    // Draw to offscreen canvas at native resolution to preserve quality
+    const tmp=new Image();
+    tmp.onload=()=>{
+      const c=document.createElement('canvas');
+      c.width=tmp.naturalWidth; c.height=tmp.naturalHeight;
+      const ctx=c.getContext('2d');
+      ctx.imageSmoothingEnabled=true;
+      ctx.imageSmoothingQuality='high';
+      ctx.drawImage(tmp,0,0,tmp.naturalWidth,tmp.naturalHeight);
+      img.src=c.toDataURL('image/png',1.0);
+      img.style.display='block';
+    };
+    tmp.src=ev.target.result;
     const sl=document.getElementById('slot'+s);
     sl.style.borderColor='var(--gold)'; sl.style.background='rgba(255,215,0,.05)';
   };
@@ -660,70 +694,124 @@ function closeInv(){
   document.body.style.overflow='';
 }
 
-/* ─────────────── EXPORT (High Quality) ─────────────── */
+/* ─────────────── EXPORT ─────────────── */
+
 function waitImgs(){
   return new Promise(res=>{
-    const imgs=document.querySelectorAll('#invDoc img');
-    let p=imgs.length; if(!p){res();return;}
+    const imgs=[...document.querySelectorAll('#invDoc img')];
+    if(!imgs.length){res();return;}
+    let pending=imgs.length;
+    const done=()=>{ if(--pending<=0) res(); };
     imgs.forEach(img=>{
-      if(img.complete&&img.naturalWidth>0){p--;if(!p)res();}
-      else{ img.onload=()=>{p--;if(!p)res();}; img.onerror=()=>{p--;if(!p)res();}; }
+      if(img.complete&&img.naturalWidth>0) done();
+      else{ img.onload=done; img.onerror=done; }
     });
   });
 }
 
-async function dlPNG(){
-  toast('⏳ Rendering high-quality PNG...');
-  try{
-    await waitImgs();
-    const canvas=await html2canvas(document.getElementById('invDoc'),{
-      scale:3,useCORS:true,allowTaint:true,backgroundColor:'#ffffff',
-      logging:false,imageTimeout:10000,removeContainer:true
-    });
-    const a=document.createElement('a');
-    a.download='SnapScoreStore_Invoice.png';
-    a.href=canvas.toDataURL('image/png',1.0);
-    a.click();
-    toast('✅ PNG Downloaded!');
-  }catch(e){toast('❌ PNG export failed');console.error(e);}
+function waitFonts(){
+  if(document.fonts&&document.fonts.ready) return document.fonts.ready;
+  return Promise.resolve();
 }
 
-async function dlPDF(){
-  toast('⏳ Generating PDF...');
-  try{
-    await waitImgs();
-    const {jsPDF}=window.jspdf;
-    const el=document.getElementById('invDoc');
-    const canvas=await html2canvas(el,{
-      scale:3,useCORS:true,allowTaint:true,backgroundColor:'#ffffff',
-      logging:false,imageTimeout:10000,removeContainer:true
-    });
-    const iw=canvas.width, ih=canvas.height;
-    const pdf=new jsPDF({orientation:'portrait',unit:'px',format:'a4',hotfixes:['px_scaling']});
-    const pw=pdf.internal.pageSize.getWidth();
-    const ph=pdf.internal.pageSize.getHeight();
-    const ratio=iw/ih;
-    const pgH=pw/ratio;
-    if(pgH<=ph){
-      pdf.addImage(canvas.toDataURL('image/png',1.0),'PNG',0,0,pw,pgH);
-    } else {
-      // Multi-page
-      const pagePixels=Math.floor(iw*(ph/pw));
-      let offset=0; let pn=0;
-      while(offset<ih){
-        const slH=Math.min(pagePixels,ih-offset);
-        const pc2=document.createElement('canvas');
-        pc2.width=iw; pc2.height=slH;
-        pc2.getContext('2d').drawImage(canvas,0,offset,iw,slH,0,0,iw,slH);
-        if(pn>0) pdf.addPage();
-        const slImgH=(slH/iw)*pw;
-        pdf.addImage(pc2.toDataURL('image/png',1.0),'PNG',0,0,pw,slImgH);
-        offset+=slH; pn++;
-      }
+async function upscaleDataURL(src){
+  return new Promise(res=>{
+    const im=new Image();
+    im.onload=()=>{
+      const c=document.createElement('canvas');
+      c.width=im.naturalWidth; c.height=im.naturalHeight;
+      const ctx=c.getContext('2d');
+      ctx.imageSmoothingEnabled=true;
+      ctx.imageSmoothingQuality='high';
+      ctx.drawImage(im,0,0);
+      res(c.toDataURL('image/png',1.0));
+    };
+    im.onerror=()=>res(src);
+    im.src=src;
+  });
+}
+
+async function prepareExport(){
+  // Upscale proof images to native res
+  const pimgs=[...document.querySelectorAll('#i_proofimgs img')];
+  for(const img of pimgs){
+    if(img.src&&(img.src.startsWith('data:')||img.src.startsWith('blob:')))
+      img.src=await upscaleDataURL(img.src);
+  }
+  await waitFonts();
+  await waitImgs();
+}
+
+async function captureCanvas(scale){
+  const el=document.getElementById('invDoc');
+  // Pin width for stable layout
+  const prev=el.style.width;
+  el.style.width='794px';
+  el.classList.add('exporting');
+  // small settle delay
+  await new Promise(r=>setTimeout(r,120));
+  const c=await html2canvas(el,{
+    scale,
+    useCORS:true,
+    allowTaint:true,
+    backgroundColor:'#ffffff',
+    logging:false,
+    imageTimeout:20000,
+    removeContainer:false,
+    foreignObjectRendering:false,
+    onclone:(cloned)=>{
+      // Make sure cloned doc also pins width
+      const d=cloned.getElementById('invDoc');
+      if(d){ d.style.width='794px'; d.classList.add('exporting'); }
     }
+  });
+  el.classList.remove('exporting');
+  el.style.width=prev;
+  return c;
+}
+
+/* ── PNG: 10× scale → ~7940px wide, ultra-sharp ── */
+async function dlPNG(){
+  toast('⏳ Rendering 10× ultra-clear PNG…');
+  try{
+    await prepareExport();
+    const canvas=await captureCanvas(10);
+    const a=document.createElement('a');
+    a.download='SnapScoreStore_Invoice_10x.png';
+    a.href=canvas.toDataURL('image/png',1.0);
+    a.click();
+    toast('✅ 10× Ultra-Clear PNG Downloaded!');
+  }catch(e){toast('❌ PNG failed: '+e.message);console.error(e);}
+}
+
+/* ── PDF: single A4 page, 6× capture, perfectly fitted ── */
+async function dlPDF(){
+  toast('⏳ Generating crisp single-page PDF…');
+  try{
+    await prepareExport();
+    const {jsPDF}=window.jspdf;
+    const canvas=await captureCanvas(6);
+    const imgData=canvas.toDataURL('image/png',1.0);
+
+    const A4W=210, A4H=297; // mm
+    const ratio=canvas.width/canvas.height;
+    let iW=A4W, iH=A4W/ratio;
+    // If content height exceeds A4, scale proportionally to fit
+    if(iH>A4H){ iW=A4H*ratio; iH=A4H; }
+    // Centre on page
+    const xOff=(A4W-iW)/2;
+    const yOff=(A4H-iH)/2;
+
+    const pdf=new jsPDF({
+      orientation:'portrait',
+      unit:'mm',
+      format:'a4',
+      compress:false
+    });
+    pdf.addImage(imgData,'PNG',xOff,yOff,iW,iH,undefined,'FAST');
     pdf.save('SnapScoreStore_Invoice.pdf');
-    toast('✅ PDF Downloaded!');
-  }catch(e){toast('❌ PDF export failed');console.error(e);}
+    toast('✅ Single-page PDF Downloaded!');
+  }catch(e){toast('❌ PDF failed: '+e.message);console.error(e);}
 }
 
 /* ─────────────── TOAST ─────────────── */
