@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Forwarder | SnapScoreStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --primary: #FFFC00; --dark: #0a0a0a; --glass: rgba(255, 255, 255, 0.05); }
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        
+        body { 
+            background: var(--dark); color: #fff; margin: 0; padding: 20px;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+            background-image: linear-gradient(45deg, #0a0a0a 25%, #111 25%, #111 50%, #0a0a0a 50%, #0a0a0a 75%, #111 75%, #111 100%);
+            background-size: 56.57px 56.57px;
+        }
+
+        .forwarder-card {
+            background: var(--glass); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 30px;
+            padding: 40px; width: 100%; max-width: 500px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .logo-box { text-align: center; margin-bottom: 30px; }
+        .logo-box img { width: 80px; filter: drop-shadow(0 0 10px var(--primary)); }
+
+        .field { margin-bottom: 15px; position: relative; }
+        label { display: block; font-size: 11px; color: var(--primary); font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
+        
+        input { 
+            width: 100%; padding: 12px; background: rgba(0,0,0,0.5); border: 1px solid #333; 
+            border-radius: 10px; color: #fff; outline: none; transition: 0.3s;
+        }
+        input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255, 252, 0, 0.2); }
+
+        .paste-btn {
+            position: absolute; right: 8px; top: 25px; background: #222; color: #fff;
+            border: none; padding: 5px 10px; border-radius: 5px; font-size: 10px; cursor: pointer;
+        }
+
+        .wa-btn {
+            width: 100%; padding: 15px; background: #25D366; color: #fff; border: none;
+            border-radius: 15px; font-size: 16px; font-weight: bold; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 20px; transition: 0.3s;
+        }
+        .wa-btn:hover { background: #1ebd59; transform: scale(1.02); }
+
+        .footer { text-align: center; margin-top: 20px; font-size: 10px; color: #555; }
+    </style>
+  <link rel="icon" type="image/svg+xml" href="https://freesnapscores.com/assets/logo.svg" />
+</head>
+<body>
+
+    <div class="forwarder-card">
+        <div class="logo-box">
+            <img src="https://freesnapscores.com/assets/logo.svg" alt="Logo">
+            <h2 style="margin-top:10px; font-size:22px;">WhatsApp <span style="color:var(--primary)">Dispatcher</span></h2>
+        </div>
+
+        <div class="field">
+            <label>Receiver Number (with country code)</label>
+            <input type="text" id="wa_num" placeholder="e.g. 923431390157">
+        </div>
+
+        <div style="border-top: 1px solid #333; margin: 20px 0;"></div>
+
+        <div class="field">
+            <label>Snap Username</label>
+            <input type="text" id="u_name">
+            <button class="paste-btn" onclick="pText('u_name')">PASTE</button>
+        </div>
+        <div class="field">
+            <label>Snap Password</label>
+            <input type="text" id="u_pass">
+            <button class="paste-btn" onclick="pText('u_pass')">PASTE</button>
+        </div>
+        <div class="field">
+            <label>Email & Password</label>
+            <input type="text" id="u_mail" placeholder="email:pass">
+            <button class="paste-btn" onclick="pText('u_mail')">PASTE</button>
+        </div>
+        <div class="field">
+            <label>Price & Method</label>
+            <input type="text" id="u_price" placeholder="5000 PKR - JazzCash">
+        </div>
+
+        <button class="wa-btn" onclick="sendToWA()">
+            <i class="fa-brands fa-whatsapp"></i> FORWARD TO WHATSAPP
+        </button>
+
+        <div class="footer">
+            &copy; 2026 SnapScoreStore Enterprise System
+        </div>
+    </div>
+
+    <script>
+        async function pText(id) {
+            const t = await navigator.clipboard.readText();
+            document.getElementById(id).value = t;
+        }
+
+        function sendToWA() {
+            const num = document.getElementById('wa_num').value;
+            const user = document.getElementById('u_name').value;
+            const pass = document.getElementById('u_pass').value;
+            const mail = document.getElementById('u_mail').value;
+            const price = document.getElementById('u_price').value;
+
+            if(!num || !user) { alert("Please enter receiver number and username!"); return; }
+
+            const msg = `📦 *SNAPCHAT ACCOUNT READY* 📦%0A%0A` +
+                        `👤 *User:* ${user}%0A` +
+                        `🔑 *Pass:* ${pass}%0A` +
+                        `📧 *Email/Login:* ${mail}%0A` +
+                        `💰 *Price:* ${price}%0A%0A` +
+                        `✅ *Verified by SnapScoreStore*`;
+
+            window.open(`https://wa.me/${num}?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
