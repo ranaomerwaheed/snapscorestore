@@ -1317,7 +1317,7 @@ const testimonials = [
       en: "Best service in the Middle East. My Snap score reached 1M in just 2 days. Highly recommended for anyone looking for reliability.", 
       ar: "أفضل خدمة في الشرق الأوسط. وصل سكور حسابي إلى مليون في يومين فقط. أنصح به بشدة لكل من يبحث عن المصداقية." 
     },
-    avatar: "https://picsum.photos/seed/user1/100/100"
+    avatar: "https://i.pinimg.com/1200x/7b/76/90/7b7690d1d9769561cb5fb6fdb2045943.jpg"
   },
   {
     name: { en: "Sara Mohammed", ar: "سارة محمد" },
@@ -1326,7 +1326,7 @@ const testimonials = [
       en: "I was worried about my account, but they reassured me and the service was extremely professional. Highly recommended.", 
       ar: "كنت خايفة على حسابي بس طمنوني والخدمة كانت احترافية للغاية. أنصح فيهم وبقوة." 
     },
-    avatar: "https://picsum.photos/seed/user2/100/100"
+    avatar: "https://i.pinimg.com/736x/dc/9a/95/dc9a956dd7b52250a046345099430406.jpg"
   },
   {
     name: { en: "Sultan Al-Kuwari", ar: "سلطان الكواري" },
@@ -1335,7 +1335,7 @@ const testimonials = [
       en: "Best service I've dealt with in the Gulf. Credibility and speed in execution.", 
       ar: "أفضل خدمة تعاملت معها في الخليج. مصداقية وسرعة في التنفيذ." 
     },
-    avatar: "https://picsum.photos/seed/user3/100/100"
+    avatar: "https://i.pinimg.com/1200x/75/0f/25/750f251212ac558e0c8a1e1c4c2cfdab.jpg"
   },
   {
     name: { en: "Layla Hassan", ar: "ليلى حسن" },
@@ -1344,7 +1344,7 @@ const testimonials = [
       en: "Incredible results! My account looks so much more professional now. The support team was very helpful.", 
       ar: "نتائج مذهلة! حسابي يبدو أكثر احترافية الآن. فريق الدعم كان متعاوناً جداً." 
     },
-    avatar: "https://picsum.photos/seed/user4/100/100"
+    avatar: "https://i.pinimg.com/736x/40/3f/4a/403f4acd6fb616c9b6e0b3f22a92086f.jpg"
   },
   {
     name: { en: "Omar Farooq", ar: "عمر فاروق" },
@@ -1353,7 +1353,7 @@ const testimonials = [
       en: "Fast delivery and great communication. I will definitely use this service again for my other accounts.", 
       ar: "تسليم سريع وتواصل رائع. سأستخدم هذه الخدمة بالتأكيد مرة أخرى لحساباتي الأخرى." 
     },
-    avatar: "https://picsum.photos/seed/user5/100/100"
+    avatar: "https://i.pinimg.com/736x/ba/49/aa/ba49aad0be9c58fe0f332833cb9036ff.jpg"
   },
   {
     name: { en: "Noura Al-Said", ar: "نورة السعيد" },
@@ -1362,7 +1362,7 @@ const testimonials = [
       en: "The AI tools are a game changer! I love the Bitmoji creator. The score boost was also perfect.", 
       ar: "أدوات الذكاء الاصطناعي غيرت كل شيء! أحببت منشئ البيتموجي. زيادة السكور كانت مثالية أيضاً." 
     },
-    avatar: "https://picsum.photos/seed/user6/100/100"
+    avatar: "https://i.pinimg.com/1200x/76/37/e3/7637e350ba346720610da1afe39a4ccf.jpg"
   }
 ];
 
@@ -1394,19 +1394,19 @@ const faqData = [
 ];
 
 const catalog = [
-  { id: 1, score: "5K+", price: "$15", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
-  { id: 2, score: "10K+", price: "$25", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
-  { id: 3, score: "20K+", price: "$35", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
-  { id: 4, score: "50K+", price: "$55", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
-  { id: 5, score: "100K+", price: "$95", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
-  { id: 6, score: "200K+", price: "$160", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
-  { id: 7, score: "300K+", price: "$220", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
-  { id: 8, score: "500K+", price: "$280", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
-  { id: 9, score: "700K+", price: "$350", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
-  { id: 10, score: "1M+", price: "$450", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
-  { id: 11, score: "2M+", price: "$850", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
-  { id: 12, score: "5M+", price: "$1800", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
-  { id: 13, score: "10M+", price: "$3500", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
+  { id: 1, score: "5K+", price: "$3", age: "2023", type: "Starter", description: { en: "Fresh Account", ar: "حساب جديد" } },
+  { id: 2, score: "10K+", price: "$5", age: "2022", type: "Basic", description: { en: "Established Account", ar: "حساب قائم" } },
+  { id: 3, score: "20K+", price: "$7", age: "2021", type: "Growth", description: { en: "Active Account", ar: "حساب نشط" } },
+  { id: 4, score: "50K+", price: "$10", age: "2020", type: "Popular", description: { en: "High Engagement", ar: "تفاعل عالي" } },
+  { id: 5, score: "100K+", price: "$13", age: "2019", type: "Influencer", description: { en: "Professional Presence", ar: "حضور احترافي" } },
+  { id: 6, score: "200K+", price: "$16", age: "2018", type: "Pro", description: { en: "Authority Account", ar: "حساب سلطة" } },
+  { id: 7, score: "300K+", price: "$20", age: "2017", type: "Expert", description: { en: "Expert Presence", ar: "حضور خبير" } },
+  { id: 8, score: "500K+", price: "$25", age: "2016", type: "Elite", description: { en: "Elite Presence", ar: "حضور النخبة" } },
+  { id: 9, score: "700K+", price: "$30", age: "2015", type: "Ultimate", description: { en: "Ultimate Presence", ar: "حضور أقصى" } },
+  { id: 10, score: "1M+", price: "$40", age: "2014", type: "Legendary", description: { en: "Legendary Status", ar: "حالة أسطورية" } },
+  { id: 11, score: "2M+", price: "59", age: "2013", type: "Mythic", description: { en: "Mythic Status", ar: "حالة خرافية" } },
+  { id: 12, score: "5M+", price: "$150", age: "2012", type: "Godlike", description: { en: "Godlike Authority", ar: "سلطة إلهية" } },
+  { id: 13, score: "10M+", price: "$350", age: "2011", type: "Ultimate", description: { en: "Ultimate Authority", ar: "السلطة القصوى" } },
 ];
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -1441,16 +1441,16 @@ const ServiceDetail = ({ service, lang, onBack, onOrder, openWhatsApp }: { servi
   const isScoreBoost = service.id === 's_boost';
 
   const boostTiers = [
-    { id: 'b5k', amount: '5,000', price: '$10', time: '1-2 hrs' },
-    { id: 'b10k', amount: '10,000', price: '$18', time: '2-4 hrs' },
-    { id: 'b20k', amount: '20,000', price: '$35', time: '4-6 hrs' },
-    { id: 'b50k', amount: '50,000', price: '$80', time: '6-12 hrs' },
-    { id: 'b100k', amount: '100,000', price: '$150', time: '12-24 hrs' },
-    { id: 'b200k', amount: '200,000', price: '$280', time: '24-48 hrs' },
-    { id: 'b300k', amount: '300,000', price: '$400', time: '2-3 days' },
-    { id: 'b500k', amount: '500,000', price: '$650', time: '3-5 days' },
-    { id: 'b700k', amount: '700,000', price: '$850', time: '5-7 days' },
-    { id: 'b1m', amount: '1,000,000', price: '$1200', time: '7-10 days' },
+    { id: 'b5k', amount: '5,000', price: '$3', time: '1-2 hrs' },
+    { id: 'b10k', amount: '10,000', price: '$5', time: '2-4 hrs' },
+    { id: 'b20k', amount: '20,000', price: '$7', time: '4-6 hrs' },
+    { id: 'b50k', amount: '50,000', price: '$10', time: '6-12 hrs' },
+    { id: 'b100k', amount: '100,000', price: '$16', time: '12-24 hrs' },
+    { id: 'b200k', amount: '200,000', price: '$23', time: '24-48 hrs' },
+    { id: 'b300k', amount: '300,000', price: '$29', time: '2-3 days' },
+    { id: 'b500k', amount: '500,000', price: '$40', time: '3-5 days' },
+    { id: 'b700k', amount: '700,000', price: '$45', time: '5-7 days' },
+    { id: 'b1m', amount: '1,000,000', price: '$70', time: '7-10 days' },
   ];
 
   const followerTiers = [
