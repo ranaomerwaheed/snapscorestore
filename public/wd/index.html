@@ -158,31 +158,37 @@
             } catch(e) { console.log("Clipboard Access Denied"); }
         }
 
-        // WhatsApp Send Logic
-        function sendToWA() {
-            const num = document.getElementById('wa_num').value;
-            const user = document.getElementById('u_name').value;
-            const pass = document.getElementById('u_pass').value;
-            const mail = document.getElementById('u_mail').value;
-            const epass = document.getElementById('u_epass').value;
-            const score = document.getElementById('u_score').value;
-            const follow = document.getElementById('u_follow').value;
-            const price = document.getElementById('u_price').value;
+       // WhatsApp Send Logic mein ye tabdeeli ki gayi hai:
+function sendToWA() {
+    const num = document.getElementById('wa_num').value;
+    const user = document.getElementById('u_name').value;
+    const pass = document.getElementById('u_pass').value;
+    const mail = document.getElementById('u_mail').value;
+    const epass = document.getElementById('u_epass').value;
+    const score = document.getElementById('u_score').value;
+    const follow = document.getElementById('u_follow').value;
+    const price = document.getElementById('u_price').value;
 
-            if(!num || !user) { alert("Please fill at least Number and Username!"); return; }
+    if(!num) { alert("Please enter Receiver Number!"); return; }
 
-            const msg = `👻 *SNAPCHAT SCORE SALE* 👻%0A%0A` +
-                        `👤 *Username:* ${user}%0A` +
-                        `🔑 *Password:* ${pass}%0A%0A` +
-                        `📧 *Email:* ${mail}%0A` +
-                        `🔓 *Email Pass:* ${epass}%0A%0A` +
-                        `📈 *Score:* ${score}%0A` +
-                        `👥 *Followers:* ${follow}%0A` +
-                        `💰 *Price:* ${price}%0A%0A` +
-                        `✅ *Verified by SnapScores.Store*`;
+    // Message Start
+    let msg = `👻 *SNAPCHAT SCORE SALE* 👻%0A%0A`;
 
-            window.open(`https://wa.me/${num}?text=${msg}`, '_blank');
-        }
+    // Smart Checks (Agar value hai to add karo, warna skip)
+    if(user)   msg += `👤 *Username:* ${user}%0A`;
+    if(pass)   msg += `🔑 *Password:* ${pass}%0A%0A`;
+    if(mail)   msg += `📧 *Email:* ${mail}%0A`;
+    if(epass)  msg += `🔓 *Email Pass:* ${epass}%0A%0A`;
+    if(score)  msg += `📈 *Score:* ${score}%0A`;
+    if(follow) msg += `👥 *Followers:* ${follow}%0A`;
+    if(price)  msg += `💰 *Price:* ${price}%0A%0A`;
+
+    msg += `✅ *Verified by SnapScores.Store*`;
+
+    window.open(`https://wa.me/${num}?text=${msg}`, '_blank');
+}
+ 
+            
     </script>
 </body>
 </html>
