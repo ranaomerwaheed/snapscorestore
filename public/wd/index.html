@@ -77,12 +77,12 @@
     <div class="card">
         <div class="logo-area">
             <img src="https://freesnapscores.com/assets/logo.svg">
-            <h2 style="font-size: 20px; margin-top: 8px;">GHOST <span style="color:var(--primary)">DISPATCHER</span> 👻</h2>
+            <h2 style="font-size: 20px; margin-top: 8px;">WhatsApp <span style="color:var(--primary)">DISPATCHER</span> 👻</h2>
         </div>
 
         <div class="field">
             <label>Receiver WhatsApp</label>
-            <input type="text" id="wa_num" placeholder="923431390157">
+            <input type="text" id="wa_num" placeholder="+923431390157">
         </div>
 
         <div class="row">
@@ -101,7 +101,7 @@
         <div class="row">
             <div class="field">
                 <label>Account Email</label>
-                <input type="text" id="u_mail">
+                <input type="email" id="u_mail">
                 <button class="p-btn" onclick="pText('u_mail')">PASTE</button>
             </div>
             <div class="field">
@@ -128,7 +128,7 @@
         </div>
 
         <button class="send-wa" onclick="sendToWA()">
-            <i class="fa-brands fa-whatsapp"></i> SEND TO CLIENT
+            <i class="fa-brands fa-whatsapp"></i> SEND TO WhatsApp
         </button>
 
         <div class="footer">SnapScoreStore &bull; Digital Asset Dispatch System</div>
@@ -171,7 +171,7 @@
 
             if(!num || !user) { alert("Please fill at least Number and Username!"); return; }
 
-            const msg = `👻 *SNAPCHAT GHOST SALE* 👻%0A%0A` +
+            const msg = `👻 *SNAPCHAT SCORE SALE* 👻%0A%0A` +
                         `👤 *Username:* ${user}%0A` +
                         `🔑 *Password:* ${pass}%0A%0A` +
                         `📧 *Email:* ${mail}%0A` +
@@ -179,7 +179,7 @@
                         `📈 *Score:* ${score}%0A` +
                         `👥 *Followers:* ${follow}%0A` +
                         `💰 *Price:* ${price}%0A%0A` +
-                        `✅ *Verified by SnapScoreStore*`;
+                        `✅ *Verified by SnapScores.Store*`;
 
             window.open(`https://wa.me/${num}?text=${msg}`, '_blank');
         }
