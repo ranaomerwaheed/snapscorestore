@@ -3,105 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ghost Dispatcher | SnapScoreStore</title>
+    <title>Ghost Dispatcher Pro | SnapScoreStore</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #FFFC00; --ghost: #ffffff22; }
-        
+        :root { --primary: #FFFC00; --ghost-glow: rgba(255, 252, 0, 0.2); }
         * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
         body { 
             background: #050505; color: #fff; margin: 0; padding: 20px;
             display: flex; justify-content: center; align-items: center; min-height: 100vh;
-            overflow: hidden; /* Ghost animation bahar na jaye */
+            overflow: hidden; 
         }
 
-        /* --- GHOST ANIMATION BACKGROUND --- */
-        .ghost-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; pointer-events: none;
-        }
-        .ghost {
-            position: absolute; font-size: 40px; filter: blur(1px);
-            animation: floatGhost 15s linear infinite; opacity: 0.3;
-        }
+        /* --- GHOST BACKGROUND --- */
+        .ghost-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .ghost { position: absolute; font-size: 35px; animation: floatGhost 12s linear infinite; opacity: 0; }
         @keyframes floatGhost {
-            0% { transform: translate(0, 110vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.5; }
-            90% { opacity: 0.5; }
-            100% { transform: translate(100px, -10vh) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(110vh) translateX(0); opacity: 0; }
+            20% { opacity: 0.4; }
+            80% { opacity: 0.4; }
+            100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
         }
 
-        /* --- MAIN CARD --- */
+        /* --- CARD DESIGN --- */
         .card {
-            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 30px;
-            padding: 40px; width: 100%; max-width: 500px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.8);
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 25px;
+            padding: 30px; width: 100%; max-width: 550px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
             position: relative; z-index: 10;
         }
 
-        .logo-area { text-align: center; margin-bottom: 30px; }
-        .logo-area img { width: 70px; filter: drop-shadow(0 0 10px var(--primary)); }
+        .logo-area { text-align: center; margin-bottom: 25px; }
+        .logo-area img { width: 60px; filter: drop-shadow(0 0 10px var(--primary)); }
 
-        .field { margin-bottom: 18px; position: relative; }
-        label { display: block; font-size: 11px; color: var(--primary); font-weight: 800; margin-bottom: 6px; text-transform: uppercase; }
+        .field { margin-bottom: 15px; position: relative; }
+        label { display: block; font-size: 10px; color: var(--primary); font-weight: 800; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
         
         input { 
-            width: 100%; padding: 14px 15px; background: rgba(0,0,0,0.6); 
-            border: 1px solid #333; border-radius: 12px; color: #fff; 
-            outline: none; font-size: 14px; transition: 0.3s;
+            width: 100%; padding: 12px 14px; background: rgba(0,0,0,0.7); 
+            border: 1px solid #333; border-radius: 10px; color: #fff; 
+            outline: none; font-size: 13px; transition: 0.3s;
         }
-        input:focus { border-color: var(--primary); box-shadow: 0 0 15px rgba(255, 252, 0, 0.1); }
+        input:focus { border-color: var(--primary); box-shadow: 0 0 10px var(--ghost-glow); }
 
+        /* Small Paste Button */
         .p-btn {
-            position: absolute; right: 10px; bottom: 8px;
-            background: #1a1a1a; color: var(--primary); border: 1px solid #333;
-            padding: 6px 12px; border-radius: 8px; font-size: 10px; font-weight: bold;
-            cursor: pointer; transition: 0.2s;
+            position: absolute; right: 8px; bottom: 6px;
+            background: #151515; color: var(--primary); border: 1px solid #333;
+            padding: 4px 10px; border-radius: 6px; font-size: 9px; font-weight: bold;
+            cursor: pointer;
         }
         .p-btn:hover { background: var(--primary); color: #000; }
 
+        /* Grid Layout for Row Fields */
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
         .send-wa {
-            width: 100%; padding: 18px; background: #25D366; color: #fff; border: none;
-            border-radius: 18px; font-size: 16px; font-weight: 900; cursor: pointer;
+            width: 100%; padding: 16px; background: #25D366; color: #fff; border: none;
+            border-radius: 15px; font-size: 15px; font-weight: 900; cursor: pointer;
             display: flex; align-items: center; justify-content: center; gap: 10px;
             margin-top: 10px; transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
         }
-        .send-wa:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
+        .send-wa:hover { transform: scale(1.02); background: #1ebd59; }
 
-        .footer-text { text-align: center; margin-top: 25px; font-size: 10px; color: #555; letter-spacing: 1px; }
+        .footer { text-align: center; margin-top: 20px; font-size: 9px; color: #444; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <div class="ghost-bg" id="ghostBox"></div>
+    <div class="ghost-bg" id="ghostContainer"></div>
 
     <div class="card">
         <div class="logo-area">
             <img src="https://freesnapscores.com/assets/logo.svg">
-            <h2 style="font-size: 22px; margin-top: 10px;">Ghost <span style="color:var(--primary)">Dispatcher</span> 👻</h2>
+            <h2 style="font-size: 20px; margin-top: 8px;">GHOST <span style="color:var(--primary)">DISPATCHER</span> 👻</h2>
         </div>
 
         <div class="field">
-            <label>Receiver Number</label>
+            <label>Receiver WhatsApp</label>
             <input type="text" id="wa_num" placeholder="923431390157">
         </div>
 
-        <div class="field">
-            <label>Snap Username</label>
-            <input type="text" id="u_name">
-            <button class="p-btn" onclick="pText('u_name')">PASTE</button>
+        <div class="row">
+            <div class="field">
+                <label>Snap Username</label>
+                <input type="text" id="u_name">
+                <button class="p-btn" onclick="pText('u_name')">PASTE</button>
+            </div>
+            <div class="field">
+                <label>Snap Password</label>
+                <input type="text" id="u_pass">
+                <button class="p-btn" onclick="pText('u_pass')">PASTE</button>
+            </div>
         </div>
 
-        <div class="field">
-            <label>Snap Password</label>
-            <input type="text" id="u_pass">
-            <button class="p-btn" onclick="pText('u_pass')">PASTE</button>
-        </div>
-
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+        <div class="row">
             <div class="field">
                 <label>Account Email</label>
                 <input type="text" id="u_mail">
@@ -114,54 +111,75 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="field">
+                <label>Snap Score</label>
+                <input type="text" id="u_score" placeholder="e.g. 500k">
+            </div>
+            <div class="field">
+                <label>Followers</label>
+                <input type="text" id="u_follow" placeholder="e.g. 1500">
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Price & Payment Method</label>
+            <input type="text" id="u_price" placeholder="e.g. 4500 PKR - JazzCash">
+        </div>
+
         <button class="send-wa" onclick="sendToWA()">
-            <i class="fa-brands fa-whatsapp"></i> DISPATCH TO WHATSAPP
+            <i class="fa-brands fa-whatsapp"></i> SEND TO CLIENT
         </button>
 
-        <div class="footer-text">SNAP SCORE STORE &bull; SECURE ASSET TRANSFER</div>
+        <div class="footer">SnapScoreStore &bull; Digital Asset Dispatch System</div>
     </div>
 
     <script>
-        // 1. Ghost Creator
-        function createGhosts() {
-            const box = document.getElementById('ghostBox');
-            const count = 10;
-            for(let i=0; i<count; i++) {
+        // Ghost Animation Logic
+        function initGhosts() {
+            const container = document.getElementById('ghostContainer');
+            for(let i=0; i<8; i++) {
                 let g = document.createElement('div');
                 g.className = 'ghost';
                 g.innerText = '👻';
                 g.style.left = Math.random() * 100 + 'vw';
-                g.style.animationDelay = Math.random() * 15 + 's';
-                g.style.fontSize = (Math.random() * 20 + 20) + 'px';
-                box.appendChild(g);
+                g.style.animationDelay = Math.random() * 10 + 's';
+                g.style.fontSize = (Math.random() * 15 + 25) + 'px';
+                container.appendChild(g);
             }
         }
-        createGhosts();
+        initGhosts();
 
-        // 2. Paste Function
+        // Smart Paste
         async function pText(id) {
             try {
-                const t = await navigator.clipboard.readText();
-                document.getElementById(id).value = t;
-            } catch(e) { alert("Clipboard error!"); }
+                const text = await navigator.clipboard.readText();
+                document.getElementById(id).value = text;
+            } catch(e) { console.log("Clipboard Access Denied"); }
         }
 
-        // 3. WhatsApp Dispatch
+        // WhatsApp Send Logic
         function sendToWA() {
             const num = document.getElementById('wa_num').value;
             const user = document.getElementById('u_name').value;
             const pass = document.getElementById('u_pass').value;
             const mail = document.getElementById('u_mail').value;
             const epass = document.getElementById('u_epass').value;
+            const score = document.getElementById('u_score').value;
+            const follow = document.getElementById('u_follow').value;
+            const price = document.getElementById('u_price').value;
 
-            if(!num || !user) { alert("Please fill details!"); return; }
+            if(!num || !user) { alert("Please fill at least Number and Username!"); return; }
 
             const msg = `👻 *SNAPCHAT GHOST SALE* 👻%0A%0A` +
                         `👤 *Username:* ${user}%0A` +
                         `🔑 *Password:* ${pass}%0A%0A` +
                         `📧 *Email:* ${mail}%0A` +
                         `🔓 *Email Pass:* ${epass}%0A%0A` +
-                        `✅ *Transfer Verified by SnapScoreStore*`;
+                        `📈 *Score:* ${score}%0A` +
+                        `👥 *Followers:* ${follow}%0A` +
+                        `💰 *Price:* ${price}%0A%0A` +
+                        `✅ *Verified by SnapScoreStore*`;
 
             window.open(`https://wa.me/${num}?text=${msg}`, '_blank');
         }
